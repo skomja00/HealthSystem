@@ -19,16 +19,15 @@ div {
     Only works on positioned elements */
     position: fixed; /* Relative to the viewport rather than the document 
                      /* and will remain in place when the user scrolls */
-    top: 10px;
     z-index: 2;
 
     left: 50%; /* aligns LEFT edge of element to the right of the "center" line of parent */
-    margin-left: -10%; /* negative left margin moves the title back to the center*/
-    margin-top: 10px;
+    margin-left: -10%; /* negative left margin moves the title back to the center by adding margin and padding around right side*/
+    top: 8px; /* this isnt margin its the position: property */
+    
     text-align: center;
-    padding: 10px;
-    box-shadow: 0px 0px 8px 6px  #cccccc; 
-    text-shadow: 3px 3px 3px #cccccc
+    padding: 12px;
+    font-size: 2vw;
 }
 .navigation {
     padding: 10px;
@@ -39,9 +38,6 @@ div {
     border: 2px solid #bbbbbb;
 }
 .content {
-    display: flex;
-    flex-direction: row;
-    flex: 1 1 auto;
     text-align: center;
     height: 100%;
     position: relative;
@@ -53,7 +49,7 @@ div {
 .list-item {
     display: block; /* block: items break to a separate line and stack in a column */
                     /* inline-block same as block but no line breaks good for horiz layout */
-    min-width: 30%; /* this will remove the variations in size */
+    min-width: 30%; /* this will remove the variations in size of list items */
     max-width: 30%;
  }
 .list-item:hover {
@@ -84,6 +80,14 @@ div {
                                             10px spread out from behind box */
     margin: 40px;
     padding: 10px;
+    text-align: left;
+}
+.mission-icon {
+  float: left;
+  min-width: 8%; /* the mission text helps make a smaller % icon stand out */ 
+  max-width: 8%;
+  padding: 1%;
+    
 }
 .mission-fly-over {
     position: absolute; /* parent element must use a position */

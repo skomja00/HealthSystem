@@ -1,0 +1,18 @@
+[
+    {
+        "id": 2,
+        "name": "Mickey Mouse",
+        "gender": "male",
+        "age": 11
+    }, {
+        "id": 10,
+        "name": "Minnie Mouse",
+        "gender": "female",
+        "age": 9
+    }, {
+        "id": 21,
+        "name": "Superman",
+        "gender": "male",
+        "age": 35
+    }
+]

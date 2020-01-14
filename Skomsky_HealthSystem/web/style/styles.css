@@ -1,0 +1,148 @@
+html, body {
+    height: 100%; /* fill the browser window */
+}
+body {
+    background-image: url('../pics/medical-healthcare-background.jpg'); 
+    background-position: left top;
+    background-repeat: round; /* repeat and squish/stretch to fit */
+    background-size: 100%;
+    margin: 10px;
+    padding: 10px;
+}
+div {
+    font-size: 30px;
+    margin: 10px;
+    padding: 10px;
+    }
+.title {
+    /* A higher z-index is always in front of an element with a lower stack order.
+    Only works on positioned elements */
+    position: fixed; /* Relative to the viewport rather than the document 
+                     /* and will remain in place when the user scrolls */
+    top: 10px;
+    z-index: 2;
+
+    left: 50%; /* aligns LEFT edge of element to the right of the "center" line of parent */
+    margin-left: -10%; /* negative left margin moves the title back to the center*/
+    margin-top: 10px;
+    text-align: center;
+    padding: 10px;
+    box-shadow: 0px 0px 8px 6px  #cccccc; 
+    text-shadow: 3px 3px 3px #cccccc
+}
+.navigation {
+    padding: 10px;
+    margin-top: 70px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    border: 2px solid #bbbbbb;
+}
+.content {
+    display: flex;
+    flex-direction: row;
+    flex: 1 1 auto;
+    text-align: center;
+    height: 100%;
+    position: relative;
+}
+.list {
+    white-space: normal; /* collapse white-space. wrap when necessary */
+    list-style: none;
+}
+.list-item {
+    display: block; /* block: items break to a separate line and stack in a column */
+                    /* inline-block same as block but no line breaks good for horiz layout */
+    min-width: 30%; /* this will remove the variations in size */
+    max-width: 30%;
+ }
+.list-item:hover {
+    border: 2px solid #bbbbbb;
+    box-shadow: 4px 4px 4px #bbbbbb;  /* "3D" effect on the main contianer list items */
+}
+.list-item-image {
+    opacity: 1;
+    min-width: 80%; /* this will remove the variations in size */
+    max-width: 80%;
+    margin: 10px;
+    border: 0px;
+    padding: 10px;    
+}
+.list-item-title {
+    opacity: 1;
+    display: block; 
+    text-align: center;
+    background-color: rgba(187, 187, 187, 1); /* lighter gray */
+    color: #000000;
+    font-size: 2vw;
+}
+
+.mission-box {
+    position: relative;  /* positioned relative to its normal position */
+    box-shadow: 0px 0px 10px 10px  #bbbbbb; /* 0px 0px no offset will shadow outside entire box 
+                                            10px blur
+                                            10px spread out from behind box */
+    margin: 40px;
+    padding: 10px;
+}
+.mission-fly-over {
+    position: absolute; /* parent element must use a position */
+    top: -35px;
+    left: 30px;
+    font-size: 50px;
+    color: #FFFFFF;
+    text-shadow: 0px 0px 10px #000000;
+
+}
+
+.footer {
+    position: fixed; /* Relative to the viewport rather than the document 
+                     /* and will remain in place when the user scrolls */
+    bottom: 10px;
+    z-index: 2;
+    left: 20px;
+    right: 20px;
+    bottom: 10px;
+
+    text-align: center;
+    font-size: 20px;
+    box-shadow: 0px 0px 10px 6px  #bbbbbb; 
+}
+
+@media all and (min-width: 1000px) {
+    .list {
+        white-space: normal; // "row" layout see also .list-item display:
+        overflow: hidden;
+    }
+    .list-item {
+        display: inline-block; // "row" layout see also .list white-space:
+    }
+    .list-item-image {
+        opacity: 1;
+        min-width: 80%; /* this will remove the variations in size */
+        max-width: 80%;
+        margin: 10px;
+        border: 0px;
+        padding: 10px;    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}

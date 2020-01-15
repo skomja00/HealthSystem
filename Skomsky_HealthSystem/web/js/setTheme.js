@@ -39,21 +39,24 @@ function setTheme () {
         var pal = {}; /* hash: key = descriptive color name */ 
                       /*       value = "RGBA(r,g,b,a)" string   */
         var xml = pallette();
-        var x = xml.getElementsByTagName("color"); /* for each color */
-        for (i = 0; i <x.length; i++) {            /* get each r, g, b, a value */ 
-            r = x[i].getAttribute("r");              
-            g = x[i].getAttribute("g");
-            b = x[i].getAttribute("b");
-            a = x[i].getAttribute("a");
-            if (a === null) /* color.adobe.com doesn't give alpha values */
-            {               /* if not added alpha will defualt to l */
-                a = "1";
+        var child_nodes = xmlDoc.documentElement.childNodes;  
+        child_nodes.forEach() {
+            var x = xml.getElementsByTagName("color"); /* for each color */
+            for (i = 0; i <x.length; i++) {            /* get each r, g, b, a value */ 
+                r = x[i].getAttribute("r");              
+                g = x[i].getAttribute("g");
+                b = x[i].getAttribute("b");
+                a = x[i].getAttribute("a");
+                if (a === null) /* color.adobe.com doesn't give alpha values */
+                {               /* if not added alpha will defualt to l */
+                    a = "1";
+                }
+                rgba = "rgba(" + r + ", " + 
+                                 g + ", " +
+                                 b + ", " +
+                                 a + ")";
+              pal[x[i].getAttribute("name")] = rgba; /* "name" will be hash key */
             }
-            rgba = "rgba(" + r + ", " + 
-                             g + ", " +
-                             b + ", " +
-                             a + ")";
-          pal[x[i].getAttribute("name")] = rgba; /* "name" will be hash key */
         }
         return pal;
     }
@@ -61,34 +64,36 @@ function setTheme () {
         var colorPalletteStr = 
             /* TODO: Would be nice to make the XML a settings accessible to 
             * the user instead of the hard-coded in the pallette() fn. */
-            "<LightPallette>" +
-            /* general theme colors */
-                "<color name='darker' rgb='A7DDF2' r='167' g='221' b='242' />" +
-                "<color name='dark' rgb='A7E4F2' r='167' g='228' b='242' />" +
-                "<color name='darkTrans' rgb='A7E4F2' r='167' g='228' b='242' a='.5' />" +
-                "<color name='light' rgb='DCEEF2' r='220' g='238' b='242' />" +
-                "<color name='lighter' rgb='B6F2F2' r='182' g='242' b='242' />" +
-                "<color name='lightest' rgb='F2F2DF' r='242' g='242' b='223' />" +
-                /* light title theme colors */
-                "<color name='titleBackgroundColor' rgb='A7E4F2' r='167' g='228' b='242' />" +
-                "<color name='titleBoxShadow' rgb='CCCCCC' r='204' g='204' b='204' />" +
-                "<color name='titleColor' rgb='FFFFFF' r='255' g='255' b='255' />" +
-                "<color name='titleTextShadow' rgb='000000' r='000' g='000' b='000' />" +
-            "</LightPallette>" +
-            "<DarkPallette>" +
+            "<Spectrum>" +
+                "<LightPallette>" +
                 /* general theme colors */
-                "<color name='darker' rgb='A7DDF2' r='167' g='221' b='242' />" +
-                "<color name='dark' rgb='A7E4F2' r='167' g='228' b='242' />" +
-                "<color name='darkTrans' rgb='A7E4F2' r='167' g='228' b='242' a='.5' />" +
-                "<color name='light' rgb='DCEEF2' r='220' g='238' b='242' />" +
-                "<color name='lighter' rgb='B6F2F2' r='182' g='242' b='242' />" +
-                "<color name='lightest' rgb='F2F2DF' r='242' g='242' b='223' />" +
-                /* dark title theme colors */
-                "<color name='titleBackgroundColor' rgb='A7DDF2' r='167' g='221' b='242' />" +
-                "<color name='titleBoxShadow' rgb='CCCCCC' r='204' g='204' b='204' />" +
-                "<color name='titleColor' rgb='FFFFFF' r='255' g='255' b='255' />" +
-                "<color name='titleTextShadow' rgb='000000' r='000' g='000' b='000' />" +
-            "</DarkPallette>";
+                    "<color name='darker' rgb='A7DDF2' r='167' g='221' b='242' />" +
+                    "<color name='dark' rgb='A7E4F2' r='167' g='228' b='242' />" +
+                    "<color name='darkTrans' rgb='A7E4F2' r='167' g='228' b='242' a='.5' />" +
+                    "<color name='light' rgb='DCEEF2' r='220' g='238' b='242' />" +
+                    "<color name='lighter' rgb='B6F2F2' r='182' g='242' b='242' />" +
+                    "<color name='lightest' rgb='F2F2DF' r='242' g='242' b='223' />" +
+                    /* light title theme colors */
+                    "<color name='titleBackgroundColor' rgb='A7E4F2' r='167' g='228' b='242' />" +
+                    "<color name='titleBoxShadow' rgb='CCCCCC' r='204' g='204' b='204' />" +
+                    "<color name='titleColor' rgb='FFFFFF' r='255' g='255' b='255' />" +
+                    "<color name='titleTextShadow' rgb='000000' r='000' g='000' b='000' />" +
+                "</LightPallette>" +
+                "<DarkPallette>" +
+                    /* general theme colors */
+                    "<color name='darker' rgb='A7DDF2' r='167' g='221' b='242' />" +
+                    "<color name='dark' rgb='A7E4F2' r='167' g='228' b='242' />" +
+                    "<color name='darkTrans' rgb='A7E4F2' r='167' g='228' b='242' a='.5' />" +
+                    "<color name='light' rgb='DCEEF2' r='220' g='238' b='242' />" +
+                    "<color name='lighter' rgb='B6F2F2' r='182' g='242' b='242' />" +
+                    "<color name='lightest' rgb='F2F2DF' r='242' g='242' b='223' />" +
+                    /* dark title theme colors */
+                    "<color name='titleBackgroundColor' rgb='A7DDF2' r='167' g='221' b='242' />" +
+                    "<color name='titleBoxShadow' rgb='CCCCCC' r='204' g='204' b='204' />" +
+                    "<color name='titleColor' rgb='FFFFFF' r='255' g='255' b='255' />" +
+                    "<color name='titleTextShadow' rgb='000000' r='000' g='000' b='000' />" +
+                "</DarkPallette>" +
+            "</Spectrum>";
         var xmlDoc = document.implementation.createDocument("", "", null);
         var parser = new DOMParser(); /* see https://www.w3schools.com/xml/xml_parser.asp */
         xmlDoc = parser.parseFromString(colorPalletteStr,"text/xml");

@@ -36,6 +36,9 @@
                     <a>Documents</a><br/>
                 </div> 
             </div>          
+            <div class="dropdown" id="ddTheme">
+                <a><img  title="theme" src="icons/dark/icon-theme-H24.ico" alt="Blog"></a>
+            </div>
             <div class="dropdown" id="ddBlog">
                 <a><img  title="Blog" src="icons/dark/blog_icon_H24.png" alt="Blog"></a>
             </div>
@@ -44,7 +47,7 @@
     <!-- drop down header end -->
     
     <div class="content" id="content">
-        <ul class="list" id="flex1">
+        <ul class="list" id="content-list">
             <li class="list-item" id="svcs">
                 <span class="list-item-title">Services</span>
                 <img class="list-item-image" 
@@ -61,17 +64,18 @@
                     src="pics/statements.jpg" alt=""/>
             </li>
             <li>
-                <div class="mission-box">
-                    <span class="mission-fly-over">Our Mission</span>
+                <div class="mission" id="mission">
+                    <span class="mission-flyover" id="mission-flyover">Our Mission</span>
                     <p>
-                        <img class="mission-icon" src="pics/icon-mission-300x300.png" />Health Systems 
+                        <img class="mission-icon" id="" src="icons/dark/icon-mission-H300.png" />Health Systems 
                         simplifies health care and focuses on financial 
                         accountability. Health Services and the resulting charges can 
                         be overwhelming. The Health Systems work flow provided by our 
                         Business Office eases the complicated payments and 
                         adjustments process following a health care episode. 
                         Our Document Management system provides access and 
-                        standardization of patient records. Email <a href="mailto:tun49199@temple.edu">tun49199@temple.edu</a>
+                        standardization of patient records. Email 
+                        <a href="mailto:tun49199@temple.edu">tun49199@temple.edu</a>
                         to find out more.
                     </p>
                 </div>
@@ -85,7 +89,7 @@
     <script src="js/dropdownFw.js" type="text/javascript"></script>
     <script>
         "use strict";
-        setTheme("DarkPallette");
+        setTheme();
         "use strict";
         dropdownFw("dropHeader", "dropContent");
     </script>

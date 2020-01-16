@@ -1,14 +1,16 @@
 /**
- * setTheme() will style/theme a set of properties using either of two 
- * color palletes named light or dark. The user can toggle back and forth. 
- * The color pallettes for each theme are customizable
- * via the settings XML.  color.adobe.com  provides a "copy to xml" 
- * function and is useful in creating the XML color palletes. 
+ * setTheme() will style/theme a set of properties toggling between two 
+ * color palletes referred as light or dark. The color pallettes for each 
+ * theme are customizable  via the settings XML. color.adobe.com  
+ * provides a "copy to xml" function useful in creating the XML color palletes.
  * 
- * TODO: try/catch (javascript?) to make this id's optional in the styling theme?
- * The following id's are required in the document:
+ * This fn. uses a cookie to persist the theme toggle value.  
+ * 
+ * Various properties of the following HTML id's are themed in this function:
  *   "title"
  *   "nav"
+ *   "list-item"
+ *   "list-item-title"
  *   "mission"
  *   "mission-flyover"
  *   "footer"
@@ -27,10 +29,9 @@ ddTheme.onclick = function () {
 
 function setTheme () {
 
-
     var toggle = getToggle(); 
-    console.log(toggle);
-    /* TODO: fix XOR code stink */
+    
+    /* TODO: fix XOR */
     /*var toggle = getToggle() ^ 1; /* XOR to switch back and forth from 0..1 */
     if (toggle === "0") {
         toggle = "1";
@@ -59,10 +60,18 @@ function setTheme () {
     document.getElementById("footer").style.backgroundColor = hash["footerBackgroundColor"];
     document.getElementById("footer").style.boxShadow = "0px 0px 9px 7px " + hash["footerBoxShadow"];
 
-    /* loop through and theme the list HTMLCollections elements */
+    /* loop through and theme HTMLCollections elements */
     themeCollection(document.getElementsByClassName("list-item")); 
     themeCollection(document.getElementsByClassName("list-item-title")); 
 
+    /*
+     * getPallette() retuns a hash of the pallette/xml attributes with the color name
+     * as the hash value and the r,g,b,a attributes as a concatenated string "RGBA(r,g,b,a)"
+     * used to style the colors of a page. 
+     * 
+     * @param {LightPallette|DarkPallette} palId
+     * @returns {String} Hash
+     */
     function getPallette(palId) {
         var rgba;
         var alpha;
@@ -91,6 +100,11 @@ function setTheme () {
         }
         return hash;
     }
+    /*
+     * palletteDoc() uses DOM XML to parse an input string of theme pallette/colors 
+     * into xml doc. 
+     * @returns {XML Document}
+     */
     function palletteDoc() {
             /* from color.adobe.com...
             <palette> 
@@ -150,6 +164,11 @@ function setTheme () {
         xmlDoc = parser.parseFromString(colorPalletteStr,"text/xml");
         return xmlDoc;
     }    
+    /*
+     * 
+     * @param {type} HTML collection
+     * @returns nothing returned. This is a "setter" type fn. 
+     */
     function themeCollection(collection) {
         var ele;
         for (var i = 0; i < collection.length; i++) {
@@ -159,10 +178,14 @@ function setTheme () {
         }
     }
     
+    /*
+     * 
+     * @returns {Number|current state of theme (i.e. light/dark)}]
+     */
     function getToggle() {
         var toggle;
         var cookie = document.cookie;  /* get the cookie string */
-        if (cookie === "") {           /* if not set assign it */
+        if (cookie === "") {           /* if not valued set an initial toggle state */
             var cvalue = "1";
             setCookie(cvalue);
             toggle = 1;
@@ -174,13 +197,18 @@ function setTheme () {
            for (var i = 0; i < c.length; i++) {
                var s = c[i].split('=');         /* each cookie has a "name=value" */
                if (s[0] === "themeToggle") {    /* themeToggle cookie value is an array */
-                   toggle = s[1];           /* return its value */
+                   toggle = s[1];               /* return the cookie toggle value */
                }
            }
         }
         return toggle;
     }
     
+    /*
+     * 
+     * @param {string} cValue | Name of cookie to be assigned.
+     * @returns {undefined}
+     */
     function setCookie (cValue) {
         var cName = "themeToggle"; /* cookie name */
         var expDays = -1;

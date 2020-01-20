@@ -86,6 +86,10 @@ div {
   padding: 0px 8px 10px 8px;
     
 }
+.theme-icon {
+    min-width: 24px;
+    max-width: 24px;
+}
 .mission-flyover {
     position: absolute; /* parent element must use a position */
     top: -30px;
@@ -109,7 +113,7 @@ a:hover {
     bottom: 10px;
 
     text-align: center;
-    font-size: 20px;
+    font-size: 30px;
 }
 
 @media all and (min-width: 1000px) {

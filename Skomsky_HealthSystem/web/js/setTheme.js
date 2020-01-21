@@ -1,11 +1,8 @@
 /**
- * setTheme() will style/theme a set of properties toggling between two 
- * palletes referred. The pallettes for each theme will eventually be  
- * customizable via the settings XML. color.adobe.com  
- * provides a "copy to xml" function useful in creating the XML color pallettes.
- * 
- * This fn. switches between themes styling various colors using a menu 
- * bar icon as a toggle. When the icon is clicked the theme
+ * setTheme() will style a set of properties using one or another of two 
+ * pallettes. Each pallette will store separate colors/icons.
+ * setTheme() will switch be called from a menu bar icon onclick() as a toggle.
+ * When the icon is clicked the theme
  * will switch back and forth. The theme settings are xml with two separate pallettes 
  * each with providing the various colors.  
  * 
@@ -44,11 +41,12 @@
 
 /**
  * TODO: setup onclick fn. to restyle the document. 
- * 
- *ddTheme.onclick = function () {
- *    setTheme();
- *}
-*/
+ * Found the following code example on 
+ * https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onclick
+ */ 
+document.getElementById("ddTheme").onclick = function () {
+    setTheme();
+}
 
 function setTheme () {
 
@@ -166,7 +164,7 @@ function setTheme () {
                         "<color name='footerColor'              rgb='FFFFFF' r='355' g='255' b='255' />" +
                         "<color name='footerTextShadow'         rgb='000000' r='000' g='000' b='000' />" +
                     "</colors>" +
-                    "<icon id='icon' src='icons/light/sun-icon-H24.ico' />" + 
+                    "<icon id='icon' src='icons/light/sun-icon-H24.png' />" + 
                 "</Pallette>" +
                 "<Pallette id='DarkPallette'>" +
                     "<colors>" +
@@ -216,6 +214,7 @@ function setTheme () {
      * Clicking on the dark theme icon switches to light theme and vice versa.
      */    
     function togglePallette() {
+        console.log(document);
         var currThemeIcon = document.getElementById("theme-icon").src;
         var icon = currThemeIcon.match(/moon-icon/g); 
         if (icon !== null) {
@@ -224,6 +223,6 @@ function setTheme () {
         var currThemeIcon = currThemeIcon.match(/sun-icon/g);  
         if (icon !== null) {
             return "DarkPallette";
-        };
-    }
+        }
+    };
 }

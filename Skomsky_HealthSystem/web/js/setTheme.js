@@ -1,10 +1,9 @@
 /**
  * setTheme() will style a set of properties using one or another of two 
  * pallettes. Each pallette will store separate colors/icons.
- * setTheme() will switch be called from a menu bar icon onclick() as a toggle.
- * When the icon is clicked the theme
- * will switch back and forth. The theme settings are xml with two separate pallettes 
- * each with providing the various colors.  
+ * setTheme() will be called from a menu bar icon onclick() as a toggle.
+ * When the icon is clicked the theme will switch back and forth. 
+ * The theme settings are xml to be human-readable and customizable by the user  
  * 
  * The available HTML id's and the list of each styled property are as follows;
  *
@@ -214,7 +213,6 @@ function setTheme () {
      * Clicking on the dark theme icon switches to light theme and vice versa.
      */    
     function togglePallette() {
-        console.log(document);
         var currThemeIcon = document.getElementById("theme-icon").src;
         var icon = currThemeIcon.match(/moon-icon/g); 
         if (icon !== null) {

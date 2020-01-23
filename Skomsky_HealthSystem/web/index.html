@@ -8,7 +8,6 @@
     <link href="style/styles.css" rel="stylesheet" type="text/css" >
 </head>
 <body>
-    <a id="Top"></a>
     <div class="title" id="title">
         Health Systems
     </div>
@@ -17,23 +16,25 @@
         <!--drop down header start-->
         <div id="dropdown">
             <div class="dropdown" id="ddHome">
-                <a><img title="Home" src="icons/dark/home_icon_H24.png" alt="Home"></a>
+                <a href='#/home'>
+                    <img title="Home" src="icons/dark/home_icon_H24.png" alt="Home">
+                </a>
             </div>
             <div class="dropdown" id="ddAccount">
                 <img class="dropHeader" title="Account" src="icons/dark/account_dd_icon_H24.png" alt="Account" >
                 <div class="dropContent">
-                    <a href="">Register</a><br/>
-                    <a href="">Log In</a><br/>
-                    <a href="">Profile</a><br/>
-                    <a href="">Log Out</a>
+                    <a href="#/register">Register</a><br/>
+                    <a href="#/login">Log In</a><br/>
+                    <a href="#/profile">Profile</a><br/>
+                    <a href="#/logout">Log Out</a>
                 </div> 
             </div>
             <div class="dropdown" id="ddTutorial">
                 <img class="dropHeader" title="Tutorial" src="icons/dark/tutorial_dd_icon_H24.png" alt="Tutorial" >
                 <div class="dropContent">
-                    <a href="">Services</a><br/>
-                    <a href="">Bus Offc.</a><br/>
-                    <a href="">Documents</a><br/>
+                    <a href="#/services">Services</a><br/>
+                    <a href="#/busofc">Bus Offc.</a><br/>
+                    <a href="#/documents">Documents</a><br/>
                 </div> 
             </div>          
             <div class="dropdown" id="ddTheme">
@@ -42,7 +43,9 @@
                 </a>
             </div>
             <div class="dropdown" id="ddBlog">
-                <a><img  title="Blog" src="icons/dark/blog_icon_H24.png" alt="Blog"></a>
+                <a href='#/blog'>
+                    <img title="Blog" src="icons/dark/blog_icon_H24.png" alt="Blog">
+                </a>
             </div>
         </div> 
     </div>
@@ -69,8 +72,8 @@
                 <div class="mission" id="mission">
                     <span class="mission-flyover" id="mission-flyover">Our Mission</span>
                     <p>
-                        <img class="mission-icon" id="" src="icons/dark/icon-mission-H300.png" />Health Systems 
-                        simplifies health care and focuses on financial 
+                        <img class="mission-icon" id="" src="icons/dark/icon-mission-H300.png" />
+                        Health Systems simplifies health care and focuses on financial 
                         accountability. Health Services and the resulting charges can 
                         be overwhelming. The Health Systems work flow provided by our 
                         Business Office eases the complicated payments and 
@@ -90,6 +93,17 @@
     <script src="js/setTheme.js" type="text/javascript"></script>
     <script src="js/dropdownFw.js" type="text/javascript"></script>
     <script>
+        var myRoutes = [];
+        myRoutes['/'] = ;
+        myRoutes['/home'] = home;
+        myRoutes['/register'] = register;
+        myRoutes['/login'] = login;
+        myRoutes['/profile'] = profile;
+        myRoutes['/logout'] = logout;
+        myRoutes['/services'] = services;
+        myRoutes['/busofc'] = busofc;
+        myRoutes['/documents'] = docuemtnts;
+        myRoutes['/blog'] = blog;
         "use strict";
         setTheme();
         "use strict";

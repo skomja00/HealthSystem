@@ -4,10 +4,10 @@
 function busofc(targetId) {
     var content =   
         "<p>" +
-        "   Busness Office Home" +
+        "   Business Office Home" +
         "</p>" +
         "<p>" + 
-        "   Manage accounts, health plan adjust, and post remittances."
+        "   Manage accounts, make health plan adjustments, and post remittances."
         "</p>";
     document.getElementById(targetId).innerHTML = content;
 }

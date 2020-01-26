@@ -348,7 +348,7 @@ call ins_HealthProvider(Get_ObjId(), 'ECG Services');
    
 call ins_DiagMstr(Get_ObjId(), 'ICD-10-CM', 'R51',      'Headache');
 call ins_DiagMstr(Get_ObjId(), 'ICD-10-CM', 'R11.0',    'Nausea');
-call ins_DiagMstr(Get_ObjId(), 'ICD-10-CM', 'S61.409A', 'UnspecIFied open wound of unspecIFied hand, initial encounter');
+call ins_DiagMstr(Get_ObjId(), 'ICD-10-CM', 'S61.409A', 'Unspecifed open wound of unspecIFied hand, initial encounter');
 call ins_DiagMstr(Get_ObjId(), 'ICD-10-CM', 'J11.1',    'Influenza due to unidentIFied influenza virus with other respiratory manIFestations');
 call ins_DiagMstr(Get_ObjId(), 'ICD-10-CM', 'W61.43D',  'Pecked by turkey, subsequent encounter');
 

@@ -166,8 +166,8 @@ function setTheme (palId) {
                     "<icon id='icon' src='icons/light/sun-icon-H24.png' />" + 
                 "</Pallette>" +
                 "<Pallette id='DarkPallette'>" +
-                    "<colors>" +
-                        "<color name='titleBackgroundColor'     rgb='A3D3FF' r='163' g='211' b='255' />"+
+                    "<colors id='colors'>" +
+                        "<color name='titleBackgroundColor'     rgb='A3D3FF' r='163' g='211' b='255' a='.5' />"+
                         "<color name='titleBoxShadow'           rgb='4F82B3' r='079' g='130' b='179' />" +
                         "<color name='titleColor'               rgb='000000' r='000' g='000' b='000' />" +
                         "<color name='titleTextShadow'          rgb='4F82B3' r='029' g='080' b='129' />" +
@@ -180,8 +180,8 @@ function setTheme (palId) {
                         "<color name='missionBoxShadow'         rgb='4F82B3' r='100' g='150' b='200' />" +
                         "<color name='missionFlyoverColor'      rgb='000000' r='000' g='000' b='000' />" +
                         "<color name='missionFlyoverTextShadow' rgb='4F82B3' r='000' g='000' b='000' />" +
-                        "<color name='footerBackgroundColor'    rgb='F2F2DF' r='242' g='242' b='223' />"+
-                        "<color name='footerBoxShadow'          rgb='CCCCCC' r='204' g='204' b='204' />" +
+                        "<color name='footerBackgroundColor'    rgb='A3D3FF' r='163' g='211' b='255' a='.5' />"+
+                        "<color name='footerBoxShadow'          rgb='4F82B3' r='079' g='130' b='179' />" +
                         "<color name='footerColor'              rgb='000000' r='000' g='000' b='000' />" +
                         "<color name='footerTextShadow'         rgb='4F82B3' r='029' g='080' b='129' />" +
                     "</colors>" +

@@ -36,7 +36,7 @@ function home(targetId) {
                 </p>
             </div>
         </li>
-    </ul> `;
+    </ul>`;
     document.getElementById(targetId).innerHTML = content;
 }
 

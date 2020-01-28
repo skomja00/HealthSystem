@@ -82,35 +82,35 @@ CREATE TABLE `web_user` (
 
 	/* At least one of these records shall have all of its fields populated. */
 	INSERT INTO `web_user` 
-		(`user_email`,                  `user_password`,`image`,                                 `birthday`,  `membership_fee`,`user_role_id`) values
-        ('hughes.donna@gmail.com',      'hughesd',      'www.healthsystems.com/hughesd.png',     '1999-01-01', 14.95,           get_user_role_id('patient'));
+		(`user_email`,                  `user_password`,`image`,                                                     `birthday`,  `membership_fee`,`user_role_id`) values
+        ('hughes.donna@gmail.com',      'hughesd',      'http://cis-linux2.temple.edu/~sallyk/pics_user/gene.jpg',  '1999-01-01', 14.95,           get_user_role_id('patient'));
 	INSERT INTO `web_user` 
-		(`user_email`,                  `user_password`,`image`,                                 `birthday`,  `membership_fee`,`user_role_id`) values
-        ('martin.elizabeth@gmail.com',  'martine',      'www.healthsystems.com/martine.png',     '1985-01-01', 14.95,           get_user_role_id('patient'));
+		(`user_email`,                  `user_password`,`image`,                                                     `birthday`,  `membership_fee`,`user_role_id`) values
+        ('martin.elizabeth@gmail.com',  'martine',      'http://cis-linux2.temple.edu/~sallyk/pics_user/gene.jpg',   '1985-01-01', 14.95,           get_user_role_id('patient'));
 	INSERT INTO `web_user` 
-		(`user_email`,                  `user_password`,`image`,                                 `birthday`,  `membership_fee`,`user_role_id`) values
-        ('rutherford.amelia@gmail.com', 'rutherforda',  'www.healthsystems.com/rutherforda.png', '1999-01-01', 14.95,           get_user_role_id('patient'));
+		(`user_email`,                  `user_password`,`image`,                                                     `birthday`,  `membership_fee`,`user_role_id`) values
+        ('rutherford.amelia@gmail.com', 'rutherforda',  'http://cis-linux2.temple.edu/~sallyk/pics_user/sally.jpg',  '1999-01-01', 14.95,           get_user_role_id('patient'));
 	INSERT INTO `web_user` 
-		(`user_email`,                  `user_password`,`image`,                                 `birthday`,  `membership_fee`,`user_role_id`) values
-        ('hamilton.edward@gmail.com',   'hamiltone',    'www.healthsystems.com/hamiltone.png',   '1999-01-01', 14.95,           get_user_role_id('patient'));
+		(`user_email`,                  `user_password`,`image`,                                                     `birthday`,  `membership_fee`,`user_role_id`) values
+        ('hamilton.edward@gmail.com',   'hamiltone',    'http://cis-linux2.temple.edu/~sallyk/pics_user/tony.jpg',   '1999-01-01', 14.95,           get_user_role_id('patient'));
 	INSERT INTO `web_user` 
-		(`user_email`,                  `user_password`,`image`,                                 `birthday`,  `membership_fee`,`user_role_id`) values
-        ('chandler.dana@gmail.com',     'chandlerd',    'www.healthsystems.com/chandler.png',   '1999-01-01', 14.95,           get_user_role_id('patient'));
+		(`user_email`,                  `user_password`,`image`,                                                     `birthday`,  `membership_fee`,`user_role_id`) values
+        ('chandler.dana@gmail.com',     'chandlerd',     'http://cis-linux2.temple.edu/~sallyk/pics_user/karl.jpg',  '1999-01-01', 14.95,           get_user_role_id('patient'));
 	INSERT INTO `web_user` 
-		(`user_email`,                  `user_password`,`image`,                                 `birthday`,  `membership_fee`,`user_role_id`) values
-        ('pearson.ella@gmail.com',      'pearsone',     'www.healthsystems.com/pearsone.png',   '1999-01-01', 14.95,           get_user_role_id('patient'));
+		(`user_email`,                  `user_password`,`image`,                                                     `birthday`,  `membership_fee`,`user_role_id`) values
+        ('pearson.ella@gmail.com',      'pearsone',     'http://cis-linux2.temple.edu/~sallyk/pics_user/rose.jpg',   '1999-01-01', 14.95,           get_user_role_id('patient'));
 	INSERT INTO `web_user` 
-		(`user_email`,                  `user_password`,`image`,                                 `birthday`,  `membership_fee`,`user_role_id`) values
-        ('sanders.jared@gmail.com',     'sandersj',     'www.healthsystems.com/sandersj.png',    '1981-01-01', 14.95,           get_user_role_id('patient'));
+		(`user_email`,                  `user_password`,`image`,                                                      `birthday`,  `membership_fee`,`user_role_id`) values
+        ('sanders.jared@gmail.com',     'sandersj',     'http://cis-linux2.temple.edu/~sallyk/pics_user/claudia.jpg', '1981-01-01', 14.95,           get_user_role_id('patient'));
 	INSERT INTO `web_user` 
-		(`user_email`,                  `user_password`,`image`,                                 `birthday`,  `membership_fee`,`user_role_id`) values
-        ('jennings.ada@gmail.com',      'jenningsa',    'www.healthsystems.com/jenningsa.png',   '2003-01-01', 14.95,           get_user_role_id('patient'));
+		(`user_email`,                  `user_password`,`image`,                                                      `birthday`,  `membership_fee`,`user_role_id`) values
+        ('jennings.ada@gmail.com',      'jenningsa',    'http://cis-linux2.temple.edu/~sallyk/pics_user/rose.jpg',    '2003-01-01', 14.95,           get_user_role_id('patient'));
 	INSERT INTO `web_user` 
-		(`user_email`,                  `user_password`,`image`,                                 `birthday`,  `membership_fee`,`user_role_id`) values
-        ('allen.jillian@gmail.com',     'allenj',       'www.healthsystems.com/allenj.png',      '1968-01-01', 14.95,           get_user_role_id('patient'));
+		(`user_email`,                  `user_password`,`image`,                                                      `birthday`,  `membership_fee`,`user_role_id`) values
+        ('allen.jillian@gmail.com',     'allenj',       'http://cis-linux2.temple.edu/~sallyk/pics_user/sally.jpg',   '1968-01-01', 14.95,           get_user_role_id('patient'));
 	INSERT INTO `web_user` 
-		(`user_email`,                  `user_password`,`image`,                                 `birthday`,  `membership_fee`,`user_role_id`) values
-        ('clarke.jeremy@gmail.com',     'clarkej',      'www.healthsystems.com/clarkej.png',      '1999-01-01', 14.95,           get_user_role_id('patient'));
+		(`user_email`,                  `user_password`,`image`,                                                      `birthday`,  `membership_fee`,`user_role_id`) values
+        ('clarke.jeremy@gmail.com',     'clarkej',      'http://cis-linux2.temple.edu/~sallyk/pics_user/tony.jpg',   '1999-01-01', 14.95,           get_user_role_id('patient'));
 
     /* try to delete a user_role record that has been referenced by a web_user record */
     /* Error Code: 1451. Cannot delete or update a parent row: a foreign key constraint fails */
@@ -118,23 +118,23 @@ CREATE TABLE `web_user` (
 
 	/* At least one of these records shall have null for all nullable non character fields. */    
 	INSERT INTO `web_user` 
-		(`user_email`,              `user_password`,`image`,                                     `birthday`,  `membership_fee`,`user_role_id`) values
-		('brianne.user@gmail.com',   null,           null,	                                      null,        null,            null);
+		(`user_email`,              `user_password`,`image`,                                                       `birthday`,  `membership_fee`,`user_role_id`) values
+		('brianne.user@gmail.com',   null,           null,	                                                        null,        null,            null);
 	INSERT INTO `web_user` 
-		(`user_email`,              `user_password`,`image`,                                     `birthday`,  `membership_fee`,`user_role_id`) values 
-		('services.sam@gmail.com', 'eeditor',       'www.healthsystems.com/sams.png',            '2002-01-01', 0.00,            get_user_role_id('services'));
+		(`user_email`,              `user_password`,`image`,                                                       `birthday`,  `membership_fee`,`user_role_id`) values 
+		('services.sam@gmail.com', 'eeditor',       'http://cis-linux2.temple.edu/~sallyk/pics_user/andrew.jpg',   '2002-01-01', 0.00,            get_user_role_id('services'));
 	INSERT INTO `web_user` 
-		(`user_email`,              `user_password`,`image`,                                     `birthday`,  `membership_fee`,`user_role_id`) values 
-		('busofc.betty@gmail.com', 'eeditor',       'www.healthsystems.com/busofcb.png',         '2002-01-01', 0.00,            get_user_role_id('busofc'));
+		(`user_email`,              `user_password`,`image`,                                                       `birthday`,  `membership_fee`,`user_role_id`) values 
+		('busofc.betty@gmail.com', 'eeditor',       'http://cis-linux2.temple.edu/~sallyk/pics_user/andrew.jpg',   '2002-01-01', 0.00,            get_user_role_id('busofc'));
 	INSERT INTO `web_user` 
-		(`user_email`,              `user_password`,`image`,                                     `birthday`,  `membership_fee`,`user_role_id`) values 
-		('documents.darnell@gmail.com', 'eeditor',       'www.healthsystems.com/documentsd.png', '2002-01-01', 0.00,            get_user_role_id('documents'));
+		(`user_email`,              `user_password`,`image`,                                                       `birthday`,  `membership_fee`,`user_role_id`) values 
+		('documents.darnell@gmail.com', 'eeditor',  'http://cis-linux2.temple.edu/~sallyk/pics_user/andrew.jpg',   '2002-01-01', 0.00,            get_user_role_id('documents'));
 	INSERT INTO `web_user` 
-		(`user_email`,              `user_password`,`image`,                                     `birthday`,  `membership_fee`,`user_role_id`) values
-		('manager.marvin@gmail.com','mmanager',     'www.healthsystems.com/managerm.png',        '1991-01-01', 0.00,            get_user_role_id('manager'));
+		(`user_email`,              `user_password`,`image`,                                                       `birthday`,  `membership_fee`,`user_role_id`) values
+		('manager.marvin@gmail.com','mmanager',     'http://cis-linux2.temple.edu/~sallyk/pics_user/andrew.jpg',   '1991-01-01', 0.00,            get_user_role_id('manager'));
 	INSERT INTO `web_user` 
-		(`user_email`,              `user_password`,`image`,                                     `birthday`,  `membership_fee`,`user_role_id`) values
-		('admin.alvin@gmail.com',   'aadmin',       'www.healthsystems.com/admina.png',          '1985-01-01', 0.00,            get_user_role_id('admin'));
+		(`user_email`,              `user_password`,`image`,                                                       `birthday`,  `membership_fee`,`user_role_id`) values
+		('admin.alvin@gmail.com',   'aadmin',       'http://cis-linux2.temple.edu/~sallyk/pics_user/andrew.jpg',   '1985-01-01', 0.00,            get_user_role_id('admin'));
 	
     /* Try to add a record that has an invalid (non-existent) user_role_id and notice that the database management system will not let that record be inserted. */
     /* Error Code: 1452. Cannot add or update a child row: a foreign key constraint fails */
@@ -282,3 +282,33 @@ CREATE TABLE `web_user` (
 -- order by user_role.user_role_type , web_user.user_email;
 -- 
 -- select count(*) as web_user_count from web_user;
+
+
+/**
+ * create a json formatted as follows;
+ *
+    "webUserId": "1",
+    "userEmail": "andrew@temple.edu",
+    "userPassword": "pw",
+    "image": "http://cis-linux2.temple.edu/~sallyk/pics_user/andrew.jpg",
+    "birthday": "11/22/2001",
+    "membershipFee": "",
+    "userRoleId": "3",
+    "userRoleType": "Member",
+    "errorMsg": ""
+*/
+select 
+concat('"webUserId": "',wu.web_user_id,'",')
+,concat('"userEmail": "',wu.user_email,'",')
+,concat('"userPassword": "',wu.user_password,'",')
+,concat('"image": "',wu.image,'",')
+,concat('"birthday": "',wu.birthday,'",')
+,concat('"membershipFee": "',wu.membership_fee,'",')
+,concat('"userRoleId": "',ur.user_role_id,'",')
+,concat('"userRoleType": "',ur.user_role_type,'",')
+,'"errorMsg": ""'
+
+from web_user as wu
+left join user_role as ur on ur.user_role_id = wu.user_role_id
+
+

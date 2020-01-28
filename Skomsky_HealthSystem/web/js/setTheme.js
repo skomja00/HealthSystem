@@ -47,9 +47,9 @@ document.getElementById("ddTheme").onclick = function () {
     setTheme();
 }
 
-function setTheme () {
+function setTheme (palId) {
 
-    var palId = togglePallette();
+    /*var palId = togglePallette();*/
     var hash = getPallette(palId);
     
     /* theme the single elements */
@@ -126,7 +126,7 @@ function setTheme () {
      */
     function palletteDoc() {
             /* from color.adobe.com...
-            <palette> 
+            <palette> lighter colors
             <color name='1' rgb='A7DDF2' r='167' g='221' b='242' />
             <color name='2' rgb='A7E4F2' r='167' g='228' b='242' />
             <color name='3' rgb='DCEEF2' r='220' g='238' b='242' />
@@ -134,7 +134,7 @@ function setTheme () {
             <color name='5' rgb='F2F2DF' r='242' g='242' b='223' />
             </palette> */
 
-            /*<palette>
+            /*<palette> saturated colors
             <color name='1' rgb='4F82B3' r='079' g='130' b='179' />
             <color name='2' rgb='A3D3FF' r='163' g='211' b='255' />
             <color name='3' rgb='89C5FF' r='137' g='197' b='255' />
@@ -167,7 +167,7 @@ function setTheme () {
                 "</Pallette>" +
                 "<Pallette id='DarkPallette'>" +
                     "<colors>" +
-                        "<color name='titleBackgroundColor'     rgb='F2F2DF' r='242' g='242' b='223' />"+
+                        "<color name='titleBackgroundColor'     rgb='A3D3FF' r='163' g='211' b='255' />"+
                         "<color name='titleBoxShadow'           rgb='4F82B3' r='079' g='130' b='179' />" +
                         "<color name='titleColor'               rgb='000000' r='000' g='000' b='000' />" +
                         "<color name='titleTextShadow'          rgb='4F82B3' r='029' g='080' b='129' />" +
@@ -185,7 +185,7 @@ function setTheme () {
                         "<color name='footerColor'              rgb='000000' r='000' g='000' b='000' />" +
                         "<color name='footerTextShadow'         rgb='4F82B3' r='029' g='080' b='129' />" +
                     "</colors>" +
-                "<icon id='icon' src='icons/light/moon-icon-H24.ico' />" + 
+                "<icon id='icon' src='icons/dark/moon-icon-H24.ico' />" + 
                 "</Pallette>" +
             "</Root>";
         var xmlDoc = document.implementation.createDocument("", "", null);

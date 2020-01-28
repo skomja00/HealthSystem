@@ -15,7 +15,7 @@ users.display = function (id) {
                 border-radius: 6px;
                 box-shadow: 3px 3px 3px #444444;
             }
-        </style> 
+        </style>
         <div id="listHere" class="clickSort"></div>
     `;
     
@@ -55,6 +55,7 @@ users.display = function (id) {
         console.log(userList);
 
         // Making a DOM object, nothing shows yet... 
-        MakeTable(userList, "listHere");
+        MakeSortableTable(userList, "content", "role");
+        //MakeTable(userList, "content");
     }
 };

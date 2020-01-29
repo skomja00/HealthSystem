@@ -71,7 +71,7 @@ patients.display = function (id) {
             patientList[i].Diagnosis = list[i].Diagnosis;
             
             /* convert numeric string to number and format as currency */
-            if (!isNaN(list[0].Balance)) { 
+            if (!isNaN(list[i].Balance)) { 
                 patientList[i].Balance = formatCurrency(Number(list[i].Balance));
             }
         }

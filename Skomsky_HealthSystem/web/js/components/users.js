@@ -35,6 +35,15 @@ users.display = function (id) {
         // we can combine, decide to exclude etc...
         var userList = [];
 
+        // private function can only be called in processData()
+        /* see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toLocaleString */
+        function formatCurrency(num) {
+            return num.toLocaleString("en-US", {style: "currency", 
+                                                currency: "USD", 
+                                                maximumFractionDigits: 2,
+                                                currencyDisplay: "symbol"});
+        }
+
         // modify properties (image and price) of the array of objects so it will look 
         // better on the page.
         for (var i = 0; i < list.length; i++) {
@@ -44,9 +53,15 @@ users.display = function (id) {
             userList[i].image = "<img  src='" + list[i].image + "'>";
             userList[i].userEmail = list[i].userEmail; // show this first
             // Don't show the password
-            userList[i].birthday = list[i].birthday;
-            userList[i].membershipFee = list[i].membershipFee;
-            userList[i].role = list[i].userRoleId + " " + list[i].userRoleType;
+            // Don't show private info
+            //userList[i].birthday = list[i].birthday;
+            
+            /* convert numeric string to number and format as currency */
+            if (!isNaN(list[i].membershipFee)) { 
+                userList[i].membershipFee = formatCurrency(Number(list[i].membershipFee));
+            }
+            
+            userList[i].role = list[i].userRoleId + " - " + list[i].userRoleType;
         }
 
         console.log("USER LIST");

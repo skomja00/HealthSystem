@@ -1,6 +1,3 @@
-// Sally's JS naming convention: every JS file shall be named the same as the 
-// single function or object that is defined within the JS file. This helps you 
-// organize and find your code.
 
 "use strict";
 

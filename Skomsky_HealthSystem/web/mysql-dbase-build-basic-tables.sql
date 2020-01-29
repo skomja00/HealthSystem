@@ -178,7 +178,7 @@ CREATE TABLE `web_user` (
 		/* 1 OF 3 You can add more fields if you like, but don’t add too many  */
 		`Diagnosis` VARCHAR(255) NULL,
 		/* 2 OF 3 You can add more fields if you like, but don’t add too many  */
-		`Patient_Name` VARCHAR(255) NULL,
+		`PatientName` VARCHAR(255) NULL,
 		/* 3 OF 3 You can add more fields if you like, but don’t add too many  */
         `Balance` DECIMAL(14,3) NULL,        
 		PRIMARY KEY (`Patient_Id`),
@@ -192,43 +192,43 @@ CREATE TABLE `web_user` (
  * Add data to Patient/"other" table 
 */
 	INSERT INTO `patient` 
-		(`MedRecNo`,  `ImageUrl`,                          `Description`,    `AdmDateTime`,        `DschDateTime`,      `web_user_id_fk`,                               `Diagnosis`,                                            `Patient_Name`,       `Balance`) values
+		(`MedRecNo`,  `ImageUrl`,                          `Description`,    `AdmDateTime`,        `DschDateTime`,      `web_user_id_fk`,                               `Diagnosis`,                                            `PatientName`,       `Balance`) values
         ('TUN111111','www.healthsystems.com/hughesd.png', 'Offie Visit',     '2020-01-13 11:00:00','2020-01-13 16:50',  get_web_user_id('hughes.donna@gmail.com'),      'Patient Office or Other Outpatient Services   ',      'Hughes, Donna',       150.00);
 
 	INSERT INTO `patient` 
-		(`MedRecNo`,  `ImageUrl`,                          `Description`,    `AdmDateTime`,        `DschDateTime`,      `web_user_id_fk`,                               `Diagnosis`,                                            `Patient_Name`,       `Balance`) values
+		(`MedRecNo`,  `ImageUrl`,                          `Description`,    `AdmDateTime`,        `DschDateTime`,      `web_user_id_fk`,                               `Diagnosis`,                                            `PatientName`,       `Balance`) values
         ('TUN111112','www.healthsystems.com/martine.png', 'Vaccination'   , '2020-01-13 11:00:00','2020-01-13 16:50',   get_web_user_id('martin.elizabeth@gmail.com'),  'Influenza virus vaccine',                             'Martin, Elizabeth',   45.00);
 
 	INSERT INTO `patient` 
-		(`MedRecNo`,  `ImageUrl`,                          `Description`,    `AdmDateTime`,        `DschDateTime`,     `web_user_id_fk`,                                `Diagnosis`,                                                                    `Patient_Name`,       `Balance`) values
+		(`MedRecNo`,  `ImageUrl`,                          `Description`,    `AdmDateTime`,        `DschDateTime`,     `web_user_id_fk`,                                `Diagnosis`,                                                                    `PatientName`,       `Balance`) values
         ('TUN111113','www.healthsystems.com/rutherforda.png','ED Visit',    '2020-01-13 11:00:00','2020-01-13 16:50',  get_web_user_id('rutherford.amelia@gmail.com'),  'Emergency department visit for the evaluation and management of a patient,',  'Rutherford, Amelia',  2000.00);
 
 	INSERT INTO `patient`  
-		(`MedRecNo`,  `ImageUrl`,                          `Description`,    `AdmDateTime`,        `DschDateTime`,     `web_user_id_fk`,                                `Diagnosis`,                                            `Patient_Name`,       `Balance`) values
+		(`MedRecNo`,  `ImageUrl`,                          `Description`,    `AdmDateTime`,        `DschDateTime`,     `web_user_id_fk`,                                `Diagnosis`,                                            `PatientName`,       `Balance`) values
         ('TUN111114','www.healthsystems.com/hamiltone.png','Office Visit'  ,'2020-10-12 08:00:00', NULL,               get_web_user_id('hamilton.edward@gmail.com'),    'Patient Office or Other Outpatient Services',         'Hamilton, Edward',   150.00);
 
 	INSERT INTO `patient` 
-		(`MedRecNo`,  `ImageUrl`,                          `Description`,    `AdmDateTime`,        `DschDateTime`,     `web_user_id_fk`,                                `Diagnosis`,                                            `Patient_Name`,       `Balance`) values
+		(`MedRecNo`,  `ImageUrl`,                          `Description`,    `AdmDateTime`,        `DschDateTime`,     `web_user_id_fk`,                                `Diagnosis`,                                            `PatientName`,       `Balance`) values
         ('TUN111115','www.healthsystems.com/chandlerd.png','Vaccination'   ,'2020-01-13 11:00:00','2020-01-13 16:50',  get_web_user_id('chandler.dana@gmail.com'),      'Influenza virus vaccine',                             'Chandler, Dana',      45.00);
 
 	INSERT INTO `patient` 
-		(`MedRecNo`,  `ImageUrl`,                          `Description`,   `AdmDateTime`,        `DschDateTime`,      `web_user_id_fk`,                                `Diagnosis`,                                           `Patient_Name`,        `Balance`) values
+		(`MedRecNo`,  `ImageUrl`,                          `Description`,   `AdmDateTime`,        `DschDateTime`,      `web_user_id_fk`,                                `Diagnosis`,                                           `PatientName`,        `Balance`) values
         ('TUN111116','www.healthsystems.com/pearsone.png','Vaccination'   ,'2020-01-13 11:00:00','2020-01-13 16:50',   get_web_user_id('pearson.ella@gmail.com'),       'Influenza virus vaccine',                             'Pearson, Ella',        45.00);
 
 	INSERT INTO `patient` 
-		(`MedRecNo`,  `ImageUrl`,                          `Description`,    `AdmDateTime`,        `DschDateTime`,      `web_user_id_fk`,                                `Diagnosis`,                                           `Patient_Name`,        `Balance`) values
+		(`MedRecNo`,  `ImageUrl`,                          `Description`,    `AdmDateTime`,        `DschDateTime`,      `web_user_id_fk`,                                `Diagnosis`,                                           `PatientName`,        `Balance`) values
         ('TUN111117','www.healthsystems.com/sandersj.png','Vaccination'   , '2020-01-13 11:00:00','2020-01-13 16:50',   get_web_user_id('sanders.jared@gmail.com'),      'Influenza virus vaccine',                             'Sanders, Jared',       45.00);
  
 	INSERT INTO `patient` 
-		(`MedRecNo`,  `ImageUrl`,                          `Description`,     `AdmDateTime`,        `DschDateTime`,     `web_user_id_fk`,                                 `Diagnosis`,                                           `Patient_Name`,        `Balance`) values
+		(`MedRecNo`,  `ImageUrl`,                          `Description`,     `AdmDateTime`,        `DschDateTime`,     `web_user_id_fk`,                                 `Diagnosis`,                                           `PatientName`,        `Balance`) values
         ('TUN111118','www.healthsystems.com/jenningsa.png','Office Visit'   ,'2020-10-12 08:00:00', NULL,               get_web_user_id('jennings.ada@gmail.com'),       'Patient Office or Other Outpatient Services',         'Jennings, Ada',        150.00);
 
 	INSERT INTO `patient` 
-		(`MedRecNo`,  `ImageUrl`,                          `Description`,    `AdmDateTime`,        `DschDateTime`,       `web_user_id_fk`,                                 `Diagnosis`,                                           `Patient_Name`,        `Balance`) values
+		(`MedRecNo`,  `ImageUrl`,                          `Description`,    `AdmDateTime`,        `DschDateTime`,       `web_user_id_fk`,                                 `Diagnosis`,                                           `PatientName`,        `Balance`) values
         ('TUN111119','www.healthsystems.com/allenj.png',  'Vaccination'   ,   '2020-01-13 11:00:00','2020-01-13 16:50',  get_web_user_id('allen.jillian@gmail.com'),      'Influenza virus vaccine',                             'Allen, Jillian',       45.00);
 
 	INSERT INTO `patient` 
-		(`MedRecNo`,  `ImageUrl`,                          `Description`,    `AdmDateTime`,        `DschDateTime`,      `web_user_id_fk`,                                  `Diagnosis`,                                                                   `Patient_Name`,    `Balance`) values
+		(`MedRecNo`,  `ImageUrl`,                          `Description`,    `AdmDateTime`,        `DschDateTime`,      `web_user_id_fk`,                                  `Diagnosis`,                                                                   `PatientName`,    `Balance`) values
         ('TUN111120','www.healthsystems.com/clarkej.png', 'ED Visit'   ,     '2020-10-12 08:00:00', NULL,              get_web_user_id('clarke.jeremy@gmail.com'),       'Emergency department visit for the evaluation and management of a patient',   'Clarke, Jeremy',   2000.00);
    
    
@@ -236,7 +236,7 @@ CREATE TABLE `web_user` (
 -- select 
 --  	`Balance`
 --  	,`MedRecNo`
---  	,`Patient_Name`
+--  	,`PatientName`
 --  	,`Description`
 --  	,`Diagnosis`
 --  	,`AdmDateTime`
@@ -252,7 +252,7 @@ CREATE TABLE `web_user` (
 -- select 
 --  	`Balance`
 --  	,`MedRecNo`
---  	,`Patient_Name`
+--  	,`PatientName`
 --  	,`Description`
 --  	,`Diagnosis`
 --  	,`AdmDateTime`
@@ -285,7 +285,7 @@ CREATE TABLE `web_user` (
 
 
 /**
- * create a json formatted as follows;
+ * create a json formatted similar to...
  *
     "webUserId": "1",
     "userEmail": "andrew@temple.edu",
@@ -297,18 +297,32 @@ CREATE TABLE `web_user` (
     "userRoleType": "Member",
     "errorMsg": ""
 */
-select 
-concat('"webUserId": "',wu.web_user_id,'",')
-,concat('"userEmail": "',wu.user_email,'",')
-,concat('"userPassword": "',wu.user_password,'",')
-,concat('"image": "',wu.image,'",')
-,concat('"birthday": "',wu.birthday,'",')
-,concat('"membershipFee": "',wu.membership_fee,'",')
-,concat('"userRoleId": "',ur.user_role_id,'",')
-,concat('"userRoleType": "',ur.user_role_type,'",')
-,'"errorMsg": ""'
-
-from web_user as wu
-left join user_role as ur on ur.user_role_id = wu.user_role_id
 
 
+-- select 
+-- '{\r\n'
+-- concat('"webUserId": "',wu.web_user_id,'",')
+-- ,concat('"userEmail": "',wu.user_email,'",')
+-- ,concat('"userPassword": "',wu.user_password,'",')
+-- ,concat('"image": "',wu.image,'",')
+-- ,concat('"birthday": "',wu.birthday,'",')
+-- ,concat('"membershipFee": "',wu.membership_fee,'",')
+-- ,concat('"userRoleId": "',ur.user_role_id,'",')
+-- ,concat('"userRoleType": "',ur.user_role_type,'",')
+-- ,'"errorMsg": ""'
+-- ,'\r\n},\r\n'
+-- from web_user as wu
+-- left join user_role as ur on ur.user_role_id = wu.user_role_id
+
+-- select 
+-- 	'{\r\n'
+-- 	,concat('    "MedRecNo": "', MedRecNo,'",')
+-- 	,concat('    "PatientName": "', PatientName,'",')
+-- 	,concat('    "AdmDateTime": "', AdmDateTime,'",')
+-- 	,concat('    "Description": "', Description,'",')
+-- 	,concat('    "Diagnosis": "', Diagnosis,'",')
+-- 	,concat('    "Balance": "', Balance,'"')
+--     ,'\r\n},\r\n'
+-- from patient
+-- 
+-- 

@@ -20,14 +20,13 @@ users.display = function (id) {
     `;
     
     document.getElementById(id).innerHTML = content;
-
+    
     // invoke ajax function to read cars.json and if the call was successful, 
     // run function processData, otherwise, put an error message in the DOM element 
-    // that has id "content".
-    //ajax("json/allWebUsers.json", processData, "listHere");
-    ajax("json/allWebUsers.json", processData, "content");
+    // that has id "listHere".
+    ajax("json/allWebUsers.json", processData, "listHere");
 
-    function processData(list) {
+        function processData(list) {
 
         // print out JS object/array that was converted from JSON data by ajax function
         console.log(list);
@@ -55,7 +54,6 @@ users.display = function (id) {
         console.log(userList);
 
         // Making a DOM object, nothing shows yet... 
-        MakeSortableTable(userList, "content", "role");
-        //MakeTable(userList, "content");
+        MakeSortableTable(userList, "listHere", "role");
     }
 };

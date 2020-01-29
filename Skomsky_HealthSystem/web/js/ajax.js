@@ -32,7 +32,7 @@ function ajax(url, callBackSuccess, errorId) {
                 var jsObj = JSON.parse(jsonData);
                 // invoke the HTML coder's function, passing in the JS object converted from the JSON data
                 callBackSuccess(jsObj);
-            } else {
+            } else {                      // status !200 problem with page 
                 // First use of property creates new (custom) property
                 document.getElementById(errorId).innerHTML = "Error (" + httpReq.status + " " + httpReq.statusText +
                         ") while attempting to read '" + url + "'. NOTE: You must RUN not VIEW the page when using AJAX.";

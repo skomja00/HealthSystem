@@ -40,9 +40,9 @@ patients.display = function (id) {
         /* private function can only be called in processData() */
         /* see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleDateString */
         function formatDate(date) {
-            return  date.toLocaleDateString('en-US',{ weekday: 'long', 
+            return  date.toLocaleDateString('en-US',{ weekday: 'short', 
                                                     year: 'numeric', 
-                                                    month: 'long', 
+                                                    month: 'short', 
                                                     day: 'numeric' }) 
                     + ' ' +
                     date.toLocaleDateString('en-US',{ timeStyle: 'short' });
@@ -62,13 +62,16 @@ patients.display = function (id) {
             patientList[i].MedRecNo = list[i].MedRecNo;
             patientList[i].PatientName = list[i].PatientName;
             
+            /* convert to date and format */
             var parsedDate = new Date(list[i].AdmDateTime);
             if (isNaN(list[i].AdmDateTime) && (!isNaN(parsedDate))) {
                 patientList[i].AdmDateTime = formatDate(parsedDate);
             }
             patientList[i].Description = list[i].Description;
             patientList[i].Diagnosis = list[i].Diagnosis;
-            if (!isNaN(list[0].Balance)) { /* convert numeric string to number and format as currency */
+            
+            /* convert numeric string to number and format as currency */
+            if (!isNaN(list[0].Balance)) { 
                 patientList[i].Balance = formatCurrency(Number(list[i].Balance));
             }
         }

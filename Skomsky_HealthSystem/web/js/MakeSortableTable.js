@@ -74,7 +74,7 @@ function MakeSortableTable(list, id, sortOrderPropName) {
         // check if date
         var parsedDate = Date.parse(val);
         if (isNaN(val) && (!isNaN(parsedDate))) {
-            return "center";
+            return "left";
         }
         
         // check if numeric (remove $ and , and then check if numeric)

@@ -7,17 +7,16 @@ users.display = function (id) {
     
     console.log ("user.display function was called");
 
-    var content = `  
-        <style>
-            /* override size of image from the clicksort.css */
-            .clickSort td img { /* applies to any <img> tag in a <td> tag in any element classed "clickSort" */
-                width: 40px;
-                border-radius: 6px;
-                box-shadow: 3px 3px 3px #444444;
-            }
-        </style>
-        <div id="listHere" class="clickSort"></div>
-    `;
+    var content =   
+    "    <style> " +
+    "        /* override size of image from the clicksort.css */ " +
+    "        .clickSort td img { /* applies to any <img> tag in a <td> tag in any element classed 'clickSort' */ " +
+    "            width: 40px; " +
+    "            border-radius: 6px; " +
+    "            box-shadow: 3px 3px 3px #444444; " +
+    "        } " +
+    "    </style> " +
+    "    <div id='listHere' class='clickSort'></div>";
     
     document.getElementById(id).innerHTML = content;
     

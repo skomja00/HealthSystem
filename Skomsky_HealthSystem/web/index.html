@@ -4,10 +4,9 @@
     <title>
         Health Systems
     </title>
-    <link href="style/clickSort.css" rel="stylesheet" type="text/css"/>
-    <link href="style/dropdownStyle.css" rel="stylesheet" type="text/css" /> 
     <link href="style/styles.css" rel="stylesheet" type="text/css" >
     <link href="style/clickSort.css" rel="stylesheet" type="text/css" />  
+    <link href="style/dropdownStyle.css" rel="stylesheet" type="text/css" /> 
 </head>
 <body>
     <div class="title" id="title">
@@ -34,15 +33,22 @@
             <div class="dropdown">
                 <img class="dropHeader" title="Search" onclick="myDropdown.toggle(this)" src="icons/dark/search_dd_icon_H24.png" alt="Search" >
                 <div class="dropContent" id="searchDropDown">
-                    <a href="#/users">Users</a> <br/>
-                    <a href="#/patients">Patients</a> <br/>
+                    <a href="#/search-users">Search Users</a> <br/>
+                    <a href="#/search-patients">Search Patients</a> <br/>
+                </div>
+            </div>            
+            <div class="dropdown">
+                <img class="dropHeader" title="Sort" onclick="myDropdown.toggle(this)" src="icons/dark/sort-icon_H24.png" alt="Search" >
+                <div class="dropContent" id="searchDropDown">
+                    <a href="#/sort-users">Sort Users</a> <br/>
+                    <a href="#/sort-patients">Sort Patients</a> <br/>
                 </div>
             </div>            
             <div class="dropdown" id="ddTutorial">
                 <img class="dropHeader" title="Tutorial" src="icons/dark/tutorial_dd_icon_H24.png" alt="Tutorial" >
                 <div class="dropContent">
                     <a href="#/services">Services</a><br/>
-                    <a href="#/busofc">Bus Offc.</a><br/>
+                    <a href="#/busofc">Business Office</a><br/>
                     <a href="#/documents">Documents</a><br/>
                 </div> 
             </div>          
@@ -121,8 +127,10 @@
         myRoutes['/login'] = login;
         myRoutes['/profile'] = profile;
         myRoutes['/logout'] = logout;
-        myRoutes['/users'] = users.display;
-        myRoutes['/patients'] = patients.display;
+        myRoutes['/search-users'] = users.display;
+        myRoutes['/search-patients'] = patients.display;
+        myRoutes['/sort-users'] = users.display;
+        myRoutes['/sort-patients'] = patients.display;
         myRoutes['/services'] = services;
         myRoutes['/busofc'] = busofc;
         myRoutes['/documents'] = documents;

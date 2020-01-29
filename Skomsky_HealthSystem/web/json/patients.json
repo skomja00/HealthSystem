@@ -5,7 +5,7 @@
         "AdmDateTime": "2019-01-13 11:11:48",
         "Description": "Offie Visit",
         "Diagnosis": "Patient Office or Other Outpatient Services   ",
-        "Balance": 150.0000
+        "Balance": 150.000
     },
     {
         "MedRecNo": "TUN111112",
@@ -22,7 +22,7 @@
         "AdmDateTime": "2019-10-13 08:56:11",
         "Description": "ED Visit",
         "Diagnosis": "Emergency department visit for the evaluation and management of a patient,",
-        "Balance": 2000.0000
+        "Balance": 2000.000
     },
     {
         "MedRecNo": "TUN111114",
@@ -30,7 +30,7 @@
         "AdmDateTime": "2019-12-25 05:32:56",
         "Description": "Office Visit",
         "Diagnosis": "Patient Office or Other Outpatient Services",
-        "Balance": 150.0000
+        "Balance": 150.000
 
     },
     {
@@ -60,10 +60,10 @@
     {
         "MedRecNo": "TUN111118",
         "PatientName": "Jennings, Ada",
-        "AdmDateTime": "2020-10-12 08:12:00",
+        "AdmDateTime": "2019-10-12 08:12:00",
         "Description": "Office Visit",
         "Diagnosis": "Patient Office or Other Outpatient Services",
-        "Balance": 150.0000
+        "Balance": 150.000
     },
     {
         "MedRecNo": "TUN111119",
@@ -76,10 +76,10 @@
     {
         "MedRecNo": "TUN111120",
         "PatientName": "Clarke, Jeremy",
-        "AdmDateTime": "2020-12-07 23:59:59",
+        "AdmDateTime": "2019-12-07 23:59:59",
         "Description": "ED Visit",
         "Diagnosis": "Emergency department visit for the evaluation and management of a patient",
-        "Balance": 2000.0000
+        "Balance": 2000.000
     }
 ]
 

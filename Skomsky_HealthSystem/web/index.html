@@ -107,6 +107,7 @@
     <script src="js/ajax.js" type="text/javascript"></script>
     <script src="js/MakeTable.js" type="text/javascript"></script>    
     <script src="js/MakeSortableTable.js" type="text/javascript"></script>    
+    <script src="js/MakeFilteredTable.js" type="text/javascript"></script>    
     <script src="js/components/blog.js" type="text/javascript"></script>
     <script src="js/components/busofc.js" type="text/javascript"></script>
     <script src="js/components/documents.js" type="text/javascript"></script>
@@ -114,7 +115,9 @@
     <script src="js/components/login.js" type="text/javascript"></script>
     <script src="js/components/logout.js" type="text/javascript"></script>
     <script src="js/components/users.js" type="text/javascript"></script>
+    <script src="js/components/usersSearch.js" type="text/javascript"></script>
     <script src="js/components/patients.js" type="text/javascript"></script>
+    <script src="js/components/patientsSearch.js" type="text/javascript"></script>
     <script src="js/components/profile.js" type="text/javascript"></script>
     <script src="js/components/register.js" type="text/javascript"></script>
     <script src="js/components/routeFw.js" type="text/javascript"></script>
@@ -127,8 +130,8 @@
         myRoutes['/login'] = login;
         myRoutes['/profile'] = profile;
         myRoutes['/logout'] = logout;
-        myRoutes['/search-users'] = users.display;
-        myRoutes['/search-patients'] = patients.display;
+        myRoutes['/search-users'] = usersSearch.display;
+        myRoutes['/search-patients'] = patientsSearch.display;
         myRoutes['/sort-users'] = users.display;
         myRoutes['/sort-patients'] = patients.display;
         myRoutes['/services'] = services;
@@ -144,7 +147,7 @@
         "use strict";
         dropdownFw("dropHeader", "dropContent");
         "use strict";
-        setTheme("DarkPallette");
+        setTheme("LightPallette");
     </script>
 </body>
 </html>

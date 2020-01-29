@@ -1,7 +1,5 @@
 function MakeFilteredTable(list, id) {
 
-    debugger;
-
     // Add data as th or td (based on eleType) to row of HTML table.
     // local function inside of MakeTable
     function addToRow(eleType, row, data, alignment) {

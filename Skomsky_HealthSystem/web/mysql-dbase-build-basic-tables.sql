@@ -83,10 +83,10 @@ CREATE TABLE `web_user` (
 	/* At least one of these records shall have all of its fields populated. */
 	INSERT INTO `web_user` 
 		(`user_email`,                  `user_password`,`image`,                                                     `birthday`,  `membership_fee`,`user_role_id`) values
-        ('hughes.donna@gmail.com',      'hughesd',      'http://cis-linux2.temple.edu/~sallyk/pics_user/gene.jpg',  '1999-01-01', 14.95,           get_user_role_id('patient'));
+        ('hughes.donna@gmail.com',      'hughesd',      'http://cis-linux2.temple.edu/~sallyk/pics_user/claudia.jpg',  '1999-01-01', 14.95,           get_user_role_id('patient'));
 	INSERT INTO `web_user` 
 		(`user_email`,                  `user_password`,`image`,                                                     `birthday`,  `membership_fee`,`user_role_id`) values
-        ('martin.elizabeth@gmail.com',  'martine',      'http://cis-linux2.temple.edu/~sallyk/pics_user/gene.jpg',   '1985-01-01', 14.95,           get_user_role_id('patient'));
+        ('martin.elizabeth@gmail.com',  'martine',      'http://cis-linux2.temple.edu/~sallyk/pics_user/rose.jpg',   '1985-01-01', 14.95,           get_user_role_id('patient'));
 	INSERT INTO `web_user` 
 		(`user_email`,                  `user_password`,`image`,                                                     `birthday`,  `membership_fee`,`user_role_id`) values
         ('rutherford.amelia@gmail.com', 'rutherforda',  'http://cis-linux2.temple.edu/~sallyk/pics_user/sally.jpg',  '1999-01-01', 14.95,           get_user_role_id('patient'));
@@ -94,8 +94,8 @@ CREATE TABLE `web_user` (
 		(`user_email`,                  `user_password`,`image`,                                                     `birthday`,  `membership_fee`,`user_role_id`) values
         ('hamilton.edward@gmail.com',   'hamiltone',    'http://cis-linux2.temple.edu/~sallyk/pics_user/tony.jpg',   '1999-01-01', 14.95,           get_user_role_id('patient'));
 	INSERT INTO `web_user` 
-		(`user_email`,                  `user_password`,`image`,                                                     `birthday`,  `membership_fee`,`user_role_id`) values
-        ('chandler.dana@gmail.com',     'chandlerd',     'http://cis-linux2.temple.edu/~sallyk/pics_user/karl.jpg',  '1999-01-01', 14.95,           get_user_role_id('patient'));
+		(`user_email`,                  `user_password`,`image`,                                                       `birthday`,  `membership_fee`,`user_role_id`) values
+        ('chandler.dana@gmail.com',     'chandlerd',     'http://cis-linux2.temple.edu/~sallyk/pics_user/claudia.jpg', '1999-01-01', 14.95,           get_user_role_id('patient'));
 	INSERT INTO `web_user` 
 		(`user_email`,                  `user_password`,`image`,                                                     `birthday`,  `membership_fee`,`user_role_id`) values
         ('pearson.ella@gmail.com',      'pearsone',     'http://cis-linux2.temple.edu/~sallyk/pics_user/rose.jpg',   '1999-01-01', 14.95,           get_user_role_id('patient'));
@@ -122,19 +122,19 @@ CREATE TABLE `web_user` (
 		('brianne.user@gmail.com',   null,           null,	                                                        null,        null,            null);
 	INSERT INTO `web_user` 
 		(`user_email`,              `user_password`,`image`,                                                       `birthday`,  `membership_fee`,`user_role_id`) values 
-		('services.sam@gmail.com', 'eeditor',       'http://cis-linux2.temple.edu/~sallyk/pics_user/andrew.jpg',   '2002-01-01', 0.00,            get_user_role_id('services'));
+		('services.s@gmail.com', 'eeditor',       'http://cis-linux2.temple.edu/~sallyk/pics_user/andrew.jpg',   '2002-01-01', 0.00,            get_user_role_id('services'));
 	INSERT INTO `web_user` 
 		(`user_email`,              `user_password`,`image`,                                                       `birthday`,  `membership_fee`,`user_role_id`) values 
-		('busofc.betty@gmail.com', 'eeditor',       'http://cis-linux2.temple.edu/~sallyk/pics_user/andrew.jpg',   '2002-01-01', 0.00,            get_user_role_id('busofc'));
+		('busofc.b@gmail.com', 'eeditor',       'http://cis-linux2.temple.edu/~sallyk/pics_user/andrew.jpg',   '2002-01-01', 0.00,            get_user_role_id('busofc'));
 	INSERT INTO `web_user` 
 		(`user_email`,              `user_password`,`image`,                                                       `birthday`,  `membership_fee`,`user_role_id`) values 
-		('documents.darnell@gmail.com', 'eeditor',  'http://cis-linux2.temple.edu/~sallyk/pics_user/andrew.jpg',   '2002-01-01', 0.00,            get_user_role_id('documents'));
+		('documents.d@gmail.com', 'eeditor',  'http://cis-linux2.temple.edu/~sallyk/pics_user/andrew.jpg',   '2002-01-01', 0.00,            get_user_role_id('documents'));
 	INSERT INTO `web_user` 
 		(`user_email`,              `user_password`,`image`,                                                       `birthday`,  `membership_fee`,`user_role_id`) values
-		('manager.marvin@gmail.com','mmanager',     'http://cis-linux2.temple.edu/~sallyk/pics_user/andrew.jpg',   '1991-01-01', 0.00,            get_user_role_id('manager'));
+		('manager.m@gmail.com','mmanager',     'http://cis-linux2.temple.edu/~sallyk/pics_user/andrew.jpg',   '1991-01-01', 0.00,            get_user_role_id('manager'));
 	INSERT INTO `web_user` 
 		(`user_email`,              `user_password`,`image`,                                                       `birthday`,  `membership_fee`,`user_role_id`) values
-		('admin.alvin@gmail.com',   'aadmin',       'http://cis-linux2.temple.edu/~sallyk/pics_user/andrew.jpg',   '1985-01-01', 0.00,            get_user_role_id('admin'));
+		('admin.admin@gmail.com',   'aadmin',       'http://cis-linux2.temple.edu/~sallyk/pics_user/andrew.jpg',   '1985-01-01', 0.00,            get_user_role_id('admin'));
 	
     /* Try to add a record that has an invalid (non-existent) user_role_id and notice that the database management system will not let that record be inserted. */
     /* Error Code: 1452. Cannot add or update a child row: a foreign key constraint fails */
@@ -192,44 +192,44 @@ CREATE TABLE `web_user` (
  * Add data to Patient/"other" table 
 */
 	INSERT INTO `patient` 
-		(`MedRecNo`,  `ImageUrl`,                          `Description`,    `AdmDateTime`,        `DschDateTime`,      `web_user_id_fk`,                               `Diagnosis`,                                            `PatientName`,       `Balance`) values
-        ('TUN111111','www.healthsystems.com/hughesd.png', 'Offie Visit',     '2020-01-13 11:00:00','2020-01-13 16:50',  get_web_user_id('hughes.donna@gmail.com'),      'Patient Office or Other Outpatient Services   ',      'Hughes, Donna',       150.00);
+		(`MedRecNo`,  `ImageUrl`,                                              `Description`,    `AdmDateTime`,        `DschDateTime`,      `web_user_id_fk`,                               `Diagnosis`,                                            `PatientName`,       `Balance`) values
+        ('TUN111111','http://cis-linux2.temple.edu/~sallyk/pics_user/claudia.jpg', 'Offie Visit',     '2010-09-06 10:35:32', NULL,               get_web_user_id('hughes.donna@gmail.com'),      'Patient Office or Other Outpatient Services   ',      'Hughes, Donna',       150.00);
 
 	INSERT INTO `patient` 
-		(`MedRecNo`,  `ImageUrl`,                          `Description`,    `AdmDateTime`,        `DschDateTime`,      `web_user_id_fk`,                               `Diagnosis`,                                            `PatientName`,       `Balance`) values
-        ('TUN111112','www.healthsystems.com/martine.png', 'Vaccination'   , '2020-01-13 11:00:00','2020-01-13 16:50',   get_web_user_id('martin.elizabeth@gmail.com'),  'Influenza virus vaccine',                             'Martin, Elizabeth',   45.00);
+		(`MedRecNo`,  `ImageUrl`,                                              `Description`,    `AdmDateTime`,        `DschDateTime`,      `web_user_id_fk`,                               `Diagnosis`,                                            `PatientName`,       `Balance`) values
+        ('TUN111112','http://cis-linux2.temple.edu/~sallyk/pics_user/rose.jpg', 'Vaccination'   ,  '2019-11-06 15:30:47', NULL,                get_web_user_id('martin.elizabeth@gmail.com'),  'Influenza virus vaccine',                             'Martin, Elizabeth',   45.00);
 
 	INSERT INTO `patient` 
-		(`MedRecNo`,  `ImageUrl`,                          `Description`,    `AdmDateTime`,        `DschDateTime`,     `web_user_id_fk`,                                `Diagnosis`,                                                                    `PatientName`,       `Balance`) values
-        ('TUN111113','www.healthsystems.com/rutherforda.png','ED Visit',    '2020-01-13 11:00:00','2020-01-13 16:50',  get_web_user_id('rutherford.amelia@gmail.com'),  'Emergency department visit for the evaluation and management of a patient,',  'Rutherford, Amelia',  2000.00);
+		(`MedRecNo`,  `ImageUrl`,                                              `Description`,    `AdmDateTime`,        `DschDateTime`,     `web_user_id_fk`,                                `Diagnosis`,                                                                    `PatientName`,       `Balance`) values
+        ('TUN111113','http://cis-linux2.temple.edu/~sallyk/pics_user/sally.jpg','ED Visit',    '2019-12-07 22:35:41','2021-12-08 16:50',  get_web_user_id('rutherford.amelia@gmail.com'),  'Emergency department visit for the evaluation and management of a patient,',  'Rutherford, Amelia',  2000.00);
 
 	INSERT INTO `patient`  
-		(`MedRecNo`,  `ImageUrl`,                          `Description`,    `AdmDateTime`,        `DschDateTime`,     `web_user_id_fk`,                                `Diagnosis`,                                            `PatientName`,       `Balance`) values
-        ('TUN111114','www.healthsystems.com/hamiltone.png','Office Visit'  ,'2020-10-12 08:00:00', NULL,               get_web_user_id('hamilton.edward@gmail.com'),    'Patient Office or Other Outpatient Services',         'Hamilton, Edward',   150.00);
+		(`MedRecNo`,  `ImageUrl`,                                              `Description`,    `AdmDateTime`,        `DschDateTime`,     `web_user_id_fk`,                                `Diagnosis`,                                            `PatientName`,       `Balance`) values
+        ('TUN111114','http://cis-linux2.temple.edu/~sallyk/pics_user/tony.jpg','Office Visit'  ,'2020-10-12 08:00:00', NULL,               get_web_user_id('hamilton.edward@gmail.com'),    'Patient Office or Other Outpatient Services',         'Hamilton, Edward',   150.00);
 
 	INSERT INTO `patient` 
-		(`MedRecNo`,  `ImageUrl`,                          `Description`,    `AdmDateTime`,        `DschDateTime`,     `web_user_id_fk`,                                `Diagnosis`,                                            `PatientName`,       `Balance`) values
-        ('TUN111115','www.healthsystems.com/chandlerd.png','Vaccination'   ,'2020-01-13 11:00:00','2020-01-13 16:50',  get_web_user_id('chandler.dana@gmail.com'),      'Influenza virus vaccine',                             'Chandler, Dana',      45.00);
+		(`MedRecNo`,  `ImageUrl`,                                               `Description`,    `AdmDateTime`,        `DschDateTime`,     `web_user_id_fk`,                                `Diagnosis`,                                            `PatientName`,       `Balance`) values
+        ('TUN111115','http://cis-linux2.temple.edu/~sallyk/pics_user/claudia.jpg','Vaccination'   , '2019-11-06 15:35:21', NULL,                get_web_user_id('chandler.dana@gmail.com'),      'Influenza virus vaccine',                             'Chandler, Dana',      45.00);
 
 	INSERT INTO `patient` 
-		(`MedRecNo`,  `ImageUrl`,                          `Description`,   `AdmDateTime`,        `DschDateTime`,      `web_user_id_fk`,                                `Diagnosis`,                                           `PatientName`,        `Balance`) values
-        ('TUN111116','www.healthsystems.com/pearsone.png','Vaccination'   ,'2020-01-13 11:00:00','2020-01-13 16:50',   get_web_user_id('pearson.ella@gmail.com'),       'Influenza virus vaccine',                             'Pearson, Ella',        45.00);
+		(`MedRecNo`,  `ImageUrl`,                                              `Description`,   `AdmDateTime`,        `DschDateTime`,      `web_user_id_fk`,                                `Diagnosis`,                                           `PatientName`,        `Balance`) values
+        ('TUN111116','http://cis-linux2.temple.edu/~sallyk/pics_user/rose.jpg','Vaccination'   , '2019-11-06 15:42:21',  NULL,                get_web_user_id('pearson.ella@gmail.com'),       'Influenza virus vaccine',                             'Pearson, Ella',        45.00);
 
 	INSERT INTO `patient` 
-		(`MedRecNo`,  `ImageUrl`,                          `Description`,    `AdmDateTime`,        `DschDateTime`,      `web_user_id_fk`,                                `Diagnosis`,                                           `PatientName`,        `Balance`) values
-        ('TUN111117','www.healthsystems.com/sandersj.png','Vaccination'   , '2020-01-13 11:00:00','2020-01-13 16:50',   get_web_user_id('sanders.jared@gmail.com'),      'Influenza virus vaccine',                             'Sanders, Jared',       45.00);
+		(`MedRecNo`,  `ImageUrl`,                                               `Description`,    `AdmDateTime`,        `DschDateTime`,      `web_user_id_fk`,                                `Diagnosis`,                                           `PatientName`,        `Balance`) values
+        ('TUN111117','http://cis-linux2.temple.edu/~sallyk/pics_user/andrew.jpg','Vaccination'   ,  '2019-11-06 15:49:02',  NULL,                get_web_user_id('sanders.jared@gmail.com'),      'Influenza virus vaccine',                             'Sanders, Jared',       45.00);
  
 	INSERT INTO `patient` 
-		(`MedRecNo`,  `ImageUrl`,                          `Description`,     `AdmDateTime`,        `DschDateTime`,     `web_user_id_fk`,                                 `Diagnosis`,                                           `PatientName`,        `Balance`) values
-        ('TUN111118','www.healthsystems.com/jenningsa.png','Office Visit'   ,'2020-10-12 08:00:00', NULL,               get_web_user_id('jennings.ada@gmail.com'),       'Patient Office or Other Outpatient Services',         'Jennings, Ada',        150.00);
+		(`MedRecNo`,  `ImageUrl`,                                               `Description`,     `AdmDateTime`,        `DschDateTime`,     `web_user_id_fk`,                                 `Diagnosis`,                                           `PatientName`,        `Balance`) values
+        ('TUN111118','http://cis-linux2.temple.edu/~sallyk/pics_user/sally.jpg','Office Visit'   ,'2019-12-23 14:21:59',  NULL,               get_web_user_id('jennings.ada@gmail.com'),       'Patient Office or Other Outpatient Services',         'Jennings, Ada',        150.00);
 
 	INSERT INTO `patient` 
-		(`MedRecNo`,  `ImageUrl`,                          `Description`,    `AdmDateTime`,        `DschDateTime`,       `web_user_id_fk`,                                 `Diagnosis`,                                           `PatientName`,        `Balance`) values
-        ('TUN111119','www.healthsystems.com/allenj.png',  'Vaccination'   ,   '2020-01-13 11:00:00','2020-01-13 16:50',  get_web_user_id('allen.jillian@gmail.com'),      'Influenza virus vaccine',                             'Allen, Jillian',       45.00);
+		(`MedRecNo`,  `ImageUrl`,                                               `Description`,    `AdmDateTime`,        `DschDateTime`,       `web_user_id_fk`,                                 `Diagnosis`,                                           `PatientName`,        `Balance`) values
+        ('TUN111119','http://cis-linux2.temple.edu/~sallyk/pics_user/andrew.jpg',  'Vaccination'   ,   '2019-11-13 09:36:21',NULL,                get_web_user_id('allen.jillian@gmail.com'),      'Influenza virus vaccine',                             'Allen, Jillian',       45.00);
 
 	INSERT INTO `patient` 
-		(`MedRecNo`,  `ImageUrl`,                          `Description`,    `AdmDateTime`,        `DschDateTime`,      `web_user_id_fk`,                                  `Diagnosis`,                                                                   `PatientName`,    `Balance`) values
-        ('TUN111120','www.healthsystems.com/clarkej.png', 'ED Visit'   ,     '2020-10-12 08:00:00', NULL,              get_web_user_id('clarke.jeremy@gmail.com'),       'Emergency department visit for the evaluation and management of a patient',   'Clarke, Jeremy',   2000.00);
+		(`MedRecNo`,  `ImageUrl`,                                               `Description`,    `AdmDateTime`,        `DschDateTime`,        `web_user_id_fk`,                                  `Diagnosis`,                                                                   `PatientName`,    `Balance`) values
+        ('TUN111120','http://cis-linux2.temple.edu/~sallyk/pics_user/tony.jpg', 'ED Visit'   ,     '2020-01-01 00:01:06', '2020-01-02 23:44:31', get_web_user_id('clarke.jeremy@gmail.com'),       'Emergency department visit for the evaluation and management of a patient',   'Clarke, Jeremy',   2000.00);
    
    
 -- a. Run a SELECT statement that lists all the columns of all the records of your “other” table, selecting out each column and presenting them in an order that you think users would like to view the data (don't use SELECT * ). Sort the data by whichever column you decided to show first. 
@@ -287,42 +287,22 @@ CREATE TABLE `web_user` (
 /**
  * create a json formatted similar to...
  *
-    "webUserId": "1",
-    "userEmail": "andrew@temple.edu",
-    "userPassword": "pw",
-    "image": "http://cis-linux2.temple.edu/~sallyk/pics_user/andrew.jpg",
-    "birthday": "11/22/2001",
-    "membershipFee": "",
-    "userRoleId": "3",
-    "userRoleType": "Member",
-    "errorMsg": ""
 */
+select 
+	'{\r\n'
+	,concat('    "MedRecNo": "', pt.MedRecNo,'",')
+	,concat('    "PatientName": "', pt.PatientName,'",')
+	,concat('    "PatientId": ', pt.Patient_Id,',')
+	,concat('    "ImageUrl": "', pt.ImageUrl,'",')
+	,concat('    "AdmDateTime": "', pt.AdmDateTime,'",')
+	,concat('    "DschDateTime": ', coalesce(pt.DschDateTime,'null'),',')
+	,concat('    "Description": "', pt.Description,'",')
+	,concat('    "Diagnosis": "', pt.Diagnosis,'",')
+	,concat('    "Balance": ', pt.Balance,',')
+	,concat('    "webUserId": ', wu.web_user_id,',')
+	,concat('    "webUserEmail": "', wu.user_email,'",')
+	,concat('    "webMembershipFee": ', wu.membership_fee)
+    ,'\r\n},\r\n'
+from patient as pt
+join web_user as wu on wu.web_user_id = pt.web_user_id_fk
 
-
--- select 
--- '{\r\n'
--- concat('"webUserId": "',wu.web_user_id,'",')
--- ,concat('"userEmail": "',wu.user_email,'",')
--- ,concat('"userPassword": "',wu.user_password,'",')
--- ,concat('"image": "',wu.image,'",')
--- ,concat('"birthday": "',wu.birthday,'",')
--- ,concat('"membershipFee": "',wu.membership_fee,'",')
--- ,concat('"userRoleId": "',ur.user_role_id,'",')
--- ,concat('"userRoleType": "',ur.user_role_type,'",')
--- ,'"errorMsg": ""'
--- ,'\r\n},\r\n'
--- from web_user as wu
--- left join user_role as ur on ur.user_role_id = wu.user_role_id
-
--- select 
--- 	'{\r\n'
--- 	,concat('    "MedRecNo": "', MedRecNo,'",')
--- 	,concat('    "PatientName": "', PatientName,'",')
--- 	,concat('    "AdmDateTime": "', AdmDateTime,'",')
--- 	,concat('    "Description": "', Description,'",')
--- 	,concat('    "Diagnosis": "', Diagnosis,'",')
--- 	,concat('    "Balance": "', Balance,'"')
---     ,'\r\n},\r\n'
--- from patient
--- 
--- 

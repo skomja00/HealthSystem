@@ -69,7 +69,7 @@ function MakeSortableTable(list, id, sortOrderPropName) {
         return ele;  // future code may need a reference to this dom object
     }
     
-        function alignment(val) {
+    function alignment(val) {
               
         // check if date
         var parsedDate = Date.parse(val);
@@ -77,14 +77,18 @@ function MakeSortableTable(list, id, sortOrderPropName) {
             return "left";
         }
         
-        // check if numeric (remove $ and , and then check if numeric)
-        var possibleNum = val.replace("$","");
-        possibleNum = possibleNum.replace(",","");
-        if (isNaN(possibleNum)) {
-            return "left";
-        } 
-        return "right"; // it's a number
-        
+        var possibleNum = val; 
+        if (Number.isInteger(val)) {
+            return "right"; // it's a number
+        } else {
+            // check if numeric (remove $ and , and then check if numeric)
+            possibleNum = val.replace("$",""); /* this fails with integers with "uncaught TypeError: val.replace is not a function" */  
+            possibleNum = possibleNum.replace(",","");
+            if (isNaN(possibleNum)) {
+                return "left";
+            } 
+            return "right"; // it's a number
+        }
     } // alignment
 
 

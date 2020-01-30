@@ -28,21 +28,9 @@ function MakeFilteredTable(list, id) {
 
     } // alignment
 
-    /** 
-     * More descriptive name isEmpty() fn uses ternary operator to...
-     * return true for empty/zero-length strings (i.e. "") 
-     * return false otherwise
-     * 
-     * @param {String} str
-     * @returns {Boolean}
-     */
-    function isEmpty(str) {
-        return ((!str || str.length === 0) ? true : false);
-    }
-
     // return true if any property of obj contains searchKey. Else return false.
     function isToShow(obj, searchKey) {
-        if (isEmpty(searchKey)) {
+        if (!searchKey || searchKey.length === 0) {
             return true; // show the object if searchKey is empty
         }
         var searchKeyUpper = searchKey.toUpperCase();

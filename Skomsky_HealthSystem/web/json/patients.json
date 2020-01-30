@@ -1,5 +1,7 @@
 [
+    
     {
+
         "MedRecNo": "TUN111111",
         "PatientName": "Hughes, Donna",
         "PatientId": 1,
@@ -11,8 +13,12 @@
         "Balance": 150.000,
         "webUserId": 1,
         "webUserEmail": "hughes.donna@gmail.com",
-        "webMembershipFee": 4.95
-    },{
+        "webMembershipFee": 14.95
+
+    },
+
+    {
+
         "MedRecNo": "TUN111112",
         "PatientName": "Martin, Elizabeth",
         "PatientId": 2,
@@ -24,8 +30,12 @@
         "Balance": 45.000,
         "webUserId": 2,
         "webUserEmail": "martin.elizabeth@gmail.com",
-        "webMembershipFee": 4.95
-    },{
+        "webMembershipFee": 14.95
+
+    },
+
+    {
+
         "MedRecNo": "TUN111113",
         "PatientName": "Rutherford, Amelia",
         "PatientId": 3,
@@ -37,8 +47,12 @@
         "Balance": 2000.000,
         "webUserId": 3,
         "webUserEmail": "rutherford.amelia@gmail.com",
-        "webMembershipFee": 4.95
-    },{
+        "webMembershipFee": 14.95
+
+    },
+
+    {
+
         "MedRecNo": "TUN111114",
         "PatientName": "Hamilton, Edward",
         "PatientId": 4,
@@ -50,8 +64,12 @@
         "Balance": 150.000,
         "webUserId": 4,
         "webUserEmail": "hamilton.edward@gmail.com",
-        "webMembershipFee": 4.95
-    },{
+        "webMembershipFee": 14.95
+
+    },
+
+    {
+
         "MedRecNo": "TUN111115",
         "PatientName": "Chandler, Dana",
         "PatientId": 5,
@@ -63,8 +81,12 @@
         "Balance": 45.000,
         "webUserId": 5,
         "webUserEmail": "chandler.dana@gmail.com",
-        "webMembershipFee": 4.95
-    },{
+        "webMembershipFee": 14.95
+
+    },
+
+    {
+
         "MedRecNo": "TUN111116",
         "PatientName": "Pearson, Ella",
         "PatientId": 6,
@@ -76,8 +98,12 @@
         "Balance": 45.000,
         "webUserId": 6,
         "webUserEmail": "pearson.ella@gmail.com",
-        "webMembershipFee": 4.95
-    },{
+        "webMembershipFee": 14.95
+
+    },
+
+    {
+
         "MedRecNo": "TUN111117",
         "PatientName": "Sanders, Jared",
         "PatientId": 7,
@@ -89,8 +115,12 @@
         "Balance": 45.000,
         "webUserId": 7,
         "webUserEmail": "sanders.jared@gmail.com",
-        "webMembershipFee": 4.95
-    },{
+        "webMembershipFee": 14.95
+
+    },
+
+    {
+
         "MedRecNo": "TUN111118",
         "PatientName": "Jennings, Ada",
         "PatientId": 8,
@@ -102,8 +132,12 @@
         "Balance": 150.000,
         "webUserId": 8,
         "webUserEmail": "jennings.ada@gmail.com",
-        "webMembershipFee": 4.95
-    },{
+        "webMembershipFee": 14.95
+
+    },
+
+    {
+
         "MedRecNo": "TUN111119",
         "PatientName": "Allen, Jillian",
         "PatientId": 9,
@@ -115,8 +149,12 @@
         "Balance": 45.000,
         "webUserId": 9,
         "webUserEmail": "allen.jillian@gmail.com",
-        "webMembershipFee": 4.95
-    },{
+        "webMembershipFee": 14.95
+
+    },
+
+    {
+
         "MedRecNo": "TUN111120",
         "PatientName": "Clarke, Jeremy",
         "PatientId": 10,
@@ -128,6 +166,8 @@
         "Balance": 2000.000,
         "webUserId": 10,
         "webUserEmail": "clarke.jeremy@gmail.com",
-        "webMembershipFee": 4.95
+        "webMembershipFee": 14.95
+
     }
 ]
+

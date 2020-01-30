@@ -68,7 +68,7 @@ users.display = function (id) {
         console.log(userList);
 
         // Making a DOM object, nothing shows yet... 
-        MakeFilteredTable(userList, "listHere");
-        //MakeSortableTable(userList, "listHere", "role");
+        //MakeFilteredTable(userList, "listHere");
+        MakeSortableTable(userList, "listHere", "role");
     }
 };

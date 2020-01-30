@@ -37,24 +37,14 @@ function MakeFilteredTable(list, id) {
         if (!searchKey || searchKey.length === 0) {
             return true; // show the object if searchKey is empty
         }
-        var possibleInt = new Number(searchKey);
         var searchKeyUpper = searchKey.toUpperCase();
         for (var prop in obj) {
             var propVal = obj[prop]; // associative array, using property name as if index. 
-            debugger;
-            if (possibleInt.isInteger()) {
-                console.log("checking if Number " + possibleInt + " is in " + propVal);
-                if (possibleInt === searchKey) {
-                    console.log("yes int is inside");
-                    return true;            
-                } else {
-                console.log("checking if " + searchKeyUpper + " is in " + propVal);
-                var propValUpper = propVal.toUpperCase();
-                if (propValUpper.includes(searchKeyUpper)) {
-                    console.log("yes it is inside");
-                    return true;
-                    }
-                }
+            console.log("checking if " + searchKeyUpper + " is in " + propVal);
+            var propValUpper = propVal.toUpperCase();
+            if (propValUpper.includes(searchKeyUpper)) {
+                console.log("yes it is inside");
+                return true;
             }
         }
         console.log("no it is not inside");

@@ -23,7 +23,7 @@ users.display = function (id) {
     // invoke ajax function to read cars.json and if the call was successful, 
     // run function processData, otherwise, put an error message in the DOM element 
     // that has id "listHere".
-    ajax("json/allWebUsers.json", processData, "listHere");
+    ajax("json/users.json", processData, "listHere");
 
         function processData(list) {
 
@@ -68,6 +68,7 @@ users.display = function (id) {
         console.log(userList);
 
         // Making a DOM object, nothing shows yet... 
-        MakeSortableTable(userList, "listHere", "role");
+        MakeFilteredTable(userList, "listHere");
+        //MakeSortableTable(userList, "listHere", "role");
     }
 };

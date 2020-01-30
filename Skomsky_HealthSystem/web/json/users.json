@@ -1,18 +1,167 @@
 [
     {
-        "id": 2,
-        "name": "Mickey Mouse",
-        "gender": "male",
-        "age": 11
-    }, {
-        "id": 10,
-        "name": "Minnie Mouse",
-        "gender": "female",
-        "age": 9
-    }, {
-        "id": 21,
-        "name": "Superman",
-        "gender": "male",
-        "age": 35
+        "webUserId": "16",
+        "userEmail": "admin.alvin@gmail.com",
+        "userPassword": "aadmin",
+        "image": "http://cis-linux2.temple.edu/~sallyk/pics_user/andrew.jpg",
+        "birthday": "1985-01-01",
+        "membershipFee": "0.00",
+        "userRoleId": "1000",
+        "userRoleType": "admin",
+        "errorMsg": ""
+    },
+    {
+        "webUserId": "13",
+        "userEmail": "busofc.betty@gmail.com",
+        "userPassword": "eeditor",
+        "image": "http://cis-linux2.temple.edu/~sallyk/pics_user/andrew.jpg",
+        "birthday": "2002-01-01",
+        "membershipFee": "0.00",
+        "userRoleId": "4000",
+        "userRoleType": "busofc",
+        "errorMsg": ""
+    },
+    {
+        "webUserId": "14",
+        "userEmail": "documents.darnell@gmail.com",
+        "userPassword": "eeditor",
+        "image": "http://cis-linux2.temple.edu/~sallyk/pics_user/andrew.jpg",
+        "birthday": "2002-01-01",
+        "membershipFee": "0.00",
+        "userRoleId": "5000",
+        "userRoleType": "documents",
+        "errorMsg": ""
+    },
+    {
+        "webUserId": "15",
+        "userEmail": "manager.marvin@gmail.com",
+        "userPassword": "mmanager",
+        "image": "http://cis-linux2.temple.edu/~sallyk/pics_user/andrew.jpg",
+        "birthday": "1991-01-01",
+        "membershipFee": "0.00",
+        "userRoleId": "2000",
+        "userRoleType": "manager",
+        "errorMsg": ""
+    },
+    {
+        "webUserId": "1",
+        "userEmail": "hughes.donna@gmail.com",
+        "userPassword": "hughesd",
+        "image": "http://cis-linux2.temple.edu/~sallyk/pics_user/gene.jpg",
+        "birthday": "1999-01-01",
+        "membershipFee": 4.95,
+        "userRoleId": "6000",
+        "userRoleType": "patient",
+        "errorMsg": ""
+    },
+    {
+        "webUserId": "2",
+        "userEmail": "martin.elizabeth@gmail.com",
+        "userPassword": "martine",
+        "image": "http://cis-linux2.temple.edu/~sallyk/pics_user/gene.jpg",
+        "birthday": "1985-01-01",
+        "membershipFee": 4.95,
+        "userRoleId": "6000",
+        "userRoleType": "patient",
+        "errorMsg": ""
+    },
+    {
+        "webUserId": "3",
+        "userEmail": "rutherford.amelia@gmail.com",
+        "userPassword": "rutherforda",
+        "image": "http://cis-linux2.temple.edu/~sallyk/pics_user/sally.jpg",
+        "birthday": "1999-01-01",
+        "membershipFee": 4.95,
+        "userRoleId": "6000",
+        "userRoleType": "patient",
+        "errorMsg": ""
+    },
+    {
+        "webUserId": "4",
+        "userEmail": "hamilton.edward@gmail.com",
+        "userPassword": "hamiltone",
+        "image": "http://cis-linux2.temple.edu/~sallyk/pics_user/tony.jpg",
+        "birthday": "1999-01-01",
+        "membershipFee": 4.95,
+        "userRoleId": "6000",
+        "userRoleType": "patient",
+        "errorMsg": ""
+    },
+    {
+        "webUserId": "5",
+        "userEmail": "chandler.dana@gmail.com",
+        "userPassword": "chandlerd",
+        "image": "http://cis-linux2.temple.edu/~sallyk/pics_user/karl.jpg",
+        "birthday": "1999-01-01",
+        "membershipFee": 4.95,
+        "userRoleId": "6000",
+        "userRoleType": "patient",
+        "errorMsg": ""
+    },
+    {
+        "webUserId": "6",
+        "userEmail": "pearson.ella@gmail.com",
+        "userPassword": "pearsone",
+        "image": "http://cis-linux2.temple.edu/~sallyk/pics_user/rose.jpg",
+        "birthday": "1999-01-01",
+        "membershipFee": 4.95,
+        "userRoleId": "6000",
+        "userRoleType": "patient",
+        "errorMsg": ""
+    },
+    {
+        "webUserId": "7",
+        "userEmail": "sanders.jared@gmail.com",
+        "userPassword": "sandersj",
+        "image": "http://cis-linux2.temple.edu/~sallyk/pics_user/claudia.jpg",
+        "birthday": "1981-01-01",
+        "membershipFee": 4.95,
+        "userRoleId": "6000",
+        "userRoleType": "patient",
+        "errorMsg": ""
+    },
+    {
+        "webUserId": "8",
+        "userEmail": "jennings.ada@gmail.com",
+        "userPassword": "jenningsa",
+        "image": "http://cis-linux2.temple.edu/~sallyk/pics_user/rose.jpg",
+        "birthday": "2003-01-01",
+        "membershipFee": 4.95,
+        "userRoleId": "6000",
+        "userRoleType": "patient",
+        "errorMsg": ""
+    },
+    {
+        "webUserId": "9",
+        "userEmail": "allen.jillian@gmail.com",
+        "userPassword": "allenj",
+        "image": "http://cis-linux2.temple.edu/~sallyk/pics_user/sally.jpg",
+        "birthday": "1968-01-01",
+        "membershipFee": 4.95,
+        "userRoleId": "6000",
+        "userRoleType": "patient",
+        "errorMsg": ""
+    },
+    {
+        "webUserId": "10",
+        "userEmail": "clarke.jeremy@gmail.com",
+        "userPassword": "clarkej",
+        "image": "http://cis-linux2.temple.edu/~sallyk/pics_user/tony.jpg",
+        "birthday": "1999-01-01",
+        "membershipFee": 4.95,
+        "userRoleId": "6000",
+        "userRoleType": "patient",
+        "errorMsg": ""
+    },
+    {
+        "webUserId": "12",
+        "userEmail": "services.sam@gmail.com",
+        "userPassword": "eeditor",
+        "image": "http://cis-linux2.temple.edu/~sallyk/pics_user/andrew.jpg",
+        "birthday": "2002-01-01",
+        "membershipFee": "0.00",
+        "userRoleId": "3000",
+        "userRoleType": "services",
+        "errorMsg": ""
     }
 ]

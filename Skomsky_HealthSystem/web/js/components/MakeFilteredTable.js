@@ -11,25 +11,21 @@ function MakeFilteredTable(list, id) {
     }
 
     function alignment(val) {
-              
+
         // check if date
         var parsedDate = Date.parse(val);
         if (isNaN(val) && (!isNaN(parsedDate))) {
+            return "center";
+        }
+
+        // check if numeric (remove $ and , and then check if numeric)
+        var possibleNum = val.replace("$", "");
+        possibleNum = possibleNum.replace(",", "");
+        if (isNaN(possibleNum)) {
             return "left";
         }
-        
-        var possibleNum = val; 
-        if (Number.isInteger(val)) {
-            return "right"; // it's a number
-        } else {
-            // check if numeric (remove $ and , and then check if numeric)
-            possibleNum = val.replace("$",""); /* with integers was throwing "uncaught TypeError: val.replace is not a function" */  
-            possibleNum = possibleNum.replace(",","");
-            if (isNaN(possibleNum)) {
-                return "left";
-            } 
-            return "right"; // it's a number
-        }
+        return "right"; // it's a number
+
     } // alignment
 
     // return true if any property of obj contains searchKey. Else return false.
@@ -37,24 +33,14 @@ function MakeFilteredTable(list, id) {
         if (!searchKey || searchKey.length === 0) {
             return true; // show the object if searchKey is empty
         }
-        var possibleInt = new Number(searchKey);
         var searchKeyUpper = searchKey.toUpperCase();
         for (var prop in obj) {
             var propVal = obj[prop]; // associative array, using property name as if index. 
-            debugger;
-            if (possibleInt.isInteger()) {
-                console.log("checking if Number " + possibleInt + " is in " + propVal);
-                if (possibleInt === searchKey) {
-                    console.log("yes int is inside");
-                    return true;            
-                } else {
-                console.log("checking if " + searchKeyUpper + " is in " + propVal);
-                var propValUpper = propVal.toUpperCase();
-                if (propValUpper.includes(searchKeyUpper)) {
-                    console.log("yes it is inside");
-                    return true;
-                    }
-                }
+            console.log("checking if " + searchKeyUpper + " is in " + propVal);
+            var propValUpper = propVal.toUpperCase();
+            if (propValUpper.includes(searchKeyUpper)) {
+                console.log("yes it is inside");
+                return true;
             }
         }
         console.log("no it is not inside");

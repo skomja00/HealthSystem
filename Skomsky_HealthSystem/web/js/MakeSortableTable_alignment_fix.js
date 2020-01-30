@@ -82,7 +82,7 @@ function MakeSortableTable(list, id, sortOrderPropName) {
             return "right"; // it's a number
         } else {
             // check if numeric (remove $ and , and then check if numeric)
-            possibleNum = val.replace("$",""); /* with integers was throwing "uncaught TypeError: val.replace is not a function" */  
+            possibleNum = val.replace("$",""); /* this fails with integers with "uncaught TypeError: val.replace is not a function" */  
             possibleNum = possibleNum.replace(",","");
             if (isNaN(possibleNum)) {
                 return "left";

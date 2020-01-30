@@ -77,12 +77,14 @@ patients.display = function (id) {
             patientList[i].MedRecNo = list[i].MedRecNo;
             patientList[i].PatientName = list[i].PatientName;
             //debugger;
+            /* see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number*/
             patientList[i].PatientId = Number(list[i].PatientId); //MakeSortableTable.js:81 Uncaught TypeError: val.replace is not a function at alignment (MakeSortableTable.js:81)
-            patientList[i].imageUrl = "<img  src='" + list[i].imageUrl + "'>";
+            patientList[i].ImageUrl = "<img  src='" + list[i].ImageUrl + "'>";
             
             /* convert admdate and format */
             /* all encounters expected to value admdate. in op/ambulatory settings */
             /* the admdate serves as a 'visit' date with no discharge */
+            /* see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date */
             var parsedDate = new Date(list[i].AdmDateTime);
             if (isNaN(list[i].AdmDateTime) && (!isNaN(parsedDate))) {
                 patientList[i].AdmDateTime = formatDate(parsedDate);
@@ -115,6 +117,7 @@ patients.display = function (id) {
         console.log(patientList);
 
         // Making a DOM object, nothing shows yet... 
-        MakeSortableTable(patientList, "listHere", "MedRecNo");
+        MakeFilteredTable(patientList, "listHere");
+        //MakeSortableTable(patientList, "listHere", "MedRecNo");
     }
 };

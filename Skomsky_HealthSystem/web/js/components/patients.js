@@ -82,9 +82,9 @@ patients.display = function (id) {
             patientList[i].ImageUrl = "<img  src='" + list[i].ImageUrl + "'>";
             
             /* convert admdate and format */
-            /* all encounters expected to value admdate. in op/ambulatory settings */
+            /* all encounters expected to value admdate. but in op/ambulatory settings */
             /* the admdate serves as a 'visit' date with no discharge */
-            /* see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date */
+            /* re: Date see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date */
             var parsedDate = new Date(list[i].AdmDateTime);
             if (isNaN(list[i].AdmDateTime) && (!isNaN(parsedDate))) {
                 patientList[i].AdmDateTime = formatDate(parsedDate);

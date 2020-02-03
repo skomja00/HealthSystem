@@ -125,11 +125,11 @@ a:hover {
 
 @media all and (min-width: 1000px) {
     .list {
-        white-space: normal; // "row" layout see also .list-item display:
+        white-space: normal; /* "row" layout see also .list-item display: */
         overflow: hidden;
     }
     .list-item {
-        display: inline-block; // "row" layout see also .list white-space:
+        display: inline-block; /* "row" layout see also .list white-space: */
     }
     .list-item-image {
         opacity: 1;

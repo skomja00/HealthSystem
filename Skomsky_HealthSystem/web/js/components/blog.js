@@ -76,16 +76,24 @@ function blog(id) {
         <a id='#hw3'></a>
         <h2>HW 3 Display Data</h2>
         <p>
-            In this homework I learned that JSON is ... and AJAX is ... I also learned ... 
-            The parts that I found easy were ... 
-            The parts that I found hard or confusing were ... 
+            This was a time-consuming effort on my part. Unfortunately the
+            MakeFilteredTable is NOT working due to "problems" with my JSON I think. 
+            I didn't make changes to the supplied code and it is failing on line 44
+            in MakeFilteredTable when trying to do "var propValUpper = propVal.toUpperCase();". 
+            Not sure if this is due to my 
+            manually creating the JSON? I wasn't able to combine the sortable/filtered 
+            functions in time to submit. Unfortuately I ran out of time on other parts
+            of the HW, and was able to review the code but didn't have a chance to 
+            attempt combining. I may be able to revisit when the live database
+            connection is added, and I get back to working on it again. 
+            I am interest to see what effect a live JSON will have compared 
+            to the JSON I manually created. 
         </p>
-        <p>
-            To see the data displayed, click the menu items under the search icon 
-            in the navigation bar. Later in the semester these links will show live data 
-            from my database, but for now, they just show data from a hard coded JSON file.
+        <p> 
+            I was able to clean up the drop down menus. Before text was wrapping, and 
+            also I re-arrange the positioning so the dropdowns are aligned more to my
+            liking sort of left-justified with the dropdown header. 
         </p>
-
         <a id='#hw4'></a>
         <h2>HW 4 Slide Show or Tutorial Proposal</h2>
         <p>

@@ -33,15 +33,17 @@
     padding: 0px;
     
 }
+/* don't delete this even though there are no style rules - js needs it, references it. */
+.dropHeader {
+}
 .dropdown img {                      /* space combinator removes bottom margin and */
         margin: 10px 10px 0px 10px;  /* padding from the icon of dropdown */
         padding: 10px 10px 0px 10px; /* this will move dropContent up close to the bottom its */
                                      /* corresponding icon */
-}
-
-/* don't delete this even though there are no style rules - js needs it, references it. */
-.dropHeader {
-    /* position: static; HTML elements are positioned static by default. */
+        border-style: solid solid none solid;
+        border-color: #bbbbbb;
+        border-radius: 4px 4px 0px 0px;
+        letter-spacing: 1px;
 }
 
 .dropContent {
@@ -49,18 +51,18 @@
     background-color:  rgba(167, 228, 242, 1);;
 
     position: absolute;
-    left:50%;            /* align left edge of dropContent with center of dropDown */
-    margin-left: -20px;  /* move left edge back a bit */
+    left: 0%;            /* align margin-left edge of dropContent with left edge of of dropDown */
     
-    margin-top: 0px;     /* this will move dropContent up close to the bottom its */
-    padding-top: 0px;    /* corresponding icon */
+    margin: 0px 10px 10px 10px;   /* 0px this will move dropContent up close to the bottom its dropDown icon */
+    padding: 10px 10px 10px 10px; 
     
     font-size: 14px;
     z-index: 3;
 
     line-height: 1.7em;
-    border: 2px solid #bbbbbb;
-    border-radius: 4px;
+    border-style: solid solid solid solid;
+    border-color: #bbbbbb;
+    border-radius: 0px 4px 4px 4px;
     letter-spacing: 1px;
     
     width: max-content;  /* sets the size based on the space its children regardless if available or not */

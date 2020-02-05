@@ -40,9 +40,7 @@
         margin: 10px 10px 0px 10px;  /* padding from the icon of dropdown */
         padding: 10px 10px 0px 10px; /* this will move dropContent up close to the bottom its */
                                      /* corresponding icon */
-        border-style: solid solid none solid;
-        border-color: #bbbbbb;
-        border-radius: 4px 4px 0px 0px;
+        border-style: none;
         letter-spacing: 1px;
 }
 

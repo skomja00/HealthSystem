@@ -43,9 +43,11 @@
  * Found the following code example on 
  * https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onclick
  */ 
-document.getElementById("ddTheme").onclick = function () {
-    setTheme();
-}
+/*
+ *document.getElementById("ddTheme").onclick = function () {
+ *   setTheme();
+ *};
+*/
 
 function setTheme (palId) {
 
@@ -80,7 +82,7 @@ function setTheme (palId) {
      * string "RGBA(r,g,b,a)" hash value, icon elements have a image src= hash value
      * 
      * @param {LightPallette|DarkPallette} palId
-     * @returns {String} Hash
+     * @returns {Associative Array} hash
      */
     function getPallette(palId) {
         var rgba;

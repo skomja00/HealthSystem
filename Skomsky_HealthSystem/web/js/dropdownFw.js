@@ -20,11 +20,30 @@
  * 
  */
 function dropdownFw (dropHeaderStyle, dropContentStyle ) {
+    
     var headerList = document.getElementsByClassName(dropHeaderStyle);
     
     /* After the <body> is rendered initialize the onclick function for each dropheader. */
+    /* First time through dropdownFw nothing runs just sets up the dropHeader click fn */
     for (var i = 0; i < headerList.length; i++) {
         headerList[i].onclick = function () {
+ 
+            /* toggle the border of the dropHeader that was clicked (i.e. "this") */
+            /* remove the borders of all the other dropHeaders other than "this" */
+            var headerList = document.getElementsByClassName(dropHeaderStyle);
+            for (var i = 0; i < headerList.length; i++) {
+                if (this["title"] === headerList[i]["title"]) {
+                    if (headerList[i].style["borderStyle"] === "") {
+                        headerList[i].style.borderStyle = "solid solid none solid";
+                        headerList[i].style.color = "#BBBBBB"; 
+                        headerList[i].style.borderRadius = "4px 4px 0px 0px";
+                    } else {
+                        headerList[i].style.borderStyle = ""; 
+                    }
+                } else {
+                    headerList[i].style.borderStyle = ""; 
+                }            
+            }
 
             // get the DOM element that is classed dropContentStyle which is a sibling 
             // of the dropHeader that was clicked. This is what we want to open or close.
@@ -51,9 +70,8 @@ function dropdownFw (dropHeaderStyle, dropContentStyle ) {
             } else {
                 show(dContent);
             }
-
-        };
-    }
+        }; 
+    } 
 
 
     // private function, makes element invisible (display:none cannot be used with transition/amimation).
@@ -61,14 +79,25 @@ function dropdownFw (dropHeaderStyle, dropContentStyle ) {
     // to the right and this will be where it starts when it is next made visible (for the "zoom in from 
     // right" animation). 
     function hide(ele) {
+        //debugger;
         /*ele.style.right = hiddenRight;*/ /* prefer element to pop up than animate */
+        ele.style.right = "0px";
         ele.style.visibility = "hidden";
     }
 
     // private function, makes element visible.
     function show(ele) {
-       ele.style.visibility = "visible";
+        //debugger;
         ele.style.right = "0px";
+        ele.style.visibility = "visible";
+     }
+
+    // private function, removes borders from dropHeaders
+    function hideAllDropHeaderBorders() {
+        var dropHeaderList = document.getElementsByClassName(dropHeaderStyle);
+        for (var i = 0; i < dropHeaderList.length; i++) {
+            dropHeaderList[i].style.borderStyle = ""; 
+        }
     }
 
     // private function, makes all drop content elements hidden.
@@ -80,9 +109,10 @@ function dropdownFw (dropHeaderStyle, dropContentStyle ) {
     }
 
     // Make it so that all dropdown content elements close whenever the user clicks anywhere 
-    // but on a drop down header.
+    // but on a dropdown header.
     window.onclick = function (event) {
         if (!event.target.matches('.' + dropHeaderStyle)) {
+            hideAllDropHeaderBorders();
             hideAllDropContents();
             //console.log("hiding all drop contents");
         } else {

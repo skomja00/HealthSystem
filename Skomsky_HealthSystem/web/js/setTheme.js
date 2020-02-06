@@ -1,3 +1,6 @@
+
+"use strict";
+
 /**
  * setTheme() will style a set of properties using one or another of two 
  * pallettes. Each pallette will store separate colors/icons.
@@ -35,23 +38,25 @@
  * hard-coded in the palletteDoc() fn. 
  * 
  */
-
-"use strict";
-
 /**
  * TODO: setup onclick fn. to restyle the document. 
  * Found the following code example on 
  * https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onclick
  */ 
 /*
- *document.getElementById("ddTheme").onclick = function () {
- *   setTheme();
- *};
 */
+document.getElementById("ddTheme").onclick = function () {
+    debugger;
+   setTheme();
+};
 
-function setTheme (palId) {
+/*
+ * setTheme() will toggle between 2 theme settings. 
+ * 
+ * @returns {nothing}
+ */function setTheme () {
 
-    /*var palId = togglePallette();*/
+    var palId = togglePallette();
     var hash = getPallette(palId);
     
     /* theme the single elements */
@@ -209,10 +214,11 @@ function setTheme (palId) {
     }
     
     /*
-     * 
-     * @returns {String} Togle between "LightPallette" or "DarkPallette" 
-     * depending on the current src= setting of the theme img icon. 
+     * Depending on the current <img src=...> setting of the theme icon 
+     * togglePallette() will return either "LightPallette" or "DarkPallette".
      * Clicking on the dark theme icon switches to light theme and vice versa.
+     * 
+     * @returns {String} either "LightPallette" or "DarkPallette" 
      */    
     function togglePallette() {
         var currThemeIcon = document.getElementById("theme-icon").src;
@@ -220,7 +226,7 @@ function setTheme (palId) {
         if (icon !== null) {
             return "LightPallette";
         };
-        var currThemeIcon = currThemeIcon.match(/sun-icon/g);  
+        var icon = currThemeIcon.match(/sun-icon/g);  
         if (icon !== null) {
             return "DarkPallette";
         }

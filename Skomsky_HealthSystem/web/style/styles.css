@@ -22,6 +22,7 @@ div {
     z-index: 2;
 
     left: 50%; /* aligns LEFT edge of element to the right of the "center" line of parent */
+    box-sizing: border; /* eliminates 100% + padding + border which would cause an unintended scroll bar */
     margin-left: -140px; /* negative left margin moves the title back to the center by adding margin and padding around right side*/
     top: 10px; /* this isnt margin its the position: property */
     
@@ -39,7 +40,7 @@ div {
 .content {
     text-align: center;
     height: 100%;
-    Box-sizing: border;
+    box-sizing: border; /* eliminates 100% + border which would cause a scroll bar */
     position: relative;
 }
 .list {

@@ -46,7 +46,6 @@
 /*
 */
 document.getElementById("ddTheme").onclick = function () {
-    debugger;
    setTheme();
 };
 
@@ -55,7 +54,7 @@ document.getElementById("ddTheme").onclick = function () {
  * 
  * @returns {nothing}
  */function setTheme () {
-
+    
     var palId = togglePallette();
     var hash = getPallette(palId);
     
@@ -230,5 +229,5 @@ document.getElementById("ddTheme").onclick = function () {
         if (icon !== null) {
             return "DarkPallette";
         }
-    };
+    }
 }

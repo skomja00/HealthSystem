@@ -78,7 +78,8 @@ patients.display = function (id) {
             patientList[i].PatientName = list[i].PatientName;
             //debugger;
             /* see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number*/
-            patientList[i].PatientId = Number(list[i].PatientId); //MakeSortableTable.js:81 Uncaught TypeError: val.replace is not a function at alignment (MakeSortableTable.js:81)
+            //patientList[i].PatientId = Number(list[i].PatientId); //MakeSortableTable.js:81 Uncaught TypeError: val.replace is not a function at alignment (MakeSortableTable.js:81)
+            patientList[i].PatientId = list[i].PatientId; //MakeSortableTable.js:81 Uncaught TypeError: val.replace is not a function at alignment (MakeSortableTable.js:81)
             patientList[i].ImageUrl = "<img  src='" + list[i].ImageUrl + "'>";
             
             /* convert admdate and format */
@@ -108,7 +109,8 @@ patients.display = function (id) {
             if (!isNaN(list[i].Balance)) { 
                 patientList[i].Balance = formatCurrency(Number(list[i].Balance));
             }
-            patientList[i].webUserId = Number(list[i].webUserId); //MakeSortableTable.js:81 Uncaught TypeError: val.replace is not a function at alignment (MakeSortableTable.js:81)
+            //patientList[i].webUserId = Number(list[i].webUserId); //MakeSortableTable.js:81 Uncaught TypeError: val.replace is not a function at alignment (MakeSortableTable.js:81)
+            patientList[i].webUserId = list[i].webUserId; //MakeSortableTable.js:81 Uncaught TypeError: val.replace is not a function at alignment (MakeSortableTable.js:81)
             patientList[i].webUserEmail = list[i].webUserEmail;
             patientList[i].webMembershipFee = formatCurrency(Number(list[i].webMembershipFee)); 
         }

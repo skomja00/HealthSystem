@@ -11,21 +11,25 @@ function MakeFilteredTable(list, id) {
     }
 
     function alignment(val) {
-
+              
         // check if date
         var parsedDate = Date.parse(val);
         if (isNaN(val) && (!isNaN(parsedDate))) {
-            return "center";
-        }
-
-        // check if numeric (remove $ and , and then check if numeric)
-        var possibleNum = val.replace("$", "");
-        possibleNum = possibleNum.replace(",", "");
-        if (isNaN(possibleNum)) {
             return "left";
         }
-        return "right"; // it's a number
-
+        
+        var possibleNum = val; 
+        if (Number.isInteger(val)) {
+            return "right"; // it's a number
+        } else {
+            // check if numeric (remove $ and , and then check if numeric)
+            possibleNum = val.replace("$",""); /* with integers was throwing "uncaught TypeError: val.replace is not a function" */  
+            possibleNum = possibleNum.replace(",","");
+            if (isNaN(possibleNum)) {
+                return "left";
+            } 
+            return "right"; // it's a number
+        }
     } // alignment
 
     // return true if any property of obj contains searchKey. Else return false.

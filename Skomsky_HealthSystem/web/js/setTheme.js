@@ -44,18 +44,19 @@
  * https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onclick
  */ 
 /*
-*/
-document.getElementById("ddTheme").onclick = function () {
-   setTheme();
-};
-
+*
+ *document.getElementById("ddTheme").onclick = function () {
+ *   setTheme();
+ *};
+ */
 /*
  * setTheme() will toggle between 2 theme settings. 
- * 
+ * @param {type} palId value is either "LightPallette" or "DarkPallette" selection of theme colors 
  * @returns {nothing}
- */function setTheme () {
+ *
+ * */function setTheme (palId) {
     
-    var palId = togglePallette();
+    /*var palId = togglePallette();*/
     var hash = getPallette(palId);
     
     /* theme the single elements */

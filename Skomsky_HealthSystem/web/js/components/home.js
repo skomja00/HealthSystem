@@ -37,7 +37,6 @@ function home(targetId) {
     "        </div> " +
     "    </li> " +
     "</ul>";
-    setTheme();
     document.getElementById(targetId).innerHTML = content;
 }
 

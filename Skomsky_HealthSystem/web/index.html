@@ -35,6 +35,8 @@
                 <div class="dropContent" id="searchDropDown">
                     <a href="#/users">Sort-Users</a> <br/>
                     <a href="#/patients">Search-Patients</a> <br/>
+                    <a href="#/ssusers">SlideShow-Users</a> <br/>
+                    <a href="#/sspatients">SlideShow-Patients</a> <br/>
                 </div>
             </div>            
             <div class="dropdown" id="ddTutorial">
@@ -123,6 +125,8 @@
         myRoutes['/logout'] = logout;
         myRoutes['/users'] = users.display;
         myRoutes['/patients'] = patients.display;
+        /*myRoutes['/ssusers'] = ssusers.display;*/
+        /*myRoutes['/sspatients'] = sspatients.display;*/
         myRoutes['/sort-users'] = users.display;
         myRoutes['/sort-patients'] = patients.display;
         myRoutes['/services'] = services;
@@ -137,8 +141,7 @@
         });  
         "use strict";
         dropdownFw("dropHeader", "dropContent");
-        "use strict";
-        setTheme();
+        setTheme("LightPallette");
     </script>
 </body>
 </html>

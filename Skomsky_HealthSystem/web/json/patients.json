@@ -4,16 +4,16 @@
 
         "MedRecNo": "TUN111111",
         "PatientName": "Hughes, Donna",
-        "PatientId": 1,
+        "PatientId": "ZZ1",
         "ImageUrl": "http://cis-linux2.temple.edu/~sallyk/pics_user/claudia.jpg",
         "AdmDateTime": "2010-09-06 10:35:32",
         "DschDateTime": null,
         "Description": "Offie Visit",
         "Diagnosis": "Patient Office or Other Outpatient Services   ",
-        "Balance": 150.000,
-        "webUserId": 1,
+        "Balance": "150.000",
+        "webUserId": "WW1",
         "webUserEmail": "hughes.donna@gmail.com",
-        "webMembershipFee": 14.95
+        "webMembershipFee": "14.95"
 
     },
 
@@ -21,16 +21,16 @@
 
         "MedRecNo": "TUN111112",
         "PatientName": "Martin, Elizabeth",
-        "PatientId": 2,
+        "PatientId": "ZZ2",
         "ImageUrl": "http://cis-linux2.temple.edu/~sallyk/pics_user/rose.jpg",
         "AdmDateTime": "2019-11-06 15:30:47",
         "DschDateTime": null,
         "Description": "Vaccination",
         "Diagnosis": "Influenza virus vaccine",
-        "Balance": 45.000,
-        "webUserId": 2,
+        "Balance": "45.000",
+        "webUserId": "WW2",
         "webUserEmail": "martin.elizabeth@gmail.com",
-        "webMembershipFee": 14.95
+        "webMembershipFee": "14.95"
 
     },
 
@@ -38,16 +38,16 @@
 
         "MedRecNo": "TUN111113",
         "PatientName": "Rutherford, Amelia",
-        "PatientId": 3,
+        "PatientId": "ZZ3",
         "ImageUrl": "http://cis-linux2.temple.edu/~sallyk/pics_user/sally.jpg",
         "AdmDateTime": "2019-12-07 22:35:41",
         "DschDateTime": "2021-12-08 16:50:00",
         "Description": "ED Visit",
         "Diagnosis": "Emergency department visit for the evaluation and management of a patient,",
-        "Balance": 2000.000,
-        "webUserId": 3,
+        "Balance": "2000.000",
+        "webUserId": "WW3",
         "webUserEmail": "rutherford.amelia@gmail.com",
-        "webMembershipFee": 14.95
+        "webMembershipFee": "14.95"
 
     },
 
@@ -55,16 +55,16 @@
 
         "MedRecNo": "TUN111114",
         "PatientName": "Hamilton, Edward",
-        "PatientId": 4,
+        "PatientId": "ZZ4",
         "ImageUrl": "http://cis-linux2.temple.edu/~sallyk/pics_user/tony.jpg",
         "AdmDateTime": "2020-10-12 08:00:00",
         "DschDateTime": null,
         "Description": "Office Visit",
         "Diagnosis": "Patient Office or Other Outpatient Services",
-        "Balance": 150.000,
-        "webUserId": 4,
+        "Balance": "150.000",
+        "webUserId": "WW4",
         "webUserEmail": "hamilton.edward@gmail.com",
-        "webMembershipFee": 14.95
+        "webMembershipFee": "14.95"
 
     },
 
@@ -72,16 +72,16 @@
 
         "MedRecNo": "TUN111115",
         "PatientName": "Chandler, Dana",
-        "PatientId": 5,
+        "PatientId": "ZZ5",
         "ImageUrl": "http://cis-linux2.temple.edu/~sallyk/pics_user/claudia.jpg",
         "AdmDateTime": "2019-11-06 15:35:21",
         "DschDateTime": null,
         "Description": "Vaccination",
         "Diagnosis": "Influenza virus vaccine",
-        "Balance": 45.000,
-        "webUserId": 5,
+        "Balance": "45.000",
+        "webUserId": "WW5",
         "webUserEmail": "chandler.dana@gmail.com",
-        "webMembershipFee": 14.95
+        "webMembershipFee": "14.95"
 
     },
 
@@ -89,16 +89,16 @@
 
         "MedRecNo": "TUN111116",
         "PatientName": "Pearson, Ella",
-        "PatientId": 6,
+        "PatientId": "ZZ6",
         "ImageUrl": "http://cis-linux2.temple.edu/~sallyk/pics_user/rose.jpg",
         "AdmDateTime": "2019-11-06 15:42:21",
         "DschDateTime": null,
         "Description": "Vaccination",
         "Diagnosis": "Influenza virus vaccine",
-        "Balance": 45.000,
-        "webUserId": 6,
+        "Balance": "45.000",
+        "webUserId": "WW6",
         "webUserEmail": "pearson.ella@gmail.com",
-        "webMembershipFee": 14.95
+        "webMembershipFee": "14.95"
 
     },
 
@@ -106,16 +106,16 @@
 
         "MedRecNo": "TUN111117",
         "PatientName": "Sanders, Jared",
-        "PatientId": 7,
+        "PatientId": "ZZ7",
         "ImageUrl": "http://cis-linux2.temple.edu/~sallyk/pics_user/andrew.jpg",
         "AdmDateTime": "2019-11-06 15:49:02",
         "DschDateTime": null,
         "Description": "Vaccination",
         "Diagnosis": "Influenza virus vaccine",
-        "Balance": 45.000,
-        "webUserId": 7,
+        "Balance": "45.000",
+        "webUserId": "WW7",
         "webUserEmail": "sanders.jared@gmail.com",
-        "webMembershipFee": 14.95
+        "webMembershipFee": "14.95"
 
     },
 
@@ -123,16 +123,16 @@
 
         "MedRecNo": "TUN111118",
         "PatientName": "Jennings, Ada",
-        "PatientId": 8,
+        "PatientId": "ZZ8",
         "ImageUrl": "http://cis-linux2.temple.edu/~sallyk/pics_user/sally.jpg",
         "AdmDateTime": "2019-12-23 14:21:59",
         "DschDateTime": null,
         "Description": "Office Visit",
         "Diagnosis": "Patient Office or Other Outpatient Services",
-        "Balance": 150.000,
-        "webUserId": 8,
+        "Balance": "150.000",
+        "webUserId": "WW8",
         "webUserEmail": "jennings.ada@gmail.com",
-        "webMembershipFee": 14.95
+        "webMembershipFee": "14.95"
 
     },
 
@@ -140,16 +140,16 @@
 
         "MedRecNo": "TUN111119",
         "PatientName": "Allen, Jillian",
-        "PatientId": 9,
+        "PatientId": "ZZ9",
         "ImageUrl": "http://cis-linux2.temple.edu/~sallyk/pics_user/andrew.jpg",
         "AdmDateTime": "2019-11-13 09:36:21",
         "DschDateTime": null,
         "Description": "Vaccination",
         "Diagnosis": "Influenza virus vaccine",
-        "Balance": 45.000,
-        "webUserId": 9,
+        "Balance": "45.000",
+        "webUserId": "WW9",
         "webUserEmail": "allen.jillian@gmail.com",
-        "webMembershipFee": 14.95
+        "webMembershipFee": "14.95"
 
     },
 
@@ -157,16 +157,16 @@
 
         "MedRecNo": "TUN111120",
         "PatientName": "Clarke, Jeremy",
-        "PatientId": 10,
+        "PatientId": "ZZ10",
         "ImageUrl": "http://cis-linux2.temple.edu/~sallyk/pics_user/tony.jpg",
         "AdmDateTime": "2020-01-01 00:01:06",
         "DschDateTime": "2020-01-02 23:44:31",
         "Description": "ED Visit",
         "Diagnosis": "Emergency department visit for the evaluation and management of a patient",
-        "Balance": 2000.000,
-        "webUserId": 10,
+        "Balance": "2000.000",
+        "webUserId": "WW10",
         "webUserEmail": "clarke.jeremy@gmail.com",
-        "webMembershipFee": 14.95
+        "webMembershipFee": "14.95"
 
     }
 ]

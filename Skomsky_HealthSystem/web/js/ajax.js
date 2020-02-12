@@ -1,11 +1,17 @@
 
+"use strict";
+
 // ********************** ajax *************************************   
 // Make an ajax call to the given url, then if the call was successful, 
 // call the Success Callback fn, otherwise, set an error message into the 
 // DOM element that has id 'errorId'.
-function ajax(url, callBackSuccess, errorId) {
+function ajax(params) {
 
-// The httpReq Object is now local to function "ajaxCall" (not global)
+    var url = params["url"] || "json/users.json";
+    var callBackSuccess = params["callBackSuccess"] || "callBackSuccess";
+    var errorId = params["content"] || "content";
+
+    // The httpReq Object is now local to function "ajaxCall" (not global)
     var httpReq;
     if (window.XMLHttpRequest) {
         httpReq = new XMLHttpRequest(); //For Firefox, Safari, Opera

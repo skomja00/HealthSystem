@@ -23,9 +23,9 @@ users.display = function (id) {
     // invoke ajax function to read cars.json and if the call was successful, 
     // run function processData, otherwise, put an error message in the DOM element 
     // that has id "listHere".
-    ajax("json/users.json", processData, "listHere");
+    ajax("json/users.json", usersProcessData, "listHere");
 
-        function processData(list) {
+        function usersProcessData(list) {
 
         // print out JS object/array that was converted from JSON data by ajax function
         console.log(list);

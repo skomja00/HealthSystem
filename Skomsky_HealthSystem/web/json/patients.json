@@ -1,173 +1,142 @@
 [
-    
     {
-
-        "MedRecNo": "TUN111111",
-        "PatientName": "Hughes, Donna",
-        "PatientId": "ZZ1",
-        "ImageUrl": "http://cis-linux2.temple.edu/~sallyk/pics_user/claudia.jpg",
-        "AdmDateTime": "2010-09-06 10:35:32",
-        "DschDateTime": null,
-        "Description": "Offie Visit",
-        "Diagnosis": "Patient Office or Other Outpatient Services   ",
-        "Balance": "150.000",
-        "webUserId": "WW1",
-        "webUserEmail": "hughes.donna@gmail.com",
-        "webMembershipFee": "14.95"
-
+        "VisitId" : "1",
+        "PatientName" : "Hughes, Donna",
+        "ImageUrl" : "http://cis-linux2.temple.edu/~sallyk/pics_user/claudia.jpg",
+        "MedRecNo" : "TUN143981",
+        "Description" : "Office Visit",
+        "VisitDateTime" : "2019-09-06 10:35:32",
+        "VisitDateTime" : "2019-09-06 10:35:32",
+        "Diagnosis" : "Patient Office or Other Outpatient Services",
+        "VisitCharge" : "154.950",
+        "webUserId" : "2",
+        "webUserEmail" : "services.s@gmail.com",
+        "webMembershipFee" : "4.95"
     },
-
     {
-
-        "MedRecNo": "TUN111112",
-        "PatientName": "Martin, Elizabeth",
-        "PatientId": "ZZ2",
-        "ImageUrl": "http://cis-linux2.temple.edu/~sallyk/pics_user/rose.jpg",
-        "AdmDateTime": "2019-11-06 15:30:47",
-        "DschDateTime": null,
-        "Description": "Vaccination",
-        "Diagnosis": "Influenza virus vaccine",
-        "Balance": "45.000",
-        "webUserId": "WW2",
-        "webUserEmail": "martin.elizabeth@gmail.com",
-        "webMembershipFee": "14.95"
-
+        "VisitId" : "2",
+        "PatientName" : "Martin, Elizabeth",
+        "ImageUrl" : "http://cis-linux2.temple.edu/~sallyk/pics_user/rose.jpg",
+        "MedRecNo" : "TUN114977",
+        "Description" : "Vaccination",
+        "VisitDateTime" : "2019-11-06 15:30:47",
+        "VisitDateTime" : "2019-11-06 15:30:47",
+        "Diagnosis" : "Influenza virus vaccine",
+        "VisitCharge" : "45.000",
+        "webUserId" : "2",
+        "webUserEmail" : "services.s@gmail.com",
+        "webMembershipFee" : "4.95"
     },
-
     {
-
-        "MedRecNo": "TUN111113",
-        "PatientName": "Rutherford, Amelia",
-        "PatientId": "ZZ3",
-        "ImageUrl": "http://cis-linux2.temple.edu/~sallyk/pics_user/sally.jpg",
-        "AdmDateTime": "2019-12-07 22:35:41",
-        "DschDateTime": "2021-12-08 16:50:00",
-        "Description": "ED Visit",
-        "Diagnosis": "Emergency department visit for the evaluation and management of a patient,",
-        "Balance": "2000.000",
-        "webUserId": "WW3",
-        "webUserEmail": "rutherford.amelia@gmail.com",
-        "webMembershipFee": "14.95"
-
+        "VisitId" : "4",
+        "PatientName" : "Hamilton, Edward",
+        "ImageUrl" : "http://cis-linux2.temple.edu/~sallyk/pics_user/tony.jpg",
+        "MedRecNo" : "TUN111114",
+        "Description" : "Office Visit",
+        "VisitDateTime" : "2020-10-12 08:00:00",
+        "VisitDateTime" : "2020-10-12 08:00:00",
+        "Diagnosis" : "Patient Office or Other Outpatient Services",
+        "VisitCharge" : "150.000",
+        "webUserId" : "2",
+        "webUserEmail" : "services.s@gmail.com",
+        "webMembershipFee" : "4.95"
     },
-
     {
-
-        "MedRecNo": "TUN111114",
-        "PatientName": "Hamilton, Edward",
-        "PatientId": "ZZ4",
-        "ImageUrl": "http://cis-linux2.temple.edu/~sallyk/pics_user/tony.jpg",
-        "AdmDateTime": "2020-10-12 08:00:00",
-        "DschDateTime": null,
-        "Description": "Office Visit",
-        "Diagnosis": "Patient Office or Other Outpatient Services",
-        "Balance": "150.000",
-        "webUserId": "WW4",
-        "webUserEmail": "hamilton.edward@gmail.com",
-        "webMembershipFee": "14.95"
-
+        "VisitId" : "6",
+        "PatientName" : "Pearson, Ella",
+        "ImageUrl" : "http://cis-linux2.temple.edu/~sallyk/pics_user/rose.jpg",
+        "MedRecNo" : "TUN559116",
+        "Description" : "Vaccination",
+        "VisitDateTime" : "2019-11-06 15:42:21",
+        "VisitDateTime" : "2019-11-06 15:42:21",
+        "Diagnosis" : "Influenza virus vaccine",
+        "VisitCharge" : "45.000",
+        "webUserId" : "2",
+        "webUserEmail" : "services.s@gmail.com",
+        "webMembershipFee" : "4.95"
     },
-
     {
-
-        "MedRecNo": "TUN111115",
-        "PatientName": "Chandler, Dana",
-        "PatientId": "ZZ5",
-        "ImageUrl": "http://cis-linux2.temple.edu/~sallyk/pics_user/claudia.jpg",
-        "AdmDateTime": "2019-11-06 15:35:21",
-        "DschDateTime": null,
-        "Description": "Vaccination",
-        "Diagnosis": "Influenza virus vaccine",
-        "Balance": "45.000",
-        "webUserId": "WW5",
-        "webUserEmail": "chandler.dana@gmail.com",
-        "webMembershipFee": "14.95"
-
+        "VisitId" : "8",
+        "PatientName" : "Jennings, Ada",
+        "ImageUrl" : "http://cis-linux2.temple.edu/~sallyk/pics_user/sally.jpg",
+        "MedRecNo" : "TUN922629",
+        "Description" : "Office Visit",
+        "VisitDateTime" : "2019-12-23 14:21:59",
+        "VisitDateTime" : "2019-12-23 14:21:59",
+        "Diagnosis" : "Patient Office or Other Outpatient Services",
+        "VisitCharge" : "150.000",
+        "webUserId" : "2",
+        "webUserEmail" : "services.s@gmail.com",
+        "webMembershipFee" : "4.95"
     },
-
     {
-
-        "MedRecNo": "TUN111116",
-        "PatientName": "Pearson, Ella",
-        "PatientId": "ZZ6",
-        "ImageUrl": "http://cis-linux2.temple.edu/~sallyk/pics_user/rose.jpg",
-        "AdmDateTime": "2019-11-06 15:42:21",
-        "DschDateTime": null,
-        "Description": "Vaccination",
-        "Diagnosis": "Influenza virus vaccine",
-        "Balance": "45.000",
-        "webUserId": "WW6",
-        "webUserEmail": "pearson.ella@gmail.com",
-        "webMembershipFee": "14.95"
-
+        "VisitId" : "10",
+        "PatientName" : "Clarke, Jeremy",
+        "ImageUrl" : "http://cis-linux2.temple.edu/~sallyk/pics_user/tony.jpg",
+        "MedRecNo" : "TUN111120",
+        "Description" : "ED Visit",
+        "VisitDateTime" : "2020-01-01 00:01:06",
+        "VisitDateTime" : "2020-01-01 00:01:06",
+        "Diagnosis" : "Emergency department visit for the evaluation and management of a patient",
+        "VisitCharge" : "2000.000",
+        "webUserId" : "2",
+        "webUserEmail" : "services.s@gmail.com",
+        "webMembershipFee" : "4.95"
     },
-
     {
-
-        "MedRecNo": "TUN111117",
-        "PatientName": "Sanders, Jared",
-        "PatientId": "ZZ7",
-        "ImageUrl": "http://cis-linux2.temple.edu/~sallyk/pics_user/andrew.jpg",
-        "AdmDateTime": "2019-11-06 15:49:02",
-        "DschDateTime": null,
-        "Description": "Vaccination",
-        "Diagnosis": "Influenza virus vaccine",
-        "Balance": "45.000",
-        "webUserId": "WW7",
-        "webUserEmail": "sanders.jared@gmail.com",
-        "webMembershipFee": "14.95"
-
+        "VisitId" : "3",
+        "PatientName" : "Rutherford, Amelia",
+        "ImageUrl" : "http://cis-linux2.temple.edu/~sallyk/pics_user/sally.jpg",
+        "MedRecNo" : "TUN193741",
+        "Description" : "ED Visit",
+        "VisitDateTime" : "2019-12-07 22:35:41",
+        "VisitDateTime" : "2019-12-07 22:35:41",
+        "Diagnosis" : "Emergency department visit for the evaluation and management of a patient",
+        "VisitCharge" : "2000.000",
+        "webUserId" : "6",
+        "webUserEmail" : "admin.admin@gmail.com",
+        "webMembershipFee" : "4.95"
     },
-
     {
-
-        "MedRecNo": "TUN111118",
-        "PatientName": "Jennings, Ada",
-        "PatientId": "ZZ8",
-        "ImageUrl": "http://cis-linux2.temple.edu/~sallyk/pics_user/sally.jpg",
-        "AdmDateTime": "2019-12-23 14:21:59",
-        "DschDateTime": null,
-        "Description": "Office Visit",
-        "Diagnosis": "Patient Office or Other Outpatient Services",
-        "Balance": "150.000",
-        "webUserId": "WW8",
-        "webUserEmail": "jennings.ada@gmail.com",
-        "webMembershipFee": "14.95"
-
+        "VisitId" : "5",
+        "PatientName" : "Chandler, Dana",
+        "ImageUrl" : "http://cis-linux2.temple.edu/~sallyk/pics_user/claudia.jpg",
+        "MedRecNo" : "TUN147765",
+        "Description" : "Vaccination",
+        "VisitDateTime" : "2019-11-06 15:35:21",
+        "VisitDateTime" : "2019-11-06 15:35:21",
+        "Diagnosis" : "Influenza virus vaccine",
+        "VisitCharge" : "45.000",
+        "webUserId" : "6",
+        "webUserEmail" : "admin.admin@gmail.com",
+        "webMembershipFee" : "4.95"
     },
-
     {
-
-        "MedRecNo": "TUN111119",
-        "PatientName": "Allen, Jillian",
-        "PatientId": "ZZ9",
-        "ImageUrl": "http://cis-linux2.temple.edu/~sallyk/pics_user/andrew.jpg",
-        "AdmDateTime": "2019-11-13 09:36:21",
-        "DschDateTime": null,
-        "Description": "Vaccination",
-        "Diagnosis": "Influenza virus vaccine",
-        "Balance": "45.000",
-        "webUserId": "WW9",
-        "webUserEmail": "allen.jillian@gmail.com",
-        "webMembershipFee": "14.95"
-
+        "VisitId" : "7",
+        "PatientName" : "Sanders, Jared",
+        "ImageUrl" : "http://cis-linux2.temple.edu/~sallyk/pics_user/andrew.jpg",
+        "MedRecNo" : "TUN158929",
+        "Description" : "Vaccination",
+        "VisitDateTime" : "2019-11-06 15:49:02",
+        "VisitDateTime" : "2019-11-06 15:49:02",
+        "Diagnosis" : "Influenza virus vaccine",
+        "VisitCharge" : "45.000",
+        "webUserId" : "6",
+        "webUserEmail" : "admin.admin@gmail.com",
+        "webMembershipFee" : "4.95"
     },
-
     {
-
-        "MedRecNo": "TUN111120",
-        "PatientName": "Clarke, Jeremy",
-        "PatientId": "ZZ10",
-        "ImageUrl": "http://cis-linux2.temple.edu/~sallyk/pics_user/tony.jpg",
-        "AdmDateTime": "2020-01-01 00:01:06",
-        "DschDateTime": "2020-01-02 23:44:31",
-        "Description": "ED Visit",
-        "Diagnosis": "Emergency department visit for the evaluation and management of a patient",
-        "Balance": "2000.000",
-        "webUserId": "WW10",
-        "webUserEmail": "clarke.jeremy@gmail.com",
-        "webMembershipFee": "14.95"
-
+        "VisitId" : "9",
+        "PatientName" : "Allen, Jillian",
+        "ImageUrl" : "http://cis-linux2.temple.edu/~sallyk/pics_user/rose.jpg",
+        "MedRecNo" : "TUN111119",
+        "Description" : "Vaccination",
+        "VisitDateTime" : "2019-11-13 09:36:21",
+        "VisitDateTime" : "2019-11-13 09:36:21",
+        "Diagnosis" : "Influenza virus vaccine",
+        "VisitCharge" : "45.000",
+        "webUserId" : "6",
+        "webUserEmail" : "admin.admin@gmail.com",
+        "webMembershipFee" : "4.95"
     }
 ]
-

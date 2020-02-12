@@ -1,124 +1,59 @@
 
-"use-strict";
+"use strict";
 
-/*
- * MakeSlideShow will insert 2 <div> into the content, and add click events
- * to navigate back and forth through the users. Another click event will toggle 
- * between the sides of the Flash Card. 
- * 
- * @param {json} see params object for list of items in the params
- *
- */
-function MakeSlideShow() {
+function MakeSlideShow () {
 
-    var ajaxParams = {
-        url : "json/users.json",
-        callBackSuccess : ssCallBackSuccess,
-        errorId : "contentId"
-    };
-    ajax(ajaxParams); /* XMLHttpRequest json and return it to callBackSuccess */
-    function ssCallBackSuccess(json) {
+    /* slideShow for users */
+     var ajaxParams = {
+         url : "json/users.json",
+         callBackSuccess : callBackSuccessUsers,
+         errorId : "content"
+     };
+     ajax(ajaxParams); /* XMLHttpRequest json and return it to callBackSuccess */
+     
+     /* slides for user email addresses */
+     function callBackSuccessUsers(jsonUsers) {
+
         var params = {
             contentId : "content",
-            captionText : "userEmail",
-            textColor : "#00FF70", 
-            imgPath : "pics/",
-            cardTextId : "cardTextId",
-            image : "image", 
-            jsonObject : json
+            clearContent : "clear", /* clear for 1st slides, "add" for addtnl. slide <div>'s */
+            slideDivClass : "slideUsersClass",
+            slideTitleId : "slideTitleIdUsers",    /* insert title here */
+            slideTitleText : "User Email",  /* add a title string */
+            slideCaptionId : "slideCaptionIdUsers",    /* insert caption here */
+            slideCaptionText : "userEmail",  /* json key to the caption */
+            slideImageId : "slideImageIdUsers", /* insert image here */
+            slideImage : "image",     /* json key to the image */
+            jsonObject : jsonUsers
         };
+        var ssUsers = MakeSlides(params);
+        ssUsers.setSlideNum(1);
+        ssUsers.setTitle("New Look Email");
+     }
 
-        var json = params["jsonObject"];
-        var captionText = params["captionText"] || "user@email.com";
-        var captionId = params["captionId"] || "captionId";
-        var contentId = params["contentId"] || "content";
+    /* slides for patient medical record numbers */
+     var ajaxParams = {
+         url : "json/patients.json",
+         callBackSuccess : callBackSuccessPatients,
+         errorId : "content"
+     };
+     ajax(ajaxParams); /* XMLHttpRequest json and return it to callBackSuccess */
+     function callBackSuccessPatients(jsonPatients) {
 
-        // private variable that keeps track of which slide is showing
-        var slideNum = 0;
+        var params = {
+            contentId : "content",
+            clearContent : "add", /* clear for 1st slides, "add" for addtnl. slide <div>'s */
+            slideDivClass : "slidePatientsClass",
+            slideTitleId : "slideTitleIdPatients",    /* insert title here */
+            slideTitleText : "Patient MedRec Number",  /* add a title string */
+            slideCaptionId : "slideCaptionIdPatients",  /* insert caption here */
+            slideCaptionText : "MedRecNo",  /* json key to the caption */
+            slideImageId : "slideImageIdPatients", /* insert image here */
+            slideImage : "ImageUrl",     /* json key to the image */
+            jsonObject : jsonPatients
+        };
+        var ssPatients = MakeSlides(params);
+        ssPatients.setTitle("New Look MRN#");
 
-        /* Get reference to the DOM object inside which the SlideShow will 
-         * be injected. Start building from empty content (i.e. innerHTML=""). */
-        var slideShow = document.getElementById(contentId);
-        slideShow.innerHTML = "";
-
-        /* create a <div> container for the slide show */
-        var slideDiv = document.createElement("div");
-        var cls = document.createAttribute("class");
-        cls.value = "slideDiv";
-        slideDiv.setAttributeNode(cls);
-
-        var img = document.createElement("img");
-        var cls = document.createAttribute("class");
-        cls.value = "slideImageClass";
-        img.setAttributeNode(cls);
-        var id = document.createAttribute("id");
-        id.value = "slideImageId";
-        img.setAttributeNode(id);
-        var src = document.createAttribute("src");
-        src.value = json[0]["image"];
-        img.setAttributeNode(src);
-        slideDiv.appendChild(img);
-
-        /* set the image */
-        function setImage (theImg) {
-            var ssImg = slideImg = document.getElementById("slideImageId");
-            ssImg.src = theImg;
-        }
-        
-        // add a caption
-        var caption = document.createElement("p");
-        var cls = document.createAttribute("class");
-        cls.value = "slideCaptionClass";
-        caption.setAttributeNode(cls);
-        var id = document.createAttribute("id");
-        id.value = "slideCaptionId";
-        caption.setAttributeNode(id);
-        caption.innerHTML = json[0][captionText];   
-        slideDiv.appendChild(caption);
-
-        /* set the caption */
-        function setCaption (theCaption) {
-            var ssCaption = document.getElementById("slideCaptionId");
-            ssCaption.innerHTML = theCaption;
-        }
-
-        // add back button 
-        var backButton = document.createElement("button");
-        backButton.innerHTML = " < ";
-        slideDiv.appendChild(backButton);
-
-        // add forward button  
-        var fwdButton = document.createElement("button");
-        fwdButton.innerHTML = " > ";
-        slideDiv.appendChild(fwdButton);
-
-        slideShow.appendChild(slideDiv); 
-
-        /* Advance to the next item in the slide show */
-        function nextSlide() {
-            slideNum++;
-            if (slideNum >= json.length) {
-                slideNum = 0;
-            }
-            setImage(json[slideNum]["image"]);
-            setCaption(json[slideNum][captionText]);
-        }
-
-        /* Go to the previous item in the slide show */
-        function prevSlide() {
-            slideNum--;
-            if (slideNum < 0) {
-                slideNum = json.length - 1;
-            }
-            setImage(json[slideNum]["image"]);
-            setCaption(json[slideNum][captionText]);
-        }
-
-        // Add onclick to the previous and back buttons and the <div> containing the card.
-        backButton.onclick = prevSlide;
-        fwdButton.onclick = nextSlide;
-
-        return slideShow;
-    }
-
+    };
 }

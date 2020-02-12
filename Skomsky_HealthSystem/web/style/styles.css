@@ -56,7 +56,7 @@ div {
  }
 .list-item:hover {
     border: 2px solid #bbbbbb;
-    box-shadow: 4px 4px 4px #bbbbbb;  /* "3D" effect on the main contianer list items */
+    box-shadow: 4px 4px 4px #bbbbbb;  /* "3D" effect */
 }
 .list-item-image {
     opacity: 1;
@@ -73,7 +73,6 @@ div {
     font-size: 2vw;
     padding-top: 3%;
 }
-
 .mission {
     position: relative;  /* positioned relative to its normal position */
     margin: 40px;
@@ -85,7 +84,6 @@ div {
   min-width: 50px; /* the mission text helps make a smaller % icon stand out */ 
   max-width: 100px;
   padding: 0px 8px 10px 8px;
-    
 }
 .theme-icon {
     min-width: 24px;

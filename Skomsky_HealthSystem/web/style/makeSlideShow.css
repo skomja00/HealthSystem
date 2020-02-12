@@ -1,0 +1,35 @@
+.slideDivClass {
+    display: inline-block; /* same as display:block but without the <br>'s */
+}
+.slideUsersClass {
+    float: left;
+    min-width: 45%;
+    background-color: rgba(242, 242, 223, 0.5);
+    box-shadow: 0px 0px 9px 7px rgba(204, 204, 204, 1); 
+    color: rgba(355, 255, 255, 1);
+    text-shadow: 0px 0px 10px rgba(0, 0, 0, 1);
+}
+.slidePatientsClass {
+    float: right;
+    min-width: 45%;
+    background-color: rgba(242, 242, 223, 0.5);
+    background-color: rgba(242, 242, 223, 0.5);
+    box-shadow: 0px 0px 9px 7px rgba(204, 204, 204, 1); 
+    color: rgba(355, 255, 255, 1);
+    text-shadow: 0px 0px 10px rgba(0, 0, 0, 1);
+}
+.slideImageClass {
+    box-shadow: 0px 0px 9px 7px rgba(204, 204, 204, 1); 
+}
+.slideButton {
+    margin: 8px;
+    padding: 2px;
+    background-color: rgba(242, 242, 223, 0.5);
+    background-color: rgba(242, 242, 223, 0.5);
+    box-shadow: 0px 0px 9px 7px rgba(204, 204, 204, 1); 
+    color: rgba(355, 255, 255, 1);
+    text-shadow: 0px 0px 8px rgba(0, 0, 0, 1);
+}
+.slideButton:hover {
+    box-shadow: 0px 0px 4px 4px #bbbbbb;  /* "3D" effect */
+}

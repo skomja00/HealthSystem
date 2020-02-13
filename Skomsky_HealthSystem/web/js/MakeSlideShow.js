@@ -16,7 +16,7 @@ function MakeSlideShow () {
 
         var params = {
             contentId : "content",
-            clearContent : "clear", /* clear for 1st slides, "add" for addtnl. slide <div>'s */
+            clearContent : "clear", /* "add" for addtnl slide <div>'s */
             slideDivClass : "slideUsersClass",
             slideTitleId : "slideTitleIdUsers",    /* insert title here */
             slideTitleText : "User Email",  /* add a title string */
@@ -42,7 +42,7 @@ function MakeSlideShow () {
 
         var params = {
             contentId : "content",
-            clearContent : "add", /* clear for 1st slides, "add" for addtnl. slide <div>'s */
+            clearContent : "add", /* "add" for addtnl slide <div>'s */
             slideDivClass : "slidePatientsClass",
             slideTitleId : "slideTitleIdPatients",    /* insert title here */
             slideTitleText : "Patient MedRec Number",  /* add a title string */
@@ -54,6 +54,7 @@ function MakeSlideShow () {
         };
         var ssPatients = MakeSlides(params);
         ssPatients.setTitle("New Look MRN#");
+        ssPatients.setSlideNum(4);
 
     };
 }

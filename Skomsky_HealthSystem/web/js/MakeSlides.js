@@ -11,7 +11,7 @@
  */
 function MakeSlides(params) {
 
-    var contentId = params["content"] || "content";
+    var contentId = params["contentId"] || "content";
     var clearContent = params["clearContent"] || "clear"; /* "add" for addtnl slide <div>'s */
     var slideDivClass = params["slideDivClass"] || "slideDivClass";
     var slideTitleId = params["slideTitleId"] || "slideTitleId";
@@ -42,7 +42,7 @@ function MakeSlides(params) {
     var id = document.createAttribute("id");
     id.value = slideTitleId;
     title.setAttributeNode(id);
-    title.innerHTML = slideTitleText;   
+    title.innerHTML = slideTitleText;
     slideDiv.appendChild(title);
 
     /* add an image */
@@ -130,21 +130,13 @@ function MakeSlides(params) {
 
     /* Display the item */
     function display () {
-        slideShow.setTitle(slideTitleText);
+        /*slideShow.setTitle(slideTitleText); /* TODO: onclick ssUsers prev/next local variable slideTitleId is slideTitleIdPatient
+                                                       onclick ssPatients prev/next local variable slideTitleId is also slideTitleIdPatient */
         setImage(json[slideNum][slideImage]);
         setCaption(json[slideNum][slideCaptionText]);
     };
     
     display();
-    
-//    /* Set the item in the slide show */
-//    slideShow.display = function () {
-//        setTitle(slideTitleText);
-//        setImage(json[slideNum][slideImage]);
-//        setCaption(json[slideNum][slideCaptionText]);
-//    };
-//    
-//    slideShow.display();
     
     return slideShow;
 

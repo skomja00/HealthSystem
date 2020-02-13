@@ -3,8 +3,7 @@
 
 /*
  * MakeSlideShow will insert 2 <div> into the content, and add click events
- * to navigate back and forth through the users. Another click event will toggle 
- * between the sides of the Flash Card. 
+ * to navigate back and forth through the slides. 
  * 
  * @param {json} see params object for list of items in the params
  *

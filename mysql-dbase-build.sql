@@ -33,10 +33,6 @@ USE SP20_3308_tun49199;
     INSERT INTO `user_role` (`user_role_id`, `user_role_type`) VALUES (5000,'documents');
     /* Try to add a record with a duplicate primary key (i.e. 3000 below) and notice the database management system will not let that record be inserted. */
     /* MySQL output: Error Code: 1062. Duplicate entry '3000' for key 'PRIMARY'*/
-    -- INSERT INTO `user_role` (`user_role_id`, `user_role_type`) VALUES (3000,'guest'); 
---     INSERT INTO `user_role` (`user_role_id`, `user_role_type`) VALUES (6000,'patient');
---     INSERT INTO `user_role` (`user_role_id`, `user_role_type`) VALUES (7000,'guest');
-
 
 /**
  * get_user_role_id() will return the user_role_id given a user_role_type
@@ -82,40 +78,6 @@ CREATE TABLE `web_user` (
  *  Add data to web_user table
  */
 
---     /* At least one of these records shall have all of its fields populated. */
---    /* web_users are the people who entered the data into the database */
---     INSERT INTO `web_user` 
---         (`user_email`,                  `user_password`,`image`,                                                     `birthday`,  `membership_fee`,`user_role_id`) values
---         ('hughes.donna@gmail.com',      'hughesd',      'http://cis-linux2.temple.edu/~sallyk/pics_user/claudia.jpg',  '1999-01-01', 14.95,           get_user_role_id('patient'));
---     INSERT INTO `web_user` 
---         (`user_email`,                  `user_password`,`image`,                                                     `birthday`,  `membership_fee`,`user_role_id`) values
---         ('martin.elizabeth@gmail.com',  'martine',      'http://cis-linux2.temple.edu/~sallyk/pics_user/rose.jpg',   '1985-01-01', 14.95,           get_user_role_id('patient'));
---     INSERT INTO `web_user` 
---         (`user_email`,                  `user_password`,`image`,                                                     `birthday`,  `membership_fee`,`user_role_id`) values
---         ('rutherford.amelia@gmail.com', 'rutherforda',  'http://cis-linux2.temple.edu/~sallyk/pics_user/sally.jpg',  '1999-01-01', 14.95,           get_user_role_id('patient'));
---     INSERT INTO `web_user` 
---         (`user_email`,                  `user_password`,`image`,                                                     `birthday`,  `membership_fee`,`user_role_id`) values
---         ('hamilton.edward@gmail.com',   'hamiltone',    'http://cis-linux2.temple.edu/~sallyk/pics_user/tony.jpg',   '1999-01-01', 14.95,           get_user_role_id('patient'));
---     INSERT INTO `web_user` 
---         (`user_email`,                  `user_password`,`image`,                                                       `birthday`,  `membership_fee`,`user_role_id`) values
---         ('chandler.dana@gmail.com',     'chandlerd',     'http://cis-linux2.temple.edu/~sallyk/pics_user/claudia.jpg', '1999-01-01', 14.95,           get_user_role_id('patient'));
---     INSERT INTO `web_user` 
---         (`user_email`,                  `user_password`,`image`,                                                     `birthday`,  `membership_fee`,`user_role_id`) values
---         ('pearson.ella@gmail.com',      'pearsone',     'http://cis-linux2.temple.edu/~sallyk/pics_user/rose.jpg',   '1999-01-01', 14.95,           get_user_role_id('patient'));
---     INSERT INTO `web_user` 
---         (`user_email`,                  `user_password`,`image`,                                                      `birthday`,  `membership_fee`,`user_role_id`) values
---         ('sanders.jared@gmail.com',     'sandersj',     'http://cis-linux2.temple.edu/~sallyk/pics_user/claudia.jpg', '1981-01-01', 14.95,           get_user_role_id('patient'));
---     INSERT INTO `web_user` 
---         (`user_email`,                  `user_password`,`image`,                                                      `birthday`,  `membership_fee`,`user_role_id`) values
---         ('jennings.ada@gmail.com',      'jenningsa',    'http://cis-linux2.temple.edu/~sallyk/pics_user/rose.jpg',    '2003-01-01', 14.95,           get_user_role_id('patient'));
---     INSERT INTO `web_user` 
---         (`user_email`,                  `user_password`,`image`,                                                      `birthday`,  `membership_fee`,`user_role_id`) values
---         ('allen.jillian@gmail.com',     'allenj',       'http://cis-linux2.temple.edu/~sallyk/pics_user/sally.jpg',   '1968-01-01', 14.95,           get_user_role_id('patient'));
---     INSERT INTO `web_user` 
---         (`user_email`,                  `user_password`,`image`,                                                      `birthday`,  `membership_fee`,`user_role_id`) values
---         ('clarke.jeremy@gmail.com',     'clarkej',      'http://cis-linux2.temple.edu/~sallyk/pics_user/tony.jpg',   '1999-01-01', 14.95,           get_user_role_id('patient'));
--- 
-
     /* try to delete a user_role record that has been referenced by a web_user record */
     /* Error Code: 1451. Cannot delete or update a parent row: a foreign key constraint fails */
     -- DELETE FROM user_role WHERE user_role.user_role_id = get_user_role_id('patient'); 
@@ -123,10 +85,10 @@ CREATE TABLE `web_user` (
     /* At least one of these records shall have null for all nullable non character fields. */    
     INSERT INTO `web_user` 
         (`user_email`,              `user_password`,`image`,                                                       `birthday`,  `membership_fee`,`user_role_id`) values
-        ('nulls.user@gmail.com',     null,           null,                                                            null,        null,            get_user_role_id('admin'));
+        ('nulls.user@gmail.com',     null,           null,                                                         null,        null,             get_user_role_id('admin'));
     INSERT INTO `web_user` 
         (`user_email`,              `user_password`,`image`,                                                       `birthday`,  `membership_fee`,`user_role_id`) values 
-        ('services.s@gmail.com',    'eeditor',       'http://cis-linux2.temple.edu/~sallyk/pics_user/tony.jpg',   '2000-11-19',  4.95,             get_user_role_id('services'));
+        ('services.s@gmail.com',    'eeditor',       'http://cis-linux2.temple.edu/~sallyk/pics_user/tony.jpg',   '2000-11-19',  4.95,            get_user_role_id('services'));
     INSERT INTO `web_user` 
         (`user_email`,              `user_password`,`image`,                                                       `birthday`,  `membership_fee`,`user_role_id`) values 
         ('busofc.b@gmail.com',      'eeditor',       'http://cis-linux2.temple.edu/~sallyk/pics_user/andrew.jpg',  '1984-12-11', 4.95,            get_user_role_id('busofc'));
@@ -138,7 +100,7 @@ CREATE TABLE `web_user` (
         ('manager.m@gmail.com',     'mmanager',     'http://cis-linux2.temple.edu/~sallyk/pics_user/andrew.jpg',   '1991-06-03', 4.95,            get_user_role_id('manager'));
     INSERT INTO `web_user` 
         (`user_email`,              `user_password`,`image`,                                                       `birthday`,  `membership_fee`,`user_role_id`) values
-        ('admin.admin@gmail.com',   'aadmin',       'http://cis-linux2.temple.edu/~sallyk/pics_user/andrew.jpg',   '1985-01-01', 4.95,            get_user_role_id('admin'));
+        ('admin.a@gmail.com',       'aadmin',       'http://cis-linux2.temple.edu/~sallyk/pics_user/tony.jpg',     '1985-01-01', 4.95,            get_user_role_id('admin'));
     
     /* Try to add a record that has an invalid (non-existent) user_role_id and notice that the database management system will not let that record be inserted. */
     /* Error Code: 1452. Cannot add or update a child row: a foreign key constraint fails */
@@ -185,40 +147,6 @@ CREATE TABLE `PatientVisit` (
     -- AUTO_INCREMENT=11 
     -- DEFAULT CHARSET=latin1;
     
--- /**
---  * Create Patient/"other" table 
--- *
---     CREATE TABLE `patient` (
---         /* Id: primary key, auto-increment, name this field with table name followed by “_id”) */
---         `Patient_Id` INT(11) NOT NULL AUTO_INCREMENT,
---         /* Name or some kind of character identifier (require it to be unique, click on “UQ”) */
---         `MedRecNo` VARCHAR(255) NOT NULL,
---         /* image URL – a long varchar since fully qualified URLs can be pretty long */
---         `ImageUrl` VARCHAR(2100) NOT NULL,
---         /* long character (description) */
---         `Description` VARCHAR(2100) NOT NULL,
---         /* 1 of 2:· at least two nullable (user optional) non-character fields, e.g., integer, decimal (for money), date */
---         `VisitDateTime` DATETIME NULL,
---         /* 2 of 2:· at least two nullable (user optional) non-character fields, e.g., integer, decimal (for money), date */
---         `VisitDateTime` DATETIME NULL,
---         /* “web_user_id”, a foreign key that points to the user who contributed this information */
---     --     `web_user_id_fk` INT(11) NOT NULL,
---         /* 1 OF 3 You can add more fields if you like, but don’t add too many  */
---         `Diagnosis` VARCHAR(255) NULL,
---         /* 2 OF 3 You can add more fields if you like, but don’t add too many  */
---         `PatientName` VARCHAR(255) NULL,
---         /* 3 OF 3 You can add more fields if you like, but don’t add too many  */
---         `Balance` DECIMAL(14,3) NULL,        
---         PRIMARY KEY (`Patient_Id`),
---         UNIQUE INDEX `MedRecNo_UNIQUE` (`MedRecNo` ASC),
---         CONSTRAINT `web_user_id_fk` FOREIGN -- KEY (`web_user_id_fk`) REFERENCES `web_user` (`web_user_id`)
---         ON DELETE NO ACTION
---         ON UPDATE NO ACTION
---     )
--- 
-/**
- * Add data to Patient/"other" table 
-*/
 /**
  * Add data to Patient/"other" table 
 */
@@ -275,7 +203,7 @@ CREATE TABLE `PatientVisit` (
         '2019-12-07 22:35:41',
         'Emergency department visit for the evaluation and management of a patient',
         2000.00,
-        get_web_user_id('admin.admin@gmail.com'));
+        get_web_user_id('admin.a@gmail.com'));
     INSERT INTO `PatientVisit` 
         (`PatientName`,
         `ImageUrl`,
@@ -311,7 +239,7 @@ CREATE TABLE `PatientVisit` (
         '2019-11-06 15:35:21', 
         'Influenza virus vaccine',                             
         45.00,
-        get_web_user_id('admin.admin@gmail.com'));
+        get_web_user_id('admin.a@gmail.com'));
     INSERT INTO `PatientVisit` 
         (`PatientName`,
         `ImageUrl`,
@@ -347,7 +275,7 @@ CREATE TABLE `PatientVisit` (
         '2019-11-06 15:49:02',
         'Influenza virus vaccine',                             
         45.00,
-        get_web_user_id('admin.admin@gmail.com'));
+        get_web_user_id('admin.a@gmail.com'));
     INSERT INTO `PatientVisit` 
         (`PatientName`,
         `ImageUrl`,
@@ -383,7 +311,7 @@ CREATE TABLE `PatientVisit` (
         '2019-11-13 09:36:21',
         'Influenza virus vaccine',                             
         45.00,
-        get_web_user_id('admin.admin@gmail.com'));
+        get_web_user_id('admin.a@gmail.com'));
     INSERT INTO `PatientVisit` 
         (`PatientName`,
         `ImageUrl`,
@@ -460,21 +388,50 @@ CREATE TABLE `PatientVisit` (
  *
 */
 
+-- select 
+--     '{'
+--     ,concat('    "VisitId" : "', pv.VisitId,'",')
+--     ,concat('    "PatientName" : "', pv.PatientName,'",')
+--     ,concat('    "ImageUrl" : "', pv.ImageUrl,'",')
+--     ,concat('    "MedRecNo" : "', pv.MedRecNo,'",')
+--     ,concat('    "Description" : "', pv.Description,'",')
+--     ,concat('    "VisitDateTime" : "', coalesce(pv.VisitDateTime,'null'),'",')
+--     ,concat('    "VisitDateTime" : "', coalesce(pv.VisitDateTime,'null'),'",')
+--     ,concat('    "Diagnosis" : "', pv.Diagnosis,'",')
+--     ,concat('    "VisitCharge" : "', pv.VisitCharge,'",')
+--     ,concat('    "webUserId" : "', wu.web_user_id,'",')
+--     ,concat('    "webUserEmail" : "', wu.user_email,'",')
+--     ,concat('    "webMembershipFee" : "', wu.membership_fee,'"')
+--     ,'},'
+-- from PatientVisit as pv
+-- join web_user as wu on wu.web_user_id = pv.web_user_id_fk
+
 select 
-    '{'
-    ,concat('    "VisitId" : "', pv.VisitId,'",')
-    ,concat('    "PatientName" : "', pv.PatientName,'",')
-    ,concat('    "ImageUrl" : "', pv.ImageUrl,'",')
-    ,concat('    "MedRecNo" : "', pv.MedRecNo,'",')
-    ,concat('    "Description" : "', pv.Description,'",')
-    ,concat('    "VisitDateTime" : "', coalesce(pv.VisitDateTime,'null'),'",')
-    ,concat('    "VisitDateTime" : "', coalesce(pv.VisitDateTime,'null'),'",')
-    ,concat('    "Diagnosis" : "', pv.Diagnosis,'",')
-    ,concat('    "VisitCharge" : "', pv.VisitCharge,'",')
-    ,concat('    "webUserId" : "', wu.web_user_id,'",')
-    ,concat('    "webUserEmail" : "', wu.user_email,'",')
-    ,concat('    "webMembershipFee" : "', wu.membership_fee,'"')
-    ,'},'
+    pv.VisitId,
+    pv.PatientName,
+    pv.ImageUrl,
+    pv.MedRecNo,
+    pv.Description,
+    pv.VisitDateTime,
+    pv.Diagnosis,
+    pv.VisitCharge,
+    wu.web_user_id,
+    wu.user_email,
+    wu.membership_fee
 from PatientVisit as pv
 join web_user as wu on wu.web_user_id = pv.web_user_id_fk
+
+
+SELECT 
+	web_user_id, 
+	user_email, 
+	user_password, 
+	membership_fee,
+    image,
+	birthday, 
+	web_user.user_role_id, 
+	user_role_type
+FROM web_user, user_role 
+where web_user.user_role_id = user_role.user_role_id
+ORDER BY web_user_id
 

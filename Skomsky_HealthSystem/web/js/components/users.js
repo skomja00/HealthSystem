@@ -1,4 +1,6 @@
 
+"use strict";
+
 // Declare single global object with same name as js file name.
 // This object will have just one public method for now, but more later...
 var users = {};
@@ -23,48 +25,39 @@ users.display = function (id) {
     // invoke ajax function to read cars.json and if the call was successful, 
     // run function processData, otherwise, put an error message in the DOM element 
     // that has id "listHere".
-    ajax("json/users.json", usersProcessData, "listHere");
+    var params = 
+        {
+            "url" : "WebAPIs/listUsersAPI.jsp",
+            //"url" : "json/users.json",
+            "callBackSuccess" : usersProcessData,
+            "errorId" : "listHere" 
+        };
+    //ajax("json/users.json", usersProcessData, "listHere");
+    ajax(params);
 
-        function usersProcessData(list) {
+    function usersProcessData(list) {
 
         // print out JS object/array that was converted from JSON data by ajax function
+        console.log("usersProcessData(list) is ");
         console.log(list);
 
         // build new list as we want the fields to appear in the HTML table
         // we can decide the order we want the fields to appear (first property defined is shown first)
         // we can combine, decide to exclude etc...
         var userList = [];
-
-        // private function can only be called in processData()
-        /* see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toLocaleString */
-        function formatCurrency(num) {
-            return num.toLocaleString("en-US", {style: "currency", 
-                                                currency: "USD", 
-                                                maximumFractionDigits: 2,
-                                                currencyDisplay: "symbol"});
-        }
-
-        // modify properties (image and price) of the array of objects so it will look 
-        // better on the page.
-        for (var i = 0; i < list.length; i++) {
+        /* Add to userList data from json returned from ajax */
+        for (var i = 0; i < list["webUserList"].length; i++) {
 
             userList[i] = {};
-            // Don't show the id (no meaningful data)
-            userList[i].image = "<img  src='" + list[i].image + "'>";
-            userList[i].userEmail = list[i].userEmail; // show this first
+            userList[i].image = "<img  src='" + list["webUserList"][i].image + "'>";
+            userList[i].userEmail = list["webUserList"][i].userEmail; // show this first
             // Don't show the password
             // Don't show private info
-            //userList[i].birthday = list[i].birthday;
-            
-            /* convert numeric string to number and format as currency */
-            if (!isNaN(list[i].membershipFee)) { 
-                userList[i].membershipFee = formatCurrency(Number(list[i].membershipFee));
-            }
-            
-            userList[i].role = list[i].userRoleId + " - " + list[i].userRoleType;
+            userList[i].membershipFee = list["webUserList"][i].membershipFee;
+            userList[i].role = list["webUserList"][i].userRoleId + " - " + list["webUserList"][i].userRoleType;
         }
 
-        console.log("USER LIST");
+        console.log("usersProcessData userList is ");
         console.log(userList);
 
         // Making a DOM object, nothing shows yet... 

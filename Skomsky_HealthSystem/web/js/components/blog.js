@@ -95,32 +95,18 @@ function blog(id) {
             liking sort of left-justified with the dropdown header. 
         </p>
         <a id='#hw4'></a>
-        <h2>HW 4 Slide Show or Tutorial Proposal</h2>
+        <h2>HW 4 Slide Show</h2>
         <p>
-            <em>[If selecting the Slide Show...]</em> 
+            In this homework I used public and private properties of DOM elements. I created 
+            objects and appended them together to insert into the content element. 
+            I coded MakeSlides using parameter js objects so I could reuse it to insert
+            two slides show into the content thereby re-using MakeSlides. Object params also eliminates the 
+            need for a specific order of passing in parameters since when they are passed 
+            the function just selects using the named index. Also it's good practive to default values  
+            using the || boolean operator. In an assignment though the values
+            are not boolean instead js sees values such as 0, "", null, and undefined as
+            "falsey" and will then check the 2nd operator for a "truthey" (default) value.
         </p>
-        <p style="margin-left:2em">
-            In this homework I learned another way to display my image data ... 
-            The parts that I found easy were ... 
-            The parts that I found hard or confusing were ... 
-            To see my slide show, click the last entry under the search icon.
-        </p>
-        <p>
-            <em>[If selecting the Tutorial Proposal...]</em>
-        </p>
-        <ul>
-            <li>
-                Click <a target="_blank" href="tutorial/proposal.pdf">here</a> for my Tutorial Proposal, 
-                a pdf that describes the provider style (reusable) JS code I propose to implement. The pdf
-                provides links to the web pages that inspired my idea.
-            </li>
-            <li>
-                Click <a target="_blank" href="tutorial/poc.pdf">here</a> to see my Proof of Concept
-                code, which gives an idea of what I'm trying to accomplish but has not been fully implemented,
-                not converted to consumer/provider style yet.
-            </li>
-        </ul>
-
         <a id='#hw5'></a>
         <h2>HW 5 Web APIs</h2>
         <p>

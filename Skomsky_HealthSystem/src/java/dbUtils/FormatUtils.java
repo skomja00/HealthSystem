@@ -11,6 +11,36 @@ import java.math.BigDecimal;
  */
 public class FormatUtils {
 
+    // Turns a date into a nicely formatted String.
+    public static String formatDateTime(Object obj) {
+        if (obj == null) {
+            return "";
+        }
+        try {
+            java.util.Date dateval = (java.util.Date) obj;
+            SimpleDateFormat dateformat = new SimpleDateFormat("MM/dd/yyyy h:mm a");
+            dateformat.setLenient(false);
+            return dateformat.format(dateval);
+        } catch (Exception e) {
+            return "bad date in FormatUtils.formatDate: " + obj.toString() + " error: " + e.getMessage();
+        }
+    } // formatDate
+
+    public static String formatDateTimeTd(Object obj) {
+        String out = "<td style='text-align:center'>";
+        String strDate = formatDate(obj);
+        if (strDate.length() == 0) {
+            // if you don't put a "non-breaking space" in an empty td/cell, 
+            // the cell's border doesn't show !
+            out += "&nbsp;";
+        } else {
+            out += strDate;
+        }
+        out += "</td>";
+        return out;
+    } // formatDateTd
+
+
     // DecimalFormat percentFormat = new DecimalFormat("%###.##");
     // Turns a date into a nicely formatted String.
     public static String formatDate(Object obj) {

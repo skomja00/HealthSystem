@@ -41,7 +41,7 @@ public class StringData {
             this.imageUrl = FormatUtils.formatString(results.getObject("ImageUrl"));
             this.medRecNo = FormatUtils.formatString(results.getObject("MedRecNo"));
             this.description = FormatUtils.formatString(results.getObject("Description"));
-            this.visitDateTime = FormatUtils.formatDate(results.getObject("VisitDateTime"));
+            this.visitDateTime = FormatUtils.formatDateTime(results.getObject("VisitDateTime"));
             this.diagnosis = FormatUtils.formatString(results.getObject("Diagnosis"));
             this.visitCharge = FormatUtils.formatDollar(results.getObject("VisitCharge"));
             this.webUserId = FormatUtils.formatInteger(results.getObject("wu.web_user_id"));

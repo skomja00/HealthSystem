@@ -49,7 +49,7 @@ users.display = function (id) {
         for (var i = 0; i < list["webUserList"].length; i++) {
 
             userList[i] = {};
-            userList[i].image = "<img  src='" + list["webUserList"][i].image + "'>";
+            userList[i].imageUrl = "<img  src='" + list["webUserList"][i].imageUrl + "'>";
             userList[i].userEmail = list["webUserList"][i].userEmail; // show this first
             // Don't show the password
             // Don't show private info
@@ -61,7 +61,12 @@ users.display = function (id) {
         console.log(userList);
 
         // Making a DOM object, nothing shows yet... 
-        //MakeFilteredTable(userList, "listHere");
-        MakeSortableTable(userList, "listHere", "role");
+        var params = {
+            "theList" : userList,
+            "targetId" : "listHere",
+            "searchInputId" : "searchInputId",
+            "sortOrderPropName" : "userEmail"
+        };
+        MakeFilterSortTable(params);
     }
 };

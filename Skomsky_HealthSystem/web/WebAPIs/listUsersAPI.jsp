@@ -8,7 +8,7 @@
 <%
     // default constructor creates nice empty StringDataList with all fields "" (empty string, nothing null).
     StringDataList list = new StringDataList();
-
+    
     DbConn dbc = new DbConn();
     list.dbError = dbc.getErr(); // returns "" if connection is good, else db error msg.
 

@@ -16,9 +16,11 @@ function MakeSlides(params) {
     var slideTitleId = params["slideTitleId"] || "slideTitleId";
     var slideTitleText = params["slideTitleText"] || "Slides";
     var slideCaptionId = params["slideCaptionId"] || "slideCaptionId";
-    var slideCaptionText = params["slideCaptionText"] || "userEmail";
+    var slideCaption = params["slideCaption"];
     var slideImageId = params["slideImageId"] || "slideImageId";
-    var slideImage = params["slideImage"] || "image";
+    var slideImage = params["slideImage"] || "imageUrl";
+    var slideImageNA = params["slideImageNA"] /* unavailable image */
+    var jsonKey = params["jsonKey"];
     var json = params["jsonObject"];
 
     // private variable that keeps track of which slide is showing
@@ -57,7 +59,12 @@ function MakeSlides(params) {
     /* set the image */
     function setImage (theImg) {
         var ssImg = document.getElementById(slideImageId);
-        ssImg.src = theImg;
+        if (theImg.length > 0) {
+            ssImg.src = theImg;
+        } else {
+            ssImg.src = slideImageNA;
+        };
+        
     }
 
     // add a caption
@@ -91,7 +98,7 @@ function MakeSlides(params) {
     /* Advance to the next item in the slide show */
     function nextSlide() {
         slideNum++;
-        if (slideNum >= json.length) {
+        if (slideNum >= json[jsonKey].length) {
             slideNum = 0;
         }
         display();
@@ -101,7 +108,7 @@ function MakeSlides(params) {
     function prevSlide() {
         slideNum--;
         if (slideNum < 0) {
-            slideNum = json.length - 1;
+            slideNum = json[jsonKey].length - 1;
         }
         display();
     }
@@ -119,7 +126,7 @@ function MakeSlides(params) {
 
     /* public function to set the slideNum */
     slideShow.setSlideNum = function (theSlideNum) {
-        if (theSlideNum >= json.length || theSlideNum < 0) {
+        if (theSlideNum >= json[jsonKey].length || theSlideNum < 0) {
             slideShow.innerHTML = "Invalid slide number";
         } else {
             slideNum = theSlideNum;
@@ -131,8 +138,8 @@ function MakeSlides(params) {
     function display () {
         /*slideShow.setTitle(slideTitleText); /* TODO: onclick ssUsers prev/next local variable slideTitleId is slideTitleIdPatient
                                                        onclick ssPatients prev/next local variable slideTitleId is also slideTitleIdPatient */
-        setImage(json[slideNum][slideImage]);
-        setCaption(json[slideNum][slideCaptionText]);
+        setImage(json[jsonKey][slideNum][slideImage]);
+        setCaption(json[jsonKey][slideNum][slideCaption]);
     };
     
     display();

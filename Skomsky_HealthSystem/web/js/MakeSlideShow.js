@@ -3,9 +3,14 @@
 
 function MakeSlideShow () {
 
+
+            
+
+
     /* slideShow for users */
      var ajaxParams = {
-         url : "json/users.json",
+         "url" : "WebAPIs/listUsersAPI.jsp",
+        //"url" : "json/users.json",
          callBackSuccess : callBackSuccessUsers,
          errorId : "content"
      };
@@ -13,7 +18,7 @@ function MakeSlideShow () {
      
      /* slides for user email addresses */
      function callBackSuccessUsers(jsonUsers) {
-
+         
         var params = {
             contentId : "content",
             clearContent : "clear", /* "add" for addtnl slide <div>'s */
@@ -21,19 +26,22 @@ function MakeSlideShow () {
             slideTitleId : "slideTitleIdUsers",    /* insert title here */
             slideTitleText : "User Email",  /* add a title string */
             slideCaptionId : "slideCaptionIdUsers",    /* insert caption here */
-            slideCaptionText : "userEmail",  /* json key to the caption */
+            slideCaption : "userEmail",  /* json key to the caption */
             slideImageId : "slideImageIdUsers", /* insert image here */
-            slideImage : "image",     /* json key to the image */
+            slideImage : "imageUrl",     /* json key to the image */
+            slideImageNA : "pics/notAvailable.jpg", /* unavailable image */
+            jsonKey : "webUserList",     /* json key  */
             jsonObject : jsonUsers
         };
         var ssUsers = MakeSlides(params);
-        ssUsers.setSlideNum(1);
-        ssUsers.setTitle("New Look Email");
+        /*ssUsers.setSlideNum(1);
+        ssUsers.setTitle("New Look Email");*/
      }
 
     /* slides for patient medical record numbers */
      var ajaxParams = {
-         url : "json/patients.json",
+         "url" : "WebAPIs/listPatientVisitsAPI.jsp",
+         //url : "json/patients.json",
          callBackSuccess : callBackSuccessPatients,
          errorId : "content"
      };
@@ -47,14 +55,16 @@ function MakeSlideShow () {
             slideTitleId : "slideTitleIdPatients",    /* insert title here */
             slideTitleText : "Patient MedRec Number",  /* add a title string */
             slideCaptionId : "slideCaptionIdPatients",  /* insert caption here */
-            slideCaptionText : "MedRecNo",  /* json key to the caption */
+            slideCaption : "medRecNo",  /* json key to the caption */
             slideImageId : "slideImageIdPatients", /* insert image here */
-            slideImage : "ImageUrl",     /* json key to the image */
+            slideImage : "imageUrl",     /* json key to the image */
+            slideImageNA : "pics/notAvailable.jpg", /* unavailable image */
+            jsonKey : "patientVisitList",     /* json key */
             jsonObject : jsonPatients
         };
         var ssPatients = MakeSlides(params);
-        ssPatients.setTitle("New Look MRN#");
-        ssPatients.setSlideNum(4);
+        /*ssPatients.setTitle("New Look MRN#");
+        ssPatients.setSlideNum(4);*/
 
     };
 }

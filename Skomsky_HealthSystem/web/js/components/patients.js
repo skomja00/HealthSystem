@@ -60,7 +60,12 @@ patients.display = function (id) {
         console.log(patientList);
 
         // Making a DOM object, nothing shows yet... 
-        MakeFilteredTable(patientList, "listHere");
-        //MakeSortableTable(patientList, "listHere", "MedRecNo");
+        var params = {
+            "theList" : patientList,
+            "targetId" : "listHere",
+            "searchInputId" : "searchInputId",
+            "sortOrderPropName" : "visitId"
+        };
+        MakeFilterSortTable(params);
     }
 };

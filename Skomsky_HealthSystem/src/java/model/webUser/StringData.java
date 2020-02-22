@@ -20,7 +20,7 @@ public class StringData {
     public String userPassword = "";
     public String birthday = "";
     public String membershipFee = "";
-    public String image = "";
+    public String imageUrl = "";
     public String userRoleId = "";   // Foreign Key
     public String userRoleType = ""; // getting it from joined user_role table.
 
@@ -38,7 +38,7 @@ public class StringData {
             this.userPassword = FormatUtils.formatString(results.getObject("user_password"));
             this.birthday = FormatUtils.formatDate(results.getObject("birthday"));
             this.membershipFee = FormatUtils.formatDollar(results.getObject("membership_fee"));
-            this.image = FormatUtils.formatString(results.getObject("image"));
+            this.imageUrl = FormatUtils.formatString(results.getObject("image_url"));
             this.userRoleId = FormatUtils.formatInteger(results.getObject("web_user.user_role_id"));
             this.userRoleType = FormatUtils.formatString(results.getObject("user_role_type"));
         } catch (Exception e) {
@@ -58,7 +58,7 @@ public class StringData {
                 + ", User Password: " + this.userPassword
                 + ", Birthday: " + this.birthday
                 + ", Membership Fee: " + this.membershipFee
-                + ", Image: " + this.image
+                + ", Image: " + this.imageUrl
                 + ", User Role Id: " + this.userRoleId
                 + ", User Role Type: " + this.userRoleType;
     }

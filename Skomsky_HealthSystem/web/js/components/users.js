@@ -36,7 +36,18 @@ users.display = function (id) {
     ajax(params);
 
     function usersProcessData(list) {
-
+        
+        if (list["dbError"]) {
+            document.getElementById(id).innerHTML = list["dbError"] + 
+                "<br><br>Please contact the Help Desk at 123-456-7890 or help@email.edu";
+            return;
+        };
+        if (list["webUserList"][0]["errorMsg"]) {
+            document.getElementById(id).innerHTML = list["webUserList"][0]["errorMsg"] + 
+                "<br><br>Please contact the Help Desk at 123-456-7890 or help@email.edu";
+            return;
+        };
+        
         // print out JS object/array that was converted from JSON data by ajax function
         console.log("usersProcessData(list) is ");
         console.log(list);
@@ -67,6 +78,7 @@ users.display = function (id) {
             "searchInputId" : "searchInputId",
             "sortOrderPropName" : "userEmail"
         };
+
         MakeFilterSortTable(params);
     }
 };

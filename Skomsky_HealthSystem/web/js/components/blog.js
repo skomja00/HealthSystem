@@ -110,16 +110,35 @@ function blog(id) {
         <a id='#hw5'></a>
         <h2>HW 5 Web APIs</h2>
         <p>
-            In this homework I learned ... 
-            The parts that I found easy were ... 
-            The parts that I found hard or confusing were ... 
+            The course is moving from the client to the server side of web page development. 
+            This creates a better understanding of some of the technologies in web
+            dev. In my early learning the terminology apache vs apache tomcat is
+            somewhat confusing possibly because both technologies are part of the same 
+            Apache Software Foundation and the 'namesake' (i.e. apache) can appear
+            in reference to completely distinct types of server applications. For
+            the record, <u>'apache'</u> software responds to HTTP requests for HTML, CSS, and JavaScript content. 
+            <u>'tomcat'</u>(sometimes referred to as Apache Tomcat) on the other hand is intended to execute Java code.
+        </p>
+        <p>
+            Server side also devel include a number of new practices. Below are some tips:
+            <ul>
+                <li>
+                    Publish JSP apps from the build&bsol;webfolder. 
+                </li>
+                <li>
+                    Copy sample code jsp files, source packages, and if necessary .jar files. 
+                </li>
+                <li>
+                    Tunnel into the Temple network using PuTTY to connect to server hosted MySQL databases.
+                </li>
+            </li> 
         </p>
         <ul>
             <li>
-                To invoke my user list Web API, click <a target="_blank" href="webAPIs/listUsersAPI.jsp">here</a>.
+                To invoke my user list Web API, click <a target="_blank" href="WebAPIs/listUsersAPI.jsp">here</a>.
             </li>
             <li>
-                To invoke my [other] list Web API, click <a target="_blank" href="webAPIs/listOtherAPI.jsp">here</a>.
+                To invoke my listPatientVisitsAPI, click <a target="_blank" href="WebAPIs/listPatientVisitsAPI.jsp">here</a>.
             </li>
         </ul>
 

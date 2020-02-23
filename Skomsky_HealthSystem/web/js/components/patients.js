@@ -35,6 +35,18 @@ patients.display = function (id) {
 
 
     function ptProcessData(list) {
+        
+        if (list["dbError"]) {
+            document.getElementById(id).innerHTML = list["dbError"] + "<br><br>Please " +
+                "contact the Help Desk at 123-456-7890 or help@email.edu";
+            return;
+        };
+
+        if (list["patientVisitList"][0]["errorMsg"]) {
+            document.getElementById(id).innerHTML = list["patientVisitList"][0]["errorMsg"] + 
+                "<br><br>Please contact the Help Desk at 123-456-7890 or help@email.edu";
+                return;
+        };
 
         // print out JS object/array that was converted from JSON data by ajax function
         console.log(list);
@@ -66,6 +78,7 @@ patients.display = function (id) {
             "searchInputId" : "searchInputId",
             "sortOrderPropName" : "visitId"
         };
-        MakeFilterSortTable(params);
+        
+        MakeFilterSortTable(params);    
     }
 };

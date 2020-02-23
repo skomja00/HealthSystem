@@ -85,22 +85,22 @@ CREATE TABLE `web_user` (
     /* At least one of these records shall have null for all nullable non character fields. */    
     INSERT INTO `web_user` 
         (`user_email`,              `user_password`,`image_url`,                                                       `birthday`,  `membership_fee`,`user_role_id`) values
-        ('nulls.user@gmail.com',     null,           null,                                                         null,        null,             get_user_role_id('admin'));
+        ('nulls.user@gmail.com',     null,           null,                                                              null,        null,            get_user_role_id('admin'));
     INSERT INTO `web_user` 
         (`user_email`,              `user_password`,`image_url`,                                                       `birthday`,  `membership_fee`,`user_role_id`) values 
-        ('services.s@gmail.com',    'eeditor',       'http://cis-linux2.temple.edu/~sallyk/pics_user/tony.jpg',   '2000-11-19',  4.95,            get_user_role_id('services'));
+        ('services.s@gmail.com',    'services',     'http://cis-linux2.temple.edu/~sallyk/pics_user/tony.jpg',        '1990-11-19', 4.95,            get_user_role_id('services'));
     INSERT INTO `web_user` 
         (`user_email`,              `user_password`,`image_url`,                                                       `birthday`,  `membership_fee`,`user_role_id`) values 
-        ('busofc.b@gmail.com',      'eeditor',       'http://cis-linux2.temple.edu/~sallyk/pics_user/andrew.jpg',  '1984-12-11', 4.95,            get_user_role_id('busofc'));
+        ('busofc.b@gmail.com',      'busofc',       'http://cis-linux2.temple.edu/~sallyk/pics_user/gene.jpg',        '1984-12-11',  4.95,            get_user_role_id('busofc'));
     INSERT INTO `web_user` 
         (`user_email`,              `user_password`,`image_url`,                                                       `birthday`,  `membership_fee`,`user_role_id`) values 
-        ('documents.d@gmail.com',   'eeditor',  'http://cis-linux2.temple.edu/~sallyk/pics_user/tony.jpg',         '1999-07-23', 4.95,            get_user_role_id('documents'));
+        ('documents.d@gmail.com',   'documents',    'http://cis-linux2.temple.edu/~sallyk/pics_user/sally.jpg',        '1999-07-23', 4.95,            get_user_role_id('documents'));
     INSERT INTO `web_user` 
         (`user_email`,              `user_password`,`image_url`,                                                       `birthday`,  `membership_fee`,`user_role_id`) values
-        ('manager.m@gmail.com',     'mmanager',     'http://cis-linux2.temple.edu/~sallyk/pics_user/andrew.jpg',   '1991-06-03', 4.95,            get_user_role_id('manager'));
+        ('manager.m@gmail.com',     'manager',      'http://cis-linux2.temple.edu/~sallyk/pics_user/andrew.jpg',       '1991-06-03', 4.95,            get_user_role_id('manager'));
     INSERT INTO `web_user` 
         (`user_email`,              `user_password`,`image_url`,                                                       `birthday`,  `membership_fee`,`user_role_id`) values
-        ('admin.a@gmail.com',       'aadmin',       'http://cis-linux2.temple.edu/~sallyk/pics_user/tony.jpg',     '1985-01-01', 4.95,            get_user_role_id('admin'));
+        ('admin.a@gmail.com',       'admin',        'http://cis-linux2.temple.edu/~sallyk/pics_user/tony.jpg',         '1985-01-01', 4.95,            get_user_role_id('admin'));
     
     /* Try to add a record that has an invalid (non-existent) user_role_id and notice that the database management system will not let that record be inserted. */
     /* Error Code: 1452. Cannot add or update a child row: a foreign key constraint fails */

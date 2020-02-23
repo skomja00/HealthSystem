@@ -45,18 +45,35 @@
  */ 
 /*
 *
- *document.getElementById("ddTheme").onclick = function () {
- *   setTheme();
- *};
- */
-/*
  * setTheme() will toggle between 2 theme settings. 
- * @param {type} palId value is either "LightPallette" or "DarkPallette" selection of theme colors 
- * @returns {nothing}
+ * @param {String} palId - value is either "LightPallette" or "DarkPallette" selection of theme colors 
+ * @returns {} returns nothing
  *
- * */function setTheme (palId) {
+ */function setTheme (palId) {
     
-    /*var palId = togglePallette();*/
+    /**
+    * Depending on the current <img src=...> setting of the theme icon 
+    * togglePallette() will return either "LightPallette" or "DarkPallette".
+    * Clicking on the dark theme icon switches to light theme and vice versa.
+    * 
+    * @returns {} nothing 
+    */
+    var ti = document.getElementById("ddTheme");//"theme-icon");
+    //ti.addEventListener('click', togglePallette);
+    ti.onclick = function togglePallette (ele) {
+        var currThemeIcon = ele.target.getAttribute("src");
+        var icon = currThemeIcon.match(/moon-icon/g); 
+        if (icon !== null) {
+            setTheme("LightPallette");
+        };
+        var icon = currThemeIcon.match(/sun-icon/g);  
+        if (icon !== null) {
+            setTheme("DarkPallette");
+        }
+    };
+
+     
+    //var palId = togglePallette();
     var hash = getPallette(palId);
     
     /* theme the single elements */
@@ -66,10 +83,15 @@
     document.getElementById("title").style.textShadow = "0px 0px 10px " + hash["titleTextShadow"];
     document.getElementById("nav").style.border = "2px solid " + hash["navBorder"];
     document.getElementById("nav").style.backgroundColor = hash["navBackground"];
-    document.getElementById("mission").style.boxShadow = "0px 0px 10px 10px " + hash["missionBoxShadow"];
-    document.getElementById("mission").style.backgroundColor = hash["missionBackground"];
-    document.getElementById("mission-flyover").style.color = hash["missionFlyoverColor"];
-    document.getElementById("mission-flyover").style.textShadow = "0px 0px 10px " + hash["missionFlyoverTextShadow"];
+    try {
+        document.getElementById("mission").style.boxShadow = "0px 0px 10px 10px " + hash["missionBoxShadow"];
+        document.getElementById("mission").style.backgroundColor = hash["missionBackground"];
+        document.getElementById("mission-flyover").style.color = hash["missionFlyoverColor"];
+        document.getElementById("mission-flyover").style.textShadow = "0px 0px 10px " + hash["missionFlyoverTextShadow"];
+    }
+    catch (err) {
+        console.log('dont style mission text unless on home page');
+    };
     document.getElementById("footer").style.backgroundColor = hash["footerBackgroundColor"];
     document.getElementById("footer").style.boxShadow = "0px 0px 9px 7px " + hash["footerBoxShadow"];
     document.getElementById("footer").style.color = hash["footerColor"];
@@ -210,25 +232,6 @@
             ele = collection[i];
             ele.style.backgroundColor = hash["listItemBackground"];
             ele.style.color = hash["listItemColor"];
-        }
-    }
-    
-    /*
-     * Depending on the current <img src=...> setting of the theme icon 
-     * togglePallette() will return either "LightPallette" or "DarkPallette".
-     * Clicking on the dark theme icon switches to light theme and vice versa.
-     * 
-     * @returns {String} either "LightPallette" or "DarkPallette" 
-     */    
-    function togglePallette() {
-        var currThemeIcon = document.getElementById("theme-icon").src;
-        var icon = currThemeIcon.match(/moon-icon/g); 
-        if (icon !== null) {
-            return "LightPallette";
-        };
-        var icon = currThemeIcon.match(/sun-icon/g);  
-        if (icon !== null) {
-            return "DarkPallette";
         }
     }
 }

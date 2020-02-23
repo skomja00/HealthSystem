@@ -3,10 +3,6 @@
 
 function MakeSlideShow () {
 
-
-            
-
-
     /* slideShow for users */
      var ajaxParams = {
          "url" : "WebAPIs/listUsersAPI.jsp",
@@ -18,7 +14,19 @@ function MakeSlideShow () {
      
      /* slides for user email addresses */
      function callBackSuccessUsers(jsonUsers) {
-         
+
+        if (jsonUsers["dbError"]) {
+            document.getElementById("content").innerHTML = jsonUsers["dbError"] + "<br><br>Please " +
+                "contact the Help Desk at 123-456-7890 or help@email.edu";
+            return;
+        };
+
+        if (jsonUsers["webUserList"][0]["errorMsg"]) {
+            document.getElementById("content").innerHTML = jsonUsers["webUserList"][0]["errorMsg"] + 
+                "<br><br>Please contact the Help Desk at 123-456-7890 or help@email.edu";
+            return;
+        };
+
         var params = {
             contentId : "content",
             clearContent : "clear", /* "add" for addtnl slide <div>'s */
@@ -47,6 +55,18 @@ function MakeSlideShow () {
      };
      ajax(ajaxParams); /* XMLHttpRequest json and return it to callBackSuccess */
      function callBackSuccessPatients(jsonPatients) {
+
+        if (jsonPatients["dbError"]) {
+            document.getElementById("content").innerHTML = jsonPatients["dbError"] + "<br><br>Please " +
+                "contact the Help Desk at 123-456-7890 or help@email.edu";
+            return;
+        };
+
+        if (jsonPatients["patientVisitList"][0]["errorMsg"]) {
+            document.getElementById("content").innerHTML = jsonPatients["patientVisitList"][0]["errorMsg"] + 
+                "<br><br>Please contact the Help Desk at 123-456-7890 or help@email.edu";
+            return;
+        };
 
         var params = {
             contentId : "content",

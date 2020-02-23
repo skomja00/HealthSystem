@@ -165,7 +165,7 @@
         } // for loop 
     } // addDataRows
     
-    // Main program of MakeTable
+    // Main program of MakeFilterSortTable
     
     var list = params["theList"];
     var targetId = params["targetId"];
@@ -196,7 +196,7 @@
         var colHead = addToRow("th", tableHeadRow, prop, alignment(obj[prop]));
         colHead.onclick = function () {
             jsSort(list, this.innerHTML);
-                addDataRows(list, searchInput.value);
+            addDataRows(list, searchInput.value);
         };
     }
 

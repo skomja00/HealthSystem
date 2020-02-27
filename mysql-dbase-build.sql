@@ -60,7 +60,7 @@ CREATE TABLE `web_user` (
     `web_user_id` INT(11) NOT NULL AUTO_INCREMENT,
     `user_email` VARCHAR(55) NULL,
     `user_password` VARCHAR(45) NULL,
-    `image_url` VARCHAR(200) NULL,
+    `image` VARCHAR(200) NULL,
     `birthday` DATE NULL,
     `membership_fee` DECIMAL(8,2) NULL,
     `user_role_id` INT(11) NOT NULL,
@@ -84,22 +84,22 @@ CREATE TABLE `web_user` (
 
     /* At least one of these records shall have null for all nullable non character fields. */    
     INSERT INTO `web_user` 
-        (`user_email`,              `user_password`,`image_url`,                                                       `birthday`,  `membership_fee`,`user_role_id`) values
+        (`user_email`,              `user_password`,`image`,                                                       `birthday`,  `membership_fee`,`user_role_id`) values
         ('nulls.user@gmail.com',     null,           null,                                                              null,        null,            get_user_role_id('admin'));
     INSERT INTO `web_user` 
-        (`user_email`,              `user_password`,`image_url`,                                                       `birthday`,  `membership_fee`,`user_role_id`) values 
+        (`user_email`,              `user_password`,`image`,                                                       `birthday`,  `membership_fee`,`user_role_id`) values 
         ('services.s@gmail.com',    'services',     'http://cis-linux2.temple.edu/~sallyk/pics_user/tony.jpg',        '1990-11-19', 4.95,            get_user_role_id('services'));
     INSERT INTO `web_user` 
-        (`user_email`,              `user_password`,`image_url`,                                                       `birthday`,  `membership_fee`,`user_role_id`) values 
+        (`user_email`,              `user_password`,`image`,                                                       `birthday`,  `membership_fee`,`user_role_id`) values 
         ('busofc.b@gmail.com',      'busofc',       'http://cis-linux2.temple.edu/~sallyk/pics_user/gene.jpg',        '1984-12-11',  4.95,            get_user_role_id('busofc'));
     INSERT INTO `web_user` 
-        (`user_email`,              `user_password`,`image_url`,                                                       `birthday`,  `membership_fee`,`user_role_id`) values 
+        (`user_email`,              `user_password`,`image`,                                                       `birthday`,  `membership_fee`,`user_role_id`) values 
         ('documents.d@gmail.com',   'documents',    'http://cis-linux2.temple.edu/~sallyk/pics_user/sally.jpg',        '1999-07-23', 4.95,            get_user_role_id('documents'));
     INSERT INTO `web_user` 
-        (`user_email`,              `user_password`,`image_url`,                                                       `birthday`,  `membership_fee`,`user_role_id`) values
+        (`user_email`,              `user_password`,`image`,                                                       `birthday`,  `membership_fee`,`user_role_id`) values
         ('manager.m@gmail.com',     'manager',      'http://cis-linux2.temple.edu/~sallyk/pics_user/andrew.jpg',       '1991-06-03', 4.95,            get_user_role_id('manager'));
     INSERT INTO `web_user` 
-        (`user_email`,              `user_password`,`image_url`,                                                       `birthday`,  `membership_fee`,`user_role_id`) values
+        (`user_email`,              `user_password`,`image`,                                                       `birthday`,  `membership_fee`,`user_role_id`) values
         ('admin.a@gmail.com',       'admin',        'http://cis-linux2.temple.edu/~sallyk/pics_user/tony.jpg',         '1985-01-01', 4.95,            get_user_role_id('admin'));
     
     /* Try to add a record that has an invalid (non-existent) user_role_id and notice that the database management system will not let that record be inserted. */
@@ -427,10 +427,19 @@ SELECT
     user_email,
     user_password,
     membership_fee,
-    image_url,
+    image,
     birthday,
     web_user.user_role_id,
     user_role_type
 FROM web_user, user_role
 where web_user.user_role_id = user_role.user_role_id
 ORDER BY web_user_id
+
+-- 
+-- SELECT 
+-- web_user_id, 
+-- user_email, user_password, image, membership_fee, birthday, image,
+-- 
+--                     + "web_user.user_role_id, user_role_type "
+--                     + "FROM web_user, user_role where web_user.user_role_id = user_role.user_role_id "
+--                     + "ORDER BY web_user_id;

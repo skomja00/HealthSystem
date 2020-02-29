@@ -7,31 +7,35 @@
  * setTheme() will be called from a menu bar icon onclick() as a toggle.
  * When the icon is clicked the theme will switch back and forth. 
  * The theme settings are xml to be human-readable and customizable by the user  
+ * A <style> element will be added to the header to style the properties 
+ * for each of the following classes
  * 
- * The available HTML id's and the list of each styled property are as follows;
- *
- *   id="title"
- *       style.backgroundColor
- *       style.boxShadow
- *       style.color
- *       style.textShadow
- *   id="nav"
- *       style.border
- *       style.backgroundColor
- *   id="list-item", "list-item-title"
- *       style.backgroundColor
- *       style.color
- *   id="mission"
- *       style.boxShadow
- *       style.backgroundColor
- *   id="mission-flyover"
- *       style.color
- *       style.textShadow
- *   id="footer"
- *       style.backgroundColor
- *       style.boxShadow
- *   id="theme-icon"
- *      innerHTML=<img src=hash["icon"]
+    title
+        background-color 
+        box-shadow 
+        color
+        text-shadow 
+    navigation
+        border 
+        background-color 
+    mission
+        box-shadow 
+        background-color 
+    mission-flyover
+        color 
+        text-shadow 
+    footer
+        background-color 
+        box-shadow 
+        color 
+        text-shadow
+    list-item
+        background-color 
+        color 
+    list-item-title
+        background-color 
+        color
+    and the theme icon id='theme-icon' also styled and used as a toggle
  * 
  * TODO: Dont know of the best way to make the XML a settings accessible to 
  * the user to customize in an external xml file or anywhere other than 
@@ -76,31 +80,35 @@
     //var palId = togglePallette();
     var hash = getPallette(palId);
     
-    /* theme the single elements */
-    document.getElementById("title").style.backgroundColor = hash["titleBackgroundColor"];
-    document.getElementById("title").style.boxShadow = "0px 0px 9px 7px " + hash["titleBoxShadow"];
-    document.getElementById("title").style.color = hash["titleColor"];
-    document.getElementById("title").style.textShadow = "0px 0px 10px " + hash["titleTextShadow"];
-    document.getElementById("nav").style.border = "2px solid " + hash["navBorder"];
-    document.getElementById("nav").style.backgroundColor = hash["navBackground"];
-    try {
-        document.getElementById("mission").style.boxShadow = "0px 0px 10px 10px " + hash["missionBoxShadow"];
-        document.getElementById("mission").style.backgroundColor = hash["missionBackground"];
-        document.getElementById("mission-flyover").style.color = hash["missionFlyoverColor"];
-        document.getElementById("mission-flyover").style.textShadow = "0px 0px 10px " + hash["missionFlyoverTextShadow"];
+    var s = document.getElementById("themeId");;
+    if (!s) {
+        var h = document.getElementsByTagName("head")[0]; 
+        var s = document.createElement("style");
+        var i = document.createAttribute("id");
+        i.value = "themeId";
+        s.setAttributeNode(i);
+        h.appendChild(s);
     }
-    catch (err) {
-        console.log('dont style mission text unless on home page');
-    };
-    document.getElementById("footer").style.backgroundColor = hash["footerBackgroundColor"];
-    document.getElementById("footer").style.boxShadow = "0px 0px 9px 7px " + hash["footerBoxShadow"];
-    document.getElementById("footer").style.color = hash["footerColor"];
-    document.getElementById("footer").style.textShadow = "0px 0px 10px " + hash["footerTextShadow"];
-
-    /* loop through and theme HTMLCollections elements */
-    themeCollection(document.getElementsByClassName("list-item")); 
-    themeCollection(document.getElementsByClassName("list-item-title")); 
-
+    s.innerHTML = 
+        ".title { background-color : " + hash["titleBackgroundColor"] + ";" + 
+        "         box-shadow : 0px 0px 9px 7px " + hash["titleBoxShadow"] + ";" + 
+        "         color : " + hash["titleColor"] + ";" + 
+        "         text-shadow : " + "0px 0px 10px " + hash["titleTextShadow"] + ";}" + 
+        ".navigation { border = 2px solid " + hash["navBorder"] + ";" + 
+        "              background-color : " + hash["navBackground"] + ";}" + 
+        ".mission { box-shadow : 0px 0px 10px 10px " + hash["missionBoxShadow"] + ";" + 
+        "           background-color : " + hash["missionBackground"] + ";}" + 
+        ".mission-flyover { color : " + hash["missionFlyoverColor"] + ";" + 
+        "                   text-shadow : 0px 0px 10px " + hash["missionFlyoverTextShadow"] + ";}" + 
+        ".footer { background-color : " + hash["footerBackgroundColor"] + ";" + 
+        "         box-shadow : 0px 0px 9px 7px " + hash["footerBoxShadow"] + ";" + 
+        "         color : " + hash["footerColor"] + ";" + 
+        "         text-shadow : 0px 0px 10px " + hash["footerTextShadow"] + ";}" +
+        ".list-item { background-color : " + hash["listItemBackground"] + ";" + 
+        "            color : " + hash["listItemColor"] + ";}" + 
+        ".list-item-title { background-color : " + hash["listItemBackground"] + ";" + 
+        "                  color : " + hash["listItemColor"] + ";}";
+    
     /* style the icon */
     document.getElementById("ddTheme").innerHTML = hash["icon"];
 
@@ -176,7 +184,7 @@
                     "<colors id='colors'>" +
                         "<color name='titleBackgroundColor'     rgb='F2F2DF' r='242' g='242' b='223' a='.5' />" +
                         "<color name='titleBoxShadow'           rgb='CCCCCC' r='204' g='204' b='204' />" +
-                        "<color name='titleColor'               rgb='FFFFFF' r='355' g='255' b='255' />" +
+                        "<color name='titleColor'               rgb='FFFFFF' r='255' g='255' b='255' />" +
                         "<color name='titleTextShadow'          rgb='000000' r='000' g='000' b='000' />" +
                         "<color name='navBorder'                rgb='B6F2F2' r='182' g='242' b='242' />" +
                         "<color name='navBackground'            rgb='B6F2F2' r='182' g='242' b='242' a='.5' />" +
@@ -189,7 +197,7 @@
                         "<color name='missionFlyoverTextShadow' rgb='4F82B3' r='025' g='040' b='066' />" +
                         "<color name='footerBackgroundColor'    rgb='F2F2DF' r='242' g='242' b='223' a='.5' />" +
                         "<color name='footerBoxShadow'          rgb='CCCCCC' r='204' g='204' b='204' />" +
-                        "<color name='footerColor'              rgb='FFFFFF' r='355' g='255' b='255' />" +
+                        "<color name='footerColor'              rgb='FFFFFF' r='242' g='242' b='223' />" +
                         "<color name='footerTextShadow'         rgb='000000' r='000' g='000' b='000' />" +
                     "</colors>" +
                     "<icon id='icon' src='icons/light/sun-icon-H24.png' />" + 
@@ -222,16 +230,4 @@
         xmlDoc = parser.parseFromString(colorPalletteStr,"text/xml");
         return xmlDoc;
     }    
-    /*
-     * 
-     * Theme multiple items of a HTML collection/CSS class. 
-     */
-    function themeCollection(collection) {
-        var ele;
-        for (var i = 0; i < collection.length; i++) {
-            ele = collection[i];
-            ele.style.backgroundColor = hash["listItemBackground"];
-            ele.style.color = hash["listItemColor"];
-        }
-    }
 }

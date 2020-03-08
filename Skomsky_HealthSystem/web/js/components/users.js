@@ -7,13 +7,13 @@ users.list = function (targetId) {
     contentDOM.innerHTML = "";
 
     // Remember: getting a DB error does NOT mean ajax call unsuccessful. That is a secondary error after ajax call OK.
-    ajax2({
+    ajax({
         url: "WebAPIs/listUsersAPI.jsp",
-        successFn: success,
+        callBackSuccess: userListSuccess,
         errorId: targetId
     });
 
-    function success(obj) {
+    function userListSuccess(obj) {
 
         // var obj = JSON.parse(hreq.responseText); // this already done by function ajax2...
         if (!obj) {
@@ -70,15 +70,13 @@ users.list = function (targetId) {
         // params.reverse (boolean): if true, initial sort will be high to low (else low to high). 
         // params.imgWidth: any columns that hold image files will be turned into <img> tags with this width.
 
-        tableBuilder.build({
-            list: userList,
-            target: tableDiv,
-            style: "data",
-            orderPropName: "userEmail",
-            searchKeyElem: searchBox,
-            reverse: false,
-            imgWidth: "50px"
+        MakeFilterSortTable({
+            "theList":userList,
+            "targetId": targetId,
+            "searchInputId":"id",
+            "sortOrderPropName":"userId"
         });
+        
     } // end of function success
 
 }; // end of function users.list

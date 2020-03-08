@@ -7,13 +7,13 @@ patients.list = function (targetId) {
     contentDOM.innerHTML = "";
 
     // Remember: getting a DB error does NOT mean ajax call unsuccessful. That is a secondary error after ajax call OK.
-    ajax2({
+    ajax({
         url: "WebAPIs/listPatientVisitsAPI.jsp",
-        successFn: success,
+        callBackSuccess: patientListSuccess,
         errorId: targetId
     });
 
-    function success(obj) {
+    function patientListSuccess(obj) {
 
         // var obj = JSON.parse(hreq.responseText); // this already done by function ajax2...
         if (!obj) {
@@ -42,21 +42,30 @@ patients.list = function (targetId) {
         var tableDiv = document.createElement("div");
         contentDOM.appendChild(tableDiv);
 
-        // tweak obj.webUserList to include only the properties you want - combine, delete, etc. 
+//        this.visitId = FormatUtils.formatInteger(results.getObject("VisitId"));
+//        this.patientName = FormatUtils.formatString(results.getObject("PatientName"));
+//        this.imageUrl = FormatUtils.formatString(results.getObject("ImageUrl"));
+//        this.medRecNo = FormatUtils.formatString(results.getObject("MedRecNo"));
+//        this.description = FormatUtils.formatString(results.getObject("Description"));
+//        this.visitDateTime = FormatUtils.formatDateTime(results.getObject("VisitDateTime"));
+//        this.diagnosis = FormatUtils.formatString(results.getObject("Diagnosis"));
+//        this.visitCharge = FormatUtils.formatDollar(results.getObject("VisitCharge"));
+//        this.webUserId = FormatUtils.formatInteger(results.getObject("wu.web_user_id"));
+//        this.userEmail = FormatUtils.formatString(results.getObject("wu.user_email"));
+//        this.membershipFee = FormatUtils.formatDollar(results.getObject("wu.membership_fee")
+        // tweak list ist to include only the properties you want - combine, delete, etc. 
         var userList = [];
-        for (var i = 0; i < obj.webUserList.length; i++) {
+        for (var i = 0; i < obj.patientVisitList.length; i++) {
             userList[i] = {}; // add new empty object to array
-            userList[i].userCredentials = obj.webUserList[i].userEmail + "<br/> PW (to test Logon): " +
-                    obj.webUserList[i].userPassword;
-            userList[i].image = obj.webUserList[i].image;
-            userList[i].birthday = obj.webUserList[i].birthday;
-            userList[i].membershipFee = obj.webUserList[i].membershipFee;
-            userList[i].role = obj.webUserList[i].userRoleId + "&nbsp;" +
-                    obj.webUserList[i].userRoleType;
-            userList[i].userId = obj.webUserList[i].webUserId;
+            userList[i].VisitId = obj.patientVisitList[i].VisitId;
+            userList[i].ImageUrl = obj.patientVisitList[i].ImageUrl;
+            userList[i].MedRecNo = obj.patientVisitList[i].MedRecNo;
+            userList[i].Description = obj.patientVisitList[i].Description;
+            userList[i].VisitDateTime = obj.patientVisitList[i].VisitDateTime;
+            userList[i].VisitCharge = obj.patientVisitList[i].VisitCharge;
 
             // Remove this once you are done debugging...
-            userList[i].errorMsg = obj.webUserList[i].errorMsg;
+            userList[i].errorMsg = obj.patientVisitList[i].errorMsg;
         }
 
         // add click sortable HTML table to the content area
@@ -70,14 +79,12 @@ patients.list = function (targetId) {
         // params.reverse (boolean): if true, initial sort will be high to low (else low to high). 
         // params.imgWidth: any columns that hold image files will be turned into <img> tags with this width.
 
-        tableBuilder.build({
-            list: userList,
-            target: tableDiv,
-            style: "data",
-            orderPropName: "userEmail",
-            searchKeyElem: searchBox,
-            reverse: false,
-            imgWidth: "50px"
+        MakeFilterSortTable({
+            "theList":userList,
+            "targetId": targetId,
+            "searchInputId":"id",
+            "sortOrderPropName":"userId",
+            "style":"classList"
         });
     } // end of function success
 

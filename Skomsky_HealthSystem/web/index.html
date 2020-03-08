@@ -41,14 +41,14 @@
                     <a href="#/slideShow">Slides</a> <br/>
                 </div>
             </div>            
-            <div class="dropdown" id="ddTutorial">
+            <!--<div class="dropdown" id="ddTutorial">
                 <img class="dropHeader" title="Tutorial" src="icons/dark/tutorial_dd_icon_H24.png" alt="Tutorial" >
                 <div class="dropContent">
                     <a href="#/services">Services</a><br/>
                     <a href="#/busofc">Business Office</a><br/>
                     <a href="#/documents">Documents</a><br/>
                 </div> 
-            </div>          
+            </div> -->          
             <div class="dropdown" id="ddTheme">
                 <a>
                     <img class="theme-icon" id="theme-icon" title="theme" src="icons/dark/moon-icon-H24.ico" alt="Theme">
@@ -104,8 +104,8 @@
         myRoutes['/login'] = login;
         myRoutes['/profile'] = profile;
         myRoutes['/logout'] = logout;
-        myRoutes['/users'] = users.display;
-        myRoutes['/patients'] = patients.display;
+        myRoutes['/users'] = users.list;
+        myRoutes['/patients'] = patients.list;
         myRoutes['/userFind'] = users.findUI; 
         myRoutes['/patientFind'] = patients.findUI; 
         myRoutes['/slideShow'] = MakeSlideShow;

@@ -8,7 +8,7 @@ users.list = function (targetId) {
 
     // Remember: getting a DB error does NOT mean ajax call unsuccessful. That is a secondary error after ajax call OK.
     ajax2({
-        url: "webAPIs/listUsersAPI.jsp",
+        url: "WebAPIs/listUsersAPI.jsp",
         successFn: success,
         errorId: targetId
     });
@@ -115,19 +115,18 @@ users.findById = function (idOfInput, targetId) {
     
     var desiredUserId = escape(document.getElementById(idOfInput).value);
 
-    // the JS escape function cleans input so it can be used as a URL paramenter
-    var myUrl = "webAPIs/getUserByIdAPI.jsp?URLid=" + desiredUserId;
+    var myUrl = "WebAPIs/getUserByIdAPI.jsp?URLid=" + desiredUserId;
     console.log("users.findById ready to invoke web API with this url: " + myUrl);
 
     // Remember: getting a DB error does NOT mean ajax call unsuccessful. That is a secondary error after ajax call OK.
     ajax({
         url: myUrl,
-        successFn: success,
+        callBackSuccess: userSuccess,
         errorId: targetId
     });
 
 
-    function success(obj) {
+    function userSuccess(obj) {
 
         // var obj = JSON.parse(hreq.responseText); // this already done by function ajax2...
         if (!obj) {

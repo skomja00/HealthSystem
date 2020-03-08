@@ -8,7 +8,7 @@ patients.list = function (targetId) {
 
     // Remember: getting a DB error does NOT mean ajax call unsuccessful. That is a secondary error after ajax call OK.
     ajax2({
-        url: "webAPIs/listPatientVisitsAPI.jsp",
+        url: "WebAPIs/listPatientVisitsAPI.jsp",
         successFn: success,
         errorId: targetId
     });
@@ -115,12 +115,12 @@ patients.findById = function (idOfInput, targetId) {
     var desiredUserId = escape(document.getElementById(idOfInput).value);
 
     // the JS escape function cleans input so it can be used as a URL paramenter
-    var myUrl = "webAPIs/getPatientByIdAPI.jsp?URLid=" + desiredUserId;
+    var myUrl = "WebAPIs/getPatientByIdAPI.jsp?URLid=" + desiredUserId;
     console.log("patients.findById ready to invoke web API with this url: " + myUrl);
     // Remember: getting a DB error does NOT mean ajax call unsuccessful. That is a secondary error after ajax call OK.
-    ajax2({
+    ajax({
         url: myUrl,
-        successFn: patientSuccess,
+        callBackSuccess: patientSuccess,
         errorId: targetId
     });
 

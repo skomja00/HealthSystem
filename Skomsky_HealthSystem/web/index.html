@@ -36,6 +36,8 @@
                 <div class="dropContent" id="searchDropDown">
                     <a href="#/users">Users</a> <br/>
                     <a href="#/patients">Patients</a> <br/>
+                    <a href="#/userFind">Find&nbsp;User</a> <br/>
+                    <a href="#/patientFind">Find&nbsp;Patient</a> <br/>
                     <a href="#/slideShow">Slides</a> <br/>
                 </div>
             </div>            
@@ -71,6 +73,9 @@
     <script src="js/setTheme.js"></script>
     <script src="js/dropdownFw.js"></script>
     <script src="js/ajax.js"></script>
+    <script src="js/ajax2.js"></script>
+    <script src="js/components/users.js"></script>
+    <script src="js/components/patients.js"></script>
     <script src="js/MakeTable.js"></script>    
     <script src="js/MakeFilteredTable.js"></script>    
     <script src="js/MakeSortableTable.js"></script>    
@@ -101,6 +106,8 @@
         myRoutes['/logout'] = logout;
         myRoutes['/users'] = users.display;
         myRoutes['/patients'] = patients.display;
+        myRoutes['/userFind'] = users.findUI; 
+        myRoutes['/patientFind'] = patients.findUI; 
         myRoutes['/slideShow'] = MakeSlideShow;
         myRoutes['/services'] = services;
         myRoutes['/busofc'] = busofc;

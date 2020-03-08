@@ -36,7 +36,7 @@ function MakeSlideShow () {
             slideCaptionId : "slideCaptionIdUsers",    /* insert caption here */
             slideCaption : "userEmail",  /* json key to the caption */
             slideImageId : "slideImageIdUsers", /* insert image here */
-            slideImage : "imageUrl",     /* json key to the image */
+            slideImage : "image",     /* json key to the image */
             slideImageNA : "pics/notAvailable.jpg", /* unavailable image */
             jsonKey : "webUserList",     /* json key  */
             jsonObject : jsonUsers

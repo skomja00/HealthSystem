@@ -22,7 +22,7 @@ public class WebUserView {
                 "    user_email, " +
                 "    user_password, " +
                 "    membership_fee, " +
-                "    image_url, " +
+                "    image, " +
                 "    birthday, " +
                 "    web_user.user_role_id, " +
                 "    user_role_type " +

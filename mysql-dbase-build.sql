@@ -433,7 +433,7 @@ SELECT
     user_role_type
 FROM web_user, user_role
 where web_user.user_role_id = user_role.user_role_id
-ORDER BY web_user_id
+ORDER BY web_user_id;
 
 -- 
 -- SELECT 
@@ -443,3 +443,4 @@ ORDER BY web_user_id
 --                     + "web_user.user_role_id, user_role_type "
 --                     + "FROM web_user, user_role where web_user.user_role_id = user_role.user_role_id "
 --                     + "ORDER BY web_user_id;
+

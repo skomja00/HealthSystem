@@ -101,6 +101,9 @@ CREATE TABLE `web_user` (
     INSERT INTO `web_user` 
         (`user_email`,              `user_password`,`image`,                                                       `birthday`,  `membership_fee`,`user_role_id`) values
         ('admin.a@gmail.com',       'admin',        'http://cis-linux2.temple.edu/~sallyk/pics_user/tony.jpg',         '1985-01-01', 4.95,            get_user_role_id('admin'));
+    INSERT INTO `web_user` 
+        (`user_email`,              `user_password`,`image`,                                                       `birthday`,  `membership_fee`,`user_role_id`) values
+        ('sallyk',                  'p',            'http://cis-linux2.temple.edu/~sallyk/pics_user/sally.jpg',    '1985-01-01', 4.95,            get_user_role_id('admin'));
     
     /* Try to add a record that has an invalid (non-existent) user_role_id and notice that the database management system will not let that record be inserted. */
     /* Error Code: 1452. Cannot add or update a child row: a foreign key constraint fails */
@@ -444,3 +447,8 @@ ORDER BY web_user_id;
 --                     + "FROM web_user, user_role where web_user.user_role_id = user_role.user_role_id "
 --                     + "ORDER BY web_user_id;
 
+SELECT web_user_id, user_email, user_password, membership_fee, birthday,
+web_user.user_role_id, user_role_type
+FROM web_user, user_role
+WHERE web_user.user_role_id = user_role.user_role_id
+AND user_email = "sallyk" and user_password = "p"

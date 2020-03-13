@@ -85,22 +85,22 @@ CREATE TABLE `web_user` (
     /* At least one of these records shall have null for all nullable non character fields. */    
     INSERT INTO `web_user` 
         (`user_email`,              `user_password`,`image`,                                                       `birthday`,  `membership_fee`,`user_role_id`) values
-        ('nulls.user@gmail.com',     null,           null,                                                              null,        null,            get_user_role_id('admin'));
+        ('nulls@gmail.com',     null,           null,                                                              null,        null,            get_user_role_id('admin'));
     INSERT INTO `web_user` 
         (`user_email`,              `user_password`,`image`,                                                       `birthday`,  `membership_fee`,`user_role_id`) values 
-        ('services.s@gmail.com',    'services',     'http://cis-linux2.temple.edu/~sallyk/pics_user/tony.jpg',        '1990-11-19', 4.95,            get_user_role_id('services'));
+        ('services@gmail.com',    's',     'http://cis-linux2.temple.edu/~sallyk/pics_user/tony.jpg',        '1990-11-19', 4.95,            get_user_role_id('services'));
     INSERT INTO `web_user` 
         (`user_email`,              `user_password`,`image`,                                                       `birthday`,  `membership_fee`,`user_role_id`) values 
-        ('busofc.b@gmail.com',      'busofc',       'http://cis-linux2.temple.edu/~sallyk/pics_user/gene.jpg',        '1984-12-11',  4.95,            get_user_role_id('busofc'));
+        ('busofc@gmail.com',      'b',       'http://cis-linux2.temple.edu/~sallyk/pics_user/gene.jpg',        '1984-12-11',  4.95,            get_user_role_id('busofc'));
     INSERT INTO `web_user` 
         (`user_email`,              `user_password`,`image`,                                                       `birthday`,  `membership_fee`,`user_role_id`) values 
-        ('documents.d@gmail.com',   'documents',    'http://cis-linux2.temple.edu/~sallyk/pics_user/sally.jpg',        '1999-07-23', 4.95,            get_user_role_id('documents'));
+        ('documents@gmail.com',   'd',    'https://cis.temple.edu/sites/default/files/styles/portrait-small/public/user_pictures/picture-183-1437941062.jpg?itok=PQbfGWVo',        '1999-07-23', 4.95,            get_user_role_id('documents'));
     INSERT INTO `web_user` 
         (`user_email`,              `user_password`,`image`,                                                       `birthday`,  `membership_fee`,`user_role_id`) values
-        ('manager.m@gmail.com',     'manager',      'http://cis-linux2.temple.edu/~sallyk/pics_user/andrew.jpg',       '1991-06-03', 4.95,            get_user_role_id('manager'));
+        ('manager@gmail.com',     'm',      'http://cis-linux2.temple.edu/~sallyk/pics_user/andrew.jpg',       '1991-06-03', 4.95,            get_user_role_id('manager'));
     INSERT INTO `web_user` 
         (`user_email`,              `user_password`,`image`,                                                       `birthday`,  `membership_fee`,`user_role_id`) values
-        ('admin.a@gmail.com',       'admin',        'http://cis-linux2.temple.edu/~sallyk/pics_user/tony.jpg',         '1985-01-01', 4.95,            get_user_role_id('admin'));
+        ('admin@gmail.com',       'a',        'https://cis.temple.edu/sites/default/files/styles/portrait-small/public/user_pictures/picture-304-1447083303.jpg?itok=K_kYuqXu',         '1985-01-01', 4.95,            get_user_role_id('admin'));
     INSERT INTO `web_user` 
         (`user_email`,              `user_password`,`image`,                                                       `birthday`,  `membership_fee`,`user_role_id`) values
         ('sallyk',                  'p',            'http://cis-linux2.temple.edu/~sallyk/pics_user/sally.jpg',    '1985-01-01', 4.95,            get_user_role_id('admin'));
@@ -170,7 +170,7 @@ CREATE TABLE `PatientVisit` (
         '2019-09-06 10:35:32', 
         'Patient Office or Other Outpatient Services',      
         154.95,
-        get_web_user_id('services.s@gmail.com'));
+        get_web_user_id('admin@gmail.com'));
     INSERT INTO `PatientVisit` 
         (`PatientName`,
         `ImageUrl`,
@@ -188,7 +188,7 @@ CREATE TABLE `PatientVisit` (
         '2019-11-06 15:30:47', 
         'Influenza virus vaccine',
         45.00,
-        get_web_user_id('services.s@gmail.com'));
+        get_web_user_id('admin@gmail.com'));
     INSERT INTO `PatientVisit` 
         (`PatientName`,
         `ImageUrl`,
@@ -206,7 +206,7 @@ CREATE TABLE `PatientVisit` (
         '2019-12-07 22:35:41',
         'Emergency department visit for the evaluation and management of a patient',
         2000.00,
-        get_web_user_id('admin.a@gmail.com'));
+        get_web_user_id('admin@gmail.com'));
     INSERT INTO `PatientVisit` 
         (`PatientName`,
         `ImageUrl`,
@@ -224,7 +224,7 @@ CREATE TABLE `PatientVisit` (
         '2019-10-12 08:14:00', 
         'Patient Office or Other Outpatient Services',      
         150.00,
-        get_web_user_id('services.s@gmail.com'));
+        get_web_user_id('admin@gmail.com'));
     INSERT INTO `PatientVisit` 
         (`PatientName`,
         `ImageUrl`,
@@ -236,13 +236,13 @@ CREATE TABLE `PatientVisit` (
         `web_user_id_fk`)
     values
         ('Chandler, Dana',      
-        'http://cis-linux2.temple.edu/~sallyk/pics_user/claudia.jpg',
+        'https://cis.temple.edu/sites/default/files/styles/portrait-small/public/user_pictures/picture-444-1471294001.jpg?itok=vHA39piz',
         'TUN147765',
         'Vaccination'   , 
         '2019-11-06 15:35:21', 
         'Influenza virus vaccine',                             
         45.00,
-        get_web_user_id('admin.a@gmail.com'));
+        get_web_user_id('admin@gmail.com'));
     INSERT INTO `PatientVisit` 
         (`PatientName`,
         `ImageUrl`,
@@ -254,13 +254,13 @@ CREATE TABLE `PatientVisit` (
         `web_user_id_fk`)
     values
         ('Pearson, Ella',        
-        'http://cis-linux2.temple.edu/~sallyk/pics_user/rose.jpg',
+        'https://cis.temple.edu/sites/default/files/styles/portrait-small/public/user_pictures/picture-914-1564714433.jpg?itok=1mwPImKw',
         'TUN559116',
         'Vaccination', 
         '2019-11-06 15:42:21',  
         'Influenza virus vaccine',                             
         45.00,
-        get_web_user_id('services.s@gmail.com'));
+        get_web_user_id('admin@gmail.com'));
     INSERT INTO `PatientVisit` 
         (`PatientName`,
         `ImageUrl`,
@@ -272,13 +272,13 @@ CREATE TABLE `PatientVisit` (
         `web_user_id_fk`)
     values
         ('Sanders, Jared',       
-        'http://cis-linux2.temple.edu/~sallyk/pics_user/andrew.jpg',
+        'https://cis.temple.edu/sites/default/files/styles/portrait-small/public/user_pictures/picture-173-1437489687.jpg',
         'TUN158929',
         'Vaccination',
         '2019-11-06 15:49:02',
         'Influenza virus vaccine',                             
         45.00,
-        get_web_user_id('admin.a@gmail.com'));
+        get_web_user_id('admin@gmail.com'));
     INSERT INTO `PatientVisit` 
         (`PatientName`,
         `ImageUrl`,
@@ -290,13 +290,13 @@ CREATE TABLE `PatientVisit` (
         `web_user_id_fk`)
     values
         ('Jennings, Ada',        
-        'http://cis-linux2.temple.edu/~sallyk/pics_user/sally.jpg',
+        'https://cis.temple.edu/sites/default/files/styles/portrait-small/public/user_pictures/picture-910-1564072808.jpg?itok=gnW_YI77',
         'TUN922629',
         'Office Visit',   
         '2019-12-23 14:21:59',  
         'Patient Office or Other Outpatient Services',         
         150.00,
-        get_web_user_id('services.s@gmail.com'));
+        get_web_user_id('admin@gmail.com'));
     INSERT INTO `PatientVisit` 
         (`PatientName`,
         `ImageUrl`,
@@ -307,14 +307,14 @@ CREATE TABLE `PatientVisit` (
         `VisitCharge`,
         `web_user_id_fk`)
     values
-        ('Allen, Jillian',       
-        'http://cis-linux2.temple.edu/~sallyk/pics_user/rose.jpg',
+        ('Longstreth, Cindy',       
+        'https://cis.temple.edu/sites/default/files/styles/portrait-small/public/user_pictures/picture-190-1441242687.png',
         'TUN111119',
         'Vaccination',   
         '2019-11-13 09:36:21',
         'Influenza virus vaccine',                             
         45.00,
-        get_web_user_id('admin.a@gmail.com'));
+        get_web_user_id('admin@gmail.com'));
     INSERT INTO `PatientVisit` 
         (`PatientName`,
         `ImageUrl`,
@@ -325,14 +325,14 @@ CREATE TABLE `PatientVisit` (
         `VisitCharge`,
         `web_user_id_fk`)
     values
-        ('Clarke, Jeremy',   
-        'http://cis-linux2.temple.edu/~sallyk/pics_user/tony.jpg',
+        ('Miller, Charles',   
+        'https://cis.temple.edu/sites/default/files/styles/portrait-small/public/user_pictures/picture-108-1522178489.jpg?itok=Xcw9PenQ',
         'TUN111120',
         'ED Visit',     
         '2020-01-01 00:01:06', 
         'Emergency department visit for the evaluation and management of a patient',   
         2000.00,
-        get_web_user_id('services.s@gmail.com'));
+        get_web_user_id('admin@gmail.com'));
 --    
 -- a. Run a SELECT statement that lists all the columns of all the records of your “other” table, selecting out each column and presenting them in an order that you think users would like to view the data (don't use SELECT * ). Sort the data by whichever column you decided to show first. 
 -- select 
@@ -409,35 +409,35 @@ CREATE TABLE `PatientVisit` (
 -- from PatientVisit as pv
 -- join web_user as wu on wu.web_user_id = pv.web_user_id_fk
 
-select 
-    pv.VisitId,
-    pv.PatientName,
-    pv.ImageUrl,
-    pv.MedRecNo,
-    pv.Description,
-    pv.VisitDateTime,
-    pv.Diagnosis,
-    pv.VisitCharge,
-    wu.web_user_id,
-    wu.user_email,
-    wu.membership_fee
-from PatientVisit as pv
-join web_user as wu on wu.web_user_id = pv.web_user_id_fk;
-
-
-SELECT
-    web_user_id,
-    user_email,
-    user_password,
-    membership_fee,
-    image,
-    birthday,
-    web_user.user_role_id,
-    user_role_type
-FROM web_user, user_role
-where web_user.user_role_id = user_role.user_role_id
-ORDER BY web_user_id;
-
+-- select 
+--     pv.VisitId,
+--     pv.PatientName,
+--     pv.ImageUrl,
+--     pv.MedRecNo,
+--     pv.Description,
+--     pv.VisitDateTime,
+--     pv.Diagnosis,
+--     pv.VisitCharge,
+--     wu.web_user_id,
+--     wu.user_email,
+--     wu.membership_fee
+-- from PatientVisit as pv
+-- join web_user as wu on wu.web_user_id = pv.web_user_id_fk;
+-- 
+-- 
+-- SELECT
+--     web_user_id,
+--     user_email,
+--     user_password,
+--     membership_fee,
+--     image,
+--     birthday,
+--     web_user.user_role_id,
+--     user_role_type
+-- FROM web_user, user_role
+-- where web_user.user_role_id = user_role.user_role_id
+-- ORDER BY web_user_id;
+-- 
 -- 
 -- SELECT 
 -- web_user_id, 
@@ -446,9 +446,9 @@ ORDER BY web_user_id;
 --                     + "web_user.user_role_id, user_role_type "
 --                     + "FROM web_user, user_role where web_user.user_role_id = user_role.user_role_id "
 --                     + "ORDER BY web_user_id;
-
-SELECT web_user_id, user_email, user_password, membership_fee, birthday,
-web_user.user_role_id, user_role_type
-FROM web_user, user_role
-WHERE web_user.user_role_id = user_role.user_role_id
-AND user_email = "sallyk" and user_password = "p"
+-- 
+-- SELECT web_user_id, user_email, user_password, membership_fee, birthday,
+-- web_user.user_role_id, user_role_type
+-- FROM web_user, user_role
+-- WHERE web_user.user_role_id = user_role.user_role_id
+-- AND user_email = "sallyk" and user_password = "p"

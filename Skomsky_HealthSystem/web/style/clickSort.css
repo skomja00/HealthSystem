@@ -27,5 +27,5 @@
 }
 
 .clickSort td img { /* applies to any <img> tag in a <td> tag in any element classed "clickSort" */
-    width: 160px;
+    width: 60px;
 }

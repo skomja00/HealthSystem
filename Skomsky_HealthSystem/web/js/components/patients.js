@@ -7,14 +7,14 @@ patients.list = function (targetId) {
     contentDOM.innerHTML = "";
 
     // Remember: getting a DB error does NOT mean ajax call unsuccessful. That is a secondary error after ajax call OK.
-    ajax({
+    ajax2({
         url: "WebAPIs/listPatientVisitsAPI.jsp",
-        callBackSuccess: patientListSuccess,
+        successFn: patientListSuccess,
         errorId: targetId
     });
 
     function patientListSuccess(obj) {
-
+        
         // var obj = JSON.parse(hreq.responseText); // this already done by function ajax2...
         if (!obj) {
             contentDOM.innerHTML += "Http Request (from AJAX call) did not parse to an object.";
@@ -57,15 +57,16 @@ patients.list = function (targetId) {
         var userList = [];
         for (var i = 0; i < obj.patientVisitList.length; i++) {
             userList[i] = {}; // add new empty object to array
-            userList[i].VisitId = obj.patientVisitList[i].VisitId;
-            userList[i].ImageUrl = obj.patientVisitList[i].ImageUrl;
-            userList[i].MedRecNo = obj.patientVisitList[i].MedRecNo;
-            userList[i].Description = obj.patientVisitList[i].Description;
-            userList[i].VisitDateTime = obj.patientVisitList[i].VisitDateTime;
-            userList[i].VisitCharge = obj.patientVisitList[i].VisitCharge;
+            userList[i].MedRecNo = obj.patientVisitList[i].medRecNo;
+            userList[i].VisitId = obj.patientVisitList[i].visitId;
+            userList[i].PtName = obj.patientVisitList[i].patientName;
+            userList[i].Image = "<img src='" + obj.patientVisitList[i].imageUrl + "'>";
+            userList[i].Description = obj.patientVisitList[i].description;
+            userList[i].VisitDateTime = obj.patientVisitList[i].visitDateTime;
+            userList[i].VisitCharge = obj.patientVisitList[i].visitCharge;
 
             // Remove this once you are done debugging...
-            userList[i].errorMsg = obj.patientVisitList[i].errorMsg;
+            //userList[i].errorMsg = obj.patientVisitList[i].errorMsg;
         }
 
         // add click sortable HTML table to the content area
@@ -84,7 +85,7 @@ patients.list = function (targetId) {
             "targetId": targetId,
             "searchInputId":"id",
             "sortOrderPropName":"userId",
-            "style":"classList"
+            "style":"clickSort"
         });
     } // end of function success
 

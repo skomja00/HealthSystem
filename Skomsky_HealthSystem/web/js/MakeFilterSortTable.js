@@ -171,7 +171,9 @@
     var targetId = params["targetId"];
     var searchInputId = params["searchInputId"] || "searchInputId";
     var sortOrderPropName = params["sortOrderPropName"];
-
+    var style = params.style || "clickSort"; // optional, if not supplied classname "clickSort" will be added
+    document.getElementById(targetId).classList.add(style);
+        
     // Remove whatever was in the element with the given id
     document.getElementById(targetId).innerHTML = "Filter by: ";
 
@@ -193,7 +195,8 @@
     // innerHTML to be the property name
     var obj = list[0];
     for (var prop in obj) {
-        var colHead = addToRow("th", tableHeadRow, prop, alignment(obj[prop]));
+        //var colHead = addToRow("th", tableHeadRow, prop, alignment(obj[prop]));
+        var colHead = addToRow("th", tableHeadRow, prop, "center");
         colHead.onclick = function () {
             jsSort(list, this.innerHTML);
             addDataRows(list, searchInput.value);

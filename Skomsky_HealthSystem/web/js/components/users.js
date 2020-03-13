@@ -48,7 +48,7 @@ users.list = function (targetId) {
             userList[i] = {}; // add new empty object to array
             userList[i].userCredentials = obj.webUserList[i].userEmail + "<br/> PW (to test Logon): " +
                     obj.webUserList[i].userPassword;
-            userList[i].image = obj.webUserList[i].image;
+            userList[i].image = "<img src='" + obj.webUserList[i].image + "'>";
             userList[i].birthday = obj.webUserList[i].birthday;
             userList[i].membershipFee = obj.webUserList[i].membershipFee;
             userList[i].role = obj.webUserList[i].userRoleId + "&nbsp;" +
@@ -71,6 +71,7 @@ users.list = function (targetId) {
         // params.imgWidth: any columns that hold image files will be turned into <img> tags with this width.
 
         MakeFilterSortTable({
+            "style":"clickSort",
             "theList":userList,
             "targetId": targetId,
             "searchInputId":"id",

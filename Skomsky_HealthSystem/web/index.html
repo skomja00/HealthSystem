@@ -26,9 +26,9 @@
                 <img class="dropHeader" title="Account" src="icons/dark/account_dd_icon_H24.png" alt="Account" >
                 <div class="dropContent">
                     <a href="#/register">Register</a><br/>
-                    <a href="#/login">Log In</a><br/>
-                    <a href="#/profile">Profile</a><br/>
-                    <a href="#/logout">Log Out</a>
+                    <a href="#/logon">Log On</a> <br/>
+                    <a href="#/profile">Profile</a> <br/>
+                    <a href="#/logoff">Log Off</a> <br/>
                 </div> 
             </div>
             <div class="dropdown" id="ddSearch">
@@ -74,7 +74,6 @@
     <script src="js/dropdownFw.js"></script>
     <script src="js/ajax.js"></script>
     <script src="js/ajax2.js"></script>
-    <script src="js/components/logon.js"></script>
     <script src="js/components/users.js"></script>
     <script src="js/components/patients.js"></script>
     <script src="js/MakeTable.js"></script>    
@@ -88,11 +87,11 @@
     <script src="js/components/busofc.js"></script>
     <script src="js/components/documents.js"></script>
     <script src="js/components/home.js"></script>
-    <script src="js/components/login.js"></script>
-    <script src="js/components/logout.js"></script>
+    <script src="js/components/logon.js"></script>
+    <script src="js/components/logoff.js"></script>
+    <script src="js/components/profile.js"></script>
     <script src="js/components/users.js"></script>
     <script src="js/components/patients.js"></script>
-    <script src="js/components/profile.js"></script>
     <script src="js/components/register.js"></script>
     <script src="js/components/routeFw.js"></script>
     <script src="js/components/services.js"></script>
@@ -102,9 +101,9 @@
         myRoutes['/'] = home;
         myRoutes['/home'] = home;
         myRoutes['/register'] = register;
-        myRoutes['/login'] = login.UI;
-        myRoutes['/profile'] = profile;
-        myRoutes['/logout'] = logout;
+        myRoutes['/logon'] = logon.UI;
+        myRoutes['/logoff'] = logoff.logoff;
+        myRoutes['/profile'] = profile.display; 
         myRoutes['/users'] = users.list;
         myRoutes['/patients'] = patients.list;
         myRoutes['/userFind'] = users.findUI; 

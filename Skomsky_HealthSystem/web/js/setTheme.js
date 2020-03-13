@@ -115,7 +115,20 @@
         ".clickSort th { background-color : " + hash["titleBackgroundColor"] + ";" + 
         "         box-shadow : 0px 0px 3px 2px " + hash["titleBoxShadow"] + ";" + 
         "         color : " + hash["titleColor"] + ";" + 
-        "         text-shadow : " + "0px 0px 10px " + hash["titleTextShadow"] + ";}" ;
+        "         text-shadow : " + "0px 0px 10px " + hash["titleTextShadow"] + ";}" +
+        ".slideUsersClass { background-color: " + hash["titleBackgroundColor"] + ";" + 
+        "                   box-shadow: 0px 0px 9px 7px " + hash["titleBoxShadow"] + ";" +  
+        "                   color: " + hash["titleColor"] + ";" + 
+        "                   text-shadow: 0px 0px 10px + 0px 0px 10px " + hash["titleTextShadow"] + ";}" + 
+        ".slidePatientsClass { background-color: " + hash["titleBackgroundColor"] + ";" + 
+        "                   box-shadow: 0px 0px 9px 7px " + hash["titleBoxShadow"] + ";" +  
+        "                   color: " + hash["titleColor"] + ";" + 
+        "                   text-shadow: 0px 0px 10px + 0px 0px 10px " + hash["titleTextShadow"] + ";}" + 
+        ".slideImageClass { box-shadow: 0px 0px 9px 7px " + hash["titleBoxShadow"] + ";}" +  
+        ".slideButton  { background-color: " + hash["titleBackgroundColor"] + ";" + 
+        "                   box-shadow: 0px 0px 9px 7px " + hash["titleBoxShadow"] + ";" +  
+        "                   color: " + hash["titleColor"] + ";" + 
+        "                   text-shadow: 0px 0px 10px + 0px 0px 10px " + hash["titleTextShadow"] + ";}";
     
     /* style the icon */
     document.getElementById("ddTheme").innerHTML = hash["icon"];

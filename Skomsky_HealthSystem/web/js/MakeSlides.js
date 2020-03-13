@@ -19,7 +19,7 @@ function MakeSlides(params) {
     var slideCaption = params["slideCaption"];
     var slideImageId = params["slideImageId"] || "slideImageId";
     var slideImage = params["slideImage"] || "imageUrl";
-    var slideImageNA = params["slideImageNA"] /* unavailable image */
+    var slideImageNA = params["slideImageNA"]; /* unavailable image */
     var jsonKey = params["jsonKey"];
     var json = params["jsonObject"];
 

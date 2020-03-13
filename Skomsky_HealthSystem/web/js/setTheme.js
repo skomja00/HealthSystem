@@ -107,7 +107,15 @@
         ".list-item { background-color : " + hash["listItemBackground"] + ";" + 
         "            color : " + hash["listItemColor"] + ";}" + 
         ".list-item-title { background-color : " + hash["listItemBackground"] + ";" + 
-        "                  color : " + hash["listItemColor"] + ";}";
+        "                  color : " + hash["listItemColor"] + ";}" + 
+        ".clickSort td { background-color : " + hash["titleBackgroundColor"] + ";" + 
+        "         box-shadow : 0px 0px 3px 2px " + hash["titleBoxShadow"] + ";" + 
+        "         color : " + hash["titleColor"] + ";" + 
+        "         text-shadow : " + "0px 0px 10px " + hash["titleTextShadow"] + ";}" + 
+        ".clickSort th { background-color : " + hash["titleBackgroundColor"] + ";" + 
+        "         box-shadow : 0px 0px 3px 2px " + hash["titleBoxShadow"] + ";" + 
+        "         color : " + hash["titleColor"] + ";" + 
+        "         text-shadow : " + "0px 0px 10px " + hash["titleTextShadow"] + ";}" ;
     
     /* style the icon */
     document.getElementById("ddTheme").innerHTML = hash["icon"];

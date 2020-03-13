@@ -26,13 +26,14 @@ profile.display = function () {
             document.getElementById("msgArea").innerHTML = obj.dbError;
             return;
         } else {
-            document.getElementById("msgArea").innerHTML += "Your profile settings.<br>";      
-            var webUserList = obj.webUserList[0];
-            for (var p in webUserList) {
-                if (p != "errorMsg") {
-                    document.getElementById("msgArea").innerHTML += p + ": " + webUserList[p] + "<br>";
-                }
-            }
+            document.getElementById("msgArea").innerHTML += "Your profile settings.<br>";
+            obj.webUserList[0]["image"] = "<img src='" + obj.webUserList[0]["image"]  + "'>";
+            MakeTable({
+                        "caption" : "Your profile settings.",
+                        "theList" : obj.webUserList,
+                        "targetId" : "msgArea",
+                        "style" : "clickSort"
+                    });
         }
     } // end of function success
 }; // end of function users.list

@@ -1,4 +1,4 @@
-function MakeTable(list, id) {
+function MakeTable(params) {
 
     // Add data as th or td (based on eleType) to row of HTML table.
     function addToRow(eleType, row, data, align) {
@@ -53,6 +53,11 @@ function MakeTable(list, id) {
 
     // Main Program.
 
+    var list = params["theList"];
+    var id = params["targetId"];
+    var style = params["style"] || "clickSort"; // optional, if not supplied classname "clickSort" will be added
+    var caption =  params["caption"] || "Your table"; // optional, use 'your table' as a generic heading if not provided
+
     // Create a new HTML table (DOM object) and append 
     // that into the page. 
     var newTable = document.createElement("table");
@@ -67,7 +72,8 @@ function MakeTable(list, id) {
     // matching the property name
     var obj = list[0];
     for (var prop in obj) {
-        addToRow("th", tableHeadRow, prettyColumnHeading(prop), alignment(obj[prop]));
+        /*addToRow("th", tableHeadRow, prettyColumnHeading(prop), alignment(obj[prop]));*/
+        addToRow("th", tableHeadRow, prop, "center");
     }
 
     // Add one row (to HTML table) per element in the array.
@@ -88,6 +94,8 @@ function MakeTable(list, id) {
 
     // The DOM object (htmlTable) will not show unless you attach it somewhere on the page.
     document.getElementById(id).innerHTML = ""; // blank out the target DOM object
+    document.getElementById(id).classList.add(style);
+    document.getElementById(id).innerHTML += caption + '<br><br>';
     document.getElementById(id).appendChild(newTable);
 
 }  // MakeTable

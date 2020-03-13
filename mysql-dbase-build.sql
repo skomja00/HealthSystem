@@ -88,19 +88,19 @@ CREATE TABLE `web_user` (
         ('nulls@gmail.com',     null,           null,                                                              null,        null,            get_user_role_id('admin'));
     INSERT INTO `web_user` 
         (`user_email`,              `user_password`,`image`,                                                       `birthday`,  `membership_fee`,`user_role_id`) values 
-        ('services@gmail.com',    's',     'http://cis-linux2.temple.edu/~sallyk/pics_user/tony.jpg',        '1990-11-19', 4.95,            get_user_role_id('services'));
+        ('services@gmail.com',    'p',     'http://cis-linux2.temple.edu/~sallyk/pics_user/tony.jpg',        '1990-11-19', 4.95,            get_user_role_id('services'));
     INSERT INTO `web_user` 
         (`user_email`,              `user_password`,`image`,                                                       `birthday`,  `membership_fee`,`user_role_id`) values 
-        ('busofc@gmail.com',      'b',       'http://cis-linux2.temple.edu/~sallyk/pics_user/gene.jpg',        '1984-12-11',  4.95,            get_user_role_id('busofc'));
+        ('busofc@gmail.com',      'p',       'http://cis-linux2.temple.edu/~sallyk/pics_user/gene.jpg',        '1984-12-11',  4.95,            get_user_role_id('busofc'));
     INSERT INTO `web_user` 
         (`user_email`,              `user_password`,`image`,                                                       `birthday`,  `membership_fee`,`user_role_id`) values 
-        ('documents@gmail.com',   'd',    'https://cis.temple.edu/sites/default/files/styles/portrait-small/public/user_pictures/picture-183-1437941062.jpg?itok=PQbfGWVo',        '1999-07-23', 4.95,            get_user_role_id('documents'));
+        ('documents@gmail.com',   'p',    'https://cis.temple.edu/sites/default/files/styles/portrait-small/public/user_pictures/picture-183-1437941062.jpg?itok=PQbfGWVo',        '1999-07-23', 4.95,            get_user_role_id('documents'));
     INSERT INTO `web_user` 
         (`user_email`,              `user_password`,`image`,                                                       `birthday`,  `membership_fee`,`user_role_id`) values
-        ('manager@gmail.com',     'm',      'http://cis-linux2.temple.edu/~sallyk/pics_user/andrew.jpg',       '1991-06-03', 4.95,            get_user_role_id('manager'));
+        ('manager@gmail.com',     'p',      'http://cis-linux2.temple.edu/~sallyk/pics_user/andrew.jpg',       '1991-06-03', 4.95,            get_user_role_id('manager'));
     INSERT INTO `web_user` 
         (`user_email`,              `user_password`,`image`,                                                       `birthday`,  `membership_fee`,`user_role_id`) values
-        ('admin@gmail.com',       'a',        'https://cis.temple.edu/sites/default/files/styles/portrait-small/public/user_pictures/picture-304-1447083303.jpg?itok=K_kYuqXu',         '1985-01-01', 4.95,            get_user_role_id('admin'));
+        ('admin@gmail.com',       'p',        'https://cis.temple.edu/sites/default/files/styles/portrait-small/public/user_pictures/picture-304-1447083303.jpg?itok=K_kYuqXu',         '1985-01-01', 4.95,            get_user_role_id('admin'));
     INSERT INTO `web_user` 
         (`user_email`,              `user_password`,`image`,                                                       `birthday`,  `membership_fee`,`user_role_id`) values
         ('sallyk',                  'p',            'http://cis-linux2.temple.edu/~sallyk/pics_user/sally.jpg',    '1985-01-01', 4.95,            get_user_role_id('admin'));

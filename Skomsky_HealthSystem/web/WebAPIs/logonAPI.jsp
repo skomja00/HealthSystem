@@ -41,7 +41,7 @@
         }
         dbc.close(); // EVERY code path that opens a db connection, must also close it - no DB Conn leaks.
     }
-    //convert Java Object into JSON 
+    //convert POJO to JSON. Print into response object as JSON string
     Gson gson = new Gson();
     out.print(gson.toJson(list).trim());
 %>

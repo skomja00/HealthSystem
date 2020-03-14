@@ -17,18 +17,6 @@ function blog(id) {
     </style>
     
     <div style="margin-left:2em">
-        <a id='#/toc'>Table Of Contents</a>
-        <ul>
-            <li><a href='#/hw1'>HW 1 Home Page</a>
-            <li><a href='#/hw2'>HW 2 DB &amp; JavaScript Routing</a>
-            <li><a href='#/hw3'>HW 3 Display Data</a>
-            <li><a href='#/hw4'>HW 4 Slide Show or Tutorial Proposal</a>
-            <li><a href='#/hw5'>HW 5 Web APIs</a>
-            <li><a href='#/hw6'>HW 6 Log On</a>
-            <li><a href='#/hw7'>HW 7 Delete</a>
-            <li><a href='#/hw8'>HW 8 Insert or Tutorial</a>
-            <li><a href='#/hw9'>HW 9 Update</a>
-        <a id='#hw1'></a>
         <h2>HW 1 Home Page</h2>
         <p>
             My web development experience consists of none at all. My background 
@@ -44,7 +32,6 @@ function blog(id) {
             For me the most difficult thing is the long list of CSS properties,
             and their behaviors. W3Schools.com helped make sense of the HTML/CSS.
         </p>
-        <a id='#hw2'></a>
         <h2>HW 2 DB &amp; JavaScript Routing</h2>
         <p>
             My database experience consists of Microsoft SQL Server ETL processes 
@@ -73,7 +60,6 @@ function blog(id) {
             the individual parts of the blog page do not exist in the route 
             table. Not sure how to resolve this. I will have to give it more thought.
         </p>
-        <a id='#hw3'></a>
         <h2>HW 3 Display Data</h2>
         <p>
             This was a time-consuming effort on my part. Unfortunately the
@@ -94,7 +80,6 @@ function blog(id) {
             also I re-arrange the positioning so the dropdowns are aligned more to my
             liking sort of left-justified with the dropdown header. 
         </p>
-        <a id='#hw4'></a>
         <h2>HW 4 Slide Show</h2>
         <p>
             In this homework I used public and private properties of DOM elements. I created 
@@ -107,7 +92,6 @@ function blog(id) {
             are not boolean instead js sees values such as 0, "", null, and undefined as
             "falsey" and will then check the 2nd operator for a "truthey" (default) value.
         </p>
-        <a id='#hw5'></a>
         <h2>HW 5 Web APIs</h2>
         <p>
             The course is moving from the client to the server side of web page development. 
@@ -142,12 +126,22 @@ function blog(id) {
             </li>
         </ul>
 
-        <a id='#hw6'></a>
         <h2>HW 6 Log On</h2>
         <p>
-            In this homework I learned ...
-            The parts that I found easy were ... 
-            The parts that I found hard or confusing were ... 
+            In this homework I learned how to read a web user from the dbase, and 
+            add their data to a session object which is only available to the JSP.
+            The JSP runs on the Apache Tomcat server behind the firewall so the session
+            object is secure. The parts that I found hard or confusing were how all 
+            the server side pieces fit together, and the flow of data also server
+            side. I did some reading on JSP and learned the web container (Tomcat
+            on our system) creates HTTPServletRequest and HTTPServletResponse objects
+            passes them to the Controller. So when the API does an out.print it 
+            is printing to the response object to pass back to the Container. I was
+            mistakenly thinking the gson to json was printing a JSON object
+            into the response, but in fact it is putting a 'json string' into the 
+            response. This is why the object returned from the AJAX call
+            has to JSON.parse(httpReq.responseText) because it is actually a 
+            'json string' coming back from the API.
         </p>
         <ul>
             <li>
@@ -157,7 +151,6 @@ function blog(id) {
             </li>
         </ul>
 
-        <a id='#hw7'></a>
         <h2>HW 7 Delete</h2>
         <p>
             In this homework I learned ... 
@@ -171,7 +164,6 @@ function blog(id) {
             </li>
         </ul>
 
-        <a id='#hw8'></a>
         <h2>HW 8 Insert or Tutorial</h2>
 
         <em>[If selecting Insert...]</em>
@@ -196,7 +188,6 @@ function blog(id) {
             Click <a target="_blank" href="tutorial/index.html">here</a> for my tutorial.
         </p>
 
-        <a id='#hw9'></a>
         <h2>HW 9 Update</h2>
         <p>
             In this homework I learned ... 

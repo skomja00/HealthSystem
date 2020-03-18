@@ -27,7 +27,7 @@ public class PatientVisitView {
                     "wu.user_email, " +
                     "wu.membership_fee " +
                 "from PatientVisit as pv " +
-                "join web_user as wu on wu.web_user_id = pv.web_user_id_fk  " +
+                "join web_user as wu on wu.web_user_id = pv.web_user_id  " +
                 "ORDER BY web_user_id ";  // you always want to order by something, not just random order.
             PreparedStatement stmt = dbc.getConn().prepareStatement(sql);
             ResultSet results = stmt.executeQuery();

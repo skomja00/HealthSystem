@@ -27,10 +27,19 @@ profile.display = function () {
             return;
         } else {
             document.getElementById("msgArea").innerHTML += "Your profile settings.<br>";
-            obj.webUserList[0]["image"] = "<img src='" + obj.webUserList[0]["image"]  + "'>";
+            var userList = [];
+            userList[0] = {}; // add new empty object to array
+            userList[0].Credentials = obj.webUserList[0].userEmail + "<br/> PW (to test Logon): " +
+                    obj.webUserList[0].userPassword;
+            userList[0].Image = "<img src='" + obj.webUserList[0].image + "'>";
+            userList[0].Birthday = obj.webUserList[0].birthday;
+            userList[0].MemberFee = obj.webUserList[0].membershipFee;
+            userList[0].Role = obj.webUserList[0].userRoleId + "&nbsp;" +
+                    obj.webUserList[0].userRoleType;
+            userList[0].WebUserId = obj.webUserList[0].webUserId;
             MakeTable({
                         "caption" : "Your profile settings.",
-                        "theList" : obj.webUserList,
+                        "theList" : userList,
                         "targetId" : "msgArea",
                         "style" : "clickSort"
                     });

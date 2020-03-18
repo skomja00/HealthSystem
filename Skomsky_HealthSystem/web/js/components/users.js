@@ -46,17 +46,17 @@ users.list = function (targetId) {
         var userList = [];
         for (var i = 0; i < obj.webUserList.length; i++) {
             userList[i] = {}; // add new empty object to array
-            userList[i].userCredentials = obj.webUserList[i].userEmail + "<br/> PW (to test Logon): " +
+            userList[i].Credentials = obj.webUserList[i].userEmail + "<br/> PW (to test Logon): " +
                     obj.webUserList[i].userPassword;
-            userList[i].image = "<img src='" + obj.webUserList[i].image + "'>";
-            userList[i].birthday = obj.webUserList[i].birthday;
-            userList[i].membershipFee = obj.webUserList[i].membershipFee;
-            userList[i].role = obj.webUserList[i].userRoleId + "&nbsp;" +
+            userList[i].Image = "<img src='" + obj.webUserList[i].image + "'>";
+            userList[i].Birthday = obj.webUserList[i].birthday;
+            userList[i].MemberFee = obj.webUserList[i].membershipFee;
+            userList[i].Role = obj.webUserList[i].userRoleId + "&nbsp;" +
                     obj.webUserList[i].userRoleType;
-            userList[i].userId = obj.webUserList[i].webUserId;
+            userList[i].WebUserId = obj.webUserList[i].webUserId;
 
             // Remove this once you are done debugging...
-            userList[i].errorMsg = obj.webUserList[i].errorMsg;
+            //userList[i].errorMsg = obj.webUserList[i].errorMsg;
         }
 
         // add click sortable HTML table to the content area

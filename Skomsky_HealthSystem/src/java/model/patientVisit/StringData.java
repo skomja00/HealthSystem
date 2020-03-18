@@ -14,8 +14,16 @@ import java.sql.ResultSet;
  * protect this data in any way.  We want to let the JSP page have
  * free access to put data in or take it out. */
 public class StringData {
-
-    public String visitId = "";
+    /*
+    `PatientName`,
+    `ImageUrl`,
+    `MedRecNo`,
+    `Description`,
+    `VisitDateTime`,
+    `Diagnosis`,
+    `VisitCharge`,
+    `web_user_id`
+    */
     public String patientName = "";
     public String imageUrl = "";
     public String medRecNo = "";
@@ -24,9 +32,7 @@ public class StringData {
     public String diagnosis = "";
     public String visitCharge = "";
     public String webUserId = "";
-    public String userEmail = "";
-    public String membershipFee = "";
-    
+   
     public String errorMsg = "";
 
     // default constructor leaves all data members with empty string (Nothing null).
@@ -36,7 +42,6 @@ public class StringData {
     // overloaded constructor sets all data members by extracting from resultSet.
     public StringData(ResultSet results) {
         try {
-            this.visitId = FormatUtils.formatInteger(results.getObject("VisitId"));
             this.patientName = FormatUtils.formatString(results.getObject("PatientName"));
             this.imageUrl = FormatUtils.formatString(results.getObject("ImageUrl"));
             this.medRecNo = FormatUtils.formatString(results.getObject("MedRecNo"));
@@ -45,15 +50,21 @@ public class StringData {
             this.diagnosis = FormatUtils.formatString(results.getObject("Diagnosis"));
             this.visitCharge = FormatUtils.formatDollar(results.getObject("VisitCharge"));
             this.webUserId = FormatUtils.formatInteger(results.getObject("wu.web_user_id"));
-            this.userEmail = FormatUtils.formatString(results.getObject("wu.user_email"));
-            this.membershipFee = FormatUtils.formatDollar(results.getObject("wu.membership_fee"));
         } catch (Exception e) {
-            this.errorMsg = "Exception thrown in model.webUser.StringData (the constructor that takes a ResultSet): " + e.getMessage();
+            this.errorMsg = "Exception thrown in model.patientVisit.StringData (the constructor that takes a ResultSet): " + e.getMessage();
         }
     }
 
     public int getCharacterCount() {
-        String s = this.medRecNo + this.visitId + this.patientName + this.userEmail;
+        String s = 
+                this.patientName + 
+                this.imageUrl + 
+                this.medRecNo + 
+                this.description + 
+                this.visitDateTime + 
+                this.diagnosis + 
+                this.visitCharge + 
+                this.webUserId;
         return s.length();
     }
 
@@ -67,8 +78,6 @@ public class StringData {
             + ", Visit DateTime: " + this.visitDateTime
             + ", Diagnosis: " + this.diagnosis
             + ", Visit Charge: " + this.visitCharge
-            + ", Web User Id: " + this.webUserId
-            + ", User Email: " + this.userEmail
-            + ", Membership Fee: " + this.membershipFee;
+            + ", Web User Id: " + this.webUserId;
     }
 }

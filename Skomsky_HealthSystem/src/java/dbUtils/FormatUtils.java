@@ -1,6 +1,7 @@
 package dbUtils;
 
 import java.text.DecimalFormat;
+import java.time.*;
 import java.text.SimpleDateFormat;
 import java.math.BigDecimal;
 
@@ -17,6 +18,7 @@ public class FormatUtils {
             return "";
         }
         try {
+            System.out.println("FormatUtils...formatDateTime...obj.getClass: " + obj.getClass());
             java.util.Date dateval = (java.util.Date) obj;
             SimpleDateFormat dateformat = new SimpleDateFormat("MM/dd/yyyy h:mm a");
             dateformat.setLenient(false);
@@ -40,6 +42,19 @@ public class FormatUtils {
         return out;
     } // formatDateTd
 
+    // plainInteger returns integer converted to string with no commas.
+    public static String plainInteger(Object obj) {
+        if (obj == null) {
+            return "";
+        } else {
+            try {
+                Integer ival = (Integer) obj;
+                return ival.toString();
+            } catch (Exception e) {
+                return "bad Integer in FormatUtils:" + obj.toString() + " Error:" + e.getMessage();
+            }
+        }
+    } // formatInteger    
 
     // DecimalFormat percentFormat = new DecimalFormat("%###.##");
     // Turns a date into a nicely formatted String.

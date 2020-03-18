@@ -9,6 +9,8 @@ USE SP20_3308_tun49199;
     DROP TABLE IF EXISTS `user_role`;
     DROP TABLE IF EXISTS `web_user`;
     DROP TABLE IF EXISTS `PatientVisit`;
+    DROP FUNCTION IF EXISTS get_user_role_id;
+    DROP FUNCTION IF EXISTS get_web_user_id;
     SET FOREIGN_KEY_CHECKS=1;
 
 /**
@@ -29,7 +31,7 @@ USE SP20_3308_tun49199;
     INSERT INTO `user_role` (`user_role_id`, `user_role_type`) VALUES (1000,'admin');
     INSERT INTO `user_role` (`user_role_id`, `user_role_type`) VALUES (2000,'manager');
     INSERT INTO `user_role` (`user_role_id`, `user_role_type`) VALUES (3000,'services');
-    INSERT INTO `user_role` (`user_role_id`, `user_role_type`) VALUES (4000,'busofc');
+    INSERT INTO `user_role` (`user_role_id`, `user_role_type`) VALUES (4000,'business');
     INSERT INTO `user_role` (`user_role_id`, `user_role_type`) VALUES (5000,'documents');
     /* Try to add a record with a duplicate primary key (i.e. 3000 below) and notice the database management system will not let that record be inserted. */
     /* MySQL output: Error Code: 1062. Duplicate entry '3000' for key 'PRIMARY'*/
@@ -66,14 +68,24 @@ CREATE TABLE `web_user` (
     `user_role_id` INT(11) NOT NULL,
     PRIMARY KEY (`web_user_id`),
     UNIQUE INDEX `user_email_uidx` (`user_email` ASC),
-    INDEX `user_role_id_fk_idx` (`user_role_id` ASC),
-    CONSTRAINT `user_role_id_fk` 
-        FOREIGN KEY (`user_role_id`) 
-        REFERENCES `user_role` (`user_role_id`) 
-        ON DELETE NO ACTION 
-        ON UPDATE NO ACTION
+    CONSTRAINT `user_role_id_fk` FOREIGN KEY (`user_role_id`) REFERENCES `user_role` (`user_role_id`) 
     ) 
     ENGINE = InnoDB;
+    
+	 
+    #test FK constraint
+    #result:
+    #     Error Code: 1451. Cannot delete or update a parent row: a foreign key constraint fails 
+    #     (`SP20_3308_tun49199`.`PatientVisit`, CONSTRAINT `web_user_id_fk_1` FOREIGN KEY (`web_user_id`) REFERENCES `web_user` (`web_user_id`))
+    #select * 
+    #from PatientVisit
+    #where PatientVisit.web_user_id = get_web_user_id('business@gmail.com');
+    #
+    #delete 
+    #from web_user
+    #where web_user.user_role_id = get_user_role_id('business');
+
+    
 /**
  *  Add data to web_user table
  */
@@ -84,26 +96,103 @@ CREATE TABLE `web_user` (
 
     /* At least one of these records shall have null for all nullable non character fields. */    
     INSERT INTO `web_user` 
-        (`user_email`,              `user_password`,`image`,                                                       `birthday`,  `membership_fee`,`user_role_id`) values
-        ('nulls@gmail.com',     null,           null,                                                              null,        null,            get_user_role_id('admin'));
+        (`user_email`,
+        `user_password`,
+        `image`,
+        `birthday`,
+        `membership_fee`,
+        `user_role_id`) 
+	values
+        ('nulls@gmail.com',
+        null,
+        null,
+        null,
+        null,
+        get_user_role_id('admin'));
     INSERT INTO `web_user` 
-        (`user_email`,              `user_password`,`image`,                                                       `birthday`,  `membership_fee`,`user_role_id`) values 
-        ('services@gmail.com',    'p',     'http://cis-linux2.temple.edu/~sallyk/pics_user/tony.jpg',        '1990-11-19', 4.95,            get_user_role_id('services'));
+        (`user_email`,
+        `user_password`,
+        `image`,
+        `birthday`,
+        `membership_fee`,
+        `user_role_id`) 
+	VALUES
+        ('services@gmail.com',
+        'p',
+        'http://cis-linux2.temple.edu/~sallyk/pics_user/tony.jpg',
+        '1990-11-19', 
+        4.95,            
+        get_user_role_id('services'));
     INSERT INTO `web_user` 
-        (`user_email`,              `user_password`,`image`,                                                       `birthday`,  `membership_fee`,`user_role_id`) values 
-        ('busofc@gmail.com',      'p',       'http://cis-linux2.temple.edu/~sallyk/pics_user/gene.jpg',        '1984-12-11',  4.95,            get_user_role_id('busofc'));
+        (`user_email`,
+        `user_password`,
+        `image`,
+        `birthday`,
+        `membership_fee`,
+        `user_role_id`) 
+	VALUES
+        ('business@gmail.com',
+        'p',       
+        'http://cis-linux2.temple.edu/~sallyk/pics_user/gene.jpg',        
+        '1984-12-11',  
+        4.95,            
+        get_user_role_id('business'));
     INSERT INTO `web_user` 
-        (`user_email`,              `user_password`,`image`,                                                       `birthday`,  `membership_fee`,`user_role_id`) values 
-        ('documents@gmail.com',   'p',    'https://cis.temple.edu/sites/default/files/styles/portrait-small/public/user_pictures/picture-183-1437941062.jpg?itok=PQbfGWVo',        '1999-07-23', 4.95,            get_user_role_id('documents'));
+        (`user_email`,
+        `user_password`,
+        `image`,
+        `birthday`,
+        `membership_fee`,
+        `user_role_id`) 
+	VALUES
+        ('documents@gmail.com',   
+        'p',    
+        'https://cis.temple.edu/sites/default/files/styles/portrait-small/public/user_pictures/picture-183-1437941062.jpg?itok=PQbfGWVo',        
+        '1999-07-23', 
+        4.95,            
+        get_user_role_id('documents'));
     INSERT INTO `web_user` 
-        (`user_email`,              `user_password`,`image`,                                                       `birthday`,  `membership_fee`,`user_role_id`) values
-        ('manager@gmail.com',     'p',      'http://cis-linux2.temple.edu/~sallyk/pics_user/andrew.jpg',       '1991-06-03', 4.95,            get_user_role_id('manager'));
+        (`user_email`,
+        `user_password`,
+        `image`,
+        `birthday`,
+        `membership_fee`,
+        `user_role_id`) 
+	VALUES
+        ('manager@gmail.com',     
+        'p',      
+        'http://cis-linux2.temple.edu/~sallyk/pics_user/andrew.jpg',       
+        '1991-06-03', 
+        4.95,            
+        get_user_role_id('manager'));
     INSERT INTO `web_user` 
-        (`user_email`,              `user_password`,`image`,                                                       `birthday`,  `membership_fee`,`user_role_id`) values
-        ('admin@gmail.com',       'p',        'https://cis.temple.edu/sites/default/files/styles/portrait-small/public/user_pictures/picture-304-1447083303.jpg?itok=K_kYuqXu',         '1985-01-01', 4.95,            get_user_role_id('admin'));
+        (`user_email`,
+        `user_password`,
+        `image`,
+        `birthday`,
+        `membership_fee`,
+        `user_role_id`) 
+	VALUES
+        ('admin@gmail.com',       
+        'p',        
+        'https://cis.temple.edu/sites/default/files/styles/portrait-small/public/user_pictures/picture-304-1447083303.jpg?itok=K_kYuqXu',         
+        '1985-01-01', 
+        4.95,            
+        get_user_role_id('admin'));
     INSERT INTO `web_user` 
-        (`user_email`,              `user_password`,`image`,                                                       `birthday`,  `membership_fee`,`user_role_id`) values
-        ('sallyk',                  'p',            'http://cis-linux2.temple.edu/~sallyk/pics_user/sally.jpg',    '1985-01-01', 4.95,            get_user_role_id('admin'));
+        (`user_email`,
+        `user_password`,
+        `image`,
+        `birthday`,
+        `membership_fee`,
+        `user_role_id`) 
+	VALUES
+        ('sallyk',                  
+        'p',            
+        'http://cis-linux2.temple.edu/~sallyk/pics_user/sally.jpg',    
+        '1985-01-01', 
+        4.95,            
+        get_user_role_id('admin'));
     
     /* Try to add a record that has an invalid (non-existent) user_role_id and notice that the database management system will not let that record be inserted. */
     /* Error Code: 1452. Cannot add or update a child row: a foreign key constraint fails */
@@ -140,15 +229,16 @@ CREATE TABLE `PatientVisit` (
     `VisitDateTime` datetime NULL,
     `Diagnosis` varchar(255) NULL,
     `VisitCharge` decimal(14,3) NULL,
-    `web_user_id_fk` INT(11) NOT NULL,
+    `web_user_id` INT(11) NOT NULL,
     PRIMARY KEY (`VisitId`),
     UNIQUE INDEX `MedRecNo_uidx` (`MedRecNo` ASC)
---      CONSTRAINT `web_user_id_fk` 
---          FOREIGN KEY (`web_user_id_fk`) 
---         REFERENCES `web_user` (`web_user_id`)
-    ) ENGINE=InnoDB; 
-    -- AUTO_INCREMENT=11 
-    -- DEFAULT CHARSET=latin1;
+    #CONSTRAINT `web_user_id_fk_1` FOREIGN KEY (`web_user_id`) REFERENCES `web_user` (`web_user_id`)
+    ) 
+    ENGINE=InnoDB; 
+ 
+-- select *
+-- from information_schema.table_constraints
+-- where constraint_schema = 'SP20_3308_tun49199';
     
 /**
  * Add data to Patient/"other" table 
@@ -161,16 +251,17 @@ CREATE TABLE `PatientVisit` (
         `VisitDateTime`,
         `Diagnosis`,
         `VisitCharge`,
-        `web_user_id_fk`)
+        `web_user_id`)
     values
-        ('Hughes, Donna',       
+        ('OMalley, Donna',       
         'http://cis-linux2.temple.edu/~sallyk/pics_user/claudia.jpg',
         'TUN143981',
         'Office Visit',     
-        '2019-09-06 10:35:32', 
+        '1970-03-17 10:35:32', 
         'Patient Office or Other Outpatient Services',      
         154.95,
-        get_web_user_id('admin@gmail.com'));
+        get_web_user_id('business@gmail.com'));
+        
     INSERT INTO `PatientVisit` 
         (`PatientName`,
         `ImageUrl`,
@@ -179,7 +270,7 @@ CREATE TABLE `PatientVisit` (
         `VisitDateTime`,
         `Diagnosis`,
         `VisitCharge`,
-        `web_user_id_fk`)
+        `web_user_id`)
     values
         ('Martin, Elizabeth',
         'http://cis-linux2.temple.edu/~sallyk/pics_user/rose.jpg',
@@ -197,7 +288,7 @@ CREATE TABLE `PatientVisit` (
         `VisitDateTime`,
         `Diagnosis`,
         `VisitCharge`,
-        `web_user_id_fk`)
+        `web_user_id`)
     values
         ('Rutherford, Amelia',  
         'http://cis-linux2.temple.edu/~sallyk/pics_user/sally.jpg',
@@ -215,7 +306,7 @@ CREATE TABLE `PatientVisit` (
         `VisitDateTime`,
         `Diagnosis`,
         `VisitCharge`,
-        `web_user_id_fk`)
+        `web_user_id`)
     values
         ('Hamilton, Edward',   
         'http://cis-linux2.temple.edu/~sallyk/pics_user/tony.jpg',
@@ -233,7 +324,7 @@ CREATE TABLE `PatientVisit` (
         `VisitDateTime`,
         `Diagnosis`,
         `VisitCharge`,
-        `web_user_id_fk`)
+        `web_user_id`)
     values
         ('Chandler, Dana',      
         'https://cis.temple.edu/sites/default/files/styles/portrait-small/public/user_pictures/picture-444-1471294001.jpg?itok=vHA39piz',
@@ -251,7 +342,7 @@ CREATE TABLE `PatientVisit` (
         `VisitDateTime`,
         `Diagnosis`,
         `VisitCharge`,
-        `web_user_id_fk`)
+        `web_user_id`)
     values
         ('Pearson, Ella',        
         'https://cis.temple.edu/sites/default/files/styles/portrait-small/public/user_pictures/picture-914-1564714433.jpg?itok=1mwPImKw',
@@ -269,7 +360,7 @@ CREATE TABLE `PatientVisit` (
         `VisitDateTime`,
         `Diagnosis`,
         `VisitCharge`,
-        `web_user_id_fk`)
+        `web_user_id`)
     values
         ('Sanders, Jared',       
         'https://cis.temple.edu/sites/default/files/styles/portrait-small/public/user_pictures/picture-173-1437489687.jpg',
@@ -287,7 +378,7 @@ CREATE TABLE `PatientVisit` (
         `VisitDateTime`,
         `Diagnosis`,
         `VisitCharge`,
-        `web_user_id_fk`)
+        `web_user_id`)
     values
         ('Jennings, Ada',        
         'https://cis.temple.edu/sites/default/files/styles/portrait-small/public/user_pictures/picture-910-1564072808.jpg?itok=gnW_YI77',
@@ -305,7 +396,7 @@ CREATE TABLE `PatientVisit` (
         `VisitDateTime`,
         `Diagnosis`,
         `VisitCharge`,
-        `web_user_id_fk`)
+        `web_user_id`)
     values
         ('Longstreth, Cindy',       
         'https://cis.temple.edu/sites/default/files/styles/portrait-small/public/user_pictures/picture-190-1441242687.png',
@@ -323,7 +414,7 @@ CREATE TABLE `PatientVisit` (
         `VisitDateTime`,
         `Diagnosis`,
         `VisitCharge`,
-        `web_user_id_fk`)
+        `web_user_id`)
     values
         ('Miller, Charles',   
         'https://cis.temple.edu/sites/default/files/styles/portrait-small/public/user_pictures/picture-108-1522178489.jpg?itok=Xcw9PenQ',
@@ -345,7 +436,7 @@ CREATE TABLE `PatientVisit` (
 --      ,`VisitDateTime`
 --      ,`ImageUrl`
 --      ,`Patient_Id`
---      ,`web_user_id_fk`
+--      ,`web_user_id`
 -- from patient 
 -- order by `balance` desc;
 
@@ -361,7 +452,7 @@ CREATE TABLE `PatientVisit` (
 --      ,`VisitDateTime`
 --      ,`ImageUrl`
 --      ,`Patient_Id`
---      ,`web_user_id_fk`
+--      ,`web_user_id`
 -- from patient 
 -- where patient.description = 'office visit'
 -- order by `balance` desc;
@@ -408,7 +499,7 @@ CREATE TABLE `PatientVisit` (
 --     ,'},'
 -- from PatientVisit as pv
 -- join web_user as wu on wu.web_user_id = pv.web_user_id_fk
-
+-- 
 -- select 
 --     pv.VisitId,
 --     pv.PatientName,
@@ -420,11 +511,15 @@ CREATE TABLE `PatientVisit` (
 --     pv.VisitCharge,
 --     wu.web_user_id,
 --     wu.user_email,
---     wu.membership_fee
+--     wu.user_password,
+--     wu.membership_fee,
+--     ur.user_role_id
 -- from PatientVisit as pv
--- join web_user as wu on wu.web_user_id = pv.web_user_id_fk;
+-- join web_user as wu on wu.web_user_id = pv.web_user_id
+-- join user_role as ur on ur.user_role_id = wu.user_role_id;
 -- 
 -- 
+-- -- 
 -- SELECT
 --     web_user_id,
 --     user_email,

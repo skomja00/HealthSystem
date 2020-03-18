@@ -58,7 +58,7 @@ patients.list = function (targetId) {
         for (var i = 0; i < obj.patientVisitList.length; i++) {
             userList[i] = {}; // add new empty object to array
             userList[i].MedRecNo = obj.patientVisitList[i].medRecNo;
-            userList[i].VisitId = obj.patientVisitList[i].visitId;
+            //userList[i].VisitId = obj.patientVisitList[i].visitId;
             userList[i].PtName = obj.patientVisitList[i].patientName;
             userList[i].Image = "<img src='" + obj.patientVisitList[i].imageUrl + "'>";
             userList[i].Description = obj.patientVisitList[i].description;

@@ -30,7 +30,11 @@ public class FormatUtils {
 
     public static String formatDateTimeTd(Object obj) {
         String out = "<td style='text-align:center'>";
-        String strDate = formatDate(obj);
+        //String strDate = formatDate(obj);
+        java.util.Date dateval = (java.util.Date) obj;
+        SimpleDateFormat dateformat = new SimpleDateFormat("MM/dd/yyyy h:mm a");
+        dateformat.setLenient(false);
+        String strDate = dateformat.format(dateval);
         if (strDate.length() == 0) {
             // if you don't put a "non-breaking space" in an empty td/cell, 
             // the cell's border doesn't show !
@@ -40,7 +44,7 @@ public class FormatUtils {
         }
         out += "</td>";
         return out;
-    } // formatDateTd
+    } // formatDateTimdTd
 
     // plainInteger returns integer converted to string with no commas.
     public static String plainInteger(Object obj) {

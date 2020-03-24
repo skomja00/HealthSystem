@@ -67,12 +67,13 @@ public class ValidationUtils {
                 DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-M-d h:mm a");
                 DateTimeFormatter format24H = DateTimeFormatter.ofPattern("yyyy-M-d HH:mm:ss");
                 LocalDateTime dateTime = LocalDateTime.parse(val.toUpperCase(), format);
+                String lastTest = dateTime.format(format24H);
                 return ""; // means date is good
             } else {
                 return "Please enter a valid datetime (format: ccyy-mm-dd hh:mm am/pm)";
             }                
         } catch (Exception e) {
-            return "Please enter a valid datetime (format: ccyy-mm-dd hh:mm am/pm)";  // can also add (to debug) + e.getMessage();
+            return "Please enter a valid datetime (format: ccyy-mm-dd hh:mm am/pm)" + e.getMessage();
         }
     } // dateTimeValidationMsg
 

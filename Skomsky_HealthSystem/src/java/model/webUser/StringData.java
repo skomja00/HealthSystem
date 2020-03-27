@@ -18,6 +18,7 @@ public class StringData {
     public String webUserId = "";
     public String userEmail = "";
     public String userPassword = "";
+    public String userPassword2 = "";
     public String birthday = "";
     public String membershipFee = "";
     public String image = "";

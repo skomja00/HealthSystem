@@ -8,6 +8,7 @@
     <link href="style/clickSort.css" rel="stylesheet" type="text/css" />  
     <link href="style/dropdownStyle.css" rel="stylesheet" type="text/css" /> 
     <link href="style/makeSlideShow.css" rel="stylesheet" type="text/css"/>
+    <link href="style/insertStyle.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
     <div class="title" id="title">
@@ -39,6 +40,7 @@
                     <a href="#/userFind">Find&nbsp;User</a> <br/>
                     <a href="#/patientFind">Find&nbsp;Patient</a> <br/>
                     <a href="#/slideShow">Slides</a> <br/>
+                    <a href="#/insertUser">Add Web User</a> <br/>
                 </div>
             </div>            
             <!--<div class="dropdown" id="ddTutorial">
@@ -92,6 +94,7 @@
     <script src="js/components/profile.js"></script>
     <script src="js/components/users.js"></script>
     <script src="js/components/patients.js"></script>
+    <script src="js/components/insertUser.js"></script>
     <script src="js/components/register.js"></script>
     <script src="js/components/routeFw.js"></script>
     <script src="js/components/services.js"></script>
@@ -109,6 +112,7 @@
         myRoutes['/userFind'] = users.findUI; 
         myRoutes['/patientFind'] = patients.findUI; 
         myRoutes['/slideShow'] = MakeSlideShow;
+        myRoutes['/insertUser'] = insertUser.ui;
         myRoutes['/services'] = services;
         myRoutes['/busofc'] = busofc;
         myRoutes['/documents'] = documents;

@@ -10,8 +10,8 @@ public class ValidationUtils {
     /* Check string "val" to see if it has a valid java.sql.Date in it.
      * Return "" if the input is OK. Otherwise, return error message. */
     public static String dateValidationMsg(String val, boolean required) {
-        // System.out.println("*************trying to convert ["+val+"] to date");
-
+         System.out.println("*************trying to convert ["+val+"] to date");
+        
         if (val == null) {
             return "ValidationUtils.dateValidationMsg(): Programmer error - should not be trying to validate null.";
         }

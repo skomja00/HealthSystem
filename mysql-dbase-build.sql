@@ -28,11 +28,11 @@ USE SP20_3308_tun49199;
 /**
  *  Add data to user_role table since your web_user table references data from user_role, you’ll need to enter records into user_role first.
 **/
-    INSERT INTO `user_role` (`user_role_id`, `user_role_type`) VALUES (1000,'admin');
-    INSERT INTO `user_role` (`user_role_id`, `user_role_type`) VALUES (2000,'manager');
-    INSERT INTO `user_role` (`user_role_id`, `user_role_type`) VALUES (3000,'services');
-    INSERT INTO `user_role` (`user_role_id`, `user_role_type`) VALUES (4000,'business');
-    INSERT INTO `user_role` (`user_role_id`, `user_role_type`) VALUES (5000,'documents');
+    INSERT INTO `user_role` (`user_role_id`, `user_role_type`) VALUES (1,'admin');
+    INSERT INTO `user_role` (`user_role_id`, `user_role_type`) VALUES (2,'manager');
+    INSERT INTO `user_role` (`user_role_id`, `user_role_type`) VALUES (3,'services');
+    INSERT INTO `user_role` (`user_role_id`, `user_role_type`) VALUES (4,'office');
+    INSERT INTO `user_role` (`user_role_id`, `user_role_type`) VALUES (5,'documents');
     /* Try to add a record with a duplicate primary key (i.e. 3000 below) and notice the database management system will not let that record be inserted. */
     /* MySQL output: Error Code: 1062. Duplicate entry '3000' for key 'PRIMARY'*/
 
@@ -131,12 +131,12 @@ CREATE TABLE `web_user` (
         `membership_fee`,
         `user_role_id`) 
 	VALUES
-        ('business@gmail.com',
+        ('office@gmail.com',
         'p',       
         'http://cis-linux2.temple.edu/~sallyk/pics_user/gene.jpg',        
         '1984-12-11',  
         4.95,            
-        get_user_role_id('business'));
+        get_user_role_id('office'));
     INSERT INTO `web_user` 
         (`user_email`,
         `user_password`,
@@ -260,7 +260,7 @@ CREATE TABLE `PatientVisit` (
         '1970-03-17 10:35:32', 
         'Patient Office or Other Outpatient Services',      
         154.95,
-        get_web_user_id('business@gmail.com'));
+        get_web_user_id('office@gmail.com'));
         
     INSERT INTO `PatientVisit` 
         (`PatientName`,

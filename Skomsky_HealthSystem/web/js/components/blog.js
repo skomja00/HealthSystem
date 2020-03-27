@@ -115,7 +115,7 @@ function blog(id) {
                 <li>
                     Tunnel into the Temple network using PuTTY to connect to server hosted MySQL databases.
                 </li>
-            </li> 
+            </ul> 
         </p>
         <ul>
             <li>
@@ -151,6 +151,30 @@ function blog(id) {
             </li>
         </ul>
 
+        <h2>HW 7A Insert</h2>
+
+        <p style="margin-left:2em">
+            The insert homework is an additional use of WebAPIs. The insert process  
+            will repeat collecting data from the user, validating the data and either
+            returning errors for correction or returning a success message when complete. 
+            Frist the UI presents the a table to the user to collect data, and 
+            build a JSON Object which is appended to the URL when calling the API. 
+            Second validation is done on the user input. 
+            The validation methods include an option (true/false) to specify whether 
+            field is required to make sure all required fields are entered. Any 
+            formatting errors or missing data are returned and inserted into the UI
+            to let the user know a field was invalid or missing. Once all validation 
+            is complete, the API will execute the insert, and return a success message.  
+        </p>
+        <ul>
+            <li>
+                To see how insert Web User works, click on the "Register" item under the account icon. 
+            </li>
+            <li>
+                To see how insert Patient Visit works, click under the menu icon and select 
+                "Add Visit".
+            </li>
+        </ul>
         <h2>HW 7 Delete</h2>
         <p>
             In this homework I learned ... 
@@ -163,30 +187,6 @@ function blog(id) {
                 then click the delete icon next to the record you want to delete.  
             </li>
         </ul>
-
-        <h2>HW 8 Insert or Tutorial</h2>
-
-        <em>[If selecting Insert...]</em>
-
-        <p style="margin-left:2em">
-            In the insert homework  I learned ... 
-            The parts that I found easy were ... 
-            The parts that I found hard or confusing were ... 
-        </p>
-        <ul>
-            <li>
-                To see how insert user works, click on the plus sign at the top of the 
-                user listing page -OR- click on the "register" item under the account icon. 
-            </li>
-            <li>
-                To see how insert [other] works, click on the plus sign at the top of the 
-                [other] data display page.
-            </li>
-        </ul>
-        <em>[If selecting the Tutorial...]</em> 
-        <p style="margin-left:2em">
-            Click <a target="_blank" href="tutorial/index.html">here</a> for my tutorial.
-        </p>
 
         <h2>HW 9 Update</h2>
         <p>

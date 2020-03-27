@@ -9,6 +9,9 @@ insertUser.ui = function () {
             <table>
                 <thead>
                     <tr>
+                        <td colspan=3>Add a web user</td>
+                    </tr>
+                    <tr>
                         <td>Items</td>
                         <td>Input</td>
                         <td>Message</td>

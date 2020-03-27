@@ -24,8 +24,8 @@ public class DbMods {
                 "    wu.user_email, " +
                 "    wu.membership_fee " +
                 "from PatientVisit as pv " +
-                "join web_user as wu on wu.web_user_id = pv.web_user_id_fk " +
-                "where pv.VisitId = ? ";
+                "join web_user as wu on wu.web_user_id = pv.web_user_id " +
+                "where pv.MedRecNo = ? ";
 
             PreparedStatement stmt = dbc.getConn().prepareStatement(sql);
 
@@ -38,7 +38,7 @@ public class DbMods {
                 sdl.add(results);
             } else {
                 StringData sd = new StringData();
-                sd.errorMsg = "VisitId not found in patientVisitView.getUserById() ";
+                sd.errorMsg = "Not found.";
                 sdl.add(sd);
             }
             results.close();

@@ -70,7 +70,7 @@ public class ValidationUtils {
                 String lastTest = dateTime.format(format24H);
                 return ""; // means date is good
             } else {
-                return "Please enter a valid datetime (format: ccyy-mm-dd hh:mm am/pm)";
+                return "Please enter format ccyy-mm-dd hh:mm am/pm";
             }                
         } catch (Exception e) {
             return "Please enter a valid datetime (format: ccyy-mm-dd hh:mm am/pm)" + e.getMessage();

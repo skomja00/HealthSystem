@@ -223,16 +223,16 @@ CREATE TABLE `web_user` (
 CREATE TABLE `PatientVisit` (
     `VisitId` INT(11) NOT NULL AUTO_INCREMENT,
     `PatientName` varchar(255) DEFAULT NULL,
-    `ImageUrl` varchar(2100) NOT NULL,
+    `ImageUrl` varchar(2100) NULL,
     `MedRecNo` varchar(255) NOT NULL,
     `Description` varchar(2100) NOT NULL,
-    `VisitDateTime` datetime NULL,
+    `VisitDateTime` datetime NOT NULL,
     `Diagnosis` varchar(255) NULL,
     `VisitCharge` decimal(14,3) NULL,
     `web_user_id` INT(11) NOT NULL,
     PRIMARY KEY (`VisitId`),
-    UNIQUE INDEX `MedRecNo_uidx` (`MedRecNo` ASC)
-    #CONSTRAINT `web_user_id_fk_1` FOREIGN KEY (`web_user_id`) REFERENCES `web_user` (`web_user_id`)
+    UNIQUE INDEX `MedRecNo_VisitDateTime_uidx` (`MedRecNo`, `VisitDateTime`),
+    CONSTRAINT `web_user_id_fk_1` FOREIGN KEY (`web_user_id`) REFERENCES `web_user` (`web_user_id`)
     ) 
     ENGINE=InnoDB; 
  
@@ -261,7 +261,6 @@ CREATE TABLE `PatientVisit` (
         'Patient Office or Other Outpatient Services',      
         154.95,
         get_web_user_id('office@gmail.com'));
-        
     INSERT INTO `PatientVisit` 
         (`PatientName`,
         `ImageUrl`,
@@ -499,27 +498,27 @@ CREATE TABLE `PatientVisit` (
 --     ,'},'
 -- from PatientVisit as pv
 -- join web_user as wu on wu.web_user_id = pv.web_user_id_fk
--- 
--- select 
---     pv.VisitId,
---     pv.PatientName,
---     pv.ImageUrl,
---     pv.MedRecNo,
---     pv.Description,
---     pv.VisitDateTime,
---     pv.Diagnosis,
---     pv.VisitCharge,
---     wu.web_user_id,
---     wu.user_email,
---     wu.user_password,
---     wu.membership_fee,
---     ur.user_role_id
--- from PatientVisit as pv
--- join web_user as wu on wu.web_user_id = pv.web_user_id
--- join user_role as ur on ur.user_role_id = wu.user_role_id;
--- 
--- 
 -- -- 
+select 
+    pv.VisitId,
+    pv.PatientName,
+    pv.ImageUrl,
+    pv.MedRecNo,
+    pv.Description,
+    pv.VisitDateTime,
+    pv.Diagnosis,
+    pv.VisitCharge,
+    wu.web_user_id,
+    wu.user_email,
+    wu.user_password,
+    wu.membership_fee,
+    ur.user_role_id
+from PatientVisit as pv
+join web_user as wu on wu.web_user_id = pv.web_user_id
+join user_role as ur on ur.user_role_id = wu.user_role_id;
+-- 
+-- 
+
 -- SELECT
 --     web_user_id,
 --     user_email,

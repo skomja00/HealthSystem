@@ -26,7 +26,7 @@
             <div class="dropdown" id="ddAccount">
                 <img class="dropHeader" title="Account" src="icons/dark/account_dd_icon_H24.png" alt="Account" >
                 <div class="dropContent">
-                    <a href="#/register">Register</a><br/>
+                    <a href="#/insertUser">Register</a><br/>
                     <a href="#/logon">Log On</a> <br/>
                     <a href="#/profile">Profile</a> <br/>
                     <a href="#/logoff">Log Off</a> <br/>
@@ -35,12 +35,17 @@
             <div class="dropdown" id="ddSearch">
                 <img class="dropHeader" title="Search" onclick="myDropdown.toggle(this)" src="icons/dark/search_dd_icon_H24.png" alt="Search" >
                 <div class="dropContent" id="searchDropDown">
-                    <a href="#/users">Users</a> <br/>
-                    <a href="#/patients">Patients</a> <br/>
                     <a href="#/userFind">Find&nbsp;User</a> <br/>
                     <a href="#/patientFind">Find&nbsp;Patient</a> <br/>
+                </div>
+            </div>            
+            <div class="dropdown" id="ddMenu">
+                <img class="dropHeader" title="Menu" onclick="myDropdown.toggle(this)" src="icons/dark/menu_dd_icon_H24.png" alt="Search" >
+                <div class="dropContent" id="searchDropDown">
+                    <a href="#/users">Web Users</a> <br/>
+                    <a href="#/patients">Patient Visits</a> <br/>
                     <a href="#/slideShow">Slides</a> <br/>
-                    <a href="#/insertUser">Add Web User</a> <br/>
+                    <a href="#/insertVisit">Add Visit</a> <br/>
                 </div>
             </div>            
             <!--<div class="dropdown" id="ddTutorial">
@@ -95,11 +100,13 @@
     <script src="js/components/users.js"></script>
     <script src="js/components/patients.js"></script>
     <script src="js/components/insertUser.js"></script>
+    <script src="js/components/insertVisit.js"></script>
     <script src="js/components/register.js"></script>
     <script src="js/components/routeFw.js"></script>
     <script src="js/components/services.js"></script>
     <script>
         "use strict";
+        setTheme("LightPallette");
         var myRoutes = [];
         myRoutes['/'] = home;
         myRoutes['/home'] = home;
@@ -113,6 +120,7 @@
         myRoutes['/patientFind'] = patients.findUI; 
         myRoutes['/slideShow'] = MakeSlideShow;
         myRoutes['/insertUser'] = insertUser.ui;
+        myRoutes['/insertVisit'] = insertVisit.ui;
         myRoutes['/services'] = services;
         myRoutes['/busofc'] = busofc;
         myRoutes['/documents'] = documents;
@@ -124,7 +132,6 @@
             startingPath: '/home' /* default starting route */
         });  
         dropdownFw("dropHeader", "dropContent");
-        setTheme("LightPallette");
     </script>
 </body>
 </html>

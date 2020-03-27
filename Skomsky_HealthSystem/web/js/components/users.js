@@ -92,7 +92,7 @@ users.findUI = function (targetId) {
     var content = `
         <div class='logon'>
             <br/>
-            Enter Id <input type="text" id="findId"/>
+            Enter Web User Id <input type="text" id="findId"/>
             &nbsp;
             <input type="button" value="Submit" onclick="users.findById('findId','msgArea')"/>
             <br/> <br/>

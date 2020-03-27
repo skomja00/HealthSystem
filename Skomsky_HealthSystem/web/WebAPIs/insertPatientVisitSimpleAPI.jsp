@@ -45,12 +45,12 @@
             */
             // Validation - field by field, check what's in insertData and put error message (if any) 
             // into corresponding field of errorMsgs.
-            errorMsgs.patientName = ValidationUtils.stringValidationMsg(insertData.patientName, 255, true);
-            errorMsgs.imageUrl = ValidationUtils.stringValidationMsg(insertData.imageUrl, 2100, true);
+            errorMsgs.patientName = ValidationUtils.stringValidationMsg(insertData.patientName, 255, false);
+            errorMsgs.imageUrl = ValidationUtils.stringValidationMsg(insertData.imageUrl, 2100, false);
             errorMsgs.medRecNo = ValidationUtils.stringValidationMsg(insertData.medRecNo, 255, true);
             errorMsgs.description = ValidationUtils.stringValidationMsg(insertData.description, 2100, true);
-            errorMsgs.visitDateTime = ValidationUtils.dateTimeValidationMsg(insertData.visitDateTime, false);
-            errorMsgs.diagnosis = ValidationUtils.stringValidationMsg(insertData.diagnosis, 255, true);
+            errorMsgs.visitDateTime = ValidationUtils.dateTimeValidationMsg(insertData.visitDateTime, true);
+            errorMsgs.diagnosis = ValidationUtils.stringValidationMsg(insertData.diagnosis, 255, false);
             errorMsgs.visitCharge = ValidationUtils.decimalValidationMsg(insertData.visitCharge, false);
             errorMsgs.webUserId = ValidationUtils.integerValidationMsg(insertData.webUserId, true);
 
@@ -83,6 +83,7 @@
 
                 // This will return empty string if all went well, else all error messages.
                 errorMsgs.errorMsg = pStatement.getErrorMsg();
+                System.out.println(errorMsgs.errorMsg);
                 if (errorMsgs.errorMsg.length() == 0) {
                     if (numRows == 1) {
                         errorMsgs.errorMsg = ""; // This means SUCCESS. Let the user interface decide how to tell this to the user.
@@ -91,9 +92,9 @@
                         errorMsgs.errorMsg = numRows + " records were inserted when exactly 1 was expected.";
                     }
                 } else if (errorMsgs.errorMsg.contains("foreign key")) {
-                    errorMsgs.errorMsg = "Invalid User Role Id";
+                    errorMsgs.errorMsg = "Invalid Web User Id";
                 } else if (errorMsgs.errorMsg.contains("Duplicate entry")) {
-                    errorMsgs.errorMsg = "That email address is already taken";
+                    errorMsgs.errorMsg = "Visit date and time for this patient already taken.";
                 }
 
             } // all fields passed validation

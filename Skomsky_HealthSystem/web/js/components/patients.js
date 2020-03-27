@@ -101,7 +101,7 @@ patients.findUI = function (targetId) {
     var content = `
         <div class='logon'>
             <br/>
-            Enter Id <input type="text" id="findId"/>
+            Enter MedRec# <input type="text" id="findId"/>
             &nbsp;
             <input type="button" value="Submit" onclick="patients.findById('findId','msgArea')"/>
             <br/> <br/>
@@ -134,7 +134,6 @@ patients.findById = function (idOfInput, targetId) {
 
 
     function patientSuccess(obj) {
-
         // var obj = JSON.parse(hreq.responseText); // this already done by function ajax2...
         if (!obj) {
             targetDOM.innerHTML += "patients.findById (success private fn): Http Request (from AJAX call) did not parse to an object.";
@@ -145,7 +144,7 @@ patients.findById = function (idOfInput, targetId) {
         if (obj.dbError.length > 0) {
             targetDOM.innerHTML += "Database Error Encountered: " + obj.dbError;
             return;
-        } else if (obj.patientVisitList.length === 0 ) {
+        } else if (obj.patientVisitList[0].errorMsg.length > 0 ) {
             targetDOM.innerHTML = "No patient with id "+desiredUserId+" was found in the Database.";
         } else {
             var msg = "Found Patient Id " + obj.patientVisitList[0].visitId;

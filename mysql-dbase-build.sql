@@ -383,7 +383,7 @@ CREATE TABLE `PatientVisit` (
         'https://cis.temple.edu/sites/default/files/styles/portrait-small/public/user_pictures/picture-910-1564072808.jpg?itok=gnW_YI77',
         'TUN922629',
         'Office Visit',   
-        '2019-12-23 14:21:59',  
+        '2019-12-07 14:21:59',  
         'Patient Office or Other Outpatient Services',         
         150.00,
         get_web_user_id('admin@gmail.com'));
@@ -499,23 +499,23 @@ CREATE TABLE `PatientVisit` (
 -- from PatientVisit as pv
 -- join web_user as wu on wu.web_user_id = pv.web_user_id_fk
 -- -- 
-select 
-    pv.VisitId,
-    pv.PatientName,
-    pv.ImageUrl,
-    pv.MedRecNo,
-    pv.Description,
-    pv.VisitDateTime,
-    pv.Diagnosis,
-    pv.VisitCharge,
-    wu.web_user_id,
-    wu.user_email,
-    wu.user_password,
-    wu.membership_fee,
-    ur.user_role_id
-from PatientVisit as pv
-join web_user as wu on wu.web_user_id = pv.web_user_id
-join user_role as ur on ur.user_role_id = wu.user_role_id;
+-- select 
+--     pv.VisitId,
+--     pv.PatientName,
+--     pv.ImageUrl,
+--     pv.MedRecNo,
+--     pv.Description,
+--     pv.VisitDateTime,
+--     pv.Diagnosis,
+--     pv.VisitCharge,
+--     wu.web_user_id,
+--     wu.user_email,
+--     wu.user_password,
+--     wu.membership_fee,
+--     ur.user_role_id
+-- from PatientVisit as pv
+-- join web_user as wu on wu.web_user_id = pv.web_user_id
+-- join user_role as ur on ur.user_role_id = wu.user_role_id;
 -- 
 -- 
 
@@ -546,3 +546,58 @@ join user_role as ur on ur.user_role_id = wu.user_role_id;
 -- FROM web_user, user_role
 -- WHERE web_user.user_role_id = user_role.user_role_id
 -- AND user_email = "sallyk" and user_password = "p"
+
+
+
+DELIMITER $$
+DROP PROCEDURE IF EXISTS `list`$$
+CREATE PROCEDURE list()
+BEGIN
+select
+	# Column 1 Name
+	'Visits By Date' as a,
+
+    # Column 2 Description 
+    pv.Description as b,
+
+    # Column 3 Description, Date 
+    concat(
+	    convert(convert(pv.VisitDateTime,date),char),
+        ' $',
+        (select convert(sum(a.VisitCharge),char) from PatientVisit as a 
+            where a.Description = pv.Description
+            and convert(a.VisitDateTime,date) = convert(pv.VisitDateTime,date))) as c,
+
+    # Column 3 Description, Date, Visit
+    (select concat(pv.MedRecNo,' $',cast(pv.VisitCharge as char)) 
+		from PatientVisit as b
+        where b.Description = pv.Description 
+        and convert(b.VisitDateTime,date) = convert(pv.VisitDateTime,date)
+        and b.MedRecNo = pv.MedRecNo) as d
+from PatientVisit as pv;
+END$$
+DELIMITER ;
+
+
+
+
+select description,VisitDateTime,VisitCharge
+from PatientVisit as pv
+join web_user as wu on wu.web_user_id = pv.web_user_id
+join user_role as ur on ur.user_role_id = wu.user_role_id
+where pv.Description = 'office visit' 
+and convert('2020-04-01',date) = convert(pv.VisitDateTime,date);
+
+select description,VisitDateTime,VisitCharge
+from PatientVisit as pv
+join web_user as wu on wu.web_user_id = pv.web_user_id
+join user_role as ur on ur.user_role_id = wu.user_role_id
+where pv.Description = 'vaccination' 
+and convert('2019-11-06',date) = convert(pv.VisitDateTime,date);
+
+select description,VisitDateTime,VisitCharge
+from PatientVisit as pv
+join web_user as wu on wu.web_user_id = pv.web_user_id
+join user_role as ur on ur.user_role_id = wu.user_role_id
+where pv.Description = 'U07.1' 
+and convert('2020-03-28',date) = convert(pv.VisitDateTime,date);

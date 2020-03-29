@@ -125,8 +125,6 @@
         "         box-shadow : 0px 0px 3px 2px " + hash["titleBoxShadow"] + ";" + 
         "         color : " + hash["titleColor"] + ";" + 
         "         text-shadow : " + "0px 0px 10px " + hash["titleTextShadow"] + ";}" +
-             
-             
         ".slideUsersClass { background-color: " + hash["titleBackgroundColor"] + ";" + 
         "                   box-shadow: 0px 0px 9px 7px " + hash["titleBoxShadow"] + ";" +  
         "                   color: " + hash["titleColor"] + ";" + 

@@ -31,16 +31,22 @@ public class DbConn {
                 this.conn = DriverManager.getConnection(url);
 
             } catch (Exception e) { // cant get the connection
-                recordError("Problem getting connection:" + e.getMessage());
+                recordError("Problem getting connection.<br>" + 
+                        "Please contact support@gmail.com or (123)-456-7890<br>" +
+                        "Error: " + e.getMessage());
             }
         } catch (Exception e) { // cant get the driver...
-            recordError("Problem getting driver:" + e.getMessage());
+            recordError("Problem getting driver.<br>" + 
+                        "Please contact support@gmail.com or (123)-456-7890<br>" +
+                        "Error: " + e.getMessage());
         }
     } // method
 
     private void recordError(String errorMsg) {
         this.errMsg = errorMsg;
-        System.out.println("Error in DbConn. " + errorMsg);
+        System.out.println("Error in dbConn.<br>" + 
+                        "Please contact support@gmail.com or (123)-456-7890<br>" +
+                        "Error: " + errorMsg);
     }
 
     /* Returns database connection for use in SQL classes.  */
@@ -83,7 +89,9 @@ public class DbConn {
                 //System.out.println("************* Not running from Temple, so using local for db connection. hostName is " + hostName);
             }
         } catch (Exception e) {
-            recordError("Unable to get hostname: " + e.getMessage());
+            recordError("Unable to get host name.<br>" + 
+                        "Please contact support@gmail.com or (123)-456-7890<br>" +
+                        "Error: " + e.getMessage());
         }
         return temple;
     }

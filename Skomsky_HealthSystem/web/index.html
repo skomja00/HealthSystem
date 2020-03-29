@@ -90,6 +90,7 @@
     <script src="js/MakeTableUtils.js"></script>    
     <script src="js/MakeSlideShow.js"></script>    
     <script src="js/MakeSlides.js"></script>    
+    <script src="js/Utils.js"></script>    
     <script src="js/components/blog.js"></script>
     <script src="js/components/busofc.js"></script>
     <script src="js/components/documents.js"></script>
@@ -99,8 +100,6 @@
     <script src="js/components/profile.js"></script>
     <script src="js/components/users.js"></script>
     <script src="js/components/patients.js"></script>
-    <script src="js/components/insertUser.js"></script>
-    <script src="js/components/insertVisit.js"></script>
     <script src="js/components/register.js"></script>
     <script src="js/components/routeFw.js"></script>
     <script src="js/components/services.js"></script>
@@ -119,8 +118,8 @@
         myRoutes['/userFind'] = users.findUI; 
         myRoutes['/patientFind'] = patients.findUI; 
         myRoutes['/slideShow'] = MakeSlideShow;
-        myRoutes['/insertUser'] = insertUser.ui;
-        myRoutes['/insertVisit'] = insertVisit.ui;
+        myRoutes['/insertUser'] = users.insertUI;
+        myRoutes['/insertVisit'] = patients.insertUi;
         myRoutes['/services'] = services;
         myRoutes['/busofc'] = busofc;
         myRoutes['/documents'] = documents;

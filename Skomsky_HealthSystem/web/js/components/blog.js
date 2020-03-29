@@ -39,7 +39,7 @@ function blog(id) {
             data warehousing, query performance tuning and system scalability. 
             With my SQL Server background, I didn't have much difficulty
             with MySQL. They both adhere well to ANSI Standard SQL.   
-            Click <a href="mysql-dbase-build-basic-tables.sql">here</a> to see my database work.
+            Click <a target="_blank" href="mysql-dbase-build.sql">here</a> to see my database work.
         </p>
         <p>
             I found setting up a Single Page Application routing straight forward.
@@ -58,7 +58,7 @@ function blog(id) {
             a Table Of Contents on this blog. Clicking on a TOC item to "jump"
             within the blog page triggers the router, and fails since 
             the individual parts of the blog page do not exist in the route 
-            table. Not sure how to resolve this. I will have to give it more thought.
+            table. Not sure how to resolve this. 
         </p>
         <h2>HW 3 Display Data</h2>
         <p>

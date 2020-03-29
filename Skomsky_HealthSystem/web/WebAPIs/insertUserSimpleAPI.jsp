@@ -31,14 +31,14 @@
             StringData insertData = gson.fromJson(jsonInsertData, StringData.class);
 
             /* Useful to copy field names from StringData as a reference
-            public String webUserId = "";
-            public String userEmail = "";
-            public String userPassword = "";
-            public String userPassword2 = "";
-            public String birthday = "";
-            public String membershipFee = "";
-            public String userRoleId = "";   // Foreign Key
-            public String userRoleType = ""; // getting it from joined user_role table.
+    public String webUserId = "";
+    public String userEmail = "";
+    public String userPassword = "";
+    public String userPassword2 = "";
+    public String birthday = "";
+    public String membershipFee = "";
+    public String userRoleId = "";   // Foreign Key
+    public String userRoleType = ""; // getting it from joined user_role table.
              */
             // Validation - field by field, check what's in insertData and put error message (if any) 
             // into corresponding field of errorMsgs.

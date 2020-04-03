@@ -4,7 +4,7 @@ var patients = {};
 
 (function () { //IIFE immediate function execute (anonymous function)
     patients.list = function (targetId) {
-
+        
         // clear out whatever may be currently in the content area
         var contentDOM = document.getElementById(targetId);
         contentDOM.innerHTML = "";
@@ -17,7 +17,7 @@ var patients = {};
         });
 
         function patientListSuccess(obj) {
-
+            
             // var obj = JSON.parse(hreq.responseText); // this already done by function ajax2...
             if (!obj) {
                 contentDOM.innerHTML += "Http Request (from AJAX call) did not parse to an object.";
@@ -28,23 +28,8 @@ var patients = {};
             if (obj.dbError.length > 0) {
                 contentDOM.innerHTML += "Database Error Encountered: " + obj.dbError;
                 return;
-            }
-
-            var div = document.createElement("div");
-            div.style.textAlign = "center";
-            contentDOM.appendChild(div);
-            div.innerHTML = `
-                <h2>Web User List</h2>
-                Search Filter:
-            `;
-
-            var searchBox = document.createElement("input");
-            searchBox.setAttribute("type", "text");
-            div.appendChild(searchBox);
-
-            var tableDiv = document.createElement("div");
-            contentDOM.appendChild(tableDiv);
-
+            }   
+            
     //        this.visitId = FormatUtils.formatInteger(results.getObject("VisitId"));
     //        this.patientName = FormatUtils.formatString(results.getObject("PatientName"));
     //        this.imageUrl = FormatUtils.formatString(results.getObject("ImageUrl"));
@@ -84,10 +69,12 @@ var patients = {};
             // params.imgWidth: any columns that hold image files will be turned into <img> tags with this width.
 
             MakeFilterSortTable({
+                "caption":"Patient Visits",
+                "insert":true,
+                "insertRoute":"#/insertVisit",
                 "theList":userList,
                 "targetId": targetId,
-                "searchInputId":"id",
-                "sortOrderPropName":"userId",
+                "sortOrderPropName":"MedRecNo",
                 "style":"clickSort"
             });
         } // end of function success

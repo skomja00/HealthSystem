@@ -84,9 +84,7 @@
     if (!s) {
         var h = document.getElementsByTagName("head")[0]; 
         var s = document.createElement("style");
-        var i = document.createAttribute("id");
-        i.value = "themeId";
-        s.setAttributeNode(i);
+        s.setAttribute("id","themeId");
         h.appendChild(s);
     }
     s.innerHTML = 

@@ -257,8 +257,8 @@ CREATE TABLE `PatientVisit` (
         'http://cis-linux2.temple.edu/~sallyk/pics_user/claudia.jpg',
         'TUN143981',
         'Office Visit',     
-        '1970-03-17 10:35:32', 
-        'Patient Office or Other Outpatient Services',      
+        '2019-11-06 10:35:32', 
+        'Z02.9 Encounter for administrative examinations',      
         154.95,
         get_web_user_id('office@gmail.com'));
     INSERT INTO `PatientVisit` 
@@ -276,7 +276,7 @@ CREATE TABLE `PatientVisit` (
         'TUN114977',
         'Vaccination',
         '2019-11-06 15:30:47', 
-        'Influenza virus vaccine',
+        'Z23 Encounter for immunization',
         45.00,
         get_web_user_id('admin@gmail.com'));
     INSERT INTO `PatientVisit` 
@@ -289,15 +289,33 @@ CREATE TABLE `PatientVisit` (
         `VisitCharge`,
         `web_user_id`)
     values
-        ('Rutherford, Amelia',  
+        ('Green, Amelia',  
         'http://cis-linux2.temple.edu/~sallyk/pics_user/sally.jpg',
         'TUN193741',
         'ED Visit',
         '2019-12-07 22:35:41',
-        'Emergency department visit for the evaluation and management of a patient',
+        'R06.00 Respiratory distress',
         2000.00,
         get_web_user_id('admin@gmail.com'));
     INSERT INTO `PatientVisit` 
+        (`PatientName`,
+        `ImageUrl`,
+        `MedRecNo`,
+        `Description`,
+        `VisitDateTime`,
+        `Diagnosis`,
+        `VisitCharge`,
+        `web_user_id`)
+    values
+        ('White, James',  
+        'https://cis.temple.edu/sites/default/files/styles/portrait-small/public/user_pictures/picture-173-1437489687.jpg?itok=NjxpBhsO',
+        'TUN193448',
+        'ED Visit',
+        '2019-12-07 20:31:11',
+        'R06.00 Respiratory distress',
+        2000.00,
+        get_web_user_id('office@gmail.com'));
+	INSERT INTO `PatientVisit` 
         (`PatientName`,
         `ImageUrl`,
         `MedRecNo`,
@@ -311,10 +329,28 @@ CREATE TABLE `PatientVisit` (
         'http://cis-linux2.temple.edu/~sallyk/pics_user/tony.jpg',
         'TUN111114',
         'Office Visit'  ,
-        '2019-10-12 08:14:00', 
-        'Patient Office or Other Outpatient Services',      
+        '2019-10-12 08:15:00', 
+        'Z02.9 Encounter for administrative examinations',      
         150.00,
         get_web_user_id('admin@gmail.com'));
+-- 	INSERT INTO `PatientVisit` 
+--         (`PatientName`,
+--         `ImageUrl`,
+--         `MedRecNo`,
+--         `Description`,
+--         `VisitDateTime`,
+--         `Diagnosis`,
+--         `VisitCharge`,
+--         `web_user_id`)
+--     values
+--         ('Hamilton, Edward',   
+--         'http://cis-linux2.temple.edu/~sallyk/pics_user/tony.jpg',
+--         'TUN111114',
+--         'Vaccination'  ,
+--         '2019-10-12 08:45:00', 
+--         'Z23 Encounter for immunization',      
+--         150.00,
+--         get_web_user_id('admin@gmail.com'));
     INSERT INTO `PatientVisit` 
         (`PatientName`,
         `ImageUrl`,
@@ -330,7 +366,7 @@ CREATE TABLE `PatientVisit` (
         'TUN147765',
         'Vaccination'   , 
         '2019-11-06 15:35:21', 
-        'Influenza virus vaccine',                             
+        'Z23 Encounter for immunization',                             
         45.00,
         get_web_user_id('admin@gmail.com'));
     INSERT INTO `PatientVisit` 
@@ -348,7 +384,7 @@ CREATE TABLE `PatientVisit` (
         'TUN559116',
         'Vaccination', 
         '2019-11-06 15:42:21',  
-        'Influenza virus vaccine',                             
+        'Z23 Encounter for immunization',                             
         45.00,
         get_web_user_id('admin@gmail.com'));
     INSERT INTO `PatientVisit` 
@@ -366,7 +402,7 @@ CREATE TABLE `PatientVisit` (
         'TUN158929',
         'Vaccination',
         '2019-11-06 15:49:02',
-        'Influenza virus vaccine',                             
+        'Z23 Encounter for immunization',                             
         45.00,
         get_web_user_id('admin@gmail.com'));
     INSERT INTO `PatientVisit` 
@@ -384,7 +420,7 @@ CREATE TABLE `PatientVisit` (
         'TUN922629',
         'Office Visit',   
         '2019-12-07 14:21:59',  
-        'Patient Office or Other Outpatient Services',         
+        'Z02.9 Encounter for administrative examinations',         
         150.00,
         get_web_user_id('admin@gmail.com'));
     INSERT INTO `PatientVisit` 
@@ -402,7 +438,7 @@ CREATE TABLE `PatientVisit` (
         'TUN111119',
         'Vaccination',   
         '2019-11-13 09:36:21',
-        'Influenza virus vaccine',                             
+        'Z23 Encounter for immunization',                             
         45.00,
         get_web_user_id('admin@gmail.com'));
     INSERT INTO `PatientVisit` 
@@ -420,7 +456,7 @@ CREATE TABLE `PatientVisit` (
         'TUN111120',
         'ED Visit',     
         '2020-01-01 00:01:06', 
-        'Emergency department visit for the evaluation and management of a patient',   
+        'R06.00 Respiratory distress',   
         2000.00,
         get_web_user_id('admin@gmail.com'));
 --    
@@ -549,6 +585,36 @@ CREATE TABLE `PatientVisit` (
 
 
 
+-- DELIMITER $$
+-- DROP PROCEDURE IF EXISTS `list`$$
+-- CREATE PROCEDURE list()
+-- BEGIN
+-- select
+-- 	# Column 1 Name
+-- 	'Visits By Department' as a,
+-- 
+--     # Column 2 Description 
+--     pv.Description as b,
+-- 
+--     # Column 3 Description, Date 
+--     concat(
+-- 	    convert(convert(pv.VisitDateTime,date),char),
+--         ' $',
+--         (select convert(sum(a.VisitCharge),char) from PatientVisit as a 
+--             where a.Description = pv.Description
+--             and convert(a.VisitDateTime,date) = convert(pv.VisitDateTime,date))) as c,
+-- 
+--     # Column 3 Description, Date, Visit
+--     (select concat(pv.MedRecNo,' $',cast(pv.VisitCharge as char)) 
+-- 		from PatientVisit as b
+--         where b.Description = pv.Description 
+--         and convert(b.VisitDateTime,date) = convert(pv.VisitDateTime,date)
+--         and b.MedRecNo = pv.MedRecNo) as d
+-- from PatientVisit as pv;
+-- END$$
+-- DELIMITER ;
+
+
 DELIMITER $$
 DROP PROCEDURE IF EXISTS `list`$$
 CREATE PROCEDURE list()
@@ -558,25 +624,22 @@ select
 	'Visits By Date' as a,
 
     # Column 2 Description 
-    pv.Description as b,
+    convert(convert(pv.VisitDateTime,date),char) as b,
+    
+     # Column 3 Description, Date, Visit
+     (select pv.Description 
+ 		from PatientVisit as b
+         where b.Description = pv.Description 
+         and convert(b.VisitDateTime,date) = convert(pv.VisitDateTime,date)
+         and b.MedRecNo = pv.MedRecNo) as c,
+         
+	 pv.MedRecNo as d
 
-    # Column 3 Description, Date 
-    concat(
-	    convert(convert(pv.VisitDateTime,date),char),
-        ' $',
-        (select convert(sum(a.VisitCharge),char) from PatientVisit as a 
-            where a.Description = pv.Description
-            and convert(a.VisitDateTime,date) = convert(pv.VisitDateTime,date))) as c,
-
-    # Column 3 Description, Date, Visit
-    (select concat(pv.MedRecNo,' $',cast(pv.VisitCharge as char)) 
-		from PatientVisit as b
-        where b.Description = pv.Description 
-        and convert(b.VisitDateTime,date) = convert(pv.VisitDateTime,date)
-        and b.MedRecNo = pv.MedRecNo) as d
-from PatientVisit as pv;
+from PatientVisit as pv
+order by 1,2,3,4;
 END$$
 DELIMITER ;
+
 
 
 -- 

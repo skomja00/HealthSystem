@@ -169,21 +169,32 @@
     
     var list = params["theList"];
     var targetId = params["targetId"];
-    var searchInputId = params["searchInputId"] || "searchInputId";
-    var sortOrderPropName = params["sortOrderPropName"];
     var style = params.style || "clickSort"; // optional, if not supplied classname "clickSort" will be added
-    document.getElementById(targetId).classList.add(style);
-        
-    // Remove whatever was in the element with the given id
-    document.getElementById(targetId).innerHTML = "Filter by: ";
+    var contentDOM = document.getElementById(targetId);
+    contentDOM.classList.add(style);
 
-    // Create a filter text box for user input and append it.
+    contentDOM.innerHTML = '<b>' + params.caption + ' </b>';
+    // option to include navigate to insert 
+    if (params.insert) {
+        var img = document.createElement("img");
+        img.src = CRUD_icons.insert;
+        contentDOM.appendChild(img);            
+        img.onclick = function () { // you cant pass input params directly into an event handler
+                                    // create a routing rule and invoke 
+            window.location.hash = params.insertRoute;
+        };            
+    }
+    var lab = document.createElement("label");
+    lab.setAttribute("for","searchInput");
+    lab.innerHTML += "<br>Search Filter: ";
+    contentDOM.appendChild(lab); 
     var searchInput = document.createElement("input");
-    document.getElementById(targetId).appendChild(searchInput);
-
+    searchInput.setAttribute("name","searchInput");
+    contentDOM.appendChild(searchInput); 
+     
     // Create a new HTML table (DOM object) and append it.
     var newTable = document.createElement("table");
-    document.getElementById(targetId).appendChild(newTable);
+    contentDOM.appendChild(newTable);
 
     // Create a header row for the HTML table
     var tableHead = document.createElement("thead");

@@ -74,6 +74,9 @@ var users = {};
             // params.imgWidth: any columns that hold image files will be turned into <img> tags with this width.
 
             MakeFilterSortTable({
+                "caption":"Web Users",
+                "insert":false,
+                //"insertRoute":"#/insertVisit", //not implemented per "insert":false above
                 "style":"clickSort",
                 "theList":userList,
                 "targetId": targetId,
@@ -235,7 +238,7 @@ var users = {};
                 document.getElementById("userRoleIdError").innerHTML = jsonObj.dbError;
                 return;
             }
-
+            
             /*  copy/pasting the first entry from the output of my get role API
              {
              "dbError": "",
@@ -256,7 +259,7 @@ var users = {};
 
         } // setRolePickList
 
-    }; // insertUser.ui    
+    }; // insertUser.ui
     users.insertUserSave = function () {
         console.log("insertUserSave was called");
 

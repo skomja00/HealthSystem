@@ -166,13 +166,39 @@ function blog(id) {
             to let the user know a field was invalid or missing. Once all validation 
             is complete, the API will execute the insert, and return a success message.  
         </p>
+        <p>
+            <b>Navigation</b>
+        </p>
         <ul>
-            <li>
-                To see how insert Web User works, click on the "Register" item under the account icon. 
+            <li style='margin:6px;'>
+                To insert a Web User do this: 
+                    <ul>
+                        <li style='margin:6px;'>
+                            <img style='float:left; margin-right:4px' src='icons/dark/account_dd_icon_H24.png'> Account menu ... "Register" option.
+                        </li style='clear:both;'>
+                    </ul>
             </li>
-            <li>
-                To see how insert Patient Visit works, click under the menu icon and select 
-                "Add Visit".
+            <li style='margin:6px;'>
+                Another way to insert a Web User is: 
+                    <ul>
+                        <li style='margin:6px;'>
+                            <img style='float:left; margin-right:4px' src='icons/dark/menu_dd_icon_H24.png'> Menu icon ... "Web Users" option. 
+                        </li style='clear:both;'>
+                        <li style='margin:6px;'>
+                            click the <img style='float:left; margin-right:4px' src='icons/insert_H18.png'> "Plus" icon next to the "Web Users" caption.   
+                        </li style='clear:both;'>
+                    </ul>
+            </li>
+            <li style='margin:6px;'>
+                To insert Patient Visit do this:
+                    <ul>
+                        <li style='margin:6px;'>
+                            <img style='float:left; margin-right:4px' src='icons/dark/menu_dd_icon_H24.png'> Menu icon ... "Patient Visits" option. 
+                        </li style='clear:both;'>
+                        <li style='margin:6px;'>
+                            click the <img style='float:left; margin-right:4px'' src='icons/insert_H18.png'> "Plus" icon next to the "Patient Visits" caption.   
+                        </li style='clear:both;'>
+                    </ul>
             </li>
         </ul>
         <h2>HW 7 Delete</h2>

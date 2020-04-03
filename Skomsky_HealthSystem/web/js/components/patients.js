@@ -67,14 +67,12 @@ var patients = {};
             // params.orderPropName (string): name of property (of objects in list) for iniial sort
             // params.reverse (boolean): if true, initial sort will be high to low (else low to high). 
             // params.imgWidth: any columns that hold image files will be turned into <img> tags with this width.
-
             MakeFilterSortTable({
                 "caption":"Patient Visits",
-                "insert":true,
-                "insertRoute":"#/insertVisit",
+                "insert":true,                 //include an icon to insert? 
+                "insertRoute":"#/insertVisit", //if yes provide FW routing path to insert method
                 "theList":userList,
                 "targetId": targetId,
-                "sortOrderPropName":"MedRecNo",
                 "style":"clickSort"
             });
         } // end of function success

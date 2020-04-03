@@ -75,13 +75,11 @@ var users = {};
 
             MakeFilterSortTable({
                 "caption":"Web Users",
-                "insert":false,
-                //"insertRoute":"#/insertVisit", //not implemented per "insert":false above
+                "insert":true,               //include an icon to insert? 
+                "insertRoute":"#/insertUser", //if yes provide FW routing path to insert method
                 "style":"clickSort",
                 "theList":userList,
-                "targetId": targetId,
-                "searchInputId":"id",
-                "sortOrderPropName":"userId"
+                "targetId": targetId
             });
 
         } // end of function success

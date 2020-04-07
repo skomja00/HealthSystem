@@ -45,6 +45,9 @@
                     <a href="#/users">Web Users</a> <br/>
                     <a href="#/patients">Patient Visits</a> <br/>
                     <a href="#/slideShow">Slides</a> <br/>
+                    <a href="#/testUserUpdate">testUserUpdateUI</a> <br/>
+                    <a href="#/testPVUpdate">testPVUpdateUI</a> <br/>
+
                 </div>
             </div>            
             <!--<div class="dropdown" id="ddTutorial">
@@ -121,6 +124,8 @@
         myRoutes['/services'] = services;
         myRoutes['/busofc'] = busofc;
         myRoutes['/documents'] = documents;
+        myRoutes['/testUserUpdate'] = testUserUpdateUI;
+        myRoutes['/testPVUpdate'] = testPVUpdateUI;
         myRoutes['/blog'] = blog;
         var myRouteFw = routeFw(  /* java object passed to routeFw  */
         {
@@ -129,6 +134,17 @@
             startingPath: '/home' /* default starting route */
         });  
         dropdownFw("dropHeader", "dropContent");
+
+        // first parameter is "hard coding" the example to edit web user #4.
+        function testUserUpdateUI () {
+            users.updateUI(4,"content");          
+        }
+
+        
+        // first parameter is "hard coding" the example to edit web user #4.
+        function testPVUpdateUI () {
+            patients.updateUI("TUN111119","content");          
+        }
     </script>
 </body>
 </html>

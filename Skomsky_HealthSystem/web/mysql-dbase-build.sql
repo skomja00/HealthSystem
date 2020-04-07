@@ -226,7 +226,7 @@ CREATE TABLE `PatientVisit` (
     `ImageUrl` varchar(2100) NULL,
     `MedRecNo` varchar(255) NOT NULL,
     `Description` varchar(2100) NOT NULL,
-    `VisitDateTime` datetime NOT NULL,
+    `VisitDateTime` datetime NULL,
     `Diagnosis` varchar(255) NULL,
     `VisitCharge` decimal(14,3) NULL,
     `web_user_id` INT(11) NOT NULL,
@@ -311,7 +311,7 @@ CREATE TABLE `PatientVisit` (
         'https://cis.temple.edu/sites/default/files/styles/portrait-small/public/user_pictures/picture-173-1437489687.jpg?itok=NjxpBhsO',
         'TUN193448',
         'ED Visit',
-        '2019-12-07 20:31:11',
+        '1945-12-07 20:31:11',
         'R06.00 Respiratory distress',
         2000.00,
         get_web_user_id('office@gmail.com'));
@@ -585,65 +585,61 @@ CREATE TABLE `PatientVisit` (
 
 
 
--- DELIMITER $$
--- DROP PROCEDURE IF EXISTS `list`$$
--- CREATE PROCEDURE list()
--- BEGIN
--- select
--- 	# Column 1 Name
--- 	'Visits By Department' as a,
--- 
---     # Column 2 Description 
---     pv.Description as b,
--- 
---     # Column 3 Description, Date 
---     concat(
--- 	    convert(convert(pv.VisitDateTime,date),char),
---         ' $',
---         (select convert(sum(a.VisitCharge),char) from PatientVisit as a 
---             where a.Description = pv.Description
---             and convert(a.VisitDateTime,date) = convert(pv.VisitDateTime,date))) as c,
--- 
---     # Column 3 Description, Date, Visit
---     (select concat(pv.MedRecNo,' $',cast(pv.VisitCharge as char)) 
--- 		from PatientVisit as b
---         where b.Description = pv.Description 
---         and convert(b.VisitDateTime,date) = convert(pv.VisitDateTime,date)
---         and b.MedRecNo = pv.MedRecNo) as d
--- from PatientVisit as pv;
--- END$$
--- DELIMITER ;
-
-
 DELIMITER $$
 DROP PROCEDURE IF EXISTS `list`$$
 CREATE PROCEDURE list()
 BEGIN
 select
 	# Column 1 Name
-	'Visits By Date' as a,
+	'Visits By Department' as a,
 
     # Column 2 Description 
-    convert(convert(pv.VisitDateTime,date),char) as b,
-    
-     # Column 3 Description, Date, Visit
-     (select pv.Description 
- 		from PatientVisit as b
-         where b.Description = pv.Description 
-         and convert(b.VisitDateTime,date) = convert(pv.VisitDateTime,date)
-         and b.MedRecNo = pv.MedRecNo) as c,
-         
-	 pv.MedRecNo as d
+    pv.Description as b,
 
-from PatientVisit as pv
-order by 1,2,3,4;
+    # Column 3 Description, Date 
+    concat(
+	    convert(convert(pv.VisitDateTime,date),char),
+        ' $',
+        (select convert(sum(a.VisitCharge),char) from PatientVisit as a 
+            where a.Description = pv.Description
+            and convert(a.VisitDateTime,date) = convert(pv.VisitDateTime,date))) as c,
+
+    # Column 3 Description, Date, Visit
+    (select concat(pv.MedRecNo,' $',cast(pv.VisitCharge as char)) 
+		from PatientVisit as b
+        where b.Description = pv.Description 
+        and convert(b.VisitDateTime,date) = convert(pv.VisitDateTime,date)
+        and b.MedRecNo = pv.MedRecNo) as d
+from PatientVisit as pv;
 END$$
 DELIMITER ;
 
-
-
 -- 
+-- DELIMITER $$
+-- DROP PROCEDURE IF EXISTS `list`$$
+-- CREATE PROCEDURE list()
+-- BEGIN
+-- select
+-- 	# Column 1 Name
+-- 	'Visits By Date' as a,
 -- 
+--     # Column 2 Description 
+--     convert(convert(pv.VisitDateTime,date),char) as b,
+--     
+--      # Column 3 Description, Date, Visit
+--      (select pv.Description 
+--  		from PatientVisit as b
+--          where b.Description = pv.Description 
+--          and convert(b.VisitDateTime,date) = convert(pv.VisitDateTime,date)
+--          and b.MedRecNo = pv.MedRecNo) as c,
+--          
+-- 	 pv.MedRecNo as d
+-- 
+-- from PatientVisit as pv
+-- order by 1,2,3,4;
+-- END$$
+-- DELIMITER ;
+
 -- select description,VisitDateTime,VisitCharge
 -- from PatientVisit as pv
 -- join web_user as wu on wu.web_user_id = pv.web_user_id
@@ -665,3 +661,18 @@ DELIMITER ;
 -- where pv.Description = 'U07.1' 
 -- and convert('2020-03-28',date) = convert(pv.VisitDateTime,date);
 -- 
+
+-- select * from PatientVisit where MedRecNo = 'TUN158929' and VisitDateTime = '2019-11-06 15:49:02';
+-- update PatientVisit set 
+--   PatientName='Sanders, Jared',     
+--   ImageUrl='https://cis.temple.edu/sites/default/files/styles/portrait-small/public/user_pictures/picture-173-1437489687.jpg',
+--   MedRecNo='TUN158929',
+--   Description='Vaccination',
+--   VisitDateTime='2019-11-06 15:49:02',
+--   Diagnosis='Z23 Encounter for immunization',         
+--   VisitCharge=62.21,
+--   web_user_id=6
+-- where MedRecNo = 'TUN158929';
+-- select * from PatientVisit where MedRecNo = 'TUN158929' and VisitDateTime = '2019-11-06 15:49:02';
+        
+        

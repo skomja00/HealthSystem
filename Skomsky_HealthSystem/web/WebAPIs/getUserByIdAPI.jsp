@@ -8,25 +8,26 @@
 <%
 
     // default constructor creates nice empty StringDataList with all fields "" (empty string, nothing null).
-    StringDataList list = new StringDataList();
+    //StringDataList list = new StringDataList();
+    StringData user = new StringData();
 
     String searchId = request.getParameter("URLid");
     if (searchId == null) {
-        list.dbError = "Cannot search for user - 'URLid' most be supplied";
+        user.errorMsg = "Cannot search for user - 'URLid' most be supplied";
     } else {
 
         DbConn dbc = new DbConn();
-        list.dbError = dbc.getErr(); // returns "" if connection is good, else db error msg.
+        user.errorMsg = dbc.getErr(); // returns "" if connection is good, else db error msg.
 
-        if (list.dbError.length() == 0) { // if got good DB connection,
+        if (user.errorMsg.length() == 0) { // if got good DB connection,
 
             System.out.println("*** Ready to call allUsersAPI");
-            list = DbMods.findById(dbc, searchId);  
+            user = DbMods.findById(dbc, searchId);  
         }
 
         dbc.close(); // EVERY code path that opens a db connection, must also close it - no DB Conn leaks.
     }
     //convert POJO to JSON. Print into response object as JSON string
     Gson gson = new Gson();
-    out.print(gson.toJson(list).trim());
+    out.print(gson.toJson(user).trim());
 %>

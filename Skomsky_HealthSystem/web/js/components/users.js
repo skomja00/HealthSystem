@@ -3,6 +3,111 @@
 var users = {};
 
 (function () { //IIFE immediate function execute (anonymous function)
+    
+        // this code called by insertUI and updateUI -- shared common code. 
+    function createInsertUpdateArea (isUpdate, targetId) {
+
+        // set variables as if it will be insert...
+        var idRowStyle = ' style="display:none" '; // hide row with webUserId
+        var saveFn = "users.insertSave()";
+        
+        // change variables for update
+        if (isUpdate) {
+            idRowStyle = ""; // don't hide row with webUserId 
+            saveFn = "users.updateSave()";
+        }
+
+        var html = `
+            <div id="insertArea">
+                <div id="ajaxError">&nbsp;</div>
+                <table>
+                    <tr ${idRowStyle}>
+                        <td>Web User Id</td>
+                        <td><input type="text"  id="webUserId" disabled /></td>
+                        <td id="webUserIdError" class="error"></td> 
+                    </tr>
+                    <tr>
+                        <td>Email Address</td>
+                        <td><input type="text"  id="userEmail" /></td>
+                        <td id="userEmailError" class="error"></td> 
+                    </tr>
+                    <tr>
+                        <td>Password</td>
+                        <td><input type="password"  id="userPassword" /></td>
+                        <td id="userPasswordError" class="error"></td>
+                    </tr>
+                    <tr>
+                        <td>Retype Your Password</td>
+                        <td><input type="password" id="userPassword2" /></td>
+                        <td id="userPassword2Error" class="error"></td>
+                    </tr>
+                    <tr>
+                        <td>Birthday</td>
+                        <td><input type="text" id="birthday" /></td>
+                        <td id="birthdayError" class="error"></td> 
+                    </tr>
+                    <tr>
+                        <td>Membership Fee</td>
+                        <td><input type="text" id="membershipFee" /></td>
+                        <td id="membershipFeeError" class="error"></td>
+                    </tr>
+                    <tr>
+                        <td>User Role</td>
+                        <td>
+                            <select id="rolePickList">
+                            <!-- JS code will make ajax call to get all the roles 
+                            then populate this select tag's options with those roles -->
+                            </select>
+                        </td>
+                        <td id="userRoleIdError" class="error"></td>
+                    </tr>
+                    <tr>
+                        <td colspan=3><button onclick="${saveFn}">Save</button></td>
+                    </tr>
+                    <tr>
+                        <td colspan=3 id="recordError" class="error">Click save to update...</td>
+                    </tr>
+                </table>
+            </div>
+        `;
+
+        document.getElementById(targetId).innerHTML = html;
+    }
+    
+    users.updateUI = function (webUserId, targetId) {
+        createInsertUpdateArea(true, targetId); // first param is isUpdate (boolean)
+        ajax2({
+            url: "WebAPIs/getUserWithRolesAPI.jsp?id=" + webUserId,
+            successFn: proceed,
+            errorId: "ajaxError"
+        });
+        function proceedUsersUpdateUI(obj) { // obj is what got JSON.parsed from Web API's output
+            dbDataToUI(obj);
+        }
+    };    
+    
+
+    function proceedUsersUpdateUI(obj) {
+
+        var webUserObj = obj.webUser;
+        var roleList = obj.roleInfo.roleList;
+
+        document.getElementById("webUserId").value = webUserObj.webUserId;
+        document.getElementById("userEmail").value = webUserObj.userEmail;
+        document.getElementById("userPassword").value = webUserObj.userPassword;
+        document.getElementById("userPassword2").value = webUserObj.userPassword;
+        document.getElementById("birthday").value = webUserObj.birthday;
+        document.getElementById("membershipFee").value = webUserObj.membershipFee;
+        console.log("selected role id is " + webUserObj.userRoleId);
+        Utils.makePickList({
+            id: "rolePickList", // id of <select> tag in UI
+            list: roleList, // JS array that holds objects to populate the select list
+            valueProp: "userRoleType", // field name of objects in list that hold the values of the options
+            keyProp: "userRoleId", // field name of objects in list that hold the keys of the options
+            selectedKey: webUserObj.userRoleId  // key that is to be pre-selected (optional)
+        });
+    }
+    
     users.list = function (targetId) {
 
         // clear out whatever may be currently in the content area
@@ -96,7 +201,7 @@ var users = {};
         var content = `
             <div class='logon'>
                 <br/>
-                Enter Web User Id <input type="text" id="findId"/>
+                Enter Web User Id:  <input type="text" id="findId"/>
                 &nbsp;
                 <input type="button" value="Submit" onclick="users.findById('findId','msgArea')"/>
                 <br/> <br/>
@@ -124,12 +229,12 @@ var users = {};
         // Remember: getting a DB error does NOT mean ajax call unsuccessful. That is a secondary error after ajax call OK.
         ajax({
             url: myUrl,
-            callBackSuccess: userSuccess,
+            callBackSuccess: findByIdSuccess,
             errorId: targetId
         });
 
 
-        function userSuccess(obj) {
+        function findByIdSuccess(obj) {
 
             // var obj = JSON.parse(hreq.responseText); // this already done by function ajax2...
             if (!obj) {
@@ -138,19 +243,27 @@ var users = {};
             }
             console.log("users.findById (success private fn): the obj passed in by ajax is on next line.");
             console.log(obj);
-
-            if (obj.dbError.length > 0) {
-                targetDOM.innerHTML += "Database Error Encountered: " + obj.dbError;
+            
+            if (obj.errorMsg.length > 0) {
+                targetDOM.innerHTML += "Error Encountered: '" + obj.errorMsg + "'";
                 return;
-            } else if (obj.webUserList.length === 0 ) {
-                targetDOM.innerHTML = "No Web User with id "+desiredUserId+" was found in the Database.";
+            } else if (obj.length === 0 ) {
+                targetDOM.innerHTML += "No Web User with id "+desiredUserId+" was found in the Database.<br>";
             } else {
-                var msg = "Found Web User " + obj.webUserList[0].webUserId;
-                msg += "<br/> &nbsp; Birthday: " +  obj.webUserList[0].birthday;
-                msg += "<br/> &nbsp; MembershipFee: " +  obj.webUserList[0].membershipFee;
-                msg += "<br/> &nbsp; User Role: " +  obj.webUserList[0].userRoleId + " " +  obj.webUserList[0].userRoleType;
-                msg += "<br/> <img src ='" +  obj.webUserList[0].image + "'>";
-                targetDOM.innerHTML = msg;  
+                var myList = [];
+                myList[0] = {}; // add new empty object to array
+                myList[0].WebUserId = obj.webUserId;
+                myList[0].Credentials = obj.userEmail + "<br/> PW (to test Logon): " + obj.userPassword;
+                myList[0].Image = "<img src='" + obj.image + "'>";
+                myList[0].Birthday = obj.birthday;
+                myList[0].MemberFee = obj.membershipFee;
+                myList[0].Role = obj.userRoleId + "&nbsp;-&nbsp;" + obj.userRoleType;
+                MakeTable ({
+                    "theList":myList,
+                    "targetId":targetId,
+                    "style":"clickSort",
+                    "caption":"Web User Search Results"
+                });
             }
 
         } // end of function success

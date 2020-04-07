@@ -3,6 +3,123 @@
 var patients = {};
 
 (function () { //IIFE immediate function execute (anonymous function)
+
+        // this code called by insertUI and updateUI -- shared common code. 
+    function createInsertUpdateArea (isUpdate, targetId) {
+
+        // set variables as if it will be insert...
+        var idRowStyle = ' style="display:none" '; // hide row with webUserId
+        var saveFn = "users.insertSave()";
+        
+        // change variables for update
+        if (isUpdate) {
+            idRowStyle = ""; // don't hide row with webUserId 
+            saveFn = "users.updateSave()";
+        }
+        var html = `
+            <div id="insertArea">
+                <div id="ajaxError">&nbsp;</div>
+                <table>
+                    <tr ${idRowStyle}>
+                        <td>Visit Id</td>
+                        <td><input type="text"  id="visitId" disabled /></td>
+                        <td id="VisitIdError" class="error"></td> 
+                    </tr>
+                    <tr>
+                        <td>Patient Name</td>
+                        <td><input type="text"  id="patientName" /></td>
+                        <td id="patientNameError" class="error"></td> 
+                    </tr>
+                    <tr>
+                        <td>Image</td>
+                        <td><input id="image" /></td>
+                        <td id="imageError" class="error"></td>
+                    </tr>
+                    <tr>
+                        <td>MRN</td>
+                        <td><input id="mrn" /></td>
+                        <td id="mrnError" class="error"></td>
+                    </tr>
+                    <tr>
+                        <td>Description</td>
+                        <td><input type="text" id="description" /></td>
+                        <td id="descriptionError" class="error"></td> 
+                    </tr>
+                    <tr>
+                        <td>Visit Date Time</td>
+                        <td><input type="text" id="visitDateTime" /></td>
+                        <td id="visitDateTimeError" class="error"></td>
+                    </tr>
+                    <tr>
+                        <td>Diagnsis</td>
+                        <td><input type="text" id="diagnosis" /></td>
+                        <td id="diagnosisError" class="error"></td>
+                    </tr>
+                    <tr>
+                        <td>Visit Charge</td>
+                        <td><input type="text" id="visitCharge" /></td>
+                        <td id="visitChargeError" class="error"></td>
+                    </tr>
+                    <tr>
+                        <td>Web User</td>
+                        <td>
+                            <select id="webUserPickList">
+                            <!-- JS code will make ajax call to get all the web users 
+                            then populate this select tag's options with them -->
+                            </select>
+                        </td>
+                        <td id="webUserError" class="error"></td>
+                    </tr>
+                    <tr>
+                        <td colspan=3><button onclick="${saveFn}">Save</button></td>
+                    </tr>
+                    <tr>
+                        <td colspan=3 id="recordError" class="error">Click save to update...</td>
+                    </tr>
+                </table>
+            </div>
+        `;
+
+        document.getElementById(targetId).innerHTML = html;
+    }
+
+    patients.updateUI = function (webUserId, targetId) {
+        createInsertUpdateArea(true, targetId); // first param is isUpdate (boolean)
+        ajax2({
+            url: "WebAPIs/getPatientVisitWithUserAPI.jsp?id=" + webUserId,
+            successFn: proceedPatientsUpdateUI,
+            errorId: "ajaxError"
+        });
+        function proceedPatientsUpdateUI(obj) { // obj is what got JSON.parsed from Web API's output
+            dbDataToUI(obj);
+        }
+    };    
+    
+    function dbDataToUI(obj) {
+
+        debugger;
+        
+        var webUserObj = obj.webUserSD;
+        var webUserList = obj.webUserSDL.userList;
+
+        //document.getElementById("visitId").value = webUserObj.visitId;
+        document.getElementById("patientName").value = webUserObj.patientName;
+        document.getElementById("image").value = webUserObj.imageUrl;
+        document.getElementById("mrn").value = webUserObj.medRecNo;
+        document.getElementById("description").value = webUserObj.description;
+        document.getElementById("visitDateTime").value = webUserObj.visitDateTime;
+        document.getElementById("diagnosis").value = webUserObj.diagnosis;
+        document.getElementById("visitCharge").value = webUserObj.visitCharge;
+        console.log("selected role id is " + webUserObj.userRoleId);
+        Utils.makePickList({
+            id: "webUserPickList", // id of <select> tag in UI
+            list: webUserList, // JS array that holds objects to populate the select list
+            valueProp: "webUserEmail", // field name of objects in list that hold the values of the options
+            keyProp: "webUserId", // field name of objects in list that hold the keys of the options
+            selectedKey: webUserObj.userRoleId  // key that is to be pre-selected (optional)
+        });
+    }
+    
     patients.list = function (targetId) {
         
         // clear out whatever may be currently in the content area

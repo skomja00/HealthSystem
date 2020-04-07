@@ -93,9 +93,9 @@ function MakeTable(params) {
     }
 
     // The DOM object (htmlTable) will not show unless you attach it somewhere on the page.
-    document.getElementById(id).innerHTML = ""; // blank out the target DOM object
+    //document.getElementById(id).innerHTML = ""; // blank out the target DOM object
     document.getElementById(id).classList.add(style);
-    document.getElementById(id).innerHTML += caption + '<br><br>';
+    document.getElementById(id).innerHTML += caption ;
     document.getElementById(id).appendChild(newTable);
 
 }  // MakeTable

@@ -8,9 +8,9 @@ import java.sql.ResultSet;
 
 public class DbMods {
 
-    public static StringDataList findById (DbConn dbc, String id) {
+    public static StringData findById (DbConn dbc, String id) {
         
-        StringDataList sdl = new StringDataList();
+        StringData sd = new StringData();
         try {
             String sql = 
                 "select " +
@@ -37,23 +37,18 @@ public class DbMods {
 
             ResultSet results = stmt.executeQuery();
             if (results.next()) { // id is unique, one or zero records expected in result set
-                sdl.add(results);
+                sd = new StringData(results);
             } else {
-                StringData sd = new StringData();
-                sd.errorMsg = "Not found.";
-                sdl.add(sd);
+                sd.errorMsg = "The database has no Patient Visit records with Id  " + id;
             }
             results.close();
             stmt.close();
         } catch (Exception e) {
-            StringData sd = new StringData();
-            sd.errorMsg = "Exception thrown in patientVisitView.getUserById(): " + e.getMessage();
-            sdl.add(sd);
+            sd.errorMsg = "Exception thrown in model.patientVisit.DbMods.findById(): " + e.getMessage();
         }
-        return sdl;
+        return sd;
 
-    } // getUserById
-            
+    } // findById
     /*
     Returns a "StringData" object that is full of field level validation
     error messages (or it is full of all empty strings if inputData
@@ -79,7 +74,7 @@ public class DbMods {
         errorMsgs.imageUrl = ValidationUtils.stringValidationMsg(inputData.imageUrl, 2100, false);
         errorMsgs.medRecNo = ValidationUtils.stringValidationMsg(inputData.medRecNo, 255, true);
         errorMsgs.description = ValidationUtils.stringValidationMsg(inputData.description, 2100, true);
-        errorMsgs.visitDateTime = ValidationUtils.dateTimeValidationMsg(inputData.visitDateTime, true);
+        errorMsgs.visitDateTime = ValidationUtils.dateTimeValidationMsg(inputData.visitDateTime, false);
         errorMsgs.diagnosis = ValidationUtils.stringValidationMsg(inputData.diagnosis, 255, false);
         errorMsgs.visitCharge = ValidationUtils.decimalValidationMsg(inputData.visitCharge, false);
         errorMsgs.webUserId = ValidationUtils.integerValidationMsg(inputData.webUserId, true);

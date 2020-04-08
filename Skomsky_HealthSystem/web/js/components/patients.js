@@ -5,7 +5,7 @@ var patients = {};
 (function () { //IIFE immediate function execute (anonymous function)
 
         // this code called by insertUI and updateUI -- shared common code. 
-    function createInsertUpdateArea (isUpdate, targetId) {
+    function createUpdateArea (isUpdate, targetId) {
 
         // set variables as if it will be insert...
         var idRowStyle = ' style="display:none" '; // hide row with webUserId
@@ -20,9 +20,25 @@ var patients = {};
             <div id="insertArea">
                 <div id="ajaxError">&nbsp;</div>
                 <table>
+                    <thead>
+                        <th colspan=3>
+                            Update Patient Visit
+                        </th>
+                    </thead>
+                    <tbody>
                     <tr ${idRowStyle}>
+                        <td>MRN</td>
+                        <td><input type=text id="mrn" disabled /></td>
+                        <td id="mrnError" class="error"></td>
+                    </tr>
+                    <tr>
+                        <td>Visit Date Time</td>
+                        <td><input type="text" id="visitDateTime" disabled /></td>
+                        <td id="visitDateTimeError" class="error"></td>
+                    </tr>
+                    <tr>
                         <td>Visit Id</td>
-                        <td><input type="text"  id="visitId" disabled /></td>
+                        <td><input type="text"  id="visitId" /></td>
                         <td id="VisitIdError" class="error"></td> 
                     </tr>
                     <tr>
@@ -36,22 +52,12 @@ var patients = {};
                         <td id="imageError" class="error"></td>
                     </tr>
                     <tr>
-                        <td>MRN</td>
-                        <td><input id="mrn" /></td>
-                        <td id="mrnError" class="error"></td>
-                    </tr>
-                    <tr>
                         <td>Description</td>
                         <td><input type="text" id="description" /></td>
                         <td id="descriptionError" class="error"></td> 
                     </tr>
                     <tr>
-                        <td>Visit Date Time</td>
-                        <td><input type="text" id="visitDateTime" /></td>
-                        <td id="visitDateTimeError" class="error"></td>
-                    </tr>
-                    <tr>
-                        <td>Diagnsis</td>
+                        <td>Diagnosis</td>
                         <td><input type="text" id="diagnosis" /></td>
                         <td id="diagnosisError" class="error"></td>
                     </tr>
@@ -61,7 +67,7 @@ var patients = {};
                         <td id="visitChargeError" class="error"></td>
                     </tr>
                     <tr>
-                        <td>Web User</td>
+                        <td>Web User Email</td>
                         <td>
                             <select id="webUserPickList">
                             <!-- JS code will make ajax call to get all the web users 
@@ -76,6 +82,7 @@ var patients = {};
                     <tr>
                         <td colspan=3 id="recordError" class="error">Click save to update...</td>
                     </tr>
+                    </tbody>
                 </table>
             </div>
         `;
@@ -84,7 +91,7 @@ var patients = {};
     }
 
     patients.updateUI = function (webUserId, targetId) {
-        createInsertUpdateArea(true, targetId); // first param is isUpdate (boolean)
+        createUpdateArea(true, targetId); // first param is isUpdate (boolean)
         ajax2({
             url: "WebAPIs/getPatientVisitWithUserAPI.jsp?id=" + webUserId,
             successFn: proceedPatientsUpdateUI,
@@ -97,12 +104,10 @@ var patients = {};
     
     function dbDataToUI(obj) {
 
-        debugger;
-        
         var webUserObj = obj.webUserSD;
         var webUserList = obj.webUserSDL.userList;
 
-        //document.getElementById("visitId").value = webUserObj.visitId;
+        document.getElementById("visitId").value = webUserObj.visitId;
         document.getElementById("patientName").value = webUserObj.patientName;
         document.getElementById("image").value = webUserObj.imageUrl;
         document.getElementById("mrn").value = webUserObj.medRecNo;
@@ -110,13 +115,13 @@ var patients = {};
         document.getElementById("visitDateTime").value = webUserObj.visitDateTime;
         document.getElementById("diagnosis").value = webUserObj.diagnosis;
         document.getElementById("visitCharge").value = webUserObj.visitCharge;
-        console.log("selected role id is " + webUserObj.userRoleId);
+        
         Utils.makePickList({
             id: "webUserPickList", // id of <select> tag in UI
             list: webUserList, // JS array that holds objects to populate the select list
             valueProp: "webUserEmail", // field name of objects in list that hold the values of the options
             keyProp: "webUserId", // field name of objects in list that hold the keys of the options
-            selectedKey: webUserObj.userRoleId  // key that is to be pre-selected (optional)
+            selectedKey: webUserObj.webUserId  // key that is to be pre-selected (optional)
         });
     }
     
@@ -163,13 +168,14 @@ var patients = {};
             for (var i = 0; i < obj.patientVisitList.length; i++) {
                 userList[i] = {}; // add new empty object to array
                 userList[i].MedRecNo = obj.patientVisitList[i].medRecNo;
-                //userList[i].VisitId = obj.patientVisitList[i].visitId;
+                userList[i].VisitDateTime = obj.patientVisitList[i].visitDateTime;
+                userList[i].VisitId = obj.patientVisitList[i].visitId;
                 userList[i].PtName = obj.patientVisitList[i].patientName;
                 userList[i].Image = "<img src='" + obj.patientVisitList[i].imageUrl + "'>";
                 userList[i].Description = obj.patientVisitList[i].description;
-                userList[i].VisitDateTime = obj.patientVisitList[i].visitDateTime;
                 userList[i].VisitCharge = obj.patientVisitList[i].visitCharge;
-
+                userList[i].Update = "<img class='icon' src='icons/update.png' alt='Update' onclick=\"patients.updateUI('TUN922629','content')\"/>";
+                userList[i].Delete = "<img class='icon' src='icons/delete.png' alt='Delete' onclick=\"patients.delete('TUN922629','content')\"/>";
                 // Remove this once you are done debugging...
                 //userList[i].errorMsg = obj.patientVisitList[i].errorMsg;
             }
@@ -179,7 +185,6 @@ var patients = {};
             // ********************** function tableBuilder.build ***********************************
             // params.list: an array of objects that are to be built into an HTML table.
             // params.target: reference to DOM object where HTML table is to be placed (by buildTable) -- 
-            //         (this is not the id string but actual reference like you get from method getElementById()
             // params.style: will be added as className to DOM element target,
             // params.orderPropName (string): name of property (of objects in list) for iniial sort
             // params.reverse (boolean): if true, initial sort will be high to low (else low to high). 

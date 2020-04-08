@@ -90,6 +90,12 @@
      *     @param {object} val - value to align 
      *     @returns {string} if date return "center", string align "left" otherwise it's a number align "right" 
      */function alignment(val) {
+        
+        // center images, icons, etc.
+        if (val.includes(".jpg") || val.includes(".png")) {
+            return "center";
+        }
+        
         // check if date
         var parsedDate = Date.parse(val);
         if (isNaN(val) && (!isNaN(parsedDate))) {
@@ -177,7 +183,8 @@
     // option to include navigate to insert 
     if (params.insert) {
         var img = document.createElement("img");
-        img.src = CRUD_icons.insert;
+        img.src = 'icons/dark/insert_H32.png';//CRUD_icons.insert;
+        
         contentDOM.appendChild(img);            
         img.onclick = function () { // you cant pass input params directly into an event handler
                                     // create a routing rule and invoke 
@@ -207,9 +214,11 @@
     var obj = list[0];
     for (var prop in obj) {
         //var colHead = addToRow("th", tableHeadRow, prop, alignment(obj[prop]));
-        var colHead = addToRow("th", tableHeadRow, prop, "center");
+        var colHead = addToRow("th", tableHeadRow,  prop + "&nbsp;<img src='icons/dark/sortUpDown_H24.png'/>", "center");
         colHead.onclick = function () {
-            jsSort(list, this.innerHTML);
+            //the json keys in the 'list' object are the text only from the <th>
+            //not the icon. Sort using text only of header and strip off the sortUpDown.png icon
+            jsSort(list, this.innerText.trim());//this.innerHTML);
             addDataRows(list, searchInput.value);
         };
     }

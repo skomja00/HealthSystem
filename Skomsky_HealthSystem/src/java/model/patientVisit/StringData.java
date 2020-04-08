@@ -24,6 +24,7 @@ public class StringData {
     `VisitCharge`,
     `web_user_id`
     */
+    public String visitId = "";
     public String patientName = "";
     public String imageUrl = "";
     public String medRecNo = "";
@@ -32,6 +33,7 @@ public class StringData {
     public String diagnosis = "";
     public String visitCharge = "";
     public String webUserId = "";
+    public String webUserEmail = "";
    
     public String errorMsg = "";
 
@@ -42,6 +44,7 @@ public class StringData {
     // overloaded constructor sets all data members by extracting from resultSet.
     public StringData(ResultSet results) {
         try {
+            this.visitId = FormatUtils.formatInteger(results.getObject("VisitId"));
             this.patientName = FormatUtils.formatString(results.getObject("PatientName"));
             this.imageUrl = FormatUtils.formatString(results.getObject("ImageUrl"));
             this.medRecNo = FormatUtils.formatString(results.getObject("MedRecNo"));
@@ -50,6 +53,7 @@ public class StringData {
             this.diagnosis = FormatUtils.formatString(results.getObject("Diagnosis"));
             this.visitCharge = FormatUtils.formatDollar(results.getObject("VisitCharge"));
             this.webUserId = FormatUtils.formatInteger(results.getObject("wu.web_user_id"));
+            this.webUserEmail = FormatUtils.formatString(results.getObject("user_email"));
         } catch (Exception e) {
             this.errorMsg = "Exception thrown in model.patientVisit.StringData (the constructor that takes a ResultSet): " + e.getMessage();
         }
@@ -57,6 +61,7 @@ public class StringData {
 
     public int getCharacterCount() {
         String s = 
+                this.visitId + 
                 this.patientName + 
                 this.imageUrl + 
                 this.medRecNo + 
@@ -64,13 +69,14 @@ public class StringData {
                 this.visitDateTime + 
                 this.diagnosis + 
                 this.visitCharge + 
-                this.webUserId;
+                this.webUserId +
+                this.webUserEmail;
         return s.length();
     }
 
     public String toString() {
         return 
-            "Visit Id: " + this.webUserId 
+            "Visit Id: " + this.visitId 
             + ", Patient Name: " + this.patientName
             + ", Image Url: " + this.imageUrl
             + ", Med Rec No: " + this.medRecNo
@@ -78,6 +84,7 @@ public class StringData {
             + ", Visit DateTime: " + this.visitDateTime
             + ", Diagnosis: " + this.diagnosis
             + ", Visit Charge: " + this.visitCharge
-            + ", Web User Id: " + this.webUserId;
+            + ", Web User Id: " + this.webUserId
+            + ", Web User Email: " + this.webUserEmail;
     }
 }

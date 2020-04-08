@@ -26,3 +26,8 @@
 .clickSort td img { /* applies to any <img> tag in a <td> tag in any element classed "clickSort" */
     width: 60px;
 }
+
+.clickSort td .icon { /* applies to any <img> tag in a <td> tag in any element classed "clickSort" */
+    width: 20px;
+    text-align: center;
+}

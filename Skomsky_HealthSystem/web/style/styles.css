@@ -74,14 +74,14 @@ div {
     padding-top: 3%;
 }
 .mission {
-    position: relative;  /* positioned relative to its normal position */
+    position: relative;  
     margin: 40px;
     padding: 4px 8px 8px 8px;
     text-align: left;
 }
 .mission-icon {
   float: left;
-  min-width: 50px; /* the mission text helps make a smaller % icon stand out */ 
+  min-width: 50px; 
   max-width: 100px;
   padding: 0px 8px 10px 8px;
 }
@@ -90,7 +90,7 @@ div {
     max-width: 24px;
 }
 .mission-flyover {
-    position: absolute; /* parent element must use a position */
+    position: absolute; /* 1st parent element (.mission) is non-static */
     top: -30px;
     left: 4%;
     font-size: 50px;

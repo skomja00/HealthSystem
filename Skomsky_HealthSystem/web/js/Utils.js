@@ -43,11 +43,16 @@ Utils.makePickList = function (params) {
     var selectList = document.getElementById(params.id);
 
     for (var i in params.list) { // i iterates through all the elements in array list
-
+        
         // new Option(): first parameter is displayed option, second is option value. 
         var myOption = new Option(params.list[i][params.valueProp], params.list[i][params.keyProp]);
+        
+        if (params.list[i][params.keyProp] === params.selectedKey) {
+            myOption.selected = true;
+        }
 
         // add option into the select list
         selectList.appendChild(myOption);
     }
+    
 };

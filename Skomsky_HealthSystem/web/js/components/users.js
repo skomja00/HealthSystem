@@ -5,7 +5,7 @@ var users = {};
 (function () { //IIFE immediate function execute (anonymous function)
     
         // this code called by insertUI and updateUI -- shared common code. 
-    function createInsertUpdateArea (isUpdate, targetId) {
+    function createUpdateArea (isUpdate, targetId) {
 
         // set variables as if it will be insert...
         var idRowStyle = ' style="display:none" '; // hide row with webUserId
@@ -21,6 +21,12 @@ var users = {};
             <div id="insertArea">
                 <div id="ajaxError">&nbsp;</div>
                 <table>
+                    <thead>
+                        <th colspan=3>
+                            Update Web User
+                        </th>
+                    </thead>
+                    <tbody>
                     <tr ${idRowStyle}>
                         <td>Web User Id</td>
                         <td><input type="text"  id="webUserId" disabled /></td>
@@ -42,6 +48,11 @@ var users = {};
                         <td id="userPassword2Error" class="error"></td>
                     </tr>
                     <tr>
+                        <td>Image</td>
+                        <td><input type="text" id="image" /></td>
+                        <td id="imageError" class="error"></td> 
+                    </tr>
+                    <tr>
                         <td>Birthday</td>
                         <td><input type="text" id="birthday" /></td>
                         <td id="birthdayError" class="error"></td> 
@@ -52,7 +63,7 @@ var users = {};
                         <td id="membershipFeeError" class="error"></td>
                     </tr>
                     <tr>
-                        <td>User Role</td>
+                        <td>User Role Type</td>
                         <td>
                             <select id="rolePickList">
                             <!-- JS code will make ajax call to get all the roles 
@@ -67,6 +78,7 @@ var users = {};
                     <tr>
                         <td colspan=3 id="recordError" class="error">Click save to update...</td>
                     </tr>
+                    </tbody>
                 </table>
             </div>
         `;
@@ -75,10 +87,11 @@ var users = {};
     }
     
     users.updateUI = function (webUserId, targetId) {
-        createInsertUpdateArea(true, targetId); // first param is isUpdate (boolean)
+        
+        createUpdateArea(true, targetId); // first param is isUpdate (boolean)
         ajax2({
             url: "WebAPIs/getUserWithRolesAPI.jsp?id=" + webUserId,
-            successFn: proceed,
+            successFn: proceedUsersUpdateUI,
             errorId: "ajaxError"
         });
         function proceedUsersUpdateUI(obj) { // obj is what got JSON.parsed from Web API's output
@@ -86,6 +99,28 @@ var users = {};
         }
     };    
     
+    function dbDataToUI(obj) {
+
+        var webUserObj = obj.webUser;
+        var roleList = obj.roleInfo.roleList;
+
+        document.getElementById("webUserId").value = webUserObj.webUserId;
+        document.getElementById("userEmail").value = webUserObj.userEmail;
+        document.getElementById("userPassword").value = webUserObj.userPassword;
+        document.getElementById("userPassword2").value = webUserObj.userPassword;
+        document.getElementById("image").value = webUserObj.image;
+        document.getElementById("birthday").value = webUserObj.birthday;
+        document.getElementById("membershipFee").value = webUserObj.membershipFee;
+        console.log("selected role id is " + webUserObj.userRoleId);
+        Utils.makePickList({
+            id: "rolePickList", // id of <select> tag in UI
+            list: roleList, // JS array that holds objects to populate the select list
+            valueProp: "userRoleType", // field name of objects in list that hold the values of the options
+            keyProp: "userRoleId", // field name of objects in list that hold the keys of the options
+            selectedKey: webUserObj.userRoleId  // key that is to be pre-selected (optional)
+        });
+    }
+
 
     function proceedUsersUpdateUI(obj) {
 
@@ -98,7 +133,6 @@ var users = {};
         document.getElementById("userPassword2").value = webUserObj.userPassword;
         document.getElementById("birthday").value = webUserObj.birthday;
         document.getElementById("membershipFee").value = webUserObj.membershipFee;
-        console.log("selected role id is " + webUserObj.userRoleId);
         Utils.makePickList({
             id: "rolePickList", // id of <select> tag in UI
             list: roleList, // JS array that holds objects to populate the select list
@@ -162,6 +196,8 @@ var users = {};
                 userList[i].Role = obj.webUserList[i].userRoleId + "&nbsp;" +
                         obj.webUserList[i].userRoleType;
                 userList[i].WebUserId = obj.webUserList[i].webUserId;
+                userList[i].Update = "<img class='icon' src='icons/update.png' alt='Update' onclick=\"users.updateUI('5','content')\"/>";
+                userList[i].Delete = "<img class='icon' src='icons/delete.png' alt='Delete' onclick=\"users.delete('5','content')\"/>";
 
                 // Remove this once you are done debugging...
                 //userList[i].errorMsg = obj.webUserList[i].errorMsg;

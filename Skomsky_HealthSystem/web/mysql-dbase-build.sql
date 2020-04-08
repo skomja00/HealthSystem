@@ -422,7 +422,7 @@ CREATE TABLE `PatientVisit` (
         '2019-12-07 14:21:59',  
         'Z02.9 Encounter for administrative examinations',         
         150.00,
-        get_web_user_id('admin@gmail.com'));
+        get_web_user_id('documents@gmail.com'));
     INSERT INTO `PatientVisit` 
         (`PatientName`,
         `ImageUrl`,
@@ -674,5 +674,5 @@ DELIMITER ;
 --   web_user_id=6
 -- where MedRecNo = 'TUN158929';
 -- select * from PatientVisit where MedRecNo = 'TUN158929' and VisitDateTime = '2019-11-06 15:49:02';
-        
-        
+   
+   

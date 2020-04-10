@@ -77,10 +77,10 @@ var patients = {};
                         <td id="webUserError" class="error"></td>
                     </tr>
                     <tr>
-                        <td colspan=3><button onclick="${saveFn}">Save</button></td>
+                        <td colspan=3><button onclick="${saveFn}">Update</button></td>
                     </tr>
                     <tr>
-                        <td colspan=3 id="recordError" class="error">Click save to update...</td>
+                        <td colspan=3 id="recordError" class="error">Click to update...</td>
                     </tr>
                     </tbody>
                 </table>

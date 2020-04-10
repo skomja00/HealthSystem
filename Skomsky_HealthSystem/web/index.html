@@ -50,9 +50,7 @@
             <!--<div class="dropdown" id="ddTutorial">
                 <img class="dropHeader" title="Tutorial" src="icons/dark/tutorial_dd_icon_H24.png" alt="Tutorial" >
                 <div class="dropContent">
-                    <a href="#/services">Services</a><br/>
-                    <a href="#/busofc">Business Office</a><br/>
-                    <a href="#/documents">Documents</a><br/>
+                    <a href="#/services">Tutorial</a><br/>
                 </div> 
             </div> -->          
             <div class="dropdown" id="ddTheme">
@@ -90,8 +88,6 @@
     <script src="js/Utils.js"></script>    
     <script src="js/CRUD_icons.js"></script>     
     <script src="js/components/blog.js"></script>
-    <script src="js/components/busofc.js"></script>
-    <script src="js/components/documents.js"></script>
     <script src="js/components/home.js"></script>
     <script src="js/components/logon.js"></script>
     <script src="js/components/logoff.js"></script>
@@ -100,7 +96,6 @@
     <script src="js/components/patients.js"></script>
     <script src="js/components/register.js"></script>
     <script src="js/components/routeFw.js"></script>
-    <script src="js/components/services.js"></script>
     <script>
         "use strict";
         setTheme("LightPallette");
@@ -117,10 +112,16 @@
         myRoutes['/patientFind'] = patients.findUI; 
         myRoutes['/slideShow'] = MakeSlideShow;
         myRoutes['/insertUser'] = users.insertUI;
+        // when "#/users" is clicked (from nav bar), the user list shows. From there, 
+        // if the user clicks on update, then clicks again for user list -- nothing happens. 
+        // This is because the link (in the browser's address bar) would not change, so 
+        // no routing functions are invoked. 
+        // To fix this, we will add a rule to the routing table associated with a "null function"
+        // (although the link is representative of what we are doing - updating a user).  
+        // Since the link in the URL will change when we update a user, someone can click 
+        // on user list afterward and and routing will correctly invoke the user list code. 
+        myRoutes['/userUpdate'] = function () {}; // do nothing -- the code will handle the UI        
         myRoutes['/insertVisit'] = patients.insertUi;
-        myRoutes['/services'] = services;
-        myRoutes['/busofc'] = busofc;
-        myRoutes['/documents'] = documents;
         myRoutes['/blog'] = blog;
         var myRouteFw = routeFw(  /* java object passed to routeFw  */
         {

@@ -93,6 +93,24 @@ public class ValidationUtils {
             return null;
         }
     } // dateTimeConversion()
+    
+    /* Check string "val" to see if it has a valid BigDecimal in it.
+     * Return "" if the input is OK. Otherwise, return error message. */
+    public static String dollarValidationMsg(String val, boolean required) {
+
+        if (val == null) {
+            return "ValidationUtils.dollarValidationMsg(): Programmer error - should not be trying to validate null.";
+        }
+        if ((val.length() == 0) && !required) {
+            return "";  // Since this field is not required, empty string is valid user entry.
+        }
+        try {
+            String validateDecimal = decimalValidationMsg(val.replace("$",""), true);    
+            return "";
+        } catch (Exception e) {
+            return "Please enter a dollar amount!!";
+        }
+    } // dollarValidationMsg()
 
     /* Check string "val" to see if it has a valid BigDecimal in it.
      * Return "" if the input is OK. Otherwise, return error message. */
@@ -108,10 +126,24 @@ public class ValidationUtils {
             java.math.BigDecimal convertedDecimal = new java.math.BigDecimal(val); // not using (on purpose).
             return "";
         } catch (Exception e) {
-            return "Please enter an dollar amount";
+            return "Please enter an decimal amount";
         }
     } // decimalValidationMsg()
 
+    /* Convert "val" (String) to java.math.BigDecimal and return the converted BigDecimal. */
+    public static java.math.BigDecimal dollarConversion(String val) {
+
+        if ((val == null) || (val.length() == 0)) {
+            return null;  // Since this field is not required, empty string is valid user entry.
+        }
+        try {
+            return new java.math.BigDecimal(val.replace("$",""));
+        } catch (Exception e) {
+            System.out.println("ValidationUtils.dollarConversion(): cannot convert " + val + " to java.math.BigDecimal.");
+            return null;
+        }
+    } // decimalValidationMsg()
+    
     /* Convert "val" (String) to java.math.BigDecimal and return the converted BigDecimal. */
     public static java.math.BigDecimal decimalConversion(String val) {
 

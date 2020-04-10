@@ -26,7 +26,6 @@ profile.display = function () {
             document.getElementById("msgArea").innerHTML = obj.dbError;
             return;
         } else {
-            document.getElementById("msgArea").innerHTML += "Your profile settings.<br>";
             var userList = [];
             userList[0] = {}; // add new empty object to array
             userList[0].Credentials = obj.webUserList[0].userEmail + "<br/> PW (to test Logon): " +
@@ -38,7 +37,7 @@ profile.display = function () {
                     obj.webUserList[0].userRoleType;
             userList[0].WebUserId = obj.webUserList[0].webUserId;
             MakeTable({
-                        "caption" : "Your profile settings.",
+                        "caption" : "Profile settings.",
                         "theList" : userList,
                         "targetId" : "msgArea",
                         "style" : "clickSort"

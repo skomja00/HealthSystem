@@ -201,7 +201,21 @@ function blog(id) {
                     </ul>
             </li>
         </ul>
-        <h2>HW 7 Delete</h2>
+        <h2>HW 8 Update</h2>
+        <p>
+            In this homework I learned to implement a WebAPI to do a database update.
+            This was a lot of coding, but building on our work so far with WebAPIs 
+            for the database. It is starting to sink in. 
+        </p>
+        <ul>
+            <li>
+                To run this code, click to "List Web Users" or "List Patient Visits"
+                list the data (under the Menu" icon from the nav bar)
+                then click the update icon (small pencil icon) next to the row you want to update. 
+            </li>
+        </ul>
+
+        <h2>HW 9 Delete</h2>
         <p>
             In this homework I learned ... 
             The parts that I found easy were ... 
@@ -214,18 +228,7 @@ function blog(id) {
             </li>
         </ul>
 
-        <h2>HW 9 Update</h2>
-        <p>
-            In this homework I learned ... 
-            The parts that I found easy were ... 
-            The parts that I found hard or confusing were ... 
-        </p>
-        <ul>
-            <li>
-                To run this code, click to list the data (under the search icon from the nav bar)
-                then click the update icon next to the row you want to update. 
-            </li>
-        </ul>
+
     </div>
     `;
     document.getElementById(id).innerHTML = content;

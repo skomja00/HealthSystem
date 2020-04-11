@@ -9,12 +9,12 @@ var patients = {};
 
         // set variables as if it will be insert...
         var idRowStyle = ' style="display:none" '; // hide row with webUserId
-        var saveFn = "users.insertSave()";
+        var saveFn = "patients.insertSave()";
         
         // change variables for update
         if (isUpdate) {
             idRowStyle = ""; // don't hide row with webUserId 
-            saveFn = "users.updateSave()";
+            saveFn = "patients.updateSave()";
         }
         var html = `
             <div id="insertArea">
@@ -28,8 +28,8 @@ var patients = {};
                     <tbody>
                     <tr ${idRowStyle}>
                         <td>MRN</td>
-                        <td><input type=text id="mrn" disabled /></td>
-                        <td id="mrnError" class="error"></td>
+                        <td><input type=text id="medRecNo" disabled /></td>
+                        <td id="medRecNoError" class="error"></td>
                     </tr>
                     <tr>
                         <td>Visit Date Time</td>
@@ -39,7 +39,7 @@ var patients = {};
                     <tr>
                         <td>Visit Id</td>
                         <td><input type="text"  id="visitId" /></td>
-                        <td id="VisitIdError" class="error"></td> 
+                        <td id="visitIdError" class="error"></td> 
                     </tr>
                     <tr>
                         <td>Patient Name</td>
@@ -48,8 +48,8 @@ var patients = {};
                     </tr>
                     <tr>
                         <td>Image</td>
-                        <td><input id="image" /></td>
-                        <td id="imageError" class="error"></td>
+                        <td><input id="imageUrl" /></td>
+                        <td id="imageUrlError" class="error"></td>
                     </tr>
                     <tr>
                         <td>Description</td>
@@ -90,10 +90,20 @@ var patients = {};
         document.getElementById(targetId).innerHTML = html;
     }
 
-    patients.updateUI = function (webUserId, targetId) {
+    patients.updateUI = function (medRecNo, targetId) {
+        
+        // This is needed to "reset" the application's perception of the "current" link. 
+        // Otherwise, when the user tries to click on "user list" after doing a user list -> update
+        // operation, there will be no response (because link would not change). 
+        // Setting window.location.hash is like auto-clicking for the user (in code). 
+        // But also in index.html, you have to add a routing rule for this link and associate 
+        // it will a null function (a do nothing function) - to avoid a routing error.
+        window.location.hash = "#/patientVisitUpdate";        
+        
+        
         createUpdateArea(true, targetId); // first param is isUpdate (boolean)
         ajax2({
-            url: "WebAPIs/getPatientVisitWithUserAPI.jsp?id=" + webUserId,
+            url: "WebAPIs/getPatientVisitWithUserAPI.jsp?id=" + medRecNo,
             successFn: proceedPatientsUpdateUI,
             errorId: "ajaxError"
         });
@@ -109,8 +119,8 @@ var patients = {};
 
         document.getElementById("visitId").value = webUserObj.visitId;
         document.getElementById("patientName").value = webUserObj.patientName;
-        document.getElementById("image").value = webUserObj.imageUrl;
-        document.getElementById("mrn").value = webUserObj.medRecNo;
+        document.getElementById("imageUrl").value = webUserObj.imageUrl;
+        document.getElementById("medRecNo").value = webUserObj.medRecNo;
         document.getElementById("description").value = webUserObj.description;
         document.getElementById("visitDateTime").value = webUserObj.visitDateTime;
         document.getElementById("diagnosis").value = webUserObj.diagnosis;
@@ -124,6 +134,84 @@ var patients = {};
             selectedKey: webUserObj.webUserId  // key that is to be pre-selected (optional)
         });
     }
+
+    patients.updateSave = function () {
+        
+        console.log("patients.updateSave was called");
+
+        // create a user object from the values that the user has typed into the page.
+        var myData = getDataFromUI();
+
+        ajax2({
+            url: "WebAPIs/updatePatientVisitAPI.jsp?jsonData=" + myData,
+            successFn: processPatientVisitInsert,
+            errorId: "recordError"
+        });
+
+        function processPatientVisitInsert(jsonObj) {
+            
+            // the server prints out a JSON string of an object that holds field level error 
+            // messages. The error message object (conveniently) has its fiels named exactly 
+            // the same as the input data was named. 
+
+            if (jsonObj.errorMsg.length === 0) { // success
+                jsonObj.errorMsg = "Record successfully updated !!!";
+            }
+            writeErrorObjToUI(jsonObj);
+        }
+    };
+    
+        // a private function
+    function getDataFromUI() {
+
+        // New code for handling role pick list.
+        var ddList = document.getElementById("webUserPickList");
+
+        // create a user object from the values that the user has typed into the page.
+        var userInputObj = {
+            "medRecNo": document.getElementById("medRecNo").value,
+            "visitDateTime": document.getElementById("visitDateTime").value,
+            "visitId": document.getElementById("visitId").value,
+            "patientName": document.getElementById("patientName").value,
+            "imageUrl": document.getElementById("imageUrl").value,
+            "description": document.getElementById("description").value,
+            "diagnosis": document.getElementById("diagnosis").value,
+            "visitCharge": document.getElementById("visitCharge").value,
+            "webUserId": Number(ddList.options[ddList.selectedIndex].value),
+
+            "webUserEmail": "",
+            "errorMsg": ""
+        };
+
+        console.log(userInputObj);
+
+        // JSON.stringify converts the javaScript object into JSON format 
+        // (the reverse operation of what gson does on the server side).
+        // 
+        // Then, you have to encode the user's data (encodes special characters 
+        // like space to %20 so the server will accept it with no security error. 
+        return encodeURIComponent(JSON.stringify(userInputObj));
+        //return escape(JSON.stringify(userInputObj));
+    }    
+    
+    function writeErrorObjToUI(jsonObj) {
+        
+        console.log("here is JSON object from the API (may hold error messages)");
+        console.log(jsonObj);
+        
+        document.getElementById("medRecNoError").innerHTML = jsonObj.medRecNo;
+        document.getElementById("visitDateTimeError").innerHTML = jsonObj.visitDateTime;
+        document.getElementById("visitIdError").innerHTML = jsonObj.visitId;
+        document.getElementById("patientNameError").innerHTML = jsonObj.patientName;
+        document.getElementById("imageUrlError").innerHTML = jsonObj.imageUrl;
+        document.getElementById("descriptionError").innerHTML = jsonObj.description;
+        document.getElementById("diagnosisError").innerHTML = jsonObj.diagnosis;
+        document.getElementById("visitChargeError").innerHTML = jsonObj.visitCharge;
+        // ddList.options[ddList.selectedIndex].innerHTML = jsonObj.userEmail;
+        document.getElementById("recordError").innerHTML = jsonObj.errorMsg;
+
+    }
+    
     
     patients.list = function (targetId) {
         
@@ -174,8 +262,16 @@ var patients = {};
                 userList[i].Image = "<img src='" + obj.patientVisitList[i].imageUrl + "'>";
                 userList[i].Description = obj.patientVisitList[i].description;
                 userList[i].VisitCharge = obj.patientVisitList[i].visitCharge;
-                userList[i].Update = "<img class='icon' src='icons/update.png' alt='Update' onclick=\"patients.updateUI('TUN922629','content')\"/>";
-                userList[i].Delete = "<img class='icon' src='icons/delete.png' alt='Delete' onclick=\"patients.delete('TUN922629','content')\"/>";
+                userList[i].Update = "<img class='icon' src='icons/update.png' \n\
+                    alt='update icon' onclick='patients.updateUI(\"" +
+                    obj.patientVisitList[i].medRecNo + "\", \"" + targetId + "\" )' />";
+                userList[i].Delete = "<img class='icon' src='icons/delete.png' \n\
+                    alt='update icon' onclick='patients.delete(\"" +
+                    obj.patientVisitList[i].medRecNo + "\", `" + targetId + "` )' />";
+                
+                //userList[i].Update = "<img class='icon' src='icons/update.png' alt='Update' onclick=\"patients.updateUI('TUN922629','content')\"/>";
+                //userList[i].Delete = "<img class='icon' src='icons/delete.png' alt='Delete' onclick=\"patients.delete('TUN922629','content')\"/>";
+                
                 // Remove this once you are done debugging...
                 //userList[i].errorMsg = obj.patientVisitList[i].errorMsg;
             }
@@ -267,7 +363,7 @@ var patients = {};
 
         } // end of function success
     };  // patients.findUI
-    patients.insertUi = function () {
+    patients.insertUI = function () {
 
         const ui = `
             <div id="insertArea">

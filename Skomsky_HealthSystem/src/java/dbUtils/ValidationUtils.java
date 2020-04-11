@@ -177,7 +177,6 @@ public class ValidationUtils {
 
     /* Convert "val" (String) to Integer and return the converted Integer. */
     public static Integer integerConversion(String val) {
-
         if ((val == null) || (val.length() == 0)) {
             return null;
         }

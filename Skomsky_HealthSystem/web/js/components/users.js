@@ -33,7 +33,7 @@ var users = {};
                         <td id="webUserIdError" class="error"></td> 
                     </tr>
                     <tr>
-                        <td>Email Address</td>
+                        <td>Email Address (unique)</td>
                         <td><input type="text"  id="userEmail" /></td>
                         <td id="userEmailError" class="error"></td> 
                     </tr>
@@ -134,7 +134,7 @@ var users = {};
         console.log("users.updateSave was called");
 
         // create a user object from the values that the user has typed into the page.
-        var myData = getUserDataFromUI();
+        var myData = getDataFromUI();
 
         ajax2({
             url: "WebAPIs/updateUserAPI.jsp?jsonData=" + myData,
@@ -158,7 +158,7 @@ var users = {};
     };
     
         // a private function
-    function getUserDataFromUI() {
+    function getDataFromUI() {
 
         // New code for handling role pick list.
         var ddList = document.getElementById("rolePickList");
@@ -181,8 +181,7 @@ var users = {};
             "errorMsg": ""
         };
 
-        var json_to_updateAPI = userInputObj;
-        console.log(json_to_updateAPI);
+        console.log(userInputObj);
 
         // JSON.stringify converts the javaScript object into JSON format 
         // (the reverse operation of what gson does on the server side).

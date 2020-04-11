@@ -20,7 +20,7 @@ public class FormatUtils {
         try {
             System.out.println("FormatUtils...formatDateTime...obj.getClass: " + obj.getClass());
             java.util.Date dateval = (java.util.Date) obj;
-            SimpleDateFormat dateformat = new SimpleDateFormat("MM/dd/yyyy h:mm a");
+            SimpleDateFormat dateformat = new SimpleDateFormat("yyyy-MM-dd h:mm a");
             dateformat.setLenient(false);
             return dateformat.format(dateval);
         } catch (Exception e) {
@@ -32,7 +32,7 @@ public class FormatUtils {
         String out = "<td style='text-align:center'>";
         //String strDate = formatDate(obj);
         java.util.Date dateval = (java.util.Date) obj;
-        SimpleDateFormat dateformat = new SimpleDateFormat("MM/dd/yyyy h:mm a");
+        SimpleDateFormat dateformat = new SimpleDateFormat("yyyy-MM-dd h:mm a");
         dateformat.setLenient(false);
         String strDate = dateformat.format(dateval);
         if (strDate.length() == 0) {

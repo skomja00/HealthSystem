@@ -257,7 +257,7 @@ CREATE TABLE `PatientVisit` (
         'http://cis-linux2.temple.edu/~sallyk/pics_user/claudia.jpg',
         'TUN143981',
         'Office Visit',     
-        '2019-11-06 10:35:32', 
+        '2019-11-06 10:35', 
         'Z02.9 Encounter for administrative examinations',      
         154.95,
         get_web_user_id('office@gmail.com'));
@@ -275,7 +275,7 @@ CREATE TABLE `PatientVisit` (
         'http://cis-linux2.temple.edu/~sallyk/pics_user/rose.jpg',
         'TUN114977',
         'Vaccination',
-        '2019-11-06 15:30:47', 
+        '2019-11-06 15:30', 
         'Z23 Encounter for immunization',
         45.00,
         get_web_user_id('admin@gmail.com'));
@@ -293,7 +293,7 @@ CREATE TABLE `PatientVisit` (
         'http://cis-linux2.temple.edu/~sallyk/pics_user/sally.jpg',
         'TUN193741',
         'ED Visit',
-        '2019-12-07 22:35:41',
+        '2019-12-07 22:35',
         'R06.00 Respiratory distress',
         2000.00,
         get_web_user_id('admin@gmail.com'));
@@ -311,7 +311,7 @@ CREATE TABLE `PatientVisit` (
         'https://cis.temple.edu/sites/default/files/styles/portrait-small/public/user_pictures/picture-173-1437489687.jpg?itok=NjxpBhsO',
         'TUN193448',
         'ED Visit',
-        '1945-12-07 20:31:11',
+        '1945-12-07 20:31',
         'R06.00 Respiratory distress',
         2000.00,
         get_web_user_id('office@gmail.com'));
@@ -329,7 +329,7 @@ CREATE TABLE `PatientVisit` (
         'http://cis-linux2.temple.edu/~sallyk/pics_user/tony.jpg',
         'TUN111114',
         'Office Visit'  ,
-        '2019-10-12 08:15:00', 
+        '2019-10-12 08:15', 
         'Z02.9 Encounter for administrative examinations',      
         150.00,
         get_web_user_id('admin@gmail.com'));
@@ -347,7 +347,7 @@ CREATE TABLE `PatientVisit` (
 --         'http://cis-linux2.temple.edu/~sallyk/pics_user/tony.jpg',
 --         'TUN111114',
 --         'Vaccination'  ,
---         '2019-10-12 08:45:00', 
+--         '2019-10-12 08:45', 
 --         'Z23 Encounter for immunization',      
 --         150.00,
 --         get_web_user_id('admin@gmail.com'));
@@ -365,7 +365,7 @@ CREATE TABLE `PatientVisit` (
         'https://cis.temple.edu/sites/default/files/styles/portrait-small/public/user_pictures/picture-444-1471294001.jpg?itok=vHA39piz',
         'TUN147765',
         'Vaccination'   , 
-        '2019-11-06 15:35:21', 
+        '2019-11-06 15:35', 
         'Z23 Encounter for immunization',                             
         45.00,
         get_web_user_id('admin@gmail.com'));
@@ -383,7 +383,7 @@ CREATE TABLE `PatientVisit` (
         'https://cis.temple.edu/sites/default/files/styles/portrait-small/public/user_pictures/picture-914-1564714433.jpg?itok=1mwPImKw',
         'TUN559116',
         'Vaccination', 
-        '2019-11-06 15:42:21',  
+        '2019-11-06 15',  
         'Z23 Encounter for immunization',                             
         45.00,
         get_web_user_id('admin@gmail.com'));
@@ -401,7 +401,7 @@ CREATE TABLE `PatientVisit` (
         'https://cis.temple.edu/sites/default/files/styles/portrait-small/public/user_pictures/picture-173-1437489687.jpg',
         'TUN158929',
         'Vaccination',
-        '2019-11-06 15:49:02',
+        '2019-11-06 15:49',
         'Z23 Encounter for immunization',                             
         45.00,
         get_web_user_id('admin@gmail.com'));
@@ -419,7 +419,7 @@ CREATE TABLE `PatientVisit` (
         'https://cis.temple.edu/sites/default/files/styles/portrait-small/public/user_pictures/picture-910-1564072808.jpg?itok=gnW_YI77',
         'TUN922629',
         'Office Visit',   
-        '2019-12-07 14:21:59',  
+        '2019-12-07 14:21',  
         'Z02.9 Encounter for administrative examinations',         
         150.00,
         get_web_user_id('documents@gmail.com'));
@@ -437,7 +437,7 @@ CREATE TABLE `PatientVisit` (
         'https://cis.temple.edu/sites/default/files/styles/portrait-small/public/user_pictures/picture-190-1441242687.png',
         'TUN111119',
         'Vaccination',   
-        '2019-11-13 09:36:21',
+        '2019-11-13 09:36',
         'Z23 Encounter for immunization',                             
         45.00,
         get_web_user_id('admin@gmail.com'));
@@ -455,7 +455,7 @@ CREATE TABLE `PatientVisit` (
         'https://cis.temple.edu/sites/default/files/styles/portrait-small/public/user_pictures/picture-108-1522178489.jpg?itok=Xcw9PenQ',
         'TUN111120',
         'ED Visit',     
-        '2020-01-01 00:01:06', 
+        '2020-01-01 00:01', 
         'R06.00 Respiratory distress',   
         2000.00,
         get_web_user_id('admin@gmail.com'));
@@ -668,7 +668,7 @@ DELIMITER ;
 --   ImageUrl='https://cis.temple.edu/sites/default/files/styles/portrait-small/public/user_pictures/picture-173-1437489687.jpg',
 --   MedRecNo='TUN158929',
 --   Description='Vaccination',
---   VisitDateTime='2019-11-06 15:49:02',
+--   VisitDateTime='2019-11-06 15:49',
 --   Diagnosis='Z23 Encounter for immunization',         
 --   VisitCharge=62.21,
 --   web_user_id=6
@@ -676,3 +676,10 @@ DELIMITER ;
 -- select * from PatientVisit where MedRecNo = 'TUN158929' and VisitDateTime = '2019-11-06 15:49:02';
    
    
+   
+   
+ 
+ 
+ 
+ 
+ 

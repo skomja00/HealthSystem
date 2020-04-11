@@ -10,32 +10,91 @@
  * A <style> element will be added to the header to style the properties 
  * for each of the following classes
  * 
-    title
-        background-color 
-        box-shadow 
+    /**
+     * setTheme() will style a set of properties using one or another of two 
+     * pallettes. Each pallette will store separate colors/icons.
+     * setTheme() will be called from a menu bar icon onclick() as a toggle.
+     * When the icon is clicked the theme will switch back and forth. 
+     * The theme settings are xml to be human-readable and customizable by the user  
+     * A <style> element will be added to the header to style the properties 
+     * for each of the following .classes/#ids
+     * 
+        .title
+        background-color
+        box-shadow
+        colortext-shadow
+
+        .navigation
+        border
+        background-color
+
+        .mission
+        box-shadow
+        background-color
+
+        .mission-flyover
         color
-        text-shadow 
-    navigation
-        border 
-        background-color 
-    mission
-        box-shadow 
-        background-color 
-    mission-flyover
-        color 
-        text-shadow 
-    footer
-        background-color 
-        box-shadow 
-        color 
         text-shadow
-    list-item
-        background-color 
-        color 
-    list-item-title
-        background-color 
+
+        .footer
+        background-color
+        box-shadow
         color
-    and the theme icon id='theme-icon' also styled and used as a toggle
+        text-shadow
+
+        .list-item
+        background-color
+        color
+
+        .list-item-title
+        background-color
+        color
+
+        .clickSort td 
+        background-color
+        box-shadow
+        color
+        text-shadow
+
+        .clickSort th
+        box-shadow
+        color
+        text-shadow
+
+        #insertArea td 
+        background-color
+        box-shadow
+        color
+        text-shadow
+
+        #insertArea th
+        background-color
+        box-shadow
+        color
+        text-shadow
+
+        .slideUsersClass
+        background-color
+        box-shadow
+        color
+        text-shadow
+
+        .slidePatientsClass
+        background-color
+        box-shadow
+        color
+        text-shadow
+
+        .slideImageClass
+        box-shadow
+
+        .slideButton
+        background-color
+        box-shadow
+        color
+        text-shadow
+    
+        and the theme icon id='theme-icon' also styled and used as a toggle
  * 
  * TODO: Dont know of the best way to make the XML a settings accessible to 
  * the user to customize in an external xml file or anywhere other than 

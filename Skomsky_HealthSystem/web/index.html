@@ -42,8 +42,8 @@
             <div class="dropdown" id="ddMenu">
                 <img class="dropHeader" title="Menu" onclick="myDropdown.toggle(this)" src="icons/dark/menu_dd_icon_H24.png" alt="Search" >
                 <div class="dropContent" id="searchDropDown">
-                    <a href="#/users">Web Users</a> <br/>
-                    <a href="#/patients">Patient Visits</a> <br/>
+                    <a href="#/users">List Web Users</a> <br/>
+                    <a href="#/patients">List Patient Visits</a> <br/>
                     <a href="#/slideShow">Slides</a> <br/>
                 </div>
             </div>            
@@ -111,17 +111,22 @@
         myRoutes['/userFind'] = users.findUI; 
         myRoutes['/patientFind'] = patients.findUI; 
         myRoutes['/slideShow'] = MakeSlideShow;
-        myRoutes['/insertUser'] = users.insertUI;
-        // when "#/users" is clicked (from nav bar), the user list shows. From there, 
+        
+        // Re: both /insertUser and /insertVisit
+        // when for example "#/users" is clicked (from nav bar), the user list shows. From there, 
         // if the user clicks on update, then clicks again for user list -- nothing happens. 
         // This is because the link (in the browser's address bar) would not change, so 
         // no routing functions are invoked. 
         // To fix this, we will add a rule to the routing table associated with a "null function"
-        // (although the link is representative of what we are doing - updating a user).  
+        // (although the link is representative of what we are doing - updating).  
         // Since the link in the URL will change when we update a user, someone can click 
-        // on user list afterward and and routing will correctly invoke the user list code. 
-        myRoutes['/userUpdate'] = function () {}; // do nothing -- the code will handle the UI        
-        myRoutes['/insertVisit'] = patients.insertUi;
+        // on .list() afterward and and routing will correctly invoke the .list() code.         
+        myRoutes['/insertUser'] = users.insertUI;
+        myRoutes['/insertVisit'] = patients.insertUI; 
+        myRoutes['/userUpdate'] = function () {}; // do nothing -- the  javascript code will handle the UI        
+        myRoutes['/patientVisitUpdate'] = function () {}; // do nothing -- the javascript code will handle the UI        
+
+
         myRoutes['/blog'] = blog;
         var myRouteFw = routeFw(  /* java object passed to routeFw  */
         {

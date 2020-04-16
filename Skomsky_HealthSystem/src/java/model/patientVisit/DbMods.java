@@ -109,7 +109,7 @@ public class DbMods {
                 pStatement.setString(4, inputData.description);
                 pStatement.setString(5, ValidationUtils.dateTimeConversion(inputData.visitDateTime));
                 pStatement.setString(6, inputData.diagnosis);
-                pStatement.setBigDecimal(7, ValidationUtils.decimalConversion(inputData.visitCharge));
+                pStatement.setBigDecimal(7, ValidationUtils.dollarConversion(inputData.visitCharge));
                 pStatement.setInt(8, ValidationUtils.integerConversion(inputData.webUserId));
 
                 // here the SQL statement is actually executed

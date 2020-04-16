@@ -1,0 +1,40 @@
+const SportsDataList = ({list}) => (
+    <table>
+        <thead>
+            <tr>
+                <td>
+                    Id
+                </td>
+                <td>
+                    Name
+                </td>
+                <td>
+                    Price
+                </td>
+                <td>
+                    Qty
+                </td>
+            </tr>
+        </thead>
+        <tbody>
+        {
+            list.map(ele =>
+                <tr key={ele.id}>
+                    <td>
+                        {ele.id}
+                    </td>
+                    <td>
+                        {ele.name}
+                    </td>
+                    <td>
+                        {ele.price}
+                    </td>
+                    <td>
+                        {ele.qty}
+                    </td>
+                </tr>
+            )
+        }
+        </tbody>
+    </table>
+);

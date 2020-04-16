@@ -15,7 +15,7 @@
     if (list.dbError.length() == 0) { // if got good DB connection,
 
         System.out.println("*** Ready to call allUsersAPI");
-        list = WebUserView.allUsersAPI(dbc);
+        list = WebUserView.getAllUsers(dbc);
     }
 
       dbc.close(); // EVERY code path that opens a db connection, must also close it - no DB Conn leaks.

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+        <!-- Use this type of comment within HTML -->
+        <title>[Title of YOUR web site]</title>
+
+        <link href="style/commonStyle.css" rel="stylesheet" type="text/css" />  
+        <link href="style/darkTitleStyle.css" rel="stylesheet" type="text/css" />  
+        <link href="style/clickSort.css" rel="stylesheet" type="text/css" />  
+        <link href="style/logon.css" rel="stylesheet" type="text/css" />  
+        
+        <link rel="shortcut icon" href="icons/favicon.ico">
+
+    </head>
+    <body>
+
+        <div id="titleNav">
+
+            <div id="pageTitle">
+                Website Title
+            </div>
+
+            <div id="nav">
+                <div class="dropdown">
+                    <a href="#/home"><img title="Home" src="icons/dark/home_icon_H24.png" alt="Home"></a>
+                </div>
+                <div class="dropdown">
+                    <img class="dropHeader" title="Account"  onclick="myDropdown.toggle(this)" src="icons/dark/account_dd_icon_H24.png" alt="Account" >
+                    <div class="dropContent" id="accountDropDown">
+                        <a>Register</a> <br/>
+                        <a href="#/logon">Log On</a> <br/>
+                        <a href="#/profile">Profile</a> <br/>
+                        <a href="#/logoff">Log Off</a> <br/>
+                    </div> 
+                </div>
+                <div class="dropdown">
+                    <img class="dropHeader" title="Search" onclick="myDropdown.toggle(this)" src="icons/dark/search_dd_icon_H24.png" alt="Search" >
+                    <div class="dropContent" id="searchDropDown">
+                        <a href="#/users">Users</a> <br/>
+                        <a href="#/userFind">Find&nbsp;User</a> <br/>
+                        <a>Cars</a> 
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <img class="dropHeader" title="Tutorial"  onclick="myDropdown.toggle(this)" src="icons/dark/tutorial_dd_icon_H24.png" alt="Account" >
+                    <div class="dropContent" id="tutorialDropDown">
+                        <a>Proposal</a> <br/>
+                        <a>Demo</a> <br/>
+                        <a>Log</a> <br/>
+                    </div> 
+                </div>          
+                <div class="dropdown">
+                    <a href="#/blog"><img  title="Blog" src="icons/dark/blog_icon_H24.png" alt="Blog"></a>
+                </div>
+            </div>
+
+        </div>  <!-- end of titleNav (keep track of nesting) -->
+
+        <div id="content">
+        </div> <!-- content. -->
+
+        <div id="footer">
+            [ your name goes here ]
+        </div>
+
+        <script src="js/components/logon.js"></script>
+        <script src="js/components/logoff.js"></script>
+        <script src="js/ajax2.js"></script>
+        <script src="js/ajaxSession.js"></script>
+
+
+
+        <script src="js/components/blog.js"></script>
+        <script src="js/components/home.js"></script>
+        <script src="js/components/users.js"></script>
+        <script src="js/components/profile.js"></script>
+
+        <script src="js/dropdownFw.js"></script>
+        <script src="js/routeFw.js"></script>
+        <script src="js/MakeTableBuilder.js"></script>
+
+        <script>
+                        "use strict";
+                        var myRoutes = [];
+
+                        myRoutes['/'] = home;  // home is a function stored in js/components/home.js
+                        myRoutes['/home'] = home;
+                        myRoutes['/logon'] = logon.UI;
+                        myRoutes['/logoff'] = logoff.logoff;
+                        myRoutes['/profile'] = profile.display; 
+                        myRoutes['/users'] = users.list;
+                        myRoutes['/userFind'] = users.findUI; 
+                        myRoutes['/blog'] = blog;
+
+
+                        // routeFw returns a routing object that has private and public 
+                        // data members and methods. 
+                        // As input parameter, it takes an object with properties you can set 
+                        // or just accept whatever defaults are set by the framework.
+                        var myRouteFw = routeFw({
+                            routeArray: myRoutes,
+                            startingPath: '/home',
+                            contentId: "content"
+                        });
+
+                        // print the routes (check console.log)
+                        myRouteFw.printRoutes();
+
+                        var myDropdown = dropDownFw({
+                            dropContentStyle: "dropContent",
+                            hiddenRight: "-500px"
+                        });
+
+                        var tableBuilder = MakeTableBuilder("icons/sortUpDown16.png");
+
+        </script>
+
+    </body>
+</html>

@@ -1,0 +1,70 @@
+.home ul {
+    white-space: normal; /* collapse white-space. wrap when necessary */
+    list-style: none;
+}
+.home li {
+    display: block; /* block: items break to a separate line and stack in a column */
+                    /* inline-block same as block but no line breaks good for horiz layout */
+    min-width: 140px; /* this will remove the variations in size of list items */
+    max-width: 440px;
+    margin: 10px;
+ }
+.home li:hover {
+    border: 2px solid #bbbbbb;
+    box-shadow: 4px 4px 4px #bbbbbb;  /* "3D" effect */
+}
+.home .list-item-image {
+    opacity: 1;
+    min-width: 80%; /* this will remove the variations in size */
+    max-width: 80%;
+    margin: 10px;
+    border: 0px;
+    padding: 10px;    
+}
+.home .list-item-title {
+    opacity: 1;
+    display: block; 
+    text-align: center;
+    font-size: 2vw;
+    padding-top: 3%;
+}
+.home .mission {
+    position: relative;  
+    margin: 40px;
+    padding: 4px 8px 8px 8px;
+    text-align: left;
+}
+.home .mission-icon {
+  float: left;
+  min-width: 50px; 
+  max-width: 100px;
+  padding: 0px 8px 10px 8px;
+}
+.home .mission-flyover {
+    position: absolute; /* 1st parent element (.mission) is non-static */
+    top: -30px;
+    left: 4%;
+    font-size: 50px;
+}
+.home .theme-icon {
+    min-width: 24px;
+    max-width: 24px;
+}
+
+@media all and (min-width: 1000px) {
+    .home ul {
+        white-space: normal; /* "row" layout see also .list-item display: */
+        overflow: hidden;
+    }
+    .home li {
+        display: inline-block; /* "row" layout see also .list white-space: */
+    }
+    .home .list-item-image {
+        opacity: 1;
+        min-width: 80%; /* this will remove the variations in size */
+        max-width: 80%;
+        margin: 10px;
+        border: 0px;
+        padding: 10px;    
+    }
+}

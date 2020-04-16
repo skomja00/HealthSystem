@@ -37,13 +37,18 @@
 .dropHeader {
 }
 .dropdown img {                      /* space combinator removes bottom margin and */
-        margin: 10px 10px 0px 10px;  /* padding from the icon of dropdown */
+        margin: 10px 10px 0px 10px;  /* padding from the icons in dropdown */
         padding: 10px 10px 0px 10px; /* this will move dropContent up close to the bottom its */
                                      /* corresponding icon */
         border-style: none;
         letter-spacing: 1px;
+        
+        min-height: 1em;
 }
-
+.dropdown .theme-icon {
+    min-width: 1.08em; /* theme icon original aspect ration is 4:3. Scale it using 1.33:1 */
+    max-width: .75em;
+}
 .dropContent {
     color: black;
     background-color:  rgba(167, 228, 242, 1);;

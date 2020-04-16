@@ -2,117 +2,26 @@
 "use strict";
 
 /**
- * setTheme() will style a set of properties using one or another of two 
- * pallettes. Each pallette will store separate colors/icons.
- * setTheme() will be called from a menu bar icon onclick() as a toggle.
- * When the icon is clicked the theme will switch back and forth. 
- * The theme settings are xml to be human-readable and customizable by the user  
- * A <style> element will be added to the header to style the properties 
- * for each of the following classes
- * 
-    /**
-     * setTheme() will style a set of properties using one or another of two 
-     * pallettes. Each pallette will store separate colors/icons.
-     * setTheme() will be called from a menu bar icon onclick() as a toggle.
-     * When the icon is clicked the theme will switch back and forth. 
-     * The theme settings are xml to be human-readable and customizable by the user  
-     * A <style> element will be added to the header to style the properties 
-     * for each of the following .classes/#ids
-     * 
-        .title
-        background-color
-        box-shadow
-        colortext-shadow
-
-        .navigation
-        border
-        background-color
-
-        .mission
-        box-shadow
-        background-color
-
-        .mission-flyover
-        color
-        text-shadow
-
-        .footer
-        background-color
-        box-shadow
-        color
-        text-shadow
-
-        .list-item
-        background-color
-        color
-
-        .list-item-title
-        background-color
-        color
-
-        .clickSort td 
-        background-color
-        box-shadow
-        color
-        text-shadow
-
-        .clickSort th
-        box-shadow
-        color
-        text-shadow
-
-        #insertArea td 
-        background-color
-        box-shadow
-        color
-        text-shadow
-
-        #insertArea th
-        background-color
-        box-shadow
-        color
-        text-shadow
-
-        .slideUsersClass
-        background-color
-        box-shadow
-        color
-        text-shadow
-
-        .slidePatientsClass
-        background-color
-        box-shadow
-        color
-        text-shadow
-
-        .slideImageClass
-        box-shadow
-
-        .slideButton
-        background-color
-        box-shadow
-        color
-        text-shadow
-    
-        and the theme icon id='theme-icon' also styled and used as a toggle
- * 
- * TODO: Dont know of the best way to make the XML a settings accessible to 
- * the user to customize in an external xml file or anywhere other than 
- * hard-coded in the palletteDoc() fn. 
- * 
- */
-/**
- * TODO: setup onclick fn. to restyle the document. 
- * Found the following code example on 
- * https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onclick
- */ 
-/*
 *
- * setTheme() will toggle between 2 theme settings. 
+ * setTheme()  
  * @param {String} palId - value is either "LightPallette" or "DarkPallette" selection of theme colors 
  * @returns {} returns nothing
  *
- */function setTheme (palId) {
+ * setTheme() will toggle between 2 theme settings using one or another of two 
+ * pallettes. Each pallette will store separate colors/icons.
+ * setTheme() will be called from a menu bar icon onclick() as a toggle.
+ * When the icon is clicked the theme will switch back and forth. 
+ * The theme colors are xml to be customizable.  
+ * A <style> element will be added to the header to style the properties 
+ * for each of the following classes in 
+ * 
+ * 
+ * TODO: Dont know of a way to make the XML a settings accessible to 
+ * the user to customize in an external xml file or anywhere other than 
+ * hard-coded in the JavaScript. 
+ * 
+ */
+function setTheme (palId) {
     
     /**
     * Depending on the current <img src=...> setting of the theme icon 
@@ -135,11 +44,11 @@
         }
     };
 
-     
-    //var palId = togglePallette();
     var hash = getPallette(palId);
     
     var s = document.getElementById("themeId");;
+    /* 1st time through create and append <style> tag to header 
+     * Then assign innerHTML of <style>. */
     if (!s) {
         var h = document.getElementsByTagName("head")[0]; 
         var s = document.createElement("style");
@@ -161,10 +70,22 @@
         "         box-shadow : 0px 0px 9px 7px " + hash["footerBoxShadow"] + ";" + 
         "         color : " + hash["footerColor"] + ";" + 
         "         text-shadow : 0px 0px 10px " + hash["footerTextShadow"] + ";}" +
-        ".list-item { background-color : " + hash["listItemBackground"] + ";" + 
+        ".home li { background-color : " + hash["listItemBackground"] + ";" + 
         "            color : " + hash["listItemColor"] + ";}" + 
-        ".list-item-title { background-color : " + hash["listItemBackground"] + ";" + 
+        ".home .list-item-title { background-color : " + hash["listItemBackground"] + ";" + 
         "                  color : " + hash["listItemColor"] + ";}" + 
+        ".home a { text-shadow : 0px 0px 10px " + hash["missionFlyoverTextShadow"] + ";" + 
+        "          color : " + hash["missionFlyoverColor"] + ";}" + 
+        ".home a:visited { text-shadow : 0px 0px 10px " + hash["missionFlyoverTextShadow"] + ";" + 
+        "                  color : " + hash["missionFlyoverColor"] + ";}" + 
+        ".home a:hover  { text-shadow : 0px 0px 10px " + hash["missionFlyoverTextShadow"] + ";" + 
+        "                 color : " + hash["missionFlyoverColor"] + ";}" + 
+        ".footer a {         text-shadow : 0px 0px 10px " + hash["footerTextShadow"] + ";" + 
+        "                    color : " + hash["footerColor"] + ";}" + 
+        ".footer a:visited { text-shadow : 0px 0px 10px " + hash["footerTextShadow"] + ";" + 
+        "                    color : " + hash["footerColor"] + ";}" + 
+        ".footer a:hover  {  text-shadow : 0px 0px 10px " + hash["footerTextShadow"] + ";" + 
+        "                    color : " + hash["footerColor"] + ";}" + 
         ".clickSort td { background-color : " + hash["titleBackgroundColor"] + ";" + 
         "         box-shadow : 0px 0px 3px 2px " + hash["titleBoxShadow"] + ";" + 
         "         color : " + hash["titleColor"] + ";" + 
@@ -173,7 +94,6 @@
         "         box-shadow : 0px 0px 3px 2px " + hash["titleBoxShadow"] + ";" + 
         "         color : " + hash["titleColor"] + ";" + 
         "         text-shadow : " + "0px 0px 10px " + hash["titleTextShadow"] + ";}" +
-
         "#insertArea td { background-color : " + hash["titleBackgroundColor"] + ";" + 
         "         box-shadow : 0px 0px 3px 2px " + hash["titleBoxShadow"] + ";" + 
         "         color : " + hash["titleColor"] + ";" + 
@@ -309,7 +229,7 @@
                         "<color name='footerColor'              rgb='000000' r='000' g='000' b='000' />" +
                         "<color name='footerTextShadow'         rgb='4F82B3' r='029' g='080' b='129' />" +
                     "</colors>" +
-                "<icon id='icon' src='icons/dark/moon-icon-H24.ico' />" + 
+                "<icon id='icon' src='icons/dark/moon-icon-H24.png' />" + 
                 "</Pallette>" +
             "</Root>";
         var xmlDoc = document.implementation.createDocument("", "", null);

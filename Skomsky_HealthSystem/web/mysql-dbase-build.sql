@@ -193,8 +193,88 @@ CREATE TABLE `web_user` (
         '1985-01-01', 
         4.95,            
         get_user_role_id('admin'));
+        
+        
+    INSERT INTO `web_user` 
+        (`user_email`,
+        `user_password`,
+        `image`,
+        `birthday`,
+        `membership_fee`,
+        `user_role_id`) 
+	VALUES
+        ('la09junk1',                  
+        'p',            
+        'http://cis-linux2.temple.edu/~sallyk/pics_user/sally.jpg',    
+        '1985-01-01', 
+        4.95,            
+        get_user_role_id('manager'));        
     
-    /* Try to add a record that has an invalid (non-existent) user_role_id and notice that the database management system will not let that record be inserted. */
+    INSERT INTO `web_user` 
+        (`user_email`,
+        `user_password`,
+        `image`,
+        `birthday`,
+        `membership_fee`,
+        `user_role_id`) 
+	VALUES
+        ('la09junk2',                  
+        'p',            
+        'http://cis-linux2.temple.edu/~sallyk/pics_user/sally.jpg',    
+        '1985-01-01', 
+        4.95,            
+        get_user_role_id('manager'));
+        
+    
+    INSERT INTO `web_user` 
+        (`user_email`,
+        `user_password`,
+        `image`,
+        `birthday`,
+        `membership_fee`,
+        `user_role_id`) 
+	VALUES
+        ('la09junk3',                  
+        'p',            
+        'http://cis-linux2.temple.edu/~sallyk/pics_user/sally.jpg',    
+        '1985-01-01', 
+        4.95,            
+        get_user_role_id('manager'));
+
+    
+    INSERT INTO `web_user` 
+        (`user_email`,
+        `user_password`,
+        `image`,
+        `birthday`,
+        `membership_fee`,
+        `user_role_id`) 
+	VALUES
+        ('la09junk4',                  
+        'p',            
+        'http://cis-linux2.temple.edu/~sallyk/pics_user/sally.jpg',    
+        '1985-01-01', 
+        4.95,            
+        get_user_role_id('manager'));
+        
+    
+    INSERT INTO `web_user` 
+        (`user_email`,
+        `user_password`,
+        `image`,
+        `birthday`,
+        `membership_fee`,
+        `user_role_id`) 
+	VALUES
+        ('la09junk5',                  
+        'p',            
+        'http://cis-linux2.temple.edu/~sallyk/pics_user/sally.jpg',    
+        '1985-01-01', 
+        4.95,            
+        get_user_role_id('manager'));
+        
+        
+	/* Try to add a record that has an invalid (non-existent) user_role_id and notice that the database management system will not let that record be inserted. */
     /* Error Code: 1452. Cannot add or update a child row: a foreign key constraint fails */
 --      INSERT INTO `web_user` 
 --          (`user_email`,              `user_password`,`image_url`,                                     `birthday`,  `membership_fee`,`user_role_id`) values
@@ -253,13 +333,13 @@ CREATE TABLE `PatientVisit` (
         `VisitCharge`,
         `web_user_id`)
     values
-        ('OMalley, Donna',       
-        'http://cis-linux2.temple.edu/~sallyk/pics_user/claudia.jpg',
-        'TUN143981',
+        (null,       
+        null,
+        'TUN49199',
         'Office Visit',     
-        '2019-11-06 10:35', 
-        'Z02.9 Encounter for administrative examinations',      
-        154.95,
+        null, 
+        null,      
+        null,
         get_web_user_id('office@gmail.com'));
     INSERT INTO `PatientVisit` 
         (`PatientName`,
@@ -535,23 +615,24 @@ CREATE TABLE `PatientVisit` (
 -- from PatientVisit as pv
 -- join web_user as wu on wu.web_user_id = pv.web_user_id_fk
 -- -- 
--- select 
---     pv.VisitId,
---     pv.PatientName,
---     pv.ImageUrl,
---     pv.MedRecNo,
---     pv.Description,
---     pv.VisitDateTime,
---     pv.Diagnosis,
---     pv.VisitCharge,
---     wu.web_user_id,
---     wu.user_email,
---     wu.user_password,
---     wu.membership_fee,
---     ur.user_role_id
--- from PatientVisit as pv
--- join web_user as wu on wu.web_user_id = pv.web_user_id
--- join user_role as ur on ur.user_role_id = wu.user_role_id;
+select 
+    pv.VisitId
+    ,pv.PatientName
+    ,pv.ImageUrl
+    ,pv.MedRecNo
+    ,pv.Description
+    ,pv.VisitDateTime
+    ,pv.Diagnosis
+    ,pv.VisitCharge
+    ,pv.web_user_id
+    ,wu.user_email
+    ,wu.user_password
+    ,wu.membership_fee
+    ,ur.user_role_id
+    ,ur.user_role_type
+from PatientVisit as pv
+join web_user as wu on wu.web_user_id = pv.web_user_id
+join user_role as ur on ur.user_role_id = wu.user_role_id;
 -- 
 -- 
 

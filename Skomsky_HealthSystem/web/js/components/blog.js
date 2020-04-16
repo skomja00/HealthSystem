@@ -2,27 +2,14 @@ function blog(id) {
 
     // ` this is a "back tick". Use it to define multi-line strings in JavaScript.
     var content = ` 
-    
-    <style>
-        div {
-            text-align: left;
-            font-size: 18px;
-        }
-        a {
-            color: #CCCCCC;
-        }
-        h2 {
-          margin-left:-1em;
-        }
-    </style>
-    
-    <div style="margin-left:2em">
+    <div class='blog'>
         <h2>HW 1 Home Page</h2>
         <p>
-            My web development experience consists of none at all. My background 
-            is predominantly ETL "frameworks" of many types most often running
-            under-the-hood as a Windows Service. Front end web development will 
-            fill this gap in my technical skills. 
+            My background is Systems Integration and Interfaces using various ETL "frameworks" 
+            predominantly things running under-the-hood for instance as a Windows Service etc. 
+            Front end web development will leverage this experience focusing
+            on the flow of data in a client/server platform for example a WebAPI
+            interface. 
         </p>
         <p>
             In this homework I learned many things, and found java script to 
@@ -153,7 +140,7 @@ function blog(id) {
 
         <h2>HW 7A Insert</h2>
 
-        <p style="margin-left:2em">
+        <p>
             The insert homework is an additional use of WebAPIs. The insert process  
             will repeat collecting data from the user, validating the data and either
             returning errors for correction or returning a success message when complete. 
@@ -170,34 +157,34 @@ function blog(id) {
             <b>Navigation</b>
         </p>
         <ul>
-            <li style='margin:6px;'>
+            <li>
                 To insert a Web User do this: 
                     <ul>
-                        <li style='margin:6px;'>
-                            <img style='float:left; margin-right:4px' src='icons/dark/account_dd_icon_H24.png'> Account menu ... "Register" option.
-                        </li style='clear:both;'>
+                        <li>
+                            <img src='icons/dark/account_dd_icon_H24.png'/> Account menu ... "Register" option.
+                        </li>
                     </ul>
             </li>
-            <li style='margin:6px;'>
+            <li>
                 Another way to insert a Web User is: 
                     <ul>
-                        <li style='margin:6px;'>
-                            <img style='float:left; margin-right:4px' src='icons/dark/menu_dd_icon_H24.png'> Menu icon ... "Web Users" option. 
-                        </li style='clear:both;'>
-                        <li style='margin:6px;'>
-                            click the <img style='float:left; margin-right:4px' src='icons/insert_H18.png'> "Plus" icon next to the "Web Users" caption.   
-                        </li style='clear:both;'>
+                        <li>
+                            <img src='icons/dark/menu_dd_icon_H24.png'/> Menu icon ... "Web Users" option. 
+                        </li>
+                        <li>
+                            click the <img src='icons/dark/insert_H24.png'/> "Plus" icon next to the "Web Users" caption.   
+                        </li>
                     </ul>
             </li>
-            <li style='margin:6px;'>
+            <li>
                 To insert Patient Visit do this:
                     <ul>
-                        <li style='margin:6px;'>
-                            <img style='float:left; margin-right:4px' src='icons/dark/menu_dd_icon_H24.png'> Menu icon ... "Patient Visits" option. 
-                        </li style='clear:both;'>
-                        <li style='margin:6px;'>
-                            click the <img style='float:left; margin-right:4px'' src='icons/insert_H18.png'> "Plus" icon next to the "Patient Visits" caption.   
-                        </li style='clear:both;'>
+                        <li>
+                            <img src='icons/dark/menu_dd_icon_H24.png'/> Menu icon ... "Patient Visits" option. 
+                        </li>
+                        <li>
+                            click the <img src='icons/dark/insert_H24.png'/> "Plus" icon next to the "Patient Visits" caption.   
+                        </li>
                     </ul>
             </li>
         </ul>
@@ -210,8 +197,8 @@ function blog(id) {
         <ul>
             <li>
                 To run this code, click to "List Web Users" or "List Patient Visits"
-                list the data (under the Menu" icon from the nav bar)
-                then click the update icon (small pencil icon) next to the row you want to update. 
+                to list the data (under the Menu" icon from the nav bar)
+                then click the update icon (small pencil icon) on the row you want to update. 
             </li>
         </ul>
 
@@ -227,9 +214,6 @@ function blog(id) {
                 then click the delete icon next to the record you want to delete.  
             </li>
         </ul>
-
-
-    </div>
-    `;
+    </div><br><br><br><br><br>`;
     document.getElementById(id).innerHTML = content;
 }

@@ -1,0 +1,19 @@
+.blog {
+    text-align: left;
+    font-size: 18px;
+    margin-left:2em;
+}
+.blog a {
+    color: #CCCCCC;
+}
+.blog h2 {
+    margin-left:-1em;
+}
+.blog li {
+    clear:both;
+    margin:6px;
+}
+.blog li img {
+    float:left; 
+    margin-right:4px;
+}

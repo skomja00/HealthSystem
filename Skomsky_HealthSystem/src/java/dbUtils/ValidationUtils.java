@@ -97,7 +97,7 @@ public class ValidationUtils {
     /* Check string "val" to see if it has a valid BigDecimal in it.
      * Return "" if the input is OK. Otherwise, return error message. */
     public static String dollarValidationMsg(String val, boolean required) {
-
+        
         if (val == null) {
             return "ValidationUtils.dollarValidationMsg(): Programmer error - should not be trying to validate null.";
         }
@@ -105,10 +105,12 @@ public class ValidationUtils {
             return "";  // Since this field is not required, empty string is valid user entry.
         }
         try {
-            String validateDecimal = decimalValidationMsg(val.replace("$",""), true);    
-            return "";
+            val = val.replace("$","");
+            val = val.replace(",","");
+            java.math.BigDecimal convertedDecimal = new java.math.BigDecimal(val); // not using (on purpose).
+            return "";    
         } catch (Exception e) {
-            return "Please enter a dollar amount!!";
+            return "Please enter a dollar amount.";
         }
     } // dollarValidationMsg()
 
@@ -137,7 +139,9 @@ public class ValidationUtils {
             return null;  // Since this field is not required, empty string is valid user entry.
         }
         try {
-            return new java.math.BigDecimal(val.replace("$",""));
+            val = val.replace("$","");
+            val = val.replace(",","");
+            return new java.math.BigDecimal(val);
         } catch (Exception e) {
             System.out.println("ValidationUtils.dollarConversion(): cannot convert " + val + " to java.math.BigDecimal.");
             return null;

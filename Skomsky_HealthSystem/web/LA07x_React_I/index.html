@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+        <!-- Use this type of comment within HTML -->
+        <title>LA07x React I</title>
+
+        <link href="style/commonStyle.css" rel="stylesheet" type="text/css" />  
+        <link href="style/darkTitleStyle.css" rel="stylesheet" type="text/css" /> 
+        <link rel="shortcut icon" href="icons/favicon.ico">
+
+        <!-- Reference the React CDNs (Content Delivery Networks, basically just a hosted web resource) -->
+        <script crossorigin src='https://unpkg.com/react@16/umd/react.development.js' crossorigin></script>
+        <script crossorigin src='https://unpkg.com/react-dom@16/umd/react-dom.development.js' crossorigin></script>
+
+        <!-- By referencing the Babel CDN, we can use JSX (HTML tags in JavaScript) --> 
+        <script crossorigin src='https://unpkg.com/babel-standalone@6/babel.min.js' crossorigin></script>
+        <style>
+            th,td {
+                padding: 3px;
+            }
+            th {
+                background-color: #AAAACC;
+            }
+            td {
+                background-color: #DDDDDD;
+            }
+        </style>    
+    </head>
+    <body>
+
+        <div id="titleNav">
+
+            <div id="pageTitle">
+                Website Title
+            </div>
+
+            <div id="nav">
+
+                <div class="dropdown">
+                    <span onclick="renderHome()"><img title="Home" src="icons/dark/home_icon_H24.png" alt="Home"></span>
+                </div>
+
+                <div class="dropdown">
+                    <img class="dropHeader" title="Search" onclick="myDropdown.toggle(this)" src="icons/dark/search_dd_icon_H24.png" alt="Search" >
+                    <div class="dropContent">
+                        <!-- The next two links have been placed in the routing table. 
+                             You would put the code into users.js and other.js. -->
+                        <span onclick="renderUserList()">User List</span> <br/>
+                        <span onclick="renderVisitList()">Visit List</span><br/>
+                        <span onclick="renderUserListProps()">User List2</span><br/>
+                        <span onclick="renderVisitListProps()">Visit List2</span><br/>  
+                        <span onclick="renderSportsDataList()">Sports Data</span> 
+                    </div>
+                </div>
+
+                <div class="dropdown">
+                    <span onclick="renderBlog()"><img  title="Blog" src="icons/dark/blog_icon_H24.png" alt="Homework"></span>
+                </div>
+
+            </div>
+
+
+        </div>  <!-- end of titleNav (keep track of nesting) -->
+
+        <div id="content">
+        </div> <!-- content. -->
+
+        <div id="footer">
+            CIS 3308 - James Skomsky
+        </div>
+
+        <script src="js/dropdownFw.js"></script>
+        <script type="text/babel" src="js/components/Home.js"></script>
+        <script type="text/babel" src="js/components/Blog.js"></script>
+        <script type="text/babel" src="js/components/UserList.js"></script>
+        <script type="text/babel" src="js/components/VisitList.js"></script>
+        <script type="text/babel" src="js/components/ComingSoon.js"></script>
+        <script type="text/babel" src="js/components/SportsDataList.js"></script>
+
+        <script type="text/babel">
+
+            "use strict";
+
+            var myDropdown = dropDownFw({
+                dropContentStyle: "dropContent",
+                hiddenRight: "-500px"
+            });
+
+            function renderHome() {
+                ReactDOM.render(
+                        <Home />,
+                        document.getElementById("content")
+                        );
+            }
+
+            function renderBlog() {
+                ReactDOM.render(
+                        <Blog />,
+                        document.getElementById("content")
+                        );
+            }
+
+            function renderUserList() {
+                ReactDOM.render(
+                        <UserList />,
+                        document.getElementById("content")
+                        );
+            }
+
+            function renderVisitList() {
+                ReactDOM.render(
+                        <VisitList />,
+                        document.getElementById("content")
+                        );
+            }
+
+            const renderUserListProps = () => {
+                ReactDOM.render(
+                        <ComingSoon message="Coming soon!" feature="User List" />,
+                        document.getElementById("content")
+                        );
+            };
+            
+            const renderVisitListProps = () => {
+                ReactDOM.render(
+                        <ComingSoon message="Coming soon!" feature="Patient Visit List" />,
+                        document.getElementById("content")
+                        );
+            };
+    
+            const renderList = () => {
+                ReactDOM.render(
+                        <ComingSoon message="Coming soon!" feature="Patient Visit List" />,
+                        document.getElementById("content")
+                        );
+            };
+            
+            const itemList = [
+                {id: 1, name: "VolleyBall", price: "$20", qty: 0}, 
+                {id: 2, name: "BasketBall", price: "$15", qty: 5}, 
+                {id: 3, name: "Tennis Raquet", price: "$30", qty: 0},
+                {id: 4, name: "FootBall", price: "$40", qty: 10},
+                {id: 5, name: "Hockey Puck", price: "$1", qty: 2}
+            ];
+            
+            const renderSportsDataList = () => {
+                ReactDOM.render(
+                    <SportsDataList list={itemList} />,
+                    document.getElementById("content")
+                );      
+            };
+
+            // at first rendering (before any clicking) show the home content.
+            renderHome();
+        
+        </script>
+
+    </body>
+</html>

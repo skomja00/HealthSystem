@@ -2,9 +2,11 @@
 
 var users = {};
 
-(function () { //IIFE immediate function execute (anonymous function)
+(function () { //IIFE immediate invoked function expression
+               //The IIFE provides a context where you can place private functions
+               // that can be shared by insert and update. 
     
-        // this code called by insertUI and updateUI -- shared common code. 
+    // this code called by insertUI and updateUI -- shared common code. 
     function createUpdateArea (isUpdate, targetId) {
 
         // set variables as if it will be insert...
@@ -531,4 +533,4 @@ var users = {};
             document.getElementById("recordError").innerHTML = jsonObj.errorMsg;
         }
     };
-}());
+} ());  // This closes the IIFE & immediately invokes it. 

@@ -19,20 +19,20 @@ div {
     Only works on positioned elements */
     position: fixed; /* Relative to the viewport rather than the document 
                      /* and will remain in place when the user scrolls */
-    z-index: 2;
+    z-index: 1;
 
     left: 50%; /* aligns LEFT edge of element to the right of the "center" line of parent */
-    box-sizing: border; /* eliminates 100% + padding + border which would cause an unintended scroll bar */
-    margin-left: -140px; /* negative left margin moves the title back to the center by adding margin and padding around right side*/
+    box-sizing: border-box; /* eliminates 100% + padding + border which would cause an unintended scroll bar */
+    margin-left: -2.85em; /* negative left margin moves the title back to the center by adding margin and padding around right side*/
     top: 10px; /* this isnt margin its the position: property */
     
     text-align: center;
     padding-bottom: 12px;
-    font-size: 50px;
+    font-size: 3.25em;
 }
 .navigation {
     padding: 10px;
-    margin-top: 98px;
+    margin-top: 4em;
     margin-right: 10px;
     margin-bottom: 10px;
     margin-left: 10px;
@@ -40,122 +40,20 @@ div {
 .content {
     text-align: center;
     height: 100%;
-    box-sizing: border; /* eliminates 100% + border which would cause a scroll bar */
+    box-sizing: border-box; /* eliminates 100% + border which would cause a scroll bar */
     position: relative;
 }
-.list {
-    white-space: normal; /* collapse white-space. wrap when necessary */
-    list-style: none;
-}
-.list-item {
-    display: block; /* block: items break to a separate line and stack in a column */
-                    /* inline-block same as block but no line breaks good for horiz layout */
-    min-width: 140px; /* this will remove the variations in size of list items */
-    max-width: 440px;
-    margin: 10px;
- }
-.list-item:hover {
-    border: 2px solid #bbbbbb;
-    box-shadow: 4px 4px 4px #bbbbbb;  /* "3D" effect */
-}
-.list-item-image {
-    opacity: 1;
-    min-width: 80%; /* this will remove the variations in size */
-    max-width: 80%;
-    margin: 10px;
-    border: 0px;
-    padding: 10px;    
-}
-.list-item-title {
-    opacity: 1;
-    display: block; 
-    text-align: center;
-    font-size: 2vw;
-    padding-top: 3%;
-}
-.mission {
-    position: relative;  
-    margin: 40px;
-    padding: 4px 8px 8px 8px;
-    text-align: left;
-}
-.mission-icon {
-  float: left;
-  min-width: 50px; 
-  max-width: 100px;
-  padding: 0px 8px 10px 8px;
-}
-.theme-icon {
-    min-width: 24px;
-    max-width: 24px;
-}
-.mission-flyover {
-    position: absolute; /* 1st parent element (.mission) is non-static */
-    top: -30px;
-    left: 4%;
-    font-size: 50px;
-}
-a:visited {
-    color: #00CC00; /* dark green */
-}
-a:hover {
-    color: #CC0000; /* dark green */
-}
-
 .footer {
     position: fixed; /* Relative to the viewport rather than the document 
                      /* and will remain in place when the user scrolls */
-    bottom: 10px;
-    z-index: 2;
+    z-index: 1;
     left: 20px;
     right: 20px;
     bottom: 10px;
 
     text-align: center;
-    font-size: 30px;
+    font-size: 2em;
 
-    padding: 10px;
-    margin-top: 98px;
-    margin-right: 10px;
-    margin-bottom: 10px;
-    margin-left: 10px;
-
-}
-
-@media all and (min-width: 1000px) {
-    .list {
-        white-space: normal; /* "row" layout see also .list-item display: */
-        overflow: hidden;
-    }
-    .list-item {
-        display: inline-block; /* "row" layout see also .list white-space: */
-    }
-    .list-item-image {
-        opacity: 1;
-        min-width: 80%; /* this will remove the variations in size */
-        max-width: 80%;
-        margin: 10px;
-        border: 0px;
-        padding: 10px;    
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    padding: .5em;
+    margin : .5em;
 }

@@ -1,0 +1,17 @@
+/*
+
+This style sheet exists to style HTML tables built for data display. To have this styling kick in, 
+the HTML data table should be placed inside of an element (e.g., div) that is styled class="data".
+
+*/
+
+.logon {
+    text-align:center;
+}
+
+.logon img {
+    border-radius: 6px;
+    box-shadow: 5px 5px 5px #888888;
+    width: 150px;
+}
+

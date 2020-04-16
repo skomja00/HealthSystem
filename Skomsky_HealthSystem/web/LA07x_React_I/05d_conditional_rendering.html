@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>React Project</title>
+        
+        <!-- Reference the React CDNs (Content Delivery Networks, basically just a hosted web resource) -->
+        <script crossorigin src='https://unpkg.com/react@16/umd/react.development.js' ></script>
+        <script crossorigin src='https://unpkg.com/react-dom@16/umd/react-dom.development.js' ></script>
+        
+        <!-- By referencing the Babel CDN, we can use JSX (HTML tags in JavaScript) --> 
+        <script crossorigin src='https://unpkg.com/babel-standalone@6/babel.min.js' ></script>  
+        <style>
+            th,td {
+                padding: 3px;
+            }
+            th {
+                background-color: #AAAACC;
+            }
+            td {
+                background-color: #DDDDDD;
+            }
+        </style>         
+    </head>
+    <body>
+        <h3>Conditional Rendering</h3>
+        <p>
+            This example uses the JavaScript conditional ternary operator. 
+            &nbsp; &nbsp; &nbsp; 
+            condition ? result-if-true : result-if-false
+        </p>
+<div id="root"></div>
+<script type="text/babel">
+
+    const itemList = [
+        {id: 1, name: "VolleyBall", price: "$20", qty: 0}, 
+        {id: 2, name: "BasketBall", price: "$15", qty: 5}, 
+        {id: 3, name: "Tennis Raquet", price: "$30", qty: 0},
+        {id: 4, name: "FootBall", price: "$40", qty: 10},
+        {id: 5, name: "Hockey Puck", price: "$1", qty: 2}
+    ];
+
+    const SportsDataList = ({list}) => (
+        <table>
+            <thead>
+                <tr>
+                    <td>
+                        Id
+                    </td>
+                    <td>
+                        Name
+                    </td>
+                    <td>
+                        Price
+                    </td>
+                    <td>
+                        Qty
+                    </td>
+                </tr>
+            </thead>
+        {
+            list.map(ele =>
+                <tbody>
+                    <tr key={ele.id}>
+                        <td>
+                            {ele.id}
+                        </td>
+                        <td>
+                            {ele.name}
+                        </td>
+                        <td>
+                            {ele.price}
+                        </td>
+                        <td>
+                            {ele.qty}
+                        </td>
+                    </tr>
+                </tbody>
+           )
+        }
+        </table>
+    );
+
+    ReactDOM.render(
+        <SportsDataList list={itemList} />,
+        document.getElementById("root")
+    );
+
+
+    // NOT RELATED TO ABOVE CODE...
+    // understanding the JS ternary (conditional) operator 
+    // https://www.w3schools.com/js/tryit.asp?filename=tryjs_comparison
+
+    function jsTernaryConditionalOperator() {
+        var age = 20;
+        var voteable = (age < 18) ? "Too young":"Old enough";
+        console.log("if you are " + age + " then you are " + voteable + " to vote.");  
+    }
+
+</script>
+    </body>
+</html>

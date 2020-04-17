@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>List of Car Objects</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="../clickSort.css" rel="stylesheet" type="text/css" />  
+        <style>
+            /* keep the clickSort.css file exclusively for the clickSort styling
+            Don't put "regular page layout" in there. */
+            body {
+                font-family: sans-serif;
+                background-color: beige; /* #F0FFCC; */
+            }
+        </style> 
+    </head>
+    <body>
+        <h3>Must RUN not View, uses AJAX (browser requests from Apache Web Server)</h3>
+        <p>
+            This version reads data from a JSON file using a technique called AJAX. 
+            In future assignments, we'll write server side code that provides 
+            us with a live feed of JSON data from your database. 
+        </p>
+        <div id="listHere" class="clickSort"></div>
+
+        <script src="js/MakeTable.js"></script>
+
+        <script>
+
+            "use strict"; // turn off the "auto variable declaration" feature of the browser.
+
+            function formatCurrency(num) {
+                var myNum = Number(num);
+                return myNum.toLocaleString("en-US", {style: "currency", currency: "USD", minimumFractionDigits: 2});
+            }
+
+            // Main Program
+            var httpReq = new XMLHttpRequest(); // object provided by Firefox, Chrome etc
+            httpReq.open("GET", "json/cars.json"); // specify which page you want to get
+
+            // Ajax calls are asyncrhonous (non-blocking). Specify the code that you 
+            // want to run when the response (to the http request) is available. 
+            httpReq.onreadystatechange = myCallBack;
+            httpReq.send(null); // initiate ajax call
+
+            function myCallBack() { // this is what gets called back by the browser
+
+                // readyState 4 means that the http request is complete
+                if (httpReq.readyState === 4) {
+                    if (httpReq.status === 200) { // status 200 means "page found"
+                        var jsonData = httpReq.responseText;
+                        var carList = JSON.parse(jsonData);
+
+                        // modify properties (image and price) of the array of objects so it will look 
+                        // better on the page.
+                        for (var i = 0; i < carList.length; i++) {
+                            carList[i].image = "<img  src='" + carList[i].image + "'>";
+                            carList[i].price = formatCurrency(carList[i].price);
+                        }
+                        console.log(carList);
+
+                        MakeTable(carList, "listHere");
+                    } else {
+                        // First use of property creates new (custom) property
+                        document.getElementById("listHere").innerHTML = "Error (" + httpReq.status + " " + httpReq.statusText +
+                                ") while attempting to read 'cars.json'. NOTE: You must RUN not VIEW the page when using AJAX. ";
+                    }
+                }
+            }
+
+        </script>
+
+    </body>
+</html>

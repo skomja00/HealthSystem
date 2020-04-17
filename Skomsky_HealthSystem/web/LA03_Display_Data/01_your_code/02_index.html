@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>List of Cat Objects</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="clickSort.css" rel="stylesheet" type="text/css" />  
+        <style>
+            /* keep the clickSort.css file exclusively for the clickSort styling
+            Don't put "regular page layout" in there. */
+            body {
+                font-family: sans-serif;
+                background-color: beige; /* #F0FFCC; */
+            }
+        </style>
+    </head>
+    <body>
+
+        <p>
+            This code shows you how you can convert any array of objects into 
+            an HTML table. New concept: document.createElement("HTML_tag_name")
+        </p>
+
+        <div id="listHere" class="clickSort"></div>
+
+        <script>
+
+            "use strict"; // turn off the "auto variable declaration" feature of the browser.
+
+            function formatCurrency(num) {
+                return num.toLocaleString("en-US", {style: "currency", currency: "USD", minimumFractionDigits: 2});
+            }
+
+            function MakeTable(list, id) {
+
+                // Create a new HTML table (DOM object)
+                var newTable = document.createElement("table");
+
+                // Create a header for table and put a row in the header
+                var tableHead = document.createElement("thead");
+                newTable.appendChild(tableHead);
+                var tableHeadRow = document.createElement("tr");
+                tableHead.appendChild(tableHeadRow);
+
+                // Notice we arent doing anything with colHead1..4
+                var colHead1 = addToRow("th", tableHeadRow, "Name", "left");
+                var colHead2 = addToRow("th", tableHeadRow, "Image", "center");
+                var colHead3 = addToRow("th", tableHeadRow, "Personality", "left");
+                var colHead4 = addToRow("th", tableHeadRow, "Weight", "right");
+
+                // Add one row (to HTML table) per element in the array.
+                // Each array element has a list of properties that will become 
+                // td elements (Table Data, a cell) in the HTML table. 
+                var tableBody = document.createElement("tbody");
+                newTable.appendChild(tableBody);
+                for (var i in list) {
+                    var tableRow = document.createElement("tr");
+                    tableBody.appendChild(tableRow);
+                    var obj = list[i];
+
+                    addToRow("td", tableRow, obj.make, "left");
+                    addToRow("td", tableRow, obj.image, "center");
+                    addToRow("td", tableRow, obj.condition, "center");
+                    addToRow("td", tableRow, obj.weight, "right");
+                }
+
+
+                // Add data as th or td (based on eleType) to row of HTML table.
+                // note: this function is local to MakeTable (private function)
+                function addToRow(eleType, row, data, alignment) {
+                    var ele = document.createElement(eleType);
+                    ele.innerHTML = data;
+                    ele.style.textAlign = alignment;
+                    row.appendChild(ele);
+                    return ele;  // future code may need a reference to this dom object
+                }
+
+                // The DOM object (htmlTable) will not show unless you attach it somewhere on the page.
+                document.getElementById(id).innerHTML = ""; // blank out the target DOM object
+                document.getElementById(id).appendChild(newTable);
+
+            }  // MakeTable
+
+
+            // Main Program
+
+            // like unix, you can use ../ to mean "up one folder". I placed the images above 
+            // the example folders, so we need to use the ../ on the image src attributes. 
+            var catList = [
+                {make: "Fluffy", image: "pics/pic1.png", condition: "sleepy", weight: 5},
+                {make: "Poofy", image: "pics/pic2.png", condition: "curious", weight: 6},
+                {make: "Mittens", image: "pics/pic3.png", condition: "kickbutt", weight: 7}
+            ];
+
+            // modify properties (image and price) of the array of objects so they will look 
+            // better on the page.
+            for (var i = 0; i < catList.length; i++) {
+                catList[i].image = "<img  src='" + catList[i].image + "'>";
+                catList[i].weight = catList[i].weight + " lbs.";
+            }
+
+            MakeTable(catList, "listHere");
+
+        </script>
+
+    </body>
+</html>

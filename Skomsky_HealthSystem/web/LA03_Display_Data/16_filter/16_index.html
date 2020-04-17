@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>List of Car Objects</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="../clickSort.css" rel="stylesheet" type="text/css" />  
+        <style>
+            /* keep the clickSort.css file exclusively for the clickSort styling
+            Don't put "regular page layout" in there. */
+            body {
+                font-family: sans-serif;
+                background-color: beige; /* #F0FFCC; */
+            }
+        </style> 
+    </head>
+    <body>
+
+        <h3>Type Search Text to Filter Results</h3>
+        <p>
+            In this version, the HTML table will only contain rows that include the text 
+            typed into the search box (upper / lower case does not matter). 
+            This version does not sort. 
+        </p>
+        
+        <div id = "listHere" class="clickSort">
+
+        </div>
+
+        <script src="js/MakeFilteredTable.js"></script>
+        <script>
+            
+                "use strict"; // turn off the "auto variable declaration" feature of the browser.
+
+                function formatCurrency(num) {
+                    var myNum = Number(num);
+                    return myNum.toLocaleString("en-US", {style: "currency", currency: "USD", minimumFractionDigits: 2});
+                }
+
+                // Main Program
+
+                var carList = [
+                    {make: "Buick", image: "http://cis-linux2.temple.edu/~sallyk/pics_car/buick.png", condition: "awesomely wonderful", price: 1500},
+                    {make: "Default", image: "http://cis-linux2.temple.edu/~sallyk/pics_car/default_car.png", condition: "wonderful", price: 7000},
+                    {make: "Ford", image: "http://cis-linux2.temple.edu/~sallyk/pics_car/ford.png", condition: "awesome", price: 25000},
+                    {make: "Pixar", image: "http://cis-linux2.temple.edu/~sallyk/pics_car/pixar.png", condition: "full of mice", price: 125000},
+                    {make: "Audi", image: "http://cis-linux2.temple.edu/~sallyk/pics_car/audi.png", condition: "aw shucks", price: 21000}
+                ];
+
+                // modify properties (image and price) of the array of objects so it will look 
+                // better on the page.
+                for (var i = 0; i < carList.length; i++) {
+                    carList[i].image = "<img  src='" + carList[i].image + "'>";
+                    carList[i].price = formatCurrency(carList[i].price);
+                }
+
+                MakeFilteredTable(carList,"listHere");
+
+        </script>
+    </body>
+</html>

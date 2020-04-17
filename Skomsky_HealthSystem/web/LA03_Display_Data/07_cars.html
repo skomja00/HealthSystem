@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>List of Car Objects</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="../clickSort.css" rel="stylesheet" type="text/css" />  
+        <style>
+            /* keep the clickSort.css file exclusively for the clickSort styling
+            Don't put "regular page layout" in there. */
+            body {
+                font-family: sans-serif;
+                background-color: beige; /* #F0FFCC; */
+            }
+        </style> 
+    </head>
+    <body>
+        <h3>Must RUN not View, uses AJAX (browser requests from Apache Web Server)</h3>
+        <p>
+            This version puts AJAX code in an encapsulated external file. 
+            The HTML page calls the ajax function to get the data from a JSON file, 
+            then it sends that data to the MakeTable encapsulated function. 
+            In future assignments, we'll write server side code that provides 
+            us with a live feed of JSON data. 
+        </p>
+        <div id="listHere" class="clickSort"></div>
+
+        <script src="js/ajax.js"></script>
+        <script src="js/MakeTable.js"></script>
+        <script>
+
+            "use strict"; // turn off the "auto variable declaration" feature of the browser.
+
+            function formatCurrency(num) {
+                var myNum = Number(num);
+                return myNum.toLocaleString("en-US", {style: "currency", currency: "USD", minimumFractionDigits: 2});
+            }
+
+            // invoke ajax function to read cars.json and if the call was successful, 
+            // run function processJSON, otherwise, put an error message in the DOM element 
+            // that has id "listHere".
+            ajax("json/cars.json", processData, "listHere");
+
+            function processData(carList) {
+
+                console.log(carList);  // car list as an array of objects
+
+                // modify properties (image and price) of the array of objects so it will look 
+                // better on the page.
+                for (var i = 0; i < carList.length; i++) {
+                    carList[i].image = "<img  src='" + carList[i].image + "'>";
+                    carList[i].price = formatCurrency(carList[i].price);
+                }
+
+                // Making a DOM object, nothing shows yet... 
+                MakeTable(carList, "listHere");
+
+            }
+
+        </script>
+
+    </body>
+</html>

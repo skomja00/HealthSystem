@@ -114,7 +114,7 @@
         myRoutes['/patientFind'] = patients.findUI; 
         myRoutes['/slideShow'] = MakeSlideShow;
         
-        // Re: both /insertUser and /insertVisit
+        // "window.location.hash" fix 
         // when for example "#/users" is clicked (from nav bar), the user list shows. From there, 
         // if the user clicks on update, then clicks again for user list -- nothing happens. 
         // This is because the link (in the browser's address bar) would not change, so 
@@ -123,10 +123,11 @@
         // (although the link is representative of what we are doing - updating).  
         // Since the link in the URL will change when we update a user, someone can click 
         // on .list() afterward and and routing will correctly invoke the .list() code.         
-        myRoutes['/insertUser'] = users.insertUI;
-        myRoutes['/insertVisit'] = patients.insertUI; 
+        myRoutes['/userDelete'] = function () {}; // do nothing -- the  javascript code will handle the UI        
         myRoutes['/userUpdate'] = function () {}; // do nothing -- the  javascript code will handle the UI        
         myRoutes['/patientVisitUpdate'] = function () {}; // do nothing -- the javascript code will handle the UI        
+        myRoutes['/insertUser'] = users.insertUI;
+        myRoutes['/insertVisit'] = patients.insertUI; 
 
 
         myRoutes['/blog'] = blog;

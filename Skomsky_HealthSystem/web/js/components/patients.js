@@ -271,22 +271,11 @@ var patients = {};
                     alt='update icon' onclick='patients.delete(\"" +
                     obj.patientVisitList[i].medRecNo + "\", `" + targetId + "` )' />";
                 
-                //userList[i].Update = "<img class='icon' src='icons/update.png' alt='Update' onclick=\"patients.updateUI('TUN922629','content')\"/>";
-                //userList[i].Delete = "<img class='icon' src='icons/delete.png' alt='Delete' onclick=\"patients.delete('TUN922629','content')\"/>";
-                
                 // Remove this once you are done debugging...
                 //userList[i].errorMsg = obj.patientVisitList[i].errorMsg;
             }
 
-            // add click sortable HTML table to the content area
-
-            // ********************** function tableBuilder.build ***********************************
-            // params.list: an array of objects that are to be built into an HTML table.
-            // params.target: reference to DOM object where HTML table is to be placed (by buildTable) -- 
-            // params.style: will be added as className to DOM element target,
-            // params.orderPropName (string): name of property (of objects in list) for iniial sort
-            // params.reverse (boolean): if true, initial sort will be high to low (else low to high). 
-            // params.imgWidth: any columns that hold image files will be turned into <img> tags with this width.
+            // add filterable-sortable HTML table to the content area
             MakeFilterSortTable({
                 "caption":"Patient Visits",
                 "insert":true,                 //include an icon to insert? 
@@ -299,6 +288,32 @@ var patients = {};
 
     }; // end of function users.list
 
+    patients.delete = function (idToDelete, targetId) {
+        
+        // parameter properties needed for ajax call: url, successFn, and errorId
+        ajax2({
+            url: "WebAPIs/deletePatientVisitAPI.jsp?deleteId=" + idToDelete,
+            successFn: processPatientVisitDelete,
+            errorId: "content"
+        });
+        
+        function processPatientVisitDelete(obj) { // function is local to callDeleteAPI
+            console.log("successful ajax call");
+
+            // Empty string means sucessful delete. The HTML coder gets to decide how to 
+            // deliver the good news.
+            if (obj.errorMsg.length === 0) {
+                patients.list(targetId);
+                var msg = "Record " + idToDelete + " successfully deleted. ";
+                console.log(msg);
+                document.getElementById(targetId).innerHTML += msg;
+            } else {
+                console.log("Delete Web API got this error: "+ obj.errorMsg);
+                document.getElementById(targetId).innerHTML = "Web API successfully called, but " +
+                        "got this error from the Web API: <br/><br/>" + obj.errorMsg;
+            }
+        }
+    }        
 
     // Inject the UI that allows the user to type in an id and click submit.
     patients.findUI = function (targetId) {

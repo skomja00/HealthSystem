@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Javascript Cat Show</title>
+        <meta charset="UTF-8">
+
+        <!-- You can expect users of your MakeStyleShow.js to link to your prescribed External Style Sheet -->
+        <link href="../slideShow.css" rel="stylesheet" type="text/css" />  
+
+        <style> 
+            /* The HTML coders can place their overall style elsewhere, e.g., in an internal 
+            style sheet or in their own external style sheet. They can override any styles that 
+            they may not like from the slideShow style sheet - they just redefine those styles. */
+            body {
+                background-color:#9097B0;
+            }
+            p {
+                font-size: 18px;
+            }
+
+            .slideShow{
+                float: left; 
+                box-sizing: border-box; 
+                width: 33.3%;
+            }
+            .slideShow img {
+                width: 85%;
+            }
+        </style>
+
+    </head>
+    <body>
+
+        <p>
+            In this version, the slide show component has extra public methods: 
+        </p>
+        <ul>
+            <li>
+                go: makes the slide show auto-advance every so many milliseconds 
+            </li>
+            <li>
+                goWithDelay: makes the slide show auto-advance every so many milliseconds 
+                but with an intiial delay before starting. 
+            </li>
+        </ul>
+
+        <div id="slide1Id">
+        </div>
+
+        <div id="slide2Id">
+        </div>
+
+        <div id="slide3Id">
+        </div>
+
+        <script src="12_MakeSlideShow.js"></script>
+        <script>
+
+            // name of folder that holds the pictures: pic1.png, pic2.png, ...
+            var myFolder = "../images/";
+            var myPicList = ["pic1.png", "pic2.png", "pic3.png"];
+            var ss1 = MakeSlideShow(document.getElementById("slide1Id"), myFolder, myPicList);
+
+            // Example showing why you need to get the ss reference, so the HTML page can invoke 
+            // any public methods that may be available from the returned slide show object.
+            ss1.setPicNum(1);
+
+            // create second slideshow object
+            var otherPicList = ["pic4.png", "pic5.png", "pic6.png"];
+            var ss2 = MakeSlideShow(document.getElementById("slide2Id"), myFolder, otherPicList);
+
+            // create third slideshow object
+            var thirdPicList = ["pic7.png", "pic8.png", "pic9.png"];
+            var ss3 = MakeSlideShow(document.getElementById("slide3Id"), myFolder, thirdPicList);
+
+            // this will make the third slideshow auto advance every 1.5 seconds
+            // (1500 milliseconds)
+            ss3.go(1500);
+
+            // wait 750 milliseconds, then make first slideshow auto advance every 1.5 seconds. 
+            ss1.goWithDelay(1500, 750);
+
+        </script>
+    </body>
+</html>

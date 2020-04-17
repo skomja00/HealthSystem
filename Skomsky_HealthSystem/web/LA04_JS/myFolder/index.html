@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Javascript Cat Show</title>
+        <meta charset="UTF-8">
+
+        <!-- You can expect users of your MakeStyleShow.js to link to your prescribed External Style Sheet -->
+        <link href="../slideShow.css" rel="stylesheet" type="text/css" />  
+
+        <style> 
+            /* The HTML coders can place their overall style elsewhere, e.g., in an internal 
+            style sheet or in their own external style sheet. They can override any styles that 
+            they may not like from the slideShow style sheet - they just redefine those styles. */
+            body {
+                background-color:#9097B0;
+            }
+            p {
+                font-size: 18px;
+            }
+
+            /* the html coder can "override" any slideShow CSS they want to */
+            .slideShow img {
+                width: 150px;
+            }
+            .left {
+                float: left;
+                width: 46%;
+                margin: 2%;
+            }
+            .right {
+                float: right;
+                width: 46%;
+                margin: 2%;
+            }
+
+        </style>
+
+    </head>
+    <body>
+        <p>
+            In this version, an AJAX call is made to get an array of objects. Then the slideshow is created 
+            from the image file names in the objects. 
+        </p>
+
+        <div id="slideId"  class="left"></div>
+        <div id="slideId2" class="right"></div>
+
+        <script src="MakeSlideShow.js"></script>
+        <script src="js/ajax3.js"></script>
+
+        <script>
+
+            "use strict";
+            
+            /* users slideshow */
+            ajax3({
+                url: "json/users.json",
+                successFn: success,
+                errorEle: document.getElementById("slideId")
+            });
+
+            function success(userList) {
+                console.log(userList);
+
+                var ss = MakeSlideShow({
+                    slideShowEle: document.getElementById("slideId"), // id in which to render slideshow,
+                    objList: userList, // array of objects with image and caption
+                    picPropName: "image",
+                    captionPropName : "userEmail"
+                });
+            }
+
+            /* cars slideshow */
+            ajax3({
+                url: "json/cars.json",
+                successFn: success2,
+                errorEle: document.getElementById("slideId2")
+            });
+
+            function success2(userList) {
+                console.log(userList);
+                for (var i = 0; i < userList.length; i++) {
+                    userList[i]["caption"] = userList[i]["make"] + " $" + userList[i]["price"];
+                };
+                var ss2 = MakeSlideShow({
+                    slideShowEle: document.getElementById("slideId2"), // id in which to render slideshow,
+                    objList: userList, // array of objects with image and caption
+                    picPropName: "image",
+                    captionPropName : "caption"
+                });
+            }
+        </script>
+    </body>
+</html>

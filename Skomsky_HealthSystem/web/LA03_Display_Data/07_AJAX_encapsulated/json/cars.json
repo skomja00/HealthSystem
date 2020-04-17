@@ -1,0 +1,26 @@
+[
+    {
+        "make": "Audi",
+        "image": "http://cis-linux2.temple.edu/~sallyk/pics_car/audi.png",
+        "condition": "fair",
+        "price": "21000"
+    },
+    {
+        "make": "Disney",
+        "image": "http://cis-linux2.temple.edu/~sallyk/pics_car/pixar.png",
+        "condition": "superb",
+        "price": "50000"
+    },
+    {
+        "make": "Buick",
+        "image": "http://cis-linux2.temple.edu/~sallyk/pics_car/buick.png",
+        "condition": "great",
+        "price": "15000"
+    },
+    {
+        "make": "Ford",
+        "image": "http://cis-linux2.temple.edu/~sallyk/pics_car/ford.png",
+        "condition": "poor",
+        "price": "5000"
+    }
+]

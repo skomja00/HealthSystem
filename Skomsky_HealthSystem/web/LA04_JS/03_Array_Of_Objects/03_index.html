@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Javascript Cat Show</title>
+        <meta charset="UTF-8">
+        <style>
+            body {
+                background-color:#9097B0;
+            }
+            p {
+                font-size: 18px;
+            }
+            .slideShow{
+                text-align:center;
+            }
+            .slideShow button {
+                width: 100px;
+                box-shadow: 2px 2px 2px #444444;
+            }
+            .slideShow #caption {
+                font-weight: bold;
+                font-size: 1.2em;
+                margin-top:0.2em;
+            }
+            .slideShow img { /* style images that are inside of class slideShow */
+                width: 25%;
+                border-radius:8px;
+                box-shadow: 2px 2px 2px #444444;
+            }
+        </style>
+
+    </head>
+    <body>
+        <p>
+            This version uses an array of objects such that each object has an image file name and 
+            a caption. 
+        </p>
+
+        <div class="slideShow">
+            <!-- Initialize the first picture -->
+            <img id="pic" src="../images/pic1.png" alt="cute cat pic"/>
+            <br/>
+            <span id='caption'>carla</span>
+            <br/><br/>
+            <button  onclick ="prevPic()">&lt;</button>
+            &nbsp; 
+            <button  onclick ="nextPic()">&gt;</button>
+        </div>
+        <script>
+
+            // name of folder that holds the pictures: pic1.png, pic2.png, ...
+            var folder = "../images/";
+            var picObjList = [
+                {fileName: "pic1.png", caption: "Carla"},
+                {fileName: "pic2.png", caption: "Lucilla"},
+                {fileName: "pic3.png", caption: "The A Team"}
+            ];
+
+            // Global variable that keeps track of which images is showing
+            var picNum = 0;
+
+            function nextPic() {
+
+                // Valid values for array are 0 .. length-1
+                picNum++;
+                if (picNum >= picObjList.length) {
+                    picNum = 0;
+                }
+
+                updatePic();
+            }
+
+            function prevPic() {
+                picNum--;
+                if (picNum < 0) {
+                    picNum = picObjList.length - 1;
+                    // if there are 5 elements in an array, valid index values are 0..4
+                }
+                updatePic();
+            }
+
+            function updatePic() {
+
+                // change the src attribute of the image element on the page (to be pic1.png, or pic2.png, etc)				
+                document.getElementById('pic').src = folder + picObjList[picNum].fileName;
+
+                // change the caption too
+                document.getElementById('caption').innerHTML = picObjList[picNum].caption;
+
+            }
+
+        </script>
+    </body>
+</html>

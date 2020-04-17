@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>List of Car Objects</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="../clickSort.css" rel="stylesheet" type="text/css" />  
+        <style>
+            /* keep the clickSort.css file exclusively for the clickSort styling
+            Don't put "regular page layout" in there. */
+            body {
+                font-family: sans-serif;
+                background-color: beige; /* #F0FFCC; */
+            }
+        </style> 
+    </head>
+    <body>
+        <p>
+            In this version, we sort the data according to what type it actually is. 
+            For example, a value "123" will be sorted as a number and "1/2/2020" 
+            will be sorted as a date. Note we have added sort by price which should now work.
+        </p>
+        <div style="text-align:center; margin:auto;">
+            <h3>Sort By</h3>
+            <button onclick="sortByMake()">Make</button>
+            <button onclick="sortByCondition()">Condition</button>
+            <button onclick="sortByPrice()">Price</button>
+            <div id="listHere" class="clickSort"></div>
+        </div>
+
+        <script src="js/jsSort.js"></script>
+        <script src="js/MakeTable.js"></script>
+
+        <script>
+                "use strict"; // turn off the "auto variable declaration" feature of the browser.
+
+                function formatCurrency(num) {
+                    var myNum = Number(num);
+                    return myNum.toLocaleString("en-US", {style: "currency", currency: "USD", minimumFractionDigits: 2});
+                }
+
+                var carList = [
+                    {make: "Buick", image: "http://cis-linux2.temple.edu/~sallyk/pics_car/buick.png", condition: "poor", price: 15000},
+                    {make: "Ford", image: "http://cis-linux2.temple.edu/~sallyk/pics_car/ford.png", condition: "great", price: 9000},
+                    {make: "Audi", image: "http://cis-linux2.temple.edu/~sallyk/pics_car/audi.png", condition: "fair", price: 5000},
+                    {make: "Pixar", image: "http://cis-linux2.temple.edu/~sallyk/pics_car/pixar.png", condition: "fair", price: 21000}
+                ];
+
+                // modify properties (image and price) of the array of objects so it will look 
+                // better on the page.
+                for (var i = 0; i < carList.length; i++) {
+                    carList[i].image = "<img  src='" + carList[i].image + "'>";
+                    carList[i].price = formatCurrency(carList[i].price);
+                }
+
+                function sortByMake() {
+                    jsSort(carList, "make"); // can choose any of the car's properties for the sort
+                    MakeTable(carList, "listHere");
+                }
+
+                function sortByCondition() {
+                    jsSort(carList, "condition"); // can choose any of the car's properties for the sort
+                    MakeTable(carList, "listHere");
+                }
+
+                function sortByPrice() {
+                    jsSort(carList, "price"); // can choose any of the car's properties for the sort
+                    MakeTable(carList, "listHere");
+                }
+
+                MakeTable(carList, "listHere"); // whatever order it's in originally
+
+        </script>
+
+    </body>
+</html>

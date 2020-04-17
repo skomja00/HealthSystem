@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>List of Car Objects</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="../clickSort.css" rel="stylesheet" type="text/css" />  
+        <style>
+            /* keep the clickSort.css file exclusively for the clickSort styling
+            Don't put "regular page layout" in there. */
+            body {
+                font-family: sans-serif;
+                background-color: beige; /* #F0FFCC; */
+            }
+        </style> 
+    </head>
+    <body>
+        <p>
+            This code takes a car list in JSON format, converts that JSON that to 
+            an array of objects, then passes that array to the "MakeTable" function. 
+            Of course, this sounds like a waste of effort, but it
+            is important to know how to work with JSON data, because in subsequent 
+            homeworks, we'll have Web APIs that provide live JSON data from the database. 
+        </p>
+        <div id="listHere" class="clickSort"></div>
+
+        <script src="js/MakeTable.js"></script>
+        <script>
+
+            "use strict"; // turn off the "auto variable declaration" feature of the browser.
+
+            function formatCurrency(num) {
+                var myNum = Number(num);
+                return myNum.toLocaleString("en-US", {style: "currency", currency: "USD", minimumFractionDigits: 2});
+            }
+
+            // Main Program
+            var carListJSON = `
+                [
+                    {
+                        "make": "Audi",
+                        "image": "http://cis-linux2.temple.edu/~sallyk/pics_car/audi.png",
+                        "condition": "fair",
+                        "price": "21000"
+                    },
+                    {
+                        "make": "Disney",
+                        "image": "http://cis-linux2.temple.edu/~sallyk/pics_car/pixar.png",
+                        "condition": "superb",
+                        "price": "50000"
+                    },
+                    {
+                        "make": "Buick",
+                        "image": "http://cis-linux2.temple.edu/~sallyk/pics_car/buick.png",
+                        "condition": "great",
+                        "price": "15000"
+                    },
+                    {
+                        "make": "Ford",
+                        "image": "http://cis-linux2.temple.edu/~sallyk/pics_car/ford.png",
+                        "condition": "poor",
+                        "price": "5000"
+                    }
+                ]
+            `;
+
+            var carList = JSON.parse(carListJSON);
+            console.log(carList[0]); // just to show it's now a regular js object
+
+            // modify properties (image and price) of the array of objects so it will look 
+            // better on the page.
+            for (var i = 0; i < carList.length; i++) {
+                carList[i].image = "<img  src='" + carList[i].image + "'>";
+                carList[i].price = formatCurrency(carList[i].price);
+            }
+
+            MakeTable(carList, "listHere");
+
+        </script>
+
+    </body>
+</html>

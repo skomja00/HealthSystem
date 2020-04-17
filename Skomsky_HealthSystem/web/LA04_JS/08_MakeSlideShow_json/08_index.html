@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Javascript Cat Show</title>
+        <meta charset="UTF-8">
+
+        <!-- You can expect users of your MakeStyleShow.js to link to your prescribed External Style Sheet -->
+        <link href="../slideShow.css" rel="stylesheet" type="text/css" />  
+
+        <style> 
+            /* The HTML coders can place their overall style elsewhere, e.g., in an internal 
+            style sheet or in their own external style sheet. They can override any styles that 
+            they may not like from the slideShow style sheet - they just redefine those styles. */
+            body {
+                background-color:#9097B0;
+            }
+            p {
+                font-size: 18px;
+            }
+
+            /* the html coder can "override" any slideShow CSS they want to */
+            .slideShow img {
+                width: 150px;
+            }
+
+        </style>
+
+    </head>
+    <body>
+        <p>
+            In this version, an AJAX call is made to get an array of objects. Then the slideshow is created 
+            from the image file names in the objects. 
+        </p>
+
+        <div id="slideId">
+        </div>
+
+        <script src="08_MakeSlideShow.js"></script>
+        <script src="js/ajax3.js"></script>
+
+        <script>
+
+            "use strict";
+
+            ajax3({
+                url: "json/users.json",
+                successFn: success,
+                errorEle: document.getElementById("slideId")
+            });
+
+            function success(userList) {
+                console.log(userList);
+
+                var ss = MakeSlideShow({
+                    slideShowEle: document.getElementById("slideId"), // id in which to render slideshow,
+                    objList: userList, // array of objects with image and caption
+                    picPropName: "image"
+                });
+            }
+
+        </script>
+    </body>
+</html>

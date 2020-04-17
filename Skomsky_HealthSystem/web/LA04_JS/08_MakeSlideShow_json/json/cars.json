@@ -1,0 +1,26 @@
+[
+    {
+        "make": "AudiX",
+        "image": "../pics/audi.png",
+        "condition": "fair",
+        "price": "21000"
+    },
+    {
+        "make": "DisneyX",
+        "image": "../pics/pixar.png",
+        "condition": "excellent",
+        "price": "50000"
+    },
+    {
+        "make": "BuickX",
+        "image": "../pics/buick.png",
+        "condition": "great",
+        "price": "15000"
+    },
+    {
+        "make": "FordX",
+        "image": "../pics/ford.png",
+        "condition": "poor",
+        "price": "5000"
+    }
+]

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>List of Car Objects</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="clickSort.css" rel="stylesheet" type="text/css" />  
+        <style>
+            /* keep the clickSort.css file exclusively for the clickSort styling
+            Don't put "regular page layout" in there. */
+            body {
+                font-family: sans-serif;
+                background-color: beige; /* #F0FFCC; */
+            }
+        </style> 
+    </head>
+    <body>
+        <p>
+            The previous version of MakeTable (that was in the HTML file) 
+            assumes the the list has objects with specific property names (like price, condition, make). 
+            That function will "break" if objects in the array do not have those properties. 
+            The new encapsulated MakeTable (that's in its own JS file, in this version) 
+            will work for any array of objects, no matter what property
+            names those objects have.
+        </p>
+        <div id="listHere" class="clickSort"></div>
+
+        <script src="js/04_MakeTable.js"></script>
+        <script>
+            "use strict"; // turn off the "auto variable declaration" feature of the browser.
+
+            function formatCurrency(num) {
+                return num.toLocaleString("en-US", {style: "currency", currency: "USD", minimumFractionDigits: 2});
+            }
+
+            // Main Program
+
+            // like unix, you can use ../ to mean "up one folder", just so I can have one 
+            // copy of the images for all the examples...
+            var catList = [
+                {name: "Fluffy", image: "pics/pic1.png", personality:"sleepy"},
+                {name: "Poofy", image: "pics/pic2.png", personality:"curious"},
+                {name: "Mittens", image: "pics/pic3.png", personality:"kickbutt"}
+            ];
+
+            // modify properties (image and price) of the array of objects so it will look 
+            // better on the page.
+            for (var i = 0; i < catList.length; i++) {
+                catList[i].image = "<img  src='" + catList[i].image + "'>";
+            }
+
+            MakeTable(catList, "listHere");
+
+        </script>
+
+    </body>
+</html>

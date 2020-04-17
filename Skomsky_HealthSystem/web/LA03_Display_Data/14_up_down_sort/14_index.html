@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>List of Car Objects</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="../clickSort.css" rel="stylesheet" type="text/css" />  
+        <style>
+            /* keep the clickSort.css file exclusively for the clickSort styling
+            Don't put "regular page layout" in there. */
+            body {
+                font-family: sans-serif;
+                background-color: beige; /* #F0FFCC; */
+            }
+        </style> 
+    </head>
+    <body>
+
+        <h3>Click Column Headings To Sort</h3>
+        <p>
+            In this version, if you click a column header again, it will sort that column 
+            in the reverse order. To do this, we had to add custom properties to the &lt;th>
+            column headers (whether sort order is forward or reverse) AND we had to 
+            refactor the code a little so that when the table gets sorted, it deletes 
+            only the data rows (not header rows) then readds the sorted data rows 
+            to the table.
+        </p>
+        <div id="listHere" class="clickSort"></div>
+
+        <script src="js/MakeUpDownSortableTable.js"></script>
+        <script>
+            "use strict"; // turn off the "auto variable declaration" feature of the browser.
+
+            function formatCurrency(num) {
+                var myNum = Number(num);
+                return myNum.toLocaleString("en-US", {style: "currency", currency: "USD", minimumFractionDigits: 2});
+            }
+
+            var carList = [
+                {make: "Buick", image: "http://cis-linux2.temple.edu/~sallyk/pics_car/buick.png", condition: "poor", price: 1500},
+                {make: "Default", image: "http://cis-linux2.temple.edu/~sallyk/pics_car/default_car.png", condition: "bad", price: 7000},
+                {make: "Ford", image: "http://cis-linux2.temple.edu/~sallyk/pics_car/ford.png", condition: "great", price: 25000},
+                {make: "Pixar", image: "http://cis-linux2.temple.edu/~sallyk/pics_car/pixar.png", condition: "so so", price: 125000},
+                {make: "Audi", image: "http://cis-linux2.temple.edu/~sallyk/pics_car/audi.png", condition: "fair", price: 21000}
+            ];
+
+            // modify properties (image and price) of the array of objects so it will look 
+            // better on the page.
+            for (var i = 0; i < carList.length; i++) {
+                carList[i].image = "<img  src='" + carList[i].image + "'>";
+                carList[i].price = formatCurrency(carList[i].price);
+            }
+
+            MakeUpDownSortableTable(carList, "listHere", "price", "icons/sortUpDown16.png"); // initial sort order will be price
+
+        </script>
+    </body>
+</html>

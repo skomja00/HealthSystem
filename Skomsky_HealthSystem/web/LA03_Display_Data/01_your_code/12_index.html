@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>List of Car Objects</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="clickSort.css" rel="stylesheet" type="text/css" />  
+        <style>
+            /* keep the clickSort.css file exclusively for the clickSort styling
+            Don't put "regular page layout" in there. */
+            body {
+                font-family: sans-serif;
+                background-color: beige; /* #F0FFCC; */
+            }
+        </style> 
+    </head>
+    <body>
+
+        <h3>Click Column Headings To Sort</h3>
+        <p>
+            In this version, we add onclick functions to each column header. When a column header is clicked, 
+            the table will be sorted by that column. 
+        </p>
+        <div id="listHere" class="clickSort"></div>
+
+        <script src="js/MakeSortableTable.js"></script>
+        <script>
+            "use strict"; // turn off the "auto variable declaration" feature of the browser.
+
+            function formatCurrency(num) {
+                var myNum = Number(num);
+                return myNum.toLocaleString("en-US", {style: "currency", currency: "USD", minimumFractionDigits: 2});
+            }
+
+            var catList = [
+                {name: "Fluffy", image: "pics/pic1.png", personality:"sleepy", price: 10},
+                {name: "Poofy", image: "pics/pic2.png", personality:"curious", price: 12},
+                {name: "Mittens", image: "pics/pic3.png", personality:"kickbutt", price: 13}
+            ];
+            // modify properties (image and price) of the array of objects so it will look 
+            // better on the page.
+            for (var i = 0; i < catList.length; i++) {
+                catList[i].image = "<img  src='" + catList[i].image + "'>";
+                catList[i].price = formatCurrency(catList[i].price);
+            }
+
+            MakeSortableTable(catList, "listHere", "price"); // initial sort order will be price
+
+        </script>
+    </body>
+</html>

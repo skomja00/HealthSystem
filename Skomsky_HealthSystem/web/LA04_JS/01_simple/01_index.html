@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Javascript Cat Show</title>
+        <meta charset="UTF-8">
+        <style>
+            body {
+                background-color:#9097B0;
+            }
+            p {
+                font-size: 18px;
+            }
+            .slideShow{
+                text-align:center;
+            }
+            .slideShow button {
+                width: 100px;
+                box-shadow: 2px 2px 2px #444444;
+            }
+            .slideShow img { /* style images that are inside of class slideShow */
+                width: 25%;
+                border-radius:8px;
+                box-shadow: 2px 2px 2px #444444;
+            }
+        </style>
+
+    </head>
+    <body>
+        <p>
+            In this version there is no reusable code, just hard coded HTML, CSS, and some simple JS.
+        </p>
+
+        <div class="slideShow">
+            <!-- Initialize the first picture -->
+            <img id="pic" src="" alt="cute cat pic"/>
+            <br/>
+            <button onclick ="prevPic()">&lt;</button>
+            &nbsp; 
+            <button onclick ="nextPic()">&gt;</button>
+        </div>
+        <script>
+
+            // name of folder that holds the pictures: pic1.png, pic2.png, ..., pic6.png
+            var folder = "../images/";
+
+            // Global variable that keeps track of which images is showing
+            var picNum = 1;
+
+            // The last image is pic6.png
+            var numImages = 6;
+
+            function nextPic() {
+
+                picNum++;
+                if (picNum > numImages) {
+                    picNum = 1;
+                }
+                updatePic();
+            }
+
+            function prevPic() {
+
+                picNum--;
+                if (picNum < 1) {
+                    picNum = numImages;
+                }
+                updatePic();
+            }
+
+            function updatePic() {
+                // change the src attribute of the image element on the page (to be pic1.png, or pic2.png, etc)				
+                document.getElementById('pic').src = folder + "pic" + picNum + ".png";
+            }
+
+            updatePic(); // initialize first pic.
+
+        </script>
+    </body>
+</html>

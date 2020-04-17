@@ -1,0 +1,26 @@
+[
+    {
+        "Name": "Fluffy",
+        "image": "pics/pic1.png",
+        "personality": "playful",
+        "weight": "7 lbs."
+    },
+    {
+        "name": "Sneezy",
+        "image": "pics/pic2.png",
+        "personality": "kick butt",
+        "weight": "4 lbs."
+    },
+    {
+        "name": "Mittens",
+        "image": "pics/pic3.png",
+        "personality": "curious",
+        "weight": "5 lbs."
+    },
+    {
+        "name": "Karl",
+        "image": "pics/pic4.png",
+        "personality": "really smart!",
+        "weight": "9 lbs."
+    }
+]

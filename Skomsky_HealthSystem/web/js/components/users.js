@@ -296,7 +296,53 @@ var users = {};
 
     }; // end of function users.list
 
+    users.delete = function (idToDelete, targetId) {
 
+        // parameter properties needed for ajax call: url, successFn, and errorId
+        ajax2({
+            url: "WebAPIs/deleteUserAPI.jsp?deleteId=" + idToDelete,
+            successFn: processUserDelete,
+            errorId: "content"
+        });
+
+        function processUserDelete(obj) { // function is local to callDeleteAPI
+            console.log("successful ajax call");
+
+            // Empty string means sucessful delete. The HTML coder gets to decide how to 
+            // deliver the good news.
+            if (obj.errorMsg.length === 0) {
+                users.list(targetId);
+                var msg = "Record " + idToDelete + " successfully deleted. ";
+                console.log(msg);
+                document.getElementById(targetId).innerHTML = msg;
+            } else {
+                console.log("Delete Web API got this error: "+ obj.errorMsg);
+                window.location.hash = "#/userDelete";  
+                if (obj.errorMsg.includes("foreign key")) {
+                    var error = ` 
+                        <h2>
+                            Error
+                        </h2>
+                        <p>
+                            The user is tied to other data in the dbase,
+                            and cannot be deleted. 
+                        </p>`;
+                    document.getElementById(targetId).innerHTML = error;
+                } else {
+                    document.getElementById(targetId).innerHTML = `
+                        <h2>
+                            Error
+                        </h2>
+                        <p>
+                            Please note the following message and  
+                            contact support@email.com or (123) 456-7890.
+                        </p>`
+                        + obj.errorMsg;
+                }
+            }
+        }
+    };
+    
     // Inject the UI that allows the user to type in an id and click submit.
     users.findUI = function (targetId) {
 

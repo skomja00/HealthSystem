@@ -33,7 +33,7 @@ function setTheme (palId) {
     var ti = document.getElementById("ddTheme");//"theme-icon");
     //ti.addEventListener('click', togglePallette);
     ti.onclick = function togglePallette (ele) {
-        var currThemeIcon = ele.target.getAttribute("src");
+        var currThemeIcon = this.getElementsByTagName("img")[0].getAttribute("src");
         var icon = currThemeIcon.match(/moon-icon/g); 
         if (icon !== null) {
             setTheme("LightPallette");

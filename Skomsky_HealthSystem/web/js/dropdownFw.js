@@ -79,7 +79,6 @@ function dropdownFw (dropHeaderStyle, dropContentStyle ) {
     // to the right and this will be where it starts when it is next made visible (for the "zoom in from 
     // right" animation). 
     function hide(ele) {
-        //debugger;
         /*ele.style.right = hiddenRight;*/ /* prefer element to pop up than animate */
         ele.style.right = "0px";
         ele.style.visibility = "hidden";
@@ -87,7 +86,6 @@ function dropdownFw (dropHeaderStyle, dropContentStyle ) {
 
     // private function, makes element visible.
     function show(ele) {
-        //debugger;
         ele.style.right = "0px";
         ele.style.visibility = "visible";
      }

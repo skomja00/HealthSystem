@@ -17,7 +17,6 @@ profile.display = function () {
         errorId: "msgArea"
     });
     function successProfile(obj) {
-        debugger;
         //var obj = JSON.parse(hreq.responseText); // this already done by function ajax2...
         if (!obj) {
             document.getElementById("msgArea").innerHTML += "Http Request (from AJAX call) did not parse to an object.";

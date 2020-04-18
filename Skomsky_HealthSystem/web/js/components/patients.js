@@ -465,8 +465,12 @@ var patients = {};
             console.log(jsonObj);
 
             if (jsonObj.dbError.length > 0) {
-                document.getElementById("webUserIdError").innerHTML = jsonObj.dbError;
+                document.getElementById("recordError").innerHTML = jsonObj.dbError;
                 return;
+            } else {
+                if (jsonObj.webUserList[0].errorMsg.length > 0) {
+                    document.getElementById("webUserIdError").innerHTML = jsonObj.webUserList[0].errorMsg;
+                };
             }
 
             /*  copy/pasting the first entry from the output of my get role API

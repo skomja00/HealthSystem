@@ -492,13 +492,17 @@ var users = {};
         });
 
         function setRolePickList(jsonObj) {
-
+            
             console.log("setRolePickList was called, see next line for object holding list of roles");
             console.log(jsonObj);
 
             if (jsonObj.dbError.length > 0) {
-                document.getElementById("userRoleIdError").innerHTML = jsonObj.dbError;
+                document.getElementById("recordError").innerHTML = jsonObj.dbError;
                 return;
+            } else {
+                if (jsonObj.roleList[0].errorMsg.length > 0) {
+                    document.getElementById("userRoleIdError").innerHTML = jsonObj.roleList[0].errorMsg;
+                };
             }
             
             /*  copy/pasting the first entry from the output of my get role API

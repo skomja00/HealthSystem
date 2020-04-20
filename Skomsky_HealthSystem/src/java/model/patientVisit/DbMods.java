@@ -242,6 +242,8 @@ public class DbMods {
                 result = "Record not deleted - there was no record with MedRecNo " + userId;
             } else if (numRowsDeleted > 1) {
                 result = "Programmer Error: > 1 record deleted. Did you forget the WHERE clause?";
+            } else if (numRowsDeleted == 1) {
+                result = "";
             }
 
         } catch (Exception e) {

@@ -290,6 +290,10 @@ var patients = {};
 
     patients.delete = function (idToDelete, targetId) {
         
+        if (!confirm("Are you you want to delete " + idToDelete + "?")) {
+            return;
+        }
+        
         // parameter properties needed for ajax call: url, successFn, and errorId
         ajax2({
             url: "WebAPIs/deletePatientVisitAPI.jsp?deleteId=" + idToDelete,
@@ -304,16 +308,37 @@ var patients = {};
             // deliver the good news.
             if (obj.errorMsg.length === 0) {
                 patients.list(targetId);
-                var msg = "Record " + idToDelete + " successfully deleted. ";
+                var msg = idToDelete + " successfully deleted. Click to refresh list.";
+                alert(msg);
                 console.log(msg);
-                document.getElementById(targetId).innerHTML += msg;
             } else {
-                console.log("Delete Web API got this error: "+ obj.errorMsg);
-                document.getElementById(targetId).innerHTML = "Web API successfully called, but " +
-                        "got this error from the Web API: <br/><br/>" + obj.errorMsg;
+                console.log("Delete API got this error: "+ obj.errorMsg);
+                window.location.hash = "#/patientVisitDelete";  
+                if (obj.errorMsg.includes("foreign key")) {
+                    var error = ` 
+                        <h2>
+                            Error
+                        </h2>
+                        <p>
+                            The user is tied to other data in the dbase,
+                            and cannot be deleted. 
+                        </p>`;
+                    document.getElementById(targetId).innerHTML = error;
+                } else {
+                    document.getElementById(targetId).innerHTML = `
+                        <h2>
+                            Error
+                        </h2>
+                        <p>
+                            Please note the following message and  
+                            contact support@email.com or (123) 456-7890.
+                        </p>`
+                        + obj.errorMsg;
+                }
             }
+
         }
-    }        
+    };        
 
     // Inject the UI that allows the user to type in an id and click submit.
     patients.findUI = function (targetId) {
@@ -364,20 +389,24 @@ var patients = {};
             }
             console.log("patients.findById (success private fn): the obj passed in by ajax2 is on next line.");
             console.log(obj);
-            if (obj.dbError.length > 0) {
-                targetDOM.innerHTML += "Database Error Encountered: " + obj.dbError;
-                return;
-            } else if (obj.patientVisitList[0].errorMsg.length > 0 ) {
+            if (obj.errorMsg.length > 0) {
                 targetDOM.innerHTML = "No patient with id "+desiredUserId+" was found in the Database.";
             } else {
-                var msg = "Found Patient Id " + obj.patientVisitList[0].visitId;
-                msg += "<br/> &nbsp; Patient Name: " +  obj.patientVisitList[0].patientName;
-                msg += "<br/> &nbsp; Medical Record #: " +  obj.patientVisitList[0].medRecNo;
-                msg += "<br/> &nbsp; Visit Charge: " +  obj.patientVisitList[0].visitCharge;
-                msg += "<br/> <img src ='" +  obj.patientVisitList[0].imageUrl + "'>";
-                targetDOM.innerHTML = msg;  
-            }
 
+                var myList = [];
+                myList[0] = {}; // add new empty object to array
+                myList[0].MedRecNo = obj.medRecNo;
+                myList[0].VisitId = obj.visitId;
+                myList[0].Image = "<img src='" + obj.imageUrl + "'>";
+                myList[0].Diagnosis = obj.diagnosis;
+                myList[0].WebUser = obj.webUserEmail;
+                MakeTable ({
+                    "theList":myList,
+                    "targetId":targetId,
+                    "style":"clickSort",
+                    "caption":"PatientVisit Search Results"
+                }); 
+            }
         } // end of function success
     };  // patients.findUI
     patients.insertUI = function () {

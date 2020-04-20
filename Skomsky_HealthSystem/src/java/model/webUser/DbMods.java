@@ -235,9 +235,11 @@ public class DbMods {
             int numRowsDeleted = pStatement.executeUpdate();
 
             if (numRowsDeleted == 0) {
-                result = "Record not deleted - there was no record with web_user_id " + userId;
+                result = "Record not deleted - there was no record with Web User Id " + userId;
             } else if (numRowsDeleted > 1) {
                 result = "Programmer Error: > 1 record deleted. Did you forget the WHERE clause?";
+            } else if (numRowsDeleted == 1) {
+                result = "";
             }
 
         } catch (Exception e) {

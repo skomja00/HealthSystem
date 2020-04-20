@@ -298,6 +298,10 @@ var users = {};
 
     users.delete = function (idToDelete, targetId) {
 
+        if (!confirm("Are you you want to delete " + idToDelete + "?")) {
+            return;
+        }
+
         // parameter properties needed for ajax call: url, successFn, and errorId
         ajax2({
             url: "WebAPIs/deleteUserAPI.jsp?deleteId=" + idToDelete,
@@ -312,9 +316,9 @@ var users = {};
             // deliver the good news.
             if (obj.errorMsg.length === 0) {
                 users.list(targetId);
-                var msg = "Record " + idToDelete + " successfully deleted. ";
+                var msg = idToDelete + " successfully deleted. Click to refresh list.";
+                alert(msg);
                 console.log(msg);
-                document.getElementById(targetId).innerHTML = msg;
             } else {
                 console.log("Delete Web API got this error: "+ obj.errorMsg);
                 window.location.hash = "#/userDelete";  

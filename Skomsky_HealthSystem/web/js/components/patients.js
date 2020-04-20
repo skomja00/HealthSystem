@@ -290,7 +290,7 @@ var patients = {};
 
     patients.delete = function (idToDelete, targetId) {
         
-        if (!confirm("Are you you want to delete " + idToDelete + "?")) {
+        if (!confirm("Confirm delete " + idToDelete + "?")) {
             return;
         }
         

@@ -298,7 +298,7 @@ var users = {};
 
     users.delete = function (idToDelete, targetId) {
 
-        if (!confirm("Are you you want to delete " + idToDelete + "?")) {
+        if (!confirm("Confirm delete Web User Id " + idToDelete + "?")) {
             return;
         }
 
@@ -316,7 +316,7 @@ var users = {};
             // deliver the good news.
             if (obj.errorMsg.length === 0) {
                 users.list(targetId);
-                var msg = idToDelete + " successfully deleted. Click to refresh list.";
+                var msg = "Web User Id " +idToDelete + " deleted. Click to refresh list.";
                 alert(msg);
                 console.log(msg);
             } else {

@@ -204,14 +204,24 @@ function blog(id) {
 
         <h2>HW 9 Delete</h2>
         <p>
-            In this homework I learned ... 
-            The parts that I found easy were ... 
-            The parts that I found hard or confusing were ... 
+            In this homework I added delete functionality to my web page, and this 
+            completes the four basic requirements of persisting data. Delete refers to the 
+            last letter in the CRUD acronym (create, read, update, delete) This is again 
+            using WebAPIs and MVC. My productivity coding WebAPIs, JSP/Java, 
+            troubleshooting the server logs, etc continues to improve. 
+            One thing I struggled with was informing the user of a successful delete. 
+            After a successful detete, I cal the *.list function
+            to refresh the list, but it uses AJAX and is asynchronous. The user sees
+            a 'delete successful' alart but the deleted 
+            data is still visible in the background. I considered added a callback to the 
+            table builder to raise the alread after building the new table, Instead 
+            I added "Click OK to refresh list" instead, and 
+            alert to eliminate any possible confusion. 
         </p>
         <ul>
             <li>
-                To run this code, click to list the data (under the search icon from the nav bar) 
-                then click the delete icon next to the record you want to delete.  
+                To run this code, on any list presented on the web page click the
+                 delete icon next to the record you want to delete (e.g. List Web Users). 
             </li>
         </ul>
     </div><br><br><br><br><br>`;

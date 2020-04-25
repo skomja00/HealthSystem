@@ -14,8 +14,8 @@ Utils.make = function (params) {
 
     if (params.innerHTML) {
         ele.innerHTML = params.innerHTML;
-    }
-
+    }       
+   
     if (params.parent) {
         params.parent.appendChild(ele);
     }

@@ -35,7 +35,6 @@ function dropdownFw (dropHeaderStyle, dropContentStyle ) {
                 if (this["title"] === headerList[i]["title"]) {
                     if (headerList[i].style["borderStyle"] === "") {
                         headerList[i].style.borderStyle = "solid solid none solid";
-                        headerList[i].style.color = "#BBBBBB"; 
                         headerList[i].style.borderRadius = "4px 4px 0px 0px";
                     } else {
                         headerList[i].style.borderStyle = ""; 

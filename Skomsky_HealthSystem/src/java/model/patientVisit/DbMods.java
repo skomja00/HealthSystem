@@ -75,8 +75,8 @@ public class DbMods {
         errorMsgs.patientName = ValidationUtils.stringValidationMsg(inputData.patientName, 255, false);
         errorMsgs.imageUrl = ValidationUtils.stringValidationMsg(inputData.imageUrl, 2100, false);
         errorMsgs.medRecNo = ValidationUtils.stringValidationMsg(inputData.medRecNo, 255, true);
-        errorMsgs.description = ValidationUtils.stringValidationMsg(inputData.description, 2100, true);
-        errorMsgs.visitDateTime = ValidationUtils.dateTimeValidationMsg(inputData.visitDateTime, false);
+        errorMsgs.description = ValidationUtils.stringValidationMsg(inputData.description, 2100, false);
+        errorMsgs.visitDateTime = ValidationUtils.dateTimeValidationMsg(inputData.visitDateTime, true);
         errorMsgs.diagnosis = ValidationUtils.stringValidationMsg(inputData.diagnosis, 255, false);
         errorMsgs.visitCharge = ValidationUtils.dollarValidationMsg(inputData.visitCharge, false);
         errorMsgs.webUserId = ValidationUtils.integerValidationMsg(inputData.webUserId, true);

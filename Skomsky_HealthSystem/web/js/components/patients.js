@@ -241,52 +241,110 @@ var patients = {};
                 contentDOM.innerHTML += "Database Error Encountered: " + obj.dbError;
                 return;
             }   
+
+            // Want the UI (plus headings and search filter) all to be centered. 
+            // Cannot be sure content area will be like this, so create a div inside of the 
+            // content area and set the div to be aligned center (HTML table will be styled 
+            // margin: auto to make it centered as well). 
+            var div = Utils.make({
+                htmlTag: "div",
+                parent: contentDOM
+            });
+            div.style.textAlign = "center";
+
+            var heading = Utils.make({
+                htmlTag: "h2",
+                parent: div
+            });
+
+            Utils.make({// don't need reference to this span tag...
+                htmlTag: "span",
+                innerHTML: "Patient Visit List ",
+                parent: heading
+            });
+
+            var img = Utils.make({
+                htmlTag: "img",
+                parent: heading
+            });
+            img.src = 'icons/dark/insert_H32.png'; 
+            img.onclick = function () { // you cant pass input params directly into an event handler
+
+                // Originally I had this line of code here:  
+                //     users.insertUI(targetId);
+                // And that worked to show the user insert UI, BUT, afterwards, if you tried to re-run 
+                // the user list, nothing happened -- because this would make no change in the 
+                // window.location.hash (the link in the browser's address bar) -- so nothing would happen. 
+                // 
+                // The solution was to invoke the user insert UI through a routing rule. 
+                // For "other" insert (even though you probably won't have a Nav Bar link for inserting "other", 
+                // you may need to create a routing rule and invoke that similarly (from the "other" list UI).
+                window.location.hash = "#/insertVisit";
+            };
             
-    //        this.visitId = FormatUtils.formatInteger(results.getObject("VisitId"));
-    //        this.patientName = FormatUtils.formatString(results.getObject("PatientName"));
-    //        this.imageUrl = FormatUtils.formatString(results.getObject("ImageUrl"));
-    //        this.medRecNo = FormatUtils.formatString(results.getObject("MedRecNo"));
-    //        this.description = FormatUtils.formatString(results.getObject("Description"));
-    //        this.visitDateTime = FormatUtils.formatDateTime(results.getObject("VisitDateTime"));
-    //        this.diagnosis = FormatUtils.formatString(results.getObject("Diagnosis"));
-    //        this.visitCharge = FormatUtils.formatDollar(results.getObject("VisitCharge"));
-    //        this.webUserId = FormatUtils.formatInteger(results.getObject("wu.web_user_id"));
-    //        this.userEmail = FormatUtils.formatString(results.getObject("wu.user_email"));
-    //        this.membershipFee = FormatUtils.formatDollar(results.getObject("wu.membership_fee")
-            // tweak list ist to include only the properties you want - combine, delete, etc. 
-            var userList = [];
+            Utils.make({
+                htmlTag: "span",
+                innerHTML: " Search Filter: ",
+                parent: div
+            });
+
+            var searchBox = Utils.make({
+                htmlTag: "input",
+                parent: div
+            });
+            searchBox.type = "text";
+            //searchBox.setAttribute("type", "text");  // same thing...
+
+            var tableDiv = Utils.make({
+                htmlTag: "div",
+                parent: div
+            });
+     
+            /* Here's a superset list of all columns joining both tables for reference.
+             * Build a list (or sublist) included in the table for the UI
+             *  
+             * this.visitId = FormatUtils.formatInteger(results.getObject("VisitId"));
+             * this.patientName = FormatUtils.formatString(results.getObject("PatientName"));
+             * this.imageUrl = FormatUtils.formatString(results.getObject("ImageUrl"));
+             * this.medRecNo = FormatUtils.formatString(results.getObject("MedRecNo"));
+             * this.description = FormatUtils.formatString(results.getObject("Description"));
+             * this.visitDateTime = FormatUtils.formatDateTime(results.getObject("VisitDateTime"));
+             * this.diagnosis = FormatUtils.formatString(results.getObject("Diagnosis"));
+             * this.visitCharge = FormatUtils.formatDollar(results.getObject("VisitCharge"));
+             * this.webUserId = FormatUtils.formatInteger(results.getObject("wu.web_user_id"));
+             * this.userEmail = FormatUtils.formatString(results.getObject("wu.user_email"));
+             * this.membershipFee = FormatUtils.formatDollar(results.getObject("wu.membership_fee")
+             */
+            var myList = [];
             for (var i = 0; i < obj.patientVisitList.length; i++) {
-                userList[i] = {}; // add new empty object to array
-                userList[i].MedRecNo = obj.patientVisitList[i].medRecNo;
-                userList[i].VisitDateTime = obj.patientVisitList[i].visitDateTime;
-                userList[i].VisitId = obj.patientVisitList[i].visitId;
-                userList[i].PtName = obj.patientVisitList[i].patientName;
-                userList[i].Image = "<img src='" + obj.patientVisitList[i].imageUrl + "'>";
-                userList[i].Description = obj.patientVisitList[i].description;
-                userList[i].VisitCharge = obj.patientVisitList[i].visitCharge;
-                userList[i].Update = "<img class='icon' src='icons/update.png' \n\
+                myList[i] = {}; // add new empty object to array
+                myList[i].MedRecNo = obj.patientVisitList[i].medRecNo;
+                myList[i].Name = obj.patientVisitList[i].patientName;
+                myList[i].Image = "<img src='" + obj.patientVisitList[i].imageUrl + "'>";
+                myList[i].Description = obj.patientVisitList[i].description;
+                myList[i].VisitId = obj.patientVisitList[i].visitId;
+                myList[i].VisitDateTime = obj.patientVisitList[i].visitDateTime;
+                myList[i].Charge = obj.patientVisitList[i].visitCharge;
+                myList[i].Update = "<img class='icon' src='icons/update.png' \n\
                     alt='update icon' onclick='patients.updateUI(\"" +
                     obj.patientVisitList[i].medRecNo + "\", \"" + targetId + "\" )' />";
-                userList[i].Delete = "<img class='icon' src='icons/delete.png' \n\
+                myList[i].Delete = "<img class='icon' src='icons/delete.png' \n\
                     alt='update icon' onclick='patients.delete(\"" +
                     obj.patientVisitList[i].medRecNo + "\", `" + targetId + "` )' />";
-                
                 // Remove this once you are done debugging...
-                //userList[i].errorMsg = obj.patientVisitList[i].errorMsg;
+                //myList[i].errorMsg = obj.patientVisitList[i].errorMsg;
             }
 
             // add filterable-sortable HTML table to the content area
             MakeFilterSortTable({
-                "caption":"Patient Visits",
-                "insert":true,                 //include an icon to insert? 
-                "insertRoute":"#/insertVisit", //if yes provide FW routing path to insert method
-                "theList":userList,
-                "targetId": targetId,
-                "style":"clickSort"
+                searchKeyElem: searchBox,
+                theList:myList,
+                targetDOM: tableDiv,
+                style:"clickSort"
             });
         } // end of function success
 
-    }; // end of function users.list
+    }; // end of function patients.list
 
     patients.delete = function (idToDelete, targetId) {
         

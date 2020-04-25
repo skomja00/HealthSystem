@@ -208,7 +208,7 @@ var users = {};
     }
     
     users.list = function (targetId) {
-
+        
         // clear out whatever may be currently in the content area
         var contentDOM = document.getElementById(targetId);
         contentDOM.innerHTML = "";
@@ -222,11 +222,6 @@ var users = {};
 
         function userListSuccess(obj) {
 
-            // var obj = JSON.parse(hreq.responseText); // this already done by function ajax2...
-            if (!obj) {
-                contentDOM.innerHTML += "Http Request (from AJAX call) did not parse to an object.";
-                return;
-            }
             console.log(obj);
 
             if (obj.dbError.length > 0) {
@@ -234,27 +229,70 @@ var users = {};
                 return;
             }
 
-            var div = document.createElement("div");
+            // Want the User List UI (plus headings and search filter) all to be centered. 
+            // Cannot be sure content area will be like this, so create a div inside of the 
+            // content area and set the div to be aligned center (HTML table will be styled 
+            // margin: auto to make it centered as well). 
+            var div = Utils.make({
+                htmlTag: "div",
+                parent: contentDOM
+            });
             div.style.textAlign = "center";
-            contentDOM.appendChild(div);
-            div.innerHTML = `
-                <h2>Web User List</h2>
-                Search Filter:
-            `;
 
-            var searchBox = document.createElement("input");
-            searchBox.setAttribute("type", "text");
-            div.appendChild(searchBox);
+            var heading = Utils.make({
+                htmlTag: "h2",
+                parent: div
+            });
 
-            var tableDiv = document.createElement("div");
-            contentDOM.appendChild(tableDiv);
+            Utils.make({// don't need reference to this span tag...
+                htmlTag: "span",
+                innerHTML: "Web User List ",
+                parent: heading
+            });
 
+            var img = Utils.make({
+                htmlTag: "img",
+                parent: heading
+            });
+            img.src = 'icons/dark/insert_H32.png'; 
+            img.onclick = function () { // you cant pass input params directly into an event handler
+
+                // Originally I had this line of code here:  
+                //     users.insertUI(targetId);
+                // And that worked to show the user insert UI, BUT, afterwards, if you tried to re-run 
+                // the user list, nothing happened -- because this would make no change in the 
+                // window.location.hash (the link in the browser's address bar) -- so nothing would happen. 
+                // 
+                // The solution was to invoke the user insert UI through a routing rule. 
+                // For "other" insert (even though you probably won't have a Nav Bar link for inserting "other", 
+                // you may need to create a routing rule and invoke that similarly (from the "other" list UI).
+                window.location.hash = "#/insertUser";
+            };
+
+            Utils.make({
+                htmlTag: "span",
+                innerHTML: " Search Filter: ",
+                parent: div
+            });
+
+            var searchBox = Utils.make({
+                htmlTag: "input",
+                parent: div
+            });
+            searchBox.type = "text";
+            //searchBox.setAttribute("type", "text");  // same thing...
+
+            var tableDiv = Utils.make({
+                htmlTag: "div",
+                parent: div
+            });
+            
             // tweak obj.webUserList to include only the properties you want - combine, delete, etc. 
             var userList = [];
             for (var i = 0; i < obj.webUserList.length; i++) {
                 userList[i] = {}; // add new empty object to array
-                userList[i].Credentials = obj.webUserList[i].userEmail + "<br/> PW (to test Logon): " +
-                        obj.webUserList[i].userPassword;
+                userList[i].Credentials = obj.webUserList[i].userEmail;
+                        /*+ "<br/> PW (to test Logon): " + obj.webUserList[i].userPassword; */
                 userList[i].Image = "<img src='" + obj.webUserList[i].image + "'>";
                 userList[i].Birthday = obj.webUserList[i].birthday;
                 userList[i].MemberFee = obj.webUserList[i].membershipFee;
@@ -267,31 +305,17 @@ var users = {};
                 userList[i].Delete = "<img class='icon' src='icons/delete.png' \n\
                                     alt='update icon' onclick='users.delete(" +
                                     obj.webUserList[i].webUserId + ", `" + targetId + "` )' />";
-
                 // Remove this once you are done debugging...
                 //userList[i].errorMsg = obj.webUserList[i].errorMsg;
             }
 
-            // add click sortable HTML table to the content area
-
-            // ********************** function tableBuilder.build ***********************************
-            // params.list: an array of objects that are to be built into an HTML table.
-            // params.target: reference to DOM object where HTML table is to be placed (by buildTable) -- 
-            //         (this is not the id string but actual reference like you get from method getElementById()
-            // params.style: will be added as className to DOM element target,
-            // params.orderPropName (string): name of property (of objects in list) for iniial sort
-            // params.reverse (boolean): if true, initial sort will be high to low (else low to high). 
-            // params.imgWidth: any columns that hold image files will be turned into <img> tags with this width.
-
+            // add filterable-sortable HTML table to the content area
             MakeFilterSortTable({
-                "caption":"Web Users",
-                "insert":true,               //include an icon to insert? 
-                "insertRoute":"#/insertUser", //if yes provide FW routing path to insert method
-                "style":"clickSort",
-                "theList":userList,
-                "targetId": targetId
+                searchKeyElem: searchBox,
+                theList:userList,
+                targetDOM: tableDiv,
+                style:"clickSort"
             });
-
         } // end of function success
 
     }; // end of function users.list
@@ -554,7 +578,7 @@ var users = {};
         // you'll get a security error from the server. JSON.stringify converts the javaScript
         // object into JSON format (the reverse operation of what gson does on the server side).
         var myData = escape(JSON.stringify(userInputObj));
-        var url = "WebAPIs/insertUserSimpleAPI.jsp?jsonData=" + myData;
+        var url = "WebAPIs/insertUserAPI.jsp?jsonData=" + myData;
         ajax2({
             "url" : url,
             "successFn" : insertUserReqGood,

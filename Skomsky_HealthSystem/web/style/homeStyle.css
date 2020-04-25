@@ -5,7 +5,7 @@
 .home li {
     display: block; /* block: items break to a separate line and stack in a column */
                     /* inline-block same as block but no line breaks good for horiz layout */
-    min-width: 140px; /* this will remove the variations in size of list items */
+    min-width: 140px; 
     max-width: 440px;
     margin: 10px;
  }

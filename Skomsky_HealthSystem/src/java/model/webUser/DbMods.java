@@ -126,7 +126,7 @@ public class DbMods {
             // Encode string values into the prepared statement (wrapper class).
             pStatement.setString(1, inputData.userEmail); // string type is simple
             pStatement.setString(2, inputData.userPassword);
-            pStatement.setString(3, inputData.userPassword);
+            pStatement.setString(3, inputData.image);
             pStatement.setBigDecimal(4, ValidationUtils.decimalConversion(inputData.membershipFee));
             pStatement.setDate(5, ValidationUtils.dateConversion(inputData.birthday));
             pStatement.setInt(6, ValidationUtils.integerConversion(inputData.userRoleId));

@@ -195,85 +195,6 @@ CREATE TABLE `web_user` (
         get_user_role_id('admin'));
         
         
-    INSERT INTO `web_user` 
-        (`user_email`,
-        `user_password`,
-        `image`,
-        `birthday`,
-        `membership_fee`,
-        `user_role_id`) 
-	VALUES
-        ('la09junk1',                  
-        'p',            
-        'http://cis-linux2.temple.edu/~sallyk/pics_user/sally.jpg',    
-        '1985-01-01', 
-        4.95,            
-        get_user_role_id('manager'));        
-    
-    INSERT INTO `web_user` 
-        (`user_email`,
-        `user_password`,
-        `image`,
-        `birthday`,
-        `membership_fee`,
-        `user_role_id`) 
-	VALUES
-        ('la09junk2',                  
-        'p',            
-        'http://cis-linux2.temple.edu/~sallyk/pics_user/sally.jpg',    
-        '1985-01-01', 
-        4.95,            
-        get_user_role_id('manager'));
-        
-    
-    INSERT INTO `web_user` 
-        (`user_email`,
-        `user_password`,
-        `image`,
-        `birthday`,
-        `membership_fee`,
-        `user_role_id`) 
-	VALUES
-        ('la09junk3',                  
-        'p',            
-        'http://cis-linux2.temple.edu/~sallyk/pics_user/sally.jpg',    
-        '1985-01-01', 
-        4.95,            
-        get_user_role_id('manager'));
-
-    
-    INSERT INTO `web_user` 
-        (`user_email`,
-        `user_password`,
-        `image`,
-        `birthday`,
-        `membership_fee`,
-        `user_role_id`) 
-	VALUES
-        ('la09junk4',                  
-        'p',            
-        'http://cis-linux2.temple.edu/~sallyk/pics_user/sally.jpg',    
-        '1985-01-01', 
-        4.95,            
-        get_user_role_id('manager'));
-        
-    
-    INSERT INTO `web_user` 
-        (`user_email`,
-        `user_password`,
-        `image`,
-        `birthday`,
-        `membership_fee`,
-        `user_role_id`) 
-	VALUES
-        ('la09junk5',                  
-        'p',            
-        'http://cis-linux2.temple.edu/~sallyk/pics_user/sally.jpg',    
-        '1985-01-01', 
-        4.95,            
-        get_user_role_id('manager'));
-        
-        
 	/* Try to add a record that has an invalid (non-existent) user_role_id and notice that the database management system will not let that record be inserted. */
     /* Error Code: 1452. Cannot add or update a child row: a foreign key constraint fails */
 --      INSERT INTO `web_user` 
@@ -301,17 +222,17 @@ CREATE TABLE `web_user` (
 --  * Create PatientVisit/"other" table 
 -- */
 CREATE TABLE `PatientVisit` (
+    `MedRecNo` varchar(255) NOT NULL,
     `VisitId` INT(11) NOT NULL AUTO_INCREMENT,
     `PatientName` varchar(255) DEFAULT NULL,
     `ImageUrl` varchar(2100) NULL,
-    `MedRecNo` varchar(255) NOT NULL,
-    `Description` varchar(2100) NOT NULL,
-    `VisitDateTime` datetime NULL,
+    `Description` varchar(2100) NULL,
+    `VisitDateTime` datetime NOT NULL,
     `Diagnosis` varchar(255) NULL,
     `VisitCharge` decimal(14,3) NULL,
     `web_user_id` INT(11) NOT NULL,
     PRIMARY KEY (`VisitId`),
-    UNIQUE INDEX `MedRecNo_VisitDateTime_uidx` (`MedRecNo`, `VisitDateTime`),
+    UNIQUE INDEX `MedRecNo_VisitId_uidx` (`MedRecNo`, `VisitId`),
     CONSTRAINT `web_user_id_fk_1` FOREIGN KEY (`web_user_id`) REFERENCES `web_user` (`web_user_id`)
     ) 
     ENGINE=InnoDB; 
@@ -336,8 +257,8 @@ CREATE TABLE `PatientVisit` (
         (null,       
         null,
         'TUN49199',
-        'Office Visit',     
-        null, 
+        null,     
+        '2020-04-27 11:00', 
         null,      
         null,
         get_web_user_id('office@gmail.com'));
@@ -478,7 +399,7 @@ CREATE TABLE `PatientVisit` (
         `web_user_id`)
     values
         ('Sanders, Jared',       
-        'https://cis.temple.edu/sites/default/files/styles/portrait-small/public/user_pictures/picture-173-1437489687.jpg',
+        'https://cis.temple.edu/sites/default/files/styles/portrait-small/public/user_pictures/picture-442-1471283120.jpg?itok=RwkmVCIP',
         'TUN158929',
         'Vaccination',
         '2019-11-06 15:49',

@@ -114,8 +114,12 @@ function setTheme (palId) {
         ".slideButton  { background-color: " + hash["titleBackgroundColor"] + ";" + 
         "                   box-shadow: 0px 0px 9px 7px " + hash["titleBoxShadow"] + ";" +  
         "                   color: " + hash["titleColor"] + ";" + 
-        "                   text-shadow: 0px 0px 10px + 0px 0px 10px " + hash["titleTextShadow"] + ";}";
-    
+        "                   text-shadow: 0px 0px 10px + 0px 0px 10px " + hash["titleTextShadow"] + ";}" +
+        ".dropContent  { background-color: " + hash["titleBackgroundColor"] + ";" + 
+        "                border-color: " + hash["titleColor"] + ";" + 
+        "                color: " + hash["titleColor"] + ";}" +
+        ".dropHeader   { border-color: " + hash["titleColor"] + ";}" ; 
+
     /* style the icon */
     document.getElementById("ddTheme").innerHTML = hash["icon"];
 
@@ -189,42 +193,42 @@ function setTheme (palId) {
             "<Root>" +
                 "<Pallette id='LightPallette'>" +
                     "<colors id='colors'>" +
-                        "<color name='titleBackgroundColor'     rgb='F2F2DF' r='242' g='242' b='223' a='.5' />" +
+                        "<color name='titleBackgroundColor'     rgb='F2F2DF' r='242' g='242' b='223' />" +
                         "<color name='titleBoxShadow'           rgb='CCCCCC' r='204' g='204' b='204' />" +
                         "<color name='titleColor'               rgb='FFFFFF' r='255' g='255' b='255' />" +
                         "<color name='titleTextShadow'          rgb='000000' r='000' g='000' b='000' />" +
                         "<color name='navBorder'                rgb='B6F2F2' r='182' g='242' b='242' />" +
-                        "<color name='navBackground'            rgb='B6F2F2' r='182' g='242' b='242' a='.5' />" +
+                        "<color name='navBackground'            rgb='B6F2F2' r='174' g='230' b='255' />" +
                         "<color name='listItemBackground'       rgb='F2F2DF' r='242' g='242' b='223' />" +
                         "<color name='listItemColor'            rgb='A7DDF2' r='167' g='221' b='242' />" +
                         "<color name='listItemTitleColor'       rgb='A7E4F2' r='167' g='228' b='242' />" +
-                        "<color name='missionBackground'        rgb='B6F2F2' r='182' g='242' b='242' a='.5' />" +
-                        "<color name='missionBoxShadow'         rgb='4F82B3' r='137' g='197' b='255' />" +
+                        "<color name='missionBackground'        rgb='B6F2F2' r='242' g='242' b='223' />" +
+                        "<color name='missionBoxShadow'         rgb='4F82B3' r='204' g='204' b='204' />" +
                         "<color name='missionFlyoverColor'      rgb='FFFFFF' r='255' g='255' b='255' />" +
                         "<color name='missionFlyoverTextShadow' rgb='4F82B3' r='025' g='040' b='066' />" +
-                        "<color name='footerBackgroundColor'    rgb='F2F2DF' r='242' g='242' b='223' a='.5' />" +
+                        "<color name='footerBackgroundColor'    rgb='F2F2DF' r='242' g='242' b='223' />" +
                         "<color name='footerBoxShadow'          rgb='CCCCCC' r='204' g='204' b='204' />" +
-                        "<color name='footerColor'              rgb='FFFFFF' r='242' g='242' b='223' />" +
+                        "<color name='footerColor'              rgb='FFFFFF' r='255' g='255' b='255' />" +
                         "<color name='footerTextShadow'         rgb='000000' r='000' g='000' b='000' />" +
                     "</colors>" +
                     "<icon id='icon' src='icons/light/sun-icon-H24.png' />" + 
                 "</Pallette>" +
                 "<Pallette id='DarkPallette'>" +
                     "<colors id='colors'>" +
-                        "<color name='titleBackgroundColor'     rgb='A3D3FF' r='163' g='211' b='255' a='.5' />"+
+                        "<color name='titleBackgroundColor'     rgb='A3D3FF' r='163' g='211' b='255' />"+
                         "<color name='titleBoxShadow'           rgb='4F82B3' r='079' g='130' b='179' />" +
                         "<color name='titleColor'               rgb='000000' r='000' g='000' b='000' />" +
                         "<color name='titleTextShadow'          rgb='4F82B3' r='029' g='080' b='129' />" +
                         "<color name='navBorder'                rgb='A3D3FF' r='163' g='211' b='255' />" +
-                        "<color name='navBackground'            rgb='A3D3FF' r='163' g='211' b='255' a='.5' />" +
+                        "<color name='navBackground'            rgb='A3D3FF' r='163' g='211' b='255' />" +
                         "<color name='listItemBackground'       rgb='A3D3FF' r='163' g='211' b='255' />" +
-                        "<color name='listItemColor'            rgb='B3863D' r='179' g='134' b='61' />" +
+                        "<color name='listItemColor'            rgb='B3863D' r='0' g='0' b='0' />" +
                         "<color name='listItemTitleColor'       rgb='B3863D' r='179' g='134' b='61' />" +
-                        "<color name='missionBackground'        rgb='A3D3FF' r='163' g='211' b='255' a='.5' />" +
+                        "<color name='missionBackground'        rgb='A3D3FF' r='163' g='211' b='255' />" +
                         "<color name='missionBoxShadow'         rgb='4F82B3' r='100' g='150' b='200' />" +
                         "<color name='missionFlyoverColor'      rgb='000000' r='000' g='000' b='000' />" +
                         "<color name='missionFlyoverTextShadow' rgb='4F82B3' r='000' g='000' b='000' />" +
-                        "<color name='footerBackgroundColor'    rgb='A3D3FF' r='163' g='211' b='255' a='.5' />"+
+                        "<color name='footerBackgroundColor'    rgb='A3D3FF' r='163' g='211' b='255' />"+
                         "<color name='footerBoxShadow'          rgb='4F82B3' r='079' g='130' b='179' />" +
                         "<color name='footerColor'              rgb='000000' r='000' g='000' b='000' />" +
                         "<color name='footerTextShadow'         rgb='4F82B3' r='029' g='080' b='129' />" +

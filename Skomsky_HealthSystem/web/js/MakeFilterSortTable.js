@@ -174,31 +174,13 @@
     // Main program of MakeFilterSortTable
     
     var list = params["theList"];
-    var targetId = params["targetId"];
+    //var targetId = params["targetId"];
+    var targetDOM = params["targetDOM"];
     var style = params.style || "clickSort"; // optional, if not supplied classname "clickSort" will be added
-    var contentDOM = document.getElementById(targetId);
+    //var contentDOM = document.getElementById(targetId);
+    var contentDOM = targetDOM;
     contentDOM.classList.add(style);
 
-    contentDOM.innerHTML = '<b>' + params.caption + ' </b>';
-    // option to include navigate to insert 
-    if (params.insert) {
-        var img = document.createElement("img");
-        img.src = 'icons/dark/insert_H32.png';//CRUD_icons.insert;
-        
-        contentDOM.appendChild(img);            
-        img.onclick = function () { // you cant pass input params directly into an event handler
-                                    // create a routing rule and invoke 
-            window.location.hash = params.insertRoute;
-        };            
-    }
-    var lab = document.createElement("label");
-    lab.setAttribute("for","searchInput");
-    lab.innerHTML += "<br>Search Filter: ";
-    contentDOM.appendChild(lab); 
-    var searchInput = document.createElement("input");
-    searchInput.setAttribute("name","searchInput");
-    contentDOM.appendChild(searchInput); 
-     
     // Create a new HTML table (DOM object) and append it.
     var newTable = document.createElement("table");
     contentDOM.appendChild(newTable);
@@ -219,17 +201,20 @@
             //the json keys in the 'list' object are the text only from the <th>
             //not the icon. Sort using text only of header and strip off the sortUpDown.png icon
             jsSort(list, this.innerText.trim());//this.innerHTML);
-            addDataRows(list, searchInput.value);
+            addDataRows(list, params.searchKeyElem.value);
         };
     }
 
     // Initially searchInput.value should be "" and when passing that to 
     // function isToShow should always return meaning all rows will initially show. 
-    addDataRows(list, searchInput.value);
+    addDataRows(list, params.searchKeyElem.value);
 
-    searchInput.onkeyup = function () {
-        console.log("search filter changed to " + searchInput.value);
-        addDataRows(list, searchInput.value);
-    };
+    if (params.searchKeyElem) {
+        console.log("there is a search key textbox");
+        params.searchKeyElem.onkeyup = function () {
+            console.log("search filter changed to " + params.searchKeyElem.value);
+            addDataRows(list, params.searchKeyElem.value);
+        };
+    }
     
 }  // MakeFilterSortTable

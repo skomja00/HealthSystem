@@ -2,7 +2,6 @@
                  The HTML coder should not redefine this if they want to    
                  have the nice clickSort default styling */
     text-align:center;
-
 }
 
 .clickSort table {
@@ -11,6 +10,7 @@
 }
 
 .clickSort td {  /* applies to any <td> tag in any element classed "clickSort" */
+    margin: 4px;
     padding: 4px;
     font-size:20px;
 }
@@ -23,8 +23,10 @@
     white-space: nowrap; /* do not want multi word column headings (or sort icon) to wrap */
 }
 
-.clickSort td img { /* applies to any <img> tag in a <td> tag in any element classed "clickSort" */
+.clickSort td img{  /* applies images in a <td> cell in  "clickSort" container */
     width: 60px;
+    border-radius: 7%;
+    box-shadow: 0px 0px 8px black;
 }
 
 .clickSort td .icon { /* applies to any <img> tag in a <td> tag in any element classed "clickSort" */

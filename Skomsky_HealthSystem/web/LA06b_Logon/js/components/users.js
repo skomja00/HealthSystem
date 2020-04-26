@@ -141,7 +141,7 @@ users.findById = function (idOfInput, targetId) {
             targetDOM.innerHTML += "Database Error Encountered: " + obj.dbError;
             return;
         } else if (obj.webUserList.length === 0 ) {
-            targetDOM.innerHTML = "No Web User with id "+desiredUserId+" was found in the Database."
+            targetDOM.innerHTML = obj.webUserList.errorMsg;
         } else {
             var msg = "Found Web User " + obj.webUserList[0].webUserId;
             msg += "<br/> &nbsp; Birthday: " +  obj.webUserList[0].birthday;

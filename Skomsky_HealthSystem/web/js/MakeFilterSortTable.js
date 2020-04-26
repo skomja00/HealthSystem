@@ -174,7 +174,16 @@
     // Main program of MakeFilterSortTable
     
     var list = params["theList"];
-    //var targetId = params["targetId"];
+    
+    var orderPropName = params.orderPropName || ""; // optional, if not supplied, no sort applied. 
+
+    if (orderPropName && orderPropName.length > 0) {
+        jsSort(list, orderPropName);
+        console.log("SORTED LIST NEXT LINE");
+        console.log(list);
+    }
+
+     //var targetId = params["targetId"];
     var targetDOM = params["targetDOM"];
     var style = params.style || "clickSort"; // optional, if not supplied classname "clickSort" will be added
     //var contentDOM = document.getElementById(targetId);

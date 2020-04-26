@@ -44,7 +44,7 @@ function setTheme (palId) {
         }
     };
 
-    var hash = getPallette(palId);
+    var rgbObj = getPallette(palId);
     
     var s = document.getElementById("themeId");;
     /* 1st time through create and append <style> tag to header 
@@ -56,81 +56,88 @@ function setTheme (palId) {
         h.appendChild(s);
     }
     s.innerHTML = 
-        ".title { background-color : " + hash["titleBackgroundColor"] + ";" + 
-        "         box-shadow : 0px 0px 9px 7px " + hash["titleBoxShadow"] + ";" + 
-        "         color : " + hash["titleColor"] + ";" + 
-        "         text-shadow : " + "0px 0px 10px " + hash["titleTextShadow"] + ";}" + 
-        ".navigation { border = 2px solid " + hash["navBorder"] + ";" + 
-        "              background-color : " + hash["navBackground"] + ";}" + 
-        ".mission { box-shadow : 0px 0px 10px 10px " + hash["missionBoxShadow"] + ";" + 
-        "           background-color : " + hash["missionBackground"] + ";}" + 
-        ".mission-flyover { color : " + hash["missionFlyoverColor"] + ";" + 
-        "                   text-shadow : 0px 0px 10px " + hash["missionFlyoverTextShadow"] + ";}" + 
-        ".footer { background-color : " + hash["footerBackgroundColor"] + ";" + 
-        "         box-shadow : 0px 0px 9px 7px " + hash["footerBoxShadow"] + ";" + 
-        "         color : " + hash["footerColor"] + ";" + 
-        "         text-shadow : 0px 0px 10px " + hash["footerTextShadow"] + ";}" +
-        ".home li { background-color : " + hash["listItemBackground"] + ";" + 
-        "            color : " + hash["listItemColor"] + ";}" + 
-        ".home .list-item-title { background-color : " + hash["listItemBackground"] + ";" + 
-        "         color : " + hash["titleColor"] + ";" + 
-        "         text-shadow : " + "0px 0px 10px " + hash["titleTextShadow"] + ";}" + 
-        ".home a { text-shadow : 0px 0px 10px " + hash["missionFlyoverTextShadow"] + ";" + 
-        "          color : " + hash["missionFlyoverColor"] + ";}" + 
-        ".home a:visited { text-shadow : 0px 0px 10px " + hash["missionFlyoverTextShadow"] + ";" + 
-        "                  color : " + hash["missionFlyoverColor"] + ";}" + 
-        ".footer a {         text-shadow : 0px 0px 10px " + hash["footerTextShadow"] + ";" + 
-        "                    color : " + hash["footerColor"] + ";}" + 
-        ".footer a:visited { text-shadow : 0px 0px 10px " + hash["footerTextShadow"] + ";" + 
-        "                    color : " + hash["footerColor"] + ";}" + 
-        ".clickSort td { background-color : " + hash["titleBackgroundColor"] + ";" + 
-        "         box-shadow : 0px 0px 3px 2px " + hash["titleBoxShadow"] + ";" + 
-        "         color : " + hash["titleColor"] + ";" + 
-        "         text-shadow : " + "0px 0px 10px " + hash["titleTextShadow"] + ";}" + 
-        ".clickSort th { background-color : " + hash["titleBackgroundColor"] + ";" + 
-        "         box-shadow : 0px 0px 3px 2px " + hash["titleBoxShadow"] + ";" + 
-        "         color : " + hash["titleColor"] + ";" + 
-        "         text-shadow : " + "0px 0px 10px " + hash["titleTextShadow"] + ";}" +
-        "#insertArea td { background-color : " + hash["titleBackgroundColor"] + ";" + 
-        "         box-shadow : 0px 0px 3px 2px " + hash["titleBoxShadow"] + ";" + 
-        "         color : " + hash["titleColor"] + ";" + 
-        "         text-shadow : " + "0px 0px 10px " + hash["titleTextShadow"] + ";}" + 
-        "#insertArea th { background-color : " + hash["titleBackgroundColor"] + ";" + 
-        "         box-shadow : 0px 0px 3px 2px " + hash["titleBoxShadow"] + ";" + 
-        "         color : " + hash["titleColor"] + ";" + 
-        "         text-shadow : " + "0px 0px 10px " + hash["titleTextShadow"] + ";}" +
-        ".slideUsersClass { background-color: " + hash["titleBackgroundColor"] + ";" + 
-        "                   box-shadow: 0px 0px 9px 7px " + hash["titleBoxShadow"] + ";" +  
-        "                   color: " + hash["titleColor"] + ";" + 
-        "                   text-shadow: 0px 0px 10px + 0px 0px 10px " + hash["titleTextShadow"] + ";}" + 
-        ".slidePatientsClass { background-color: " + hash["titleBackgroundColor"] + ";" + 
-        "                   box-shadow: 0px 0px 9px 7px " + hash["titleBoxShadow"] + ";" +  
-        "                   color: " + hash["titleColor"] + ";" + 
-        "                   text-shadow: 0px 0px 10px + 0px 0px 10px " + hash["titleTextShadow"] + ";}" + 
-        ".slideImageClass { box-shadow: 0px 0px 9px 7px " + hash["titleBoxShadow"] + ";}" +  
-        ".slideButton  { background-color: " + hash["titleBackgroundColor"] + ";" + 
-        "                   box-shadow: 0px 0px 9px 7px " + hash["titleBoxShadow"] + ";" +  
-        "                   color: " + hash["titleColor"] + ";" + 
-        "                   text-shadow: 0px 0px 10px + 0px 0px 10px " + hash["titleTextShadow"] + ";}" +
-        ".dropContent  { background-color: " + hash["titleBackgroundColor"] + ";" + 
-        "                border-color: " + hash["titleColor"] + ";" + 
-        "                color: " + hash["titleColor"] + ";}" +
-        ".dropHeader   { border-color: " + hash["titleColor"] + ";}" ; 
+        ".title { background-color : " + rgbObj.titleBackgroundColor + ";" + 
+        "         box-shadow : 0px 0px 9px 7px " + rgbObj.titleBoxShadow + ";" + 
+        "         color : " + rgbObj.titleColor + ";" + 
+        "         text-shadow : " + "0px 0px 10px " + rgbObj.titleTextShadow + ";}" + 
+        ".navigation { border = 2px solid " + rgbObj.navBorder + ";" + 
+        "              background-color : " + rgbObj.navBackground + ";}" + 
+        ".mission { box-shadow : 0px 0px 10px 10px " + rgbObj.missionBoxShadow + ";" + 
+        "           background-color : " + rgbObj.missionBackground + ";}" + 
+        ".mission-flyover { color : " + rgbObj.missionFlyoverColor + ";" + 
+        "                   text-shadow : 0px 0px 10px " + rgbObj.missionFlyoverTextShadow + ";}" + 
+        ".footer { background-color : " + rgbObj.footerBackgroundColor + ";" + 
+        "         box-shadow : 0px 0px 9px 7px " + rgbObj.footerBoxShadow + ";" + 
+        "         color : " + rgbObj.footerColor + ";" + 
+        "         text-shadow : 0px 0px 10px " + rgbObj.footerTextShadow + ";}" +
+        ".home li { background-color : " + rgbObj.listItemBackground + ";" + 
+        "            color : " + rgbObj.listItemColor + ";}" + 
+        ".home .list-item-title { background-color : " + rgbObj.listItemBackground + ";" + 
+        "         color : " + rgbObj.titleColor + ";" + 
+        "         text-shadow : " + "0px 0px 10px " + rgbObj.titleTextShadow + ";}" + 
+        ".home a { text-shadow : 0px 0px 10px " + rgbObj.missionFlyoverTextShadow + ";" + 
+        "          color : " + rgbObj.missionFlyoverColor + ";}" + 
+        ".home a:visited { text-shadow : 0px 0px 10px " + rgbObj.missionFlyoverTextShadow + ";" + 
+        "                  color : " + rgbObj.missionFlyoverColor + ";}" + 
+        ".footer a {         text-shadow : 0px 0px 10px " + rgbObj.footerTextShadow + ";" + 
+        "                    color : " + rgbObj.footerColor + ";}" + 
+        ".footer a:visited { text-shadow : 0px 0px 10px " + rgbObj.footerTextShadow + ";" + 
+        "                    color : " + rgbObj.footerColor + ";}" + 
+        ".clickSort td { background-color : " + rgbObj.titleBackgroundColor + ";" + 
+        "         box-shadow : 0px 0px 3px 2px " + rgbObj.titleBoxShadow + ";" + 
+        "         color : " + rgbObj.titleColor + ";" + 
+        "         text-shadow : " + "0px 0px 10px " + rgbObj.titleTextShadow + ";}" + 
+        ".clickSort th { background-color : " + rgbObj.titleBackgroundColor + ";" + 
+        "         box-shadow : 0px 0px 3px 2px " + rgbObj.titleBoxShadow + ";" + 
+        "         color : " + rgbObj.titleColor + ";" + 
+        "         text-shadow : " + "0px 0px 10px " + rgbObj.titleTextShadow + ";}" +
+        "#insertArea td { background-color : " + rgbObj.titleBackgroundColor + ";" + 
+        "         box-shadow : 0px 0px 3px 2px " + rgbObj.titleBoxShadow + ";" + 
+        "         color : " + rgbObj.titleColor + ";" + 
+        "         text-shadow : " + "0px 0px 10px " + rgbObj.titleTextShadow + ";}" + 
+        "#insertArea th { background-color : " + rgbObj.titleBackgroundColor + ";" + 
+        "         box-shadow : 0px 0px 3px 2px " + rgbObj.titleBoxShadow + ";" + 
+        "         color : " + rgbObj.titleColor + ";" + 
+        "         text-shadow : " + "0px 0px 10px " + rgbObj.titleTextShadow + ";}" +
+        ".slideUsersClass { background-color: " + rgbObj.titleBackgroundColor + ";" + 
+        "                   box-shadow: 0px 0px 9px 7px " + rgbObj.titleBoxShadow + ";" +  
+        "                   color: " + rgbObj.titleColor + ";" + 
+        "                   text-shadow: 0px 0px 10px + 0px 0px 10px " + rgbObj.titleTextShadow + ";}" + 
+        ".slidePatientsClass { background-color: " + rgbObj.titleBackgroundColor + ";" + 
+        "                   box-shadow: 0px 0px 9px 7px " + rgbObj.titleBoxShadow + ";" +  
+        "                   color: " + rgbObj.titleColor + ";" + 
+        "                   text-shadow: 0px 0px 10px + 0px 0px 10px " + rgbObj.titleTextShadow + ";}" + 
+        ".slideImageClass { box-shadow: 0px 0px 9px 7px " + rgbObj.titleBoxShadow + ";}" +  
+        ".slideButton  { background-color: " + rgbObj.titleBackgroundColor + ";" + 
+        "                   box-shadow: 0px 0px 9px 7px " + rgbObj.titleBoxShadow + ";" +  
+        "                   color: " + rgbObj.titleColor + ";" + 
+        "                   text-shadow: 0px 0px 10px + 0px 0px 10px " + rgbObj.titleTextShadow + ";}" +
+        ".dropContent  { background-color: " + rgbObj.titleBackgroundColor + ";" + 
+        "                border-color: " + rgbObj.titleColor + ";" + 
+        "                color: " + rgbObj.titleColor + ";}" +
+        ".dropHeader   { border-color: " + rgbObj.titleColor + ";}" + 
+        ".modalStyle { background-color : " + rgbObj.titleBackgroundColor + ";" + 
+        "         box-shadow : 0px 0px 9px 7px " + rgbObj.titleBoxShadow + ";" + 
+        "         color : " + rgbObj.titleColor + ";" + 
+        "         text-shadow : " + "0px 0px 10px " + rgbObj.titleTextShadow + ";}" +
+        ".modalStyle .x {color: "+ rgbObj.titleColor + ";" + 
+        "                box-shadow: 0px 0px 10px " + rgbObj.titleBoxShadow + ";}" ;
+
 
     /* style the icon */
-    document.getElementById("ddTheme").innerHTML = hash["icon"];
+    document.getElementById("ddTheme").innerHTML = rgbObj.icon;
 
     /*
-     * getPallette() retuns a hash of the theme attributes. Color elements have 
-     * string "RGBA(r,g,b,a)" hash value, icon elements have a image src= hash value
+     * getPallette() retuns a rgbObj of the theme attributes. Color elements have 
+     * string "RGBA(r,g,b,a)" rgbObj value, icon elements have a image src= rgbObj value
      * 
      * @param {LightPallette|DarkPallette} palId
-     * @returns {Associative Array} hash
+     * @returns {Associative Array} rgbObj
      */
     function getPallette(palId) {
         var rgba;
         var alpha;
-        var hash = {}; /* hash: key = descriptive color name */ 
+        var rgbObj = {}; /* rgbObj: key = descriptive color name */ 
                        /*       value = "RGBA(r,g,b,a)" string   */
         var xmlDoc = palletteDoc();
         var theme = xmlDoc.getElementById(palId).childNodes; 
@@ -152,17 +159,17 @@ function setTheme (palId) {
                     {
                         rgba += alpha + ")";                
                     }
-                    hash[colors[j].getAttribute("name")] = rgba; /* "name" will be hash key */
+                    rgbObj[colors[j].getAttribute("name")] = rgba; /* "name" will be rgbObj key */
                 }
             }
             /* add an icon to the theme */
             if (theme[i].id === "icon") {
-                hash["icon"] = "<a><img class='theme-icon' id='theme-icon' title='theme' src='" +
+                rgbObj.icon = "<a><img class='theme-icon' id='theme-icon' title='theme' src='" +
                                 theme[i].getAttribute("src") + "'" +
                                 "</a>";
             }
         }
-        return hash;
+        return rgbObj;
     }
     /*
      * palletteDoc() implements DOM XML to parse an input string of theme pallettes/icons.

@@ -17,7 +17,6 @@ public class FormatUtils {
             return "";
         }
         try {
-            System.out.println("FormatUtils...formatDateTime...obj.getClass: " + obj.getClass());
             java.util.Date dateval = (java.util.Date) obj;
             SimpleDateFormat dateformat = new SimpleDateFormat("MM/dd/yyyy h:mm a");
             dateformat.setLenient(false);

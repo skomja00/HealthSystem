@@ -13,40 +13,44 @@ public class DbMods {
     public static StringData findById (DbConn dbc, String id) {
         
         StringData sd = new StringData();
-        try {
-            String sql = 
-                "select " +
-                "    pv.VisitId, " +
-                "    pv.PatientName, " +
-                "    pv.ImageUrl, " +
-                "    pv.MedRecNo, " +
-                "    pv.Description, " +
-                "    pv.VisitDateTime, " +
-                "    pv.Diagnosis, " +
-                "    pv.VisitCharge, " +
-                "    wu.web_user_id, " +
-                "    wu.user_email, " +
-                "    wu.membership_fee " +
-                "from PatientVisit as pv " +
-                "join web_user as wu on wu.web_user_id = pv.web_user_id " +
-                "where pv.MedRecNo = ? ";
+        if (id.length() > 0) {
+            try {
+                String sql = 
+                    "select " +
+                    "    pv.VisitId, " +
+                    "    pv.PatientName, " +
+                    "    pv.ImageUrl, " +
+                    "    pv.MedRecNo, " +
+                    "    pv.Description, " +
+                    "    pv.VisitDateTime, " +
+                    "    pv.Diagnosis, " +
+                    "    pv.VisitCharge, " +
+                    "    wu.web_user_id, " +
+                    "    wu.user_email, " +
+                    "    wu.membership_fee " +
+                    "from PatientVisit as pv " +
+                    "join web_user as wu on wu.web_user_id = pv.web_user_id " +
+                    "where pv.MedRecNo = ? ";
 
-            PreparedStatement stmt = dbc.getConn().prepareStatement(sql);
+                PreparedStatement stmt = dbc.getConn().prepareStatement(sql);
 
-            // Encode the id (that the user typed in) into the select statement, into the first 
-            // (and only) ? 
-            stmt.setString(1, id);
+                // Encode the id (that the user typed in) into the select statement, into the first 
+                // (and only) ? 
+                stmt.setString(1, id);
 
-            ResultSet results = stmt.executeQuery();
-            if (results.next()) { // id is unique, one or zero records expected in result set
-                sd = new StringData(results);
-            } else {
-                sd.errorMsg = "The database has no Patient Visit records with Id  " + id;
-            }
-            results.close();
-            stmt.close();
-        } catch (Exception e) {
-            sd.errorMsg = "Exception thrown in model.patientVisit.DbMods.findById(): " + e.getMessage();
+                ResultSet results = stmt.executeQuery();
+                if (results.next()) { // id is unique, one or zero records expected in result set
+                    sd = new StringData(results);
+                } else {
+                    sd.errorMsg = "The database has no Patient Visit records with Id " + id;
+                }
+                results.close();
+                stmt.close();
+            } catch (Exception e) {
+                sd.errorMsg = "Exception thrown in model.patientVisit.DbMods.findById(): " + e.getMessage();
+            } 
+        } else {
+            sd.errorMsg = "Please enter an Id.";
         }
         return sd;
 

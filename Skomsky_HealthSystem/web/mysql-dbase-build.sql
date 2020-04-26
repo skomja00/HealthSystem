@@ -310,7 +310,7 @@ CREATE TABLE `PatientVisit` (
     values
         ('White, James',  
         'https://cis.temple.edu/sites/default/files/styles/portrait-small/public/user_pictures/picture-173-1437489687.jpg?itok=NjxpBhsO',
-        'TUN193448',
+        'TUN99999',
         'ED Visit',
         '1945-12-07 20:31',
         'R06.00 Respiratory distress',

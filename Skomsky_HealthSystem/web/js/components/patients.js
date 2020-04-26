@@ -347,47 +347,53 @@ var patients = {};
                 searchKeyElem: searchBox,
                 theList:myList,
                 targetDOM: tableDiv,
-                style:"clickSort"
+                style:"clickSort",
+                orderPropName:"MedRecNo"
             });
         } // end of function success
 
     }; // end of function patients.list
 
-    patients.delete = function (idToDelete, icon) {
-
-        if (confirm("Confirm delete MedRecNo " + idToDelete + "?")) {
-            ajax2({
-                url: "WebAPIs/deletePatientVisitAPI.jsp?deleteId=" + idToDelete,
-                successFn: processPatientVisitDelete,
-                errorId: "content"
-            });
-            function processPatientVisitDelete(obj) { // function is local to callDeleteAPI
-                console.log("WebAPIs/deletePatientVisitAPI success");
-                console.log(obj);
-                if (obj.errorMsg.length === 0) {
-                    obj.errorMsg = "MedRecNo " + idToDelete + " was deleted!";
-                    // icon's parent is cell whose parent is row 
-                    var dataRow = icon.parentNode.parentNode;
-                    var rowIndex = dataRow.rowIndex - 1; // adjust for oolumn header row?
-                    var dataTable = dataRow.parentNode;
-                    dataTable.deleteRow(rowIndex);
-                    document.getElementById("deleteErrorMsgId").innerHTML = obj.errorMsg;
-                    /* refresh the list otherwise data will still be in the UI 
-                     * even though deleted from the dbase */
-                    patients.list("content");
-                    alert(obj.errorMsg + " Click to refresh.");
+    patients.deleteOk = function () {
+        
+        ajax2({
+            url: "WebAPIs/deletePatientVisitAPI.jsp?deleteId=" + patients.idToDelete,
+            successFn: processPatientVisitDelete,
+            errorId: "content"
+        });
+        function processPatientVisitDelete(obj) { // function is local to callDeleteAPI
+            console.log("WebAPIs/deletePatientVisitAPI success");
+            console.log(obj);
+            if (obj.errorMsg.length === 0) {
+                obj.errorMsg = "MedRecNo " + patients.idToDelete + " deleted.";
+                
+                /* refresh the list otherwise data will still be in the UI 
+                 * even though deleted from the dbase */
+                patients.list("content");
+                modalFw.alert(obj.errorMsg);
+            } else {
+                console.log("Delete Web API got this error: "+ obj.errorMsg);
+                window.location.hash = "#/userDelete";  
+                if (obj.errorMsg.includes("foreign key")) {
+                    obj.errorMsg = "The data is tied to other data in the dbase, and cannot be deleted.";
                 } else {
-                    console.log("Delete Web API got this error: "+ obj.errorMsg);
-                    window.location.hash = "#/userDelete";  
-                    if (obj.errorMsg.includes("foreign key")) {
-                        obj.errorMsg = "The data is tied to other data in the dbase, and cannot be deleted.";
-                    } else {
-                        obj.errorMsg = "Please contact support@email.com or (123) 456-7890. Error: " + obj.errorMsg;
-                    }
-                    document.getElementById("deleteErrorMsgId").innerHTML = obj.errorMsg;
+                    obj.errorMsg = "Please contact support@email.com or (123) 456-7890. Error: " + obj.errorMsg;
                 }
+                document.getElementById("deleteErrorMsgId").innerHTML = obj.errorMsg;
             }
         }
+    }; // end deleteOk
+
+    patients.delete = function (theIdToDelete) {
+        
+        // make idToDelete public for deleteOk fn. cannot use parameters 
+        // (ie. parens) in the confirm parms. They will cause the deleteOk to ALWAYS 
+        // execute regardless of user response to the modal element
+        patients.idToDelete = theIdToDelete;
+        
+        /* you may do nothing here since callBack fn depends on user response in modalFw*/
+        modalFw.confirm("Confirm delete MedRecNo " + theIdToDelete + "?",patients.deleteOk);
+
     };
 
     // Inject the UI that allows the user to type in an id and click submit.
@@ -440,7 +446,7 @@ var patients = {};
             console.log("patients.findById (success private fn): the obj passed in by ajax2 is on next line.");
             console.log(obj);
             if (obj.errorMsg.length > 0) {
-                targetDOM.innerHTML = "No patient with id "+desiredUserId+" was found in the Database.";
+                targetDOM.innerHTML = obj.errorMsg;
             } else {
 
                 var myList = [];

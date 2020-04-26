@@ -138,7 +138,7 @@ patients.findById = function (idOfInput, targetId) {
             targetDOM.innerHTML += "Database Error Encountered: " + obj.dbError;
             return;
         } else if (obj.patientVisitList.length === 0 ) {
-            targetDOM.innerHTML = "No patient with id "+desiredUserId+" was found in the Database.";
+            targetDOM.innerHTML = obj.patientVisitList.errorMsg;
         } else {
             var msg = "Found Patient Id " + obj.patientVisitList[0].visitId;
             msg += "<br/> &nbsp; Patient Name: " +  obj.patientVisitList[0].patientName;

@@ -1,0 +1,44 @@
+
+/* Modal Content */
+.modalStyle {
+    position:fixed;
+    z-index: 4; /* make sure it's on top */
+    
+    max-height: 200px;
+    overflow-y: auto; /* Enable vertical scroll if needed */
+
+    width: 33%;
+    top: 5%; /* this isnt margin its the position: property */
+    left: 50%; /* aligns LEFT edge of element to the right of the "center" line of parent */
+    margin-left: -15%; /* negative left margin moves the title back to the center by adding margin and padding around right side*/
+    
+    padding: 20px;
+    padding-top: 10px;
+    
+    border-radius: 8px; 
+    
+    /* animate the change of the top property which is used to control if we see it or not */
+    transition: 0s linear 0s; /* animate in 0 seconds pops open */
+    /*transition: top 0.5s ease 0s; */
+}
+
+/* The Close Button, looks like "X" */
+.modalStyle .x {
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    margin-left: 2ex;
+    border-radius: 8px; 
+}
+
+.modalStyle .x:hover {
+    cursor: pointer;
+}
+
+.modalStyle .buttonArea {
+    float: right;
+}
+
+.modalStyle INPUT {
+    margin-left: 1ex;
+}

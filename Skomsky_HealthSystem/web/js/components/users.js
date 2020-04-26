@@ -321,47 +321,54 @@ var users = {};
                 searchKeyElem: searchBox,
                 theList:userList,
                 targetDOM: tableDiv,
-                style:"clickSort"
+                style:"clickSort",
+                orderPropName:"Email"
             });
         } // end of function success
 
     }; // end of function users.list
 
-    users.delete = function (idToDelete, icon) {
+  
+    users.deleteOk = function () { 
 
-        if (confirm("Confirm delete Web User Id " + idToDelete + "?")) {
-            ajax2({
-                url: "WebAPIs/deleteUserAPI.jsp?deleteId=" + idToDelete,
-                successFn: processUserDelete,
-                errorId: "content"
-            });
-            function processUserDelete(obj) { // function is local to callDeleteAPI
-                console.log("WebAPIs/deleteUserAPI success");
-                console.log(obj);
-                if (obj.errorMsg.length === 0) {
-                    obj.errorMsg = "Web User " + idToDelete + " was deleted!";
-                    // icon's parent is cell whose parent is row 
-                    var dataRow = icon.parentNode.parentNode;
-                    var rowIndex = dataRow.rowIndex - 1; // adjust for oolumn header row?
-                    var dataTable = dataRow.parentNode;
-                    dataTable.deleteRow(rowIndex);
-                    document.getElementById("deleteErrorMsgId").innerHTML = obj.errorMsg;
-                    /* refresh the list otherwise data will still be in the UI 
-                     * even though deleted from the dbase */
-                    users.list("content");
-                    alert(obj.errorMsg + " Click to refresh.");
+        ajax2({
+            url: "WebAPIs/deleteUserAPI.jsp?deleteId=" + users.idToDelete,
+            successFn: processUserDelete,
+            errorId: "content"
+        });
+        function processUserDelete(obj) { // function is local to callDeleteAPI
+            console.log("WebAPIs/deleteUserAPI success");
+            console.log(obj);
+            if (obj.errorMsg.length === 0) {
+                obj.errorMsg = "Web User " + users.idToDelete + " deleted";
+                
+                /* refresh the list otherwise data will still be in the UI 
+                 * even though deleted from the dbase */
+                users.list("content");
+                modalFw.alert(obj.errorMsg);
+            } else {
+                console.log("Delete Web API got this error: "+ obj.errorMsg);
+                window.location.hash = "#/userDelete";  
+                if (obj.errorMsg.includes("foreign key")) {
+                    obj.errorMsg = "The user is tied to other data in the dbase, and cannot be deleted.";
                 } else {
-                    console.log("Delete Web API got this error: "+ obj.errorMsg);
-                    window.location.hash = "#/userDelete";  
-                    if (obj.errorMsg.includes("foreign key")) {
-                        obj.errorMsg = "The user is tied to other data in the dbase, and cannot be deleted.";
-                    } else {
-                        obj.errorMsg = "Please contact support@email.com or (123) 456-7890. Error: " + obj.errorMsg;
-                    }
-                    document.getElementById("deleteErrorMsgId").innerHTML = obj.errorMsg;
+                    obj.errorMsg = "Please contact support@email.com or (123) 456-7890. Error: " + obj.errorMsg;
                 }
+                document.getElementById("deleteErrorMsgId").innerHTML = obj.errorMsg;
             }
         }
+    }; // end deleteOk    
+
+    users.delete = function (theIdToDelete) {
+
+        // make idToDelete public for deleteOk fn. cannot use parameters 
+        // (ie. parens) in the confirm parms. They will cause the deleteOk to ALWAYS 
+        // execute regardless of user response to the modal element
+        users.idToDelete = theIdToDelete;
+        
+        /* you may do nothing here since callBack fn depends on user response in modalFw*/
+        modalFw.confirm("Confirm delete Web User Id " + theIdToDelete + "?", users.deleteOk);
+
     };
     
     // Inject the UI that allows the user to type in an id and click submit.
@@ -417,7 +424,7 @@ var users = {};
             console.log(obj);
             
             if (obj.errorMsg.length > 0) {
-                targetDOM.innerHTML += "Error Encountered: '" + obj.errorMsg + "'";
+                targetDOM.innerHTML += obj.errorMsg;
                 return;
             } else if (obj.length === 0 ) {
                 targetDOM.innerHTML += "No Web User with id "+desiredUserId+" was found in the Database.<br>";
@@ -425,7 +432,8 @@ var users = {};
                 var myList = [];
                 myList[0] = {}; // add new empty object to array
                 myList[0].WebUserId = obj.webUserId;
-                myList[0].Credentials = obj.userEmail + "<br/> PW (to test Logon): " + obj.userPassword;
+                myList[0].Email = obj.userEmail;
+                    /*+ "<br/> PW (to test Logon): " + obj.userPassword;*/
                 myList[0].Image = "<img src='" + obj.image + "'>";
                 myList[0].Birthday = obj.birthday;
                 myList[0].MemberFee = obj.membershipFee;

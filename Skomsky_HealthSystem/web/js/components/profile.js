@@ -28,12 +28,12 @@ profile.display = function () {
         } else {
             var userList = [];
             userList[0] = {}; // add new empty object to array
-            userList[0].Credentials = obj.webUserList[0].userEmail + "<br/> PW (to test Logon): " +
-                    obj.webUserList[0].userPassword;
+            userList[0].Email = obj.webUserList[0].userEmail;
+                    /* + "<br/> PW (to test Logon): " + obj.webUserList[0].userPassword; */
             userList[0].Image = "<img src='" + obj.webUserList[0].image + "'>";
             userList[0].Birthday = obj.webUserList[0].birthday;
             userList[0].MemberFee = obj.webUserList[0].membershipFee;
-            userList[0].Role = obj.webUserList[0].userRoleId + "&nbsp;" +
+            userList[0].Role = obj.webUserList[0].userRoleId + "&nbsp;-&nbsp;" +
                     obj.webUserList[0].userRoleType;
             userList[0].WebUserId = obj.webUserList[0].webUserId;
             MakeTable({

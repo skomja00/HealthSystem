@@ -5,28 +5,22 @@ function blog(id) {
     <div class='blog'>
         <h2>HW 1 Home Page</h2>
         <p>
-            My background is Systems Integration and Interfaces using various ETL "frameworks" 
-            predominantly things running under-the-hood for instance as a Windows Service etc. 
-            Front end web development will leverage this experience focusing
-            on the flow of data in a client/server platform for example a WebAPI
-            interface. 
-        </p>
-        <p>
-            In this homework I learned many things, and found java script to 
-            be the most familiar. The closest to it in my scripting
+            In this homework we worked with HTML, CSS and java script which I found 
+            to be the most familiar with my programming background including 
+            scripting languages. The closest to it in my scripting
             experience is Ruby, and I find they both to provide 
             very good implementations of both object handling and iterating. 
             For me the most difficult thing is the long list of CSS properties,
-            and their behaviors. W3Schools.com helped make sense of the HTML/CSS.
+            and their behaviors, but W3Schools.com helped make sense of the HTML/CSS.
         </p>
         <h2>HW 2 DB &amp; JavaScript Routing</h2>
         <p>
-            My database experience consists of Microsoft SQL Server ETL processes 
-            with experience analyzing data requirements, establishing continuous pipelines, 
-            data warehousing, query performance tuning and system scalability. 
-            With my SQL Server background, I didn't have much difficulty
-            with MySQL. They both adhere well to ANSI Standard SQL.   
-            Click <a target="_blank" href="mysql-dbase-build.sql">here</a> to see my database work.
+            My database experience consists of Microsoft SQL Server, SQLite, and other
+            various proprietary database systems. Since MySQL complies
+            with the ANSI/ISO SQL Standards it is similar to SQL Server, and I 
+            found it very easy to use.  
+            Click <a target="_blank" href="mysql-dbase-build.sql">here</a> to see 
+            my database scripts.
         </p>
         <p>
             I found setting up a Single Page Application routing straight forward.
@@ -224,6 +218,6 @@ function blog(id) {
                  delete icon next to the record you want to delete (e.g. List Web Users). 
             </li>
         </ul>
-    </div><br><br><br><br><br>`;
+    </div>`;
     document.getElementById(id).innerHTML = content;
 }

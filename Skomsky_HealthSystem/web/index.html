@@ -42,7 +42,7 @@
                 </div>
             </div>            
             <div class="dropdown" id="ddMenu">
-                <img class="dropHeader" title="Menu" onclick="myDropdown.toggle(this)" src="icons/dark/menu_dd_icon_H24.png" alt="Search" >
+                <img class="dropHeader" title="Menu" onclick="myDropdown.toggle(this)" src="icons/dark/menu_H24.png" alt="Search" >
                 <div class="dropContent" id="searchDropDown">
                     <a href="#/users">List Web Users</a> <br/>
                     <a href="#/patients">List Patient Visits</a> <br/>
@@ -111,7 +111,7 @@
         myRoutes['/patients'] = patients.list;
         myRoutes['/userFind'] = users.findUI; 
         myRoutes['/patientFind'] = patients.findUI; 
-        myRoutes['/slideShow'] = MakeSlideShow;
+        myRoutes['/slideShow'] = makeSlideShow.display;
         
         // "window.location.hash" fix 
         // when for example "#/users" is clicked (from nav bar), the user list shows. From there, 

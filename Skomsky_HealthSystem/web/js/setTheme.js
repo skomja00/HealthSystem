@@ -16,7 +16,7 @@
  * for each of the following classes in 
  * 
  * 
- * TODO: Dont know of a way to make the XML a settings accessible to 
+ * TODO: Make the XML a settings accessible to 
  * the user to customize in an external xml file or anywhere other than 
  * hard-coded in the JavaScript. 
  * 
@@ -73,18 +73,15 @@ function setTheme (palId) {
         ".home li { background-color : " + hash["listItemBackground"] + ";" + 
         "            color : " + hash["listItemColor"] + ";}" + 
         ".home .list-item-title { background-color : " + hash["listItemBackground"] + ";" + 
-        "                  color : " + hash["listItemColor"] + ";}" + 
+        "         color : " + hash["titleColor"] + ";" + 
+        "         text-shadow : " + "0px 0px 10px " + hash["titleTextShadow"] + ";}" + 
         ".home a { text-shadow : 0px 0px 10px " + hash["missionFlyoverTextShadow"] + ";" + 
         "          color : " + hash["missionFlyoverColor"] + ";}" + 
         ".home a:visited { text-shadow : 0px 0px 10px " + hash["missionFlyoverTextShadow"] + ";" + 
         "                  color : " + hash["missionFlyoverColor"] + ";}" + 
-        ".home a:hover  { text-shadow : 0px 0px 10px " + hash["missionFlyoverTextShadow"] + ";" + 
-        "                 color : " + hash["missionFlyoverColor"] + ";}" + 
         ".footer a {         text-shadow : 0px 0px 10px " + hash["footerTextShadow"] + ";" + 
         "                    color : " + hash["footerColor"] + ";}" + 
         ".footer a:visited { text-shadow : 0px 0px 10px " + hash["footerTextShadow"] + ";" + 
-        "                    color : " + hash["footerColor"] + ";}" + 
-        ".footer a:hover  {  text-shadow : 0px 0px 10px " + hash["footerTextShadow"] + ";" + 
         "                    color : " + hash["footerColor"] + ";}" + 
         ".clickSort td { background-color : " + hash["titleBackgroundColor"] + ";" + 
         "         box-shadow : 0px 0px 3px 2px " + hash["titleBoxShadow"] + ";" + 

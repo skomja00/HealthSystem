@@ -1,8 +1,10 @@
 .slideDivClass {
+    padding: 1em;
     display: inline-block; /* same as display:block but without the <br>'s */
 }
 .slideUsersClass {
     float: left;
+    margin-top: 5em;
     min-width: 45%;
     background-color: rgba(242, 242, 223, 0.5);
     box-shadow: 0px 0px 9px 7px rgba(204, 204, 204, 1); 
@@ -11,6 +13,7 @@
 }
 .slidePatientsClass {
     float: right;
+    margin-top: 5em;
     min-width: 45%;
     background-color: rgba(242, 242, 223, 0.5);
     box-shadow: 0px 0px 9px 7px rgba(204, 204, 204, 1); 

@@ -8,21 +8,16 @@
     min-width: 140px; 
     max-width: 440px;
     margin: 10px;
- }
-.home li:hover {
-    border: 2px solid #bbbbbb;
     box-shadow: 4px 4px 4px #bbbbbb;  /* "3D" effect */
-}
+ }
 .home .list-item-image {
     opacity: 1;
     min-width: 80%; /* this will remove the variations in size */
     max-width: 80%;
     margin: 10px;
-    border: 0px;
     padding: 10px;    
 }
 .home .list-item-title {
-    opacity: 1;
     display: block; 
     text-align: center;
     font-size: 2vw;
@@ -42,7 +37,7 @@
 }
 .home .mission-flyover {
     position: absolute; /* 1st parent element (.mission) is non-static */
-    top: -30px;
+    top: -33px;
     left: 4%;
     font-size: 50px;
 }
@@ -60,7 +55,6 @@
         display: inline-block; /* "row" layout see also .list white-space: */
     }
     .home .list-item-image {
-        opacity: 1;
         min-width: 80%; /* this will remove the variations in size */
         max-width: 80%;
         margin: 10px;

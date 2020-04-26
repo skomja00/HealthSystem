@@ -282,6 +282,13 @@ var users = {};
             searchBox.type = "text";
             //searchBox.setAttribute("type", "text");  // same thing...
 
+            var deleteErrorMsg = Utils.make({
+                htmlTag: "div",
+                innerHTML: "",
+                parent: div
+            });
+            deleteErrorMsg.id = "deleteErrorMsgId";
+
             var tableDiv = Utils.make({
                 htmlTag: "div",
                 parent: div
@@ -291,7 +298,7 @@ var users = {};
             var userList = [];
             for (var i = 0; i < obj.webUserList.length; i++) {
                 userList[i] = {}; // add new empty object to array
-                userList[i].Credentials = obj.webUserList[i].userEmail;
+                userList[i].Email = obj.webUserList[i].userEmail;
                         /*+ "<br/> PW (to test Logon): " + obj.webUserList[i].userPassword; */
                 userList[i].Image = "<img src='" + obj.webUserList[i].image + "'>";
                 userList[i].Birthday = obj.webUserList[i].birthday;
@@ -304,7 +311,7 @@ var users = {};
                                     obj.webUserList[i].webUserId + ", `" + targetId + "` )' />";
                 userList[i].Delete = "<img class='icon' src='icons/delete.png' \n\
                                     alt='update icon' onclick='users.delete(" +
-                                    obj.webUserList[i].webUserId + ", `" + targetId + "` )' />";
+                                    obj.webUserList[i].webUserId + ",this)'  />";
                 // Remove this once you are done debugging...
                 //userList[i].errorMsg = obj.webUserList[i].errorMsg;
             }
@@ -320,52 +327,38 @@ var users = {};
 
     }; // end of function users.list
 
-    users.delete = function (idToDelete, targetId) {
+    users.delete = function (idToDelete, icon) {
 
-        if (!confirm("Confirm delete Web User Id " + idToDelete + "?")) {
-            return;
-        }
-
-        // parameter properties needed for ajax call: url, successFn, and errorId
-        ajax2({
-            url: "WebAPIs/deleteUserAPI.jsp?deleteId=" + idToDelete,
-            successFn: processUserDelete,
-            errorId: "content"
-        });
-
-        function processUserDelete(obj) { // function is local to callDeleteAPI
-            console.log("successful ajax call");
-
-            // Empty string means sucessful delete. The HTML coder gets to decide how to 
-            // deliver the good news.
-            if (obj.errorMsg.length === 0) {
-                users.list(targetId);
-                var msg = "Web User Id " +idToDelete + " deleted. Click to refresh list.";
-                alert(msg);
-                console.log(msg);
-            } else {
-                console.log("Delete Web API got this error: "+ obj.errorMsg);
-                window.location.hash = "#/userDelete";  
-                if (obj.errorMsg.includes("foreign key")) {
-                    var error = ` 
-                        <h2>
-                            Error
-                        </h2>
-                        <p>
-                            The user is tied to other data in the dbase,
-                            and cannot be deleted. 
-                        </p>`;
-                    document.getElementById(targetId).innerHTML = error;
+        if (confirm("Confirm delete Web User Id " + idToDelete + "?")) {
+            ajax2({
+                url: "WebAPIs/deleteUserAPI.jsp?deleteId=" + idToDelete,
+                successFn: processUserDelete,
+                errorId: "content"
+            });
+            function processUserDelete(obj) { // function is local to callDeleteAPI
+                console.log("WebAPIs/deleteUserAPI success");
+                console.log(obj);
+                if (obj.errorMsg.length === 0) {
+                    obj.errorMsg = "Web User " + idToDelete + " was deleted!";
+                    // icon's parent is cell whose parent is row 
+                    var dataRow = icon.parentNode.parentNode;
+                    var rowIndex = dataRow.rowIndex - 1; // adjust for oolumn header row?
+                    var dataTable = dataRow.parentNode;
+                    dataTable.deleteRow(rowIndex);
+                    document.getElementById("deleteErrorMsgId").innerHTML = obj.errorMsg;
+                    /* refresh the list otherwise data will still be in the UI 
+                     * even though deleted from the dbase */
+                    users.list("content");
+                    alert(obj.errorMsg + " Click to refresh.");
                 } else {
-                    document.getElementById(targetId).innerHTML = `
-                        <h2>
-                            Error
-                        </h2>
-                        <p>
-                            Please note the following message and  
-                            contact support@email.com or (123) 456-7890.
-                        </p>`
-                        + obj.errorMsg;
+                    console.log("Delete Web API got this error: "+ obj.errorMsg);
+                    window.location.hash = "#/userDelete";  
+                    if (obj.errorMsg.includes("foreign key")) {
+                        obj.errorMsg = "The user is tied to other data in the dbase, and cannot be deleted.";
+                    } else {
+                        obj.errorMsg = "Please contact support@email.com or (123) 456-7890. Error: " + obj.errorMsg;
+                    }
+                    document.getElementById("deleteErrorMsgId").innerHTML = obj.errorMsg;
                 }
             }
         }
@@ -452,14 +445,9 @@ var users = {};
             <div id="insertArea">
                 <table>
                     <thead>
-                        <tr>
-                            <td colspan=3>Add a web user</td>
-                        </tr>
-                        <tr>
-                            <td>Items</td>
-                            <td>Input</td>
-                            <td>Message</td>
-                        </tr>
+                        <th colspan=3>
+                            Add a web user
+                        </th>
                     </thead>
                     <tbody>
                         <tr>

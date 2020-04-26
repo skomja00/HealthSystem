@@ -294,6 +294,13 @@ var patients = {};
             });
             searchBox.type = "text";
             //searchBox.setAttribute("type", "text");  // same thing...
+            
+            var deleteErrorMsg = Utils.make({
+                htmlTag: "div",
+                innerHTML: "",
+                parent: div
+            });
+            deleteErrorMsg.id = "deleteErrorMsgId";
 
             var tableDiv = Utils.make({
                 htmlTag: "div",
@@ -330,7 +337,7 @@ var patients = {};
                     obj.patientVisitList[i].medRecNo + "\", \"" + targetId + "\" )' />";
                 myList[i].Delete = "<img class='icon' src='icons/delete.png' \n\
                     alt='update icon' onclick='patients.delete(\"" +
-                    obj.patientVisitList[i].medRecNo + "\", `" + targetId + "` )' />";
+                    obj.patientVisitList[i].medRecNo + "\",this)'  />";
                 // Remove this once you are done debugging...
                 //myList[i].errorMsg = obj.patientVisitList[i].errorMsg;
             }
@@ -346,57 +353,42 @@ var patients = {};
 
     }; // end of function patients.list
 
-    patients.delete = function (idToDelete, targetId) {
-        
-        if (!confirm("Confirm delete " + idToDelete + "?")) {
-            return;
-        }
-        
-        // parameter properties needed for ajax call: url, successFn, and errorId
-        ajax2({
-            url: "WebAPIs/deletePatientVisitAPI.jsp?deleteId=" + idToDelete,
-            successFn: processPatientVisitDelete,
-            errorId: "content"
-        });
-        
-        function processPatientVisitDelete(obj) { // function is local to callDeleteAPI
-            console.log("successful ajax call");
+    patients.delete = function (idToDelete, icon) {
 
-            // Empty string means sucessful delete. The HTML coder gets to decide how to 
-            // deliver the good news.
-            if (obj.errorMsg.length === 0) {
-                patients.list(targetId);
-                var msg = idToDelete + " successfully deleted. Click to refresh list.";
-                alert(msg);
-                console.log(msg);
-            } else {
-                console.log("Delete API got this error: "+ obj.errorMsg);
-                window.location.hash = "#/patientVisitDelete";  
-                if (obj.errorMsg.includes("foreign key")) {
-                    var error = ` 
-                        <h2>
-                            Error
-                        </h2>
-                        <p>
-                            The user is tied to other data in the dbase,
-                            and cannot be deleted. 
-                        </p>`;
-                    document.getElementById(targetId).innerHTML = error;
+        if (confirm("Confirm delete MedRecNo " + idToDelete + "?")) {
+            ajax2({
+                url: "WebAPIs/deletePatientVisitAPI.jsp?deleteId=" + idToDelete,
+                successFn: processPatientVisitDelete,
+                errorId: "content"
+            });
+            function processPatientVisitDelete(obj) { // function is local to callDeleteAPI
+                console.log("WebAPIs/deletePatientVisitAPI success");
+                console.log(obj);
+                if (obj.errorMsg.length === 0) {
+                    obj.errorMsg = "MedRecNo " + idToDelete + " was deleted!";
+                    // icon's parent is cell whose parent is row 
+                    var dataRow = icon.parentNode.parentNode;
+                    var rowIndex = dataRow.rowIndex - 1; // adjust for oolumn header row?
+                    var dataTable = dataRow.parentNode;
+                    dataTable.deleteRow(rowIndex);
+                    document.getElementById("deleteErrorMsgId").innerHTML = obj.errorMsg;
+                    /* refresh the list otherwise data will still be in the UI 
+                     * even though deleted from the dbase */
+                    patients.list("content");
+                    alert(obj.errorMsg + " Click to refresh.");
                 } else {
-                    document.getElementById(targetId).innerHTML = `
-                        <h2>
-                            Error
-                        </h2>
-                        <p>
-                            Please note the following message and  
-                            contact support@email.com or (123) 456-7890.
-                        </p>`
-                        + obj.errorMsg;
+                    console.log("Delete Web API got this error: "+ obj.errorMsg);
+                    window.location.hash = "#/userDelete";  
+                    if (obj.errorMsg.includes("foreign key")) {
+                        obj.errorMsg = "The data is tied to other data in the dbase, and cannot be deleted.";
+                    } else {
+                        obj.errorMsg = "Please contact support@email.com or (123) 456-7890. Error: " + obj.errorMsg;
+                    }
+                    document.getElementById("deleteErrorMsgId").innerHTML = obj.errorMsg;
                 }
             }
-
         }
-    };        
+    };
 
     // Inject the UI that allows the user to type in an id and click submit.
     patients.findUI = function (targetId) {

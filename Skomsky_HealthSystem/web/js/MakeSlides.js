@@ -2,10 +2,10 @@
 "use strict";
 
 /*
- * MakeSlideShow will insert 2 <div> into the content, and add click events
- * to navigate back and forth through the slides. 
+ * MakeSlides will insert a <div> into the content, and add click events
+ * to navigate back and forth. 
  * 
- * @param {json} see params object for list of items in the params
+ * @params {jsonObj} see params object for list of items in the params
  *
  */
 function MakeSlides(params) {
@@ -13,73 +13,36 @@ function MakeSlides(params) {
     var contentId = params["contentId"] || "content";
     var clearContent = params["clearContent"] || "clear"; /* "add" for addtnl slide <div>'s */
     var slideDivClass = params["slideDivClass"] || "slideDivClass";
-    var slideTitleId = params["slideTitleId"] || "slideTitleId";
     var slideTitleText = params["slideTitleText"] || "Slides";
-    var slideCaptionId = params["slideCaptionId"] || "slideCaptionId";
-    var slideCaption = params["slideCaption"];
-    var slideImageId = params["slideImageId"] || "slideImageId";
-    var slideImage = params["slideImage"] || "imageUrl";
-    var slideImageNA = params["slideImageNA"]; /* unavailable image */
-    var jsonKey = params["jsonKey"];
+    var slideImageNA = params["slideImageNA"]; /* unavailable/default image */
+    var jsonKey = params["jsonKey"]; //eg. webUserList or patientVisitList
     var json = params["jsonObject"];
+    var captionProp = params.captionProp;
+    var imageProp = params.imageProp;
 
     // private variable that keeps track of which slide is showing
     var slideNum = 0;
 
-    /* Get reference to the DOM object inside which the SlideShow will 
-     * be injected. Start building from empty per params["clearContent"] */
-    var slideShow = document.getElementById(contentId);
-    if (clearContent === "clear") {
-        slideShow.innerHTML = "";
-    }
-
     /* create a <div> container for the slide show */
     var slideDiv = document.createElement("div");
     slideDiv.classList.add(slideDivClass);
+    //slideShow.appendChild(slideDiv); 
 
     // add a title
     var title = document.createElement("p");
     title.classList.add("slideTitleClass");
-    var id = document.createAttribute("id");
-    id.value = slideTitleId;
-    title.setAttributeNode(id);
     title.innerHTML = slideTitleText;
     slideDiv.appendChild(title);
 
     /* add an image */
     var img = document.createElement("img");
     img.classList.add("slideImageClass");
-    var id = document.createAttribute("id");
-    id.value = slideImageId;
-    img.setAttributeNode(id);
-    var src = document.createAttribute("src");
-    img.setAttributeNode(src);
     slideDiv.appendChild(img);
-
-    /* set the image */
-    function setImage (theImg) {
-        var ssImg = document.getElementById(slideImageId);
-        if (theImg.length > 0) {
-            ssImg.src = theImg;
-        } else {
-            ssImg.src = slideImageNA;
-        };
-        
-    }
 
     // add a caption
     var caption = document.createElement("p");
     caption.classList.add("slideCaptionClass");
-    var id = document.createAttribute("id");
-    id.value = slideCaptionId;
-    caption.setAttributeNode(id);
     slideDiv.appendChild(caption);
-
-    /* set the caption */
-    function setCaption (theCaption) {
-        var ssCaption = document.getElementById(slideCaptionId);
-        ssCaption.innerHTML = theCaption;
-    };
 
     /* add back button */ 
     var backButton = document.createElement("button");
@@ -92,16 +55,14 @@ function MakeSlides(params) {
     fwdButton.classList.add("slideButton");
     fwdButton.innerHTML = " next ";
     slideDiv.appendChild(fwdButton);
-
-    slideShow.appendChild(slideDiv); 
-
+    
     /* Advance to the next item in the slide show */
     function nextSlide() {
         slideNum++;
         if (slideNum >= json[jsonKey].length) {
             slideNum = 0;
         }
-        display();
+        slideDiv.display();
     }
 
     /* Go to the previous item in the slide show */
@@ -110,7 +71,7 @@ function MakeSlides(params) {
         if (slideNum < 0) {
             slideNum = json[jsonKey].length - 1;
         }
-        display();
+        slideDiv.display();
     }
 
     // Add onclick to the previous and back buttons
@@ -118,32 +79,34 @@ function MakeSlides(params) {
     fwdButton.onclick = nextSlide;
 
     /* public function to set the title */
-    slideShow.setTitle = function (theTitle) {
+    slideDiv.setTitle = function (theTitle) {
         slideTitleText = theTitle;
-        var ssTitle = document.getElementById(slideTitleId);
-        ssTitle.innerHTML = slideTitleText;
+        slideDiv.display();  
     };
 
     /* public function to set the slideNum */
-    slideShow.setSlideNum = function (theSlideNum) {
+    slideDiv.setSlideNum = function (theSlideNum) {
         if (theSlideNum >= json[jsonKey].length || theSlideNum < 0) {
-            slideShow.innerHTML = "Invalid slide number";
+            slideDiv.innerHTML = "Invalid slide number";
         } else {
             slideNum = theSlideNum;
-            display();            
+            slideDiv.display();            
         }
     };
 
     /* Display the item */
-    function display () {
-        /*slideShow.setTitle(slideTitleText); /* TODO: onclick ssUsers prev/next local variable slideTitleId is slideTitleIdPatient
-                                                       onclick ssPatients prev/next local variable slideTitleId is also slideTitleIdPatient */
-        setImage(json[jsonKey][slideNum][slideImage]);
-        setCaption(json[jsonKey][slideNum][slideCaption]);
+    slideDiv.display = function () {
+        if (json[jsonKey][slideNum][imageProp].length > 0) {
+            slideDiv.getElementsByTagName("img")[0].src = json[jsonKey][slideNum][imageProp];
+        } else {
+            slideDiv.getElementsByTagName("img")[0].src = slideImageNA;
+        }
+        slideDiv.getElementsByClassName("slideTitleClass")[0].innerHTML = slideTitleText;
+        slideDiv.getElementsByClassName("slideCaptionClass")[0].innerHTML = json[jsonKey][slideNum][captionProp];
     };
+
+    slideDiv.display();
     
-    display();
-    
-    return slideShow;
+    return slideDiv;
 
 }

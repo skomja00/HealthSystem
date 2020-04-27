@@ -98,6 +98,9 @@ function blog(id) {
             <li>
                 To invoke my listPatientVisitsAPI, click <a target="_blank" href="WebAPIs/listPatientVisitsAPI.jsp">here</a>.
             </li>
+            <li>
+                My WebAPI error documentation can be found <a target="_blank" href="list_of_errors.docx">here</a>.
+            </li>
         </ul>
 
         <h2>HW 6 Log On</h2>

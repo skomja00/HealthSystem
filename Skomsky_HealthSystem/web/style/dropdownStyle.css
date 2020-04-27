@@ -45,7 +45,12 @@
 }
 
 .dropdown {
-    font-size: 0px; /* stop font size from enlarging content area of dropdown icons */
+    font-size: 0px; /* stop font size from enlarging content area of dropdown icons
+                       and causing the borders to mis-align */
+}
+
+.navigation #dropdown {
+    margin: .4em
 }
 
 .dropContent {
@@ -73,5 +78,5 @@
 }
 
 .dropContent a {
-    font-size: 1.125em;
+    font-size: 1em;
 }

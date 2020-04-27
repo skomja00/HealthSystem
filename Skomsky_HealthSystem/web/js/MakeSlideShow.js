@@ -17,14 +17,12 @@ makeSlideShow.display = function (contentId) {
      function callBackSuccessUsers(jsonUsers) {
 
         if (jsonUsers["dbError"]) {
-            document.getElementById(contentId).innerHTML = jsonUsers["dbError"] + "<br><br>Please " +
-                "contact the Help Desk at 123-456-7890 or help@email.edu";
+            document.getElementById(contentId).innerHTML = jsonUsers["dbError"];
             return;
         };
 
         if (jsonUsers["webUserList"][0]["errorMsg"]) {
-            document.getElementById(contentId).innerHTML = jsonUsers["webUserList"][0]["errorMsg"] + 
-                "<br><br>Please contact the Help Desk at 123-456-7890 or help@email.edu";
+            document.getElementById(contentId).innerHTML = jsonUsers["webUserList"][0]["errorMsg"];
             return;
         };
 
@@ -54,14 +52,12 @@ makeSlideShow.display = function (contentId) {
          function callBackSuccessPatients(jsonPatients) {
 
             if (jsonPatients["dbError"]) {
-                document.getElementById(contentId).innerHTML = jsonPatients["dbError"] + "<br><br>Please " +
-                    "contact the Help Desk at 123-456-7890 or help@email.edu";
+                document.getElementById(contentId).innerHTML = jsonPatients["dbError"];
                 return;
             };
 
             if (jsonPatients["patientVisitList"][0]["errorMsg"]) {
-                document.getElementById(contentId).innerHTML = jsonPatients["patientVisitList"][0]["errorMsg"] + 
-                    "<br><br>Please contact the Help Desk at 123-456-7890 or help@email.edu";
+                document.getElementById(contentId).innerHTML = jsonPatients["patientVisitList"][0]["errorMsg"];
                 return;
             };
 

@@ -92,11 +92,11 @@ public class DbMods {
         // Validation
         System.out.println("DbMods.validate.inputData: " + inputData.toString());
         errorMsgs.userEmail = ValidationUtils.stringValidationMsg(inputData.userEmail, 45, true);
-        errorMsgs.userPassword = ValidationUtils.stringValidationMsg(inputData.userPassword, 45, true);
+        errorMsgs.userPassword = ValidationUtils.stringValidationMsg(inputData.userPassword, 45, false);
         if (inputData.userPassword.compareTo(inputData.userPassword2) != 0) { // case sensative comparison
             errorMsgs.userPassword2 = "Both passwords must match";
         }
-        errorMsgs.image = ValidationUtils.stringValidationMsg(inputData.image, 300, true);
+        errorMsgs.image = ValidationUtils.stringValidationMsg(inputData.image, 300, false);
         errorMsgs.birthday = ValidationUtils.dateValidationMsg(inputData.birthday, false);
         errorMsgs.membershipFee = ValidationUtils.dollarValidationMsg(inputData.membershipFee, false);
         errorMsgs.userRoleId = ValidationUtils.integerValidationMsg(inputData.userRoleId, true);
@@ -107,6 +107,7 @@ public class DbMods {
 
         StringData errorMsgs = new StringData();
         errorMsgs = validate(inputData);
+        System.out.println("validate web user errorMsgs.getCharacterCount()=" + errorMsgs.getCharacterCount());
         if (errorMsgs.getCharacterCount() > 0) {  // at least one field has an error, don't go any further.
             errorMsgs.errorMsg = "Please try again";
             return errorMsgs;

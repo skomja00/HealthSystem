@@ -34,13 +34,6 @@ function blog(id) {
             window.location triggering the router fn. and putting the whole thing
             into action. 
         </p>
-        <p>
-            I did notice something I need to look into further when setting up 
-            a Table Of Contents on this blog. Clicking on a TOC item to "jump"
-            within the blog page triggers the router, and fails since 
-            the individual parts of the blog page do not exist in the route 
-            table. Not sure how to resolve this. 
-        </p>
         <h2>HW 3 Display Data</h2>
         <p>
             This was a time-consuming effort on my part. Unfortunately the

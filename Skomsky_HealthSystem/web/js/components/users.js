@@ -303,7 +303,7 @@ var users = {};
                 userList[i].Image = "<img src='" + obj.webUserList[i].image + "'>";
                 userList[i].Birthday = obj.webUserList[i].birthday;
                 userList[i].MemberFee = obj.webUserList[i].membershipFee;
-                userList[i].Role = obj.webUserList[i].userRoleId + "&nbsp;" +
+                userList[i].Role = obj.webUserList[i].userRoleId + "&nbsp;-&nbsp;" +
                         obj.webUserList[i].userRoleType;
                 userList[i].WebUserId = obj.webUserList[i].webUserId;
                 userList[i].Update = "<img class='icon' src='icons/update.png' \n\

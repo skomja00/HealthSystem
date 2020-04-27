@@ -10,26 +10,26 @@
 }
 
 .clickSort td {  /* applies to any <td> tag in any element classed "clickSort" */
-    margin: 4px;
-    padding: 4px;
-    font-size:20px;
+    margin: .25em;
+    padding: .25em;
+    font-size:.75em;
 }
 
 .clickSort th {  /* applies to any <th> tag in any element classed "clickSort" */
-    margin: 4px;
-    padding:4px;
+    margin: .25em;
+    padding: .25em;
     font-weight: bold;
-    font-size:25px;
+    font-size:1em;
     white-space: nowrap; /* do not want multi word column headings (or sort icon) to wrap */
 }
 
 .clickSort td img{  /* applies images in a <td> cell in  "clickSort" container */
-    width: 60px;
+    width: 2.75em;
     border-radius: 7%;
-    box-shadow: 0px 0px 8px black;
+    box-shadow: 0em 0em .25em black;
 }
 
 .clickSort td .icon { /* applies to any <img> tag in a <td> tag in any element classed "clickSort" */
-    width: 20px;
+    width: 1em;
     text-align: center;
 }

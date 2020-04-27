@@ -102,16 +102,16 @@ function setTheme (palId) {
         ".slideUsersClass { background-color: " + rgbObj.titleBackgroundColor + ";" + 
         "                   box-shadow: 0px 0px 9px 7px " + rgbObj.titleBoxShadow + ";" +  
         "                   color: " + rgbObj.titleColor + ";" + 
-        "                   text-shadow: 0px 0px 10px + 0px 0px 10px " + rgbObj.titleTextShadow + ";}" + 
+        "                   text-shadow: 0px 0px 10px " + rgbObj.titleTextShadow + ";}" + 
         ".slidePatientsClass { background-color: " + rgbObj.titleBackgroundColor + ";" + 
         "                   box-shadow: 0px 0px 9px 7px " + rgbObj.titleBoxShadow + ";" +  
         "                   color: " + rgbObj.titleColor + ";" + 
-        "                   text-shadow: 0px 0px 10px + 0px 0px 10px " + rgbObj.titleTextShadow + ";}" + 
+        "                   text-shadow: 0px 0px 10px " + rgbObj.titleTextShadow + ";}" + 
         ".slideImageClass { box-shadow: 0px 0px 9px 7px " + rgbObj.titleBoxShadow + ";}" +  
         ".slideButton  { background-color: " + rgbObj.titleBackgroundColor + ";" + 
         "                   box-shadow: 0px 0px 9px 7px " + rgbObj.titleBoxShadow + ";" +  
         "                   color: " + rgbObj.titleColor + ";" + 
-        "                   text-shadow: 0px 0px 10px + 0px 0px 10px " + rgbObj.titleTextShadow + ";}" +
+        "                   text-shadow: 0px 0px 10px " + rgbObj.titleTextShadow + ";}" +
         ".dropContent  { background-color: " + rgbObj.titleBackgroundColor + ";" + 
         "                border-color: " + rgbObj.titleColor + ";" + 
         "                color: " + rgbObj.titleColor + ";}" +

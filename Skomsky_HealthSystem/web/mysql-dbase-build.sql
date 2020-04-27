@@ -60,7 +60,7 @@ USE SP20_3308_tun49199;
 */
 CREATE TABLE `web_user` (
     `web_user_id` INT(11) NOT NULL AUTO_INCREMENT,
-    `user_email` VARCHAR(55) NULL,
+    `user_email` VARCHAR(55) NOT NULL,
     `user_password` VARCHAR(45) NULL,
     `image` VARCHAR(200) NULL,
     `birthday` DATE NULL,

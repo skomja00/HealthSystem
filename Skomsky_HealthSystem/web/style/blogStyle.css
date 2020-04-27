@@ -1,6 +1,5 @@
 .blog {
     text-align: left;
-    font-size: 18px;
     margin-left:2em;
 }
 .blog a {
@@ -11,9 +10,9 @@
 }
 .blog li {
     clear:both;
-    margin:6px;
+    margin:.25em;
 }
 .blog li img {
     float:left; 
-    margin-right:4px;
+    margin-right:.25em;
 }

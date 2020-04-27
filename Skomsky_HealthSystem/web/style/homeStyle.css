@@ -5,41 +5,42 @@
 .home li {
     display: block; /* block: items break to a separate line and stack in a column */
                     /* inline-block same as block but no line breaks good for horiz layout */
-    min-width: 140px; 
+    min-width: 3em; 
     max-width: 440px;
     margin: 10px;
     box-shadow: 4px 4px 4px #bbbbbb;  /* "3D" effect */
  }
 .home .list-item-image {
     opacity: 1;
-    min-width: 80%; /* this will remove the variations in size */
-    max-width: 80%;
-    margin: 10px;
-    padding: 10px;    
+    min-width: 75%; /* this will remove the variations in size */
+    max-width: 75%;
+    margin: .5em;
+    padding: .5em;    
 }
 .home .list-item-title {
     display: block; 
     text-align: center;
-    font-size: 2vw;
+    font-size: 1.25em;
     padding-top: 3%;
 }
 .home .mission {
     position: relative;  
-    margin: 40px;
-    padding: 4px 8px 8px 8px;
+    margin: 2em;
+    padding: .25em .33em .33em .33em;
     text-align: left;
 }
 .home .mission-icon {
   float: left;
-  min-width: 50px; 
-  max-width: 100px;
-  padding: 0px 8px 10px 8px;
+  min-width: 2em; 
+  max-width: 4em;
+  padding: 0em .33em .33em .33em;
 }
+
 .home .mission-flyover {
     position: absolute; /* 1st parent element (.mission) is non-static */
-    top: -33px;
+    top: -.77em;
     left: 4%;
-    font-size: 50px;
+    font-size: 1.5em;
 }
 .home .theme-icon {
     min-width: 24px;

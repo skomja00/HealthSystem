@@ -329,9 +329,9 @@ var patients = {};
                 myList[i].Name = obj.patientVisitList[i].patientName;
                 myList[i].Image = "<img src='" + obj.patientVisitList[i].imageUrl + "'>";
                 myList[i].Description = obj.patientVisitList[i].description;
-                myList[i].VisitId = obj.patientVisitList[i].visitId;
                 myList[i].VisitDateTime = obj.patientVisitList[i].visitDateTime;
-                myList[i].Charge = obj.patientVisitList[i].visitCharge;
+                myList[i].VisitCharge = obj.patientVisitList[i].visitCharge;
+                myList[i].WebUserId = obj.patientVisitList[i].webUserId;
                 myList[i].Update = "<img class='icon' src='icons/update.png' \n\
                     alt='update icon' onclick='patients.updateUI(\"" +
                     obj.patientVisitList[i].medRecNo + "\", \"" + targetId + "\" )' />";

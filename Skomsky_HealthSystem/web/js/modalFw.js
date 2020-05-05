@@ -29,19 +29,26 @@ var modalFw = {};
 
         modalWindow.innerHTML = "";
 
-        // add "X" button that can close the modal window
-        var xButton = document.createElement("span");
-        xButton.className = "x";
-        xButton.innerHTML = "&times";
-        xButton.onclick = function () {
-            hide(this.parentNode);
-        };
-        modalWindow.appendChild(xButton);
-
         // add message area
         var messageArea = document.createElement("p");
         modalWindow.appendChild(messageArea);
-        messageArea.innerHTML = message;
+        messageArea.innerHTML = message + "<br/><br/>";
+
+        // add button area to hold the ok and cancel buttons
+        buttonArea = document.createElement("div");
+        buttonArea.className = "buttonArea";
+        messageArea.appendChild(buttonArea);
+
+        // add ok button into button area
+        var xButton = document.createElement("INPUT");
+        xButton.setAttribute("type", "button");
+        xButton.setAttribute("value", "OK");
+        xButton.className = "close";
+        xButton.onclick = function () {
+            debugger;
+            hide(this.parentNode.parentNode.parentNode);
+        };
+        buttonArea.appendChild(xButton);        
 
         show(modalWindow);
     };
@@ -81,6 +88,7 @@ var modalFw = {};
         cancelButton.setAttribute("value", "Cancel");
         cancelButton.className = "close";
         cancelButton.onclick = function () {
+            debugger;
             // button is in buttonArea (parent) is in messageArea (grandparent) is in modalWindow (great grandparent)
             //this.parentNode.parentNode.parentNode.style.visibility = "hidden"; // make modal window invisible
             hide(this.parentNode.parentNode.parentNode);

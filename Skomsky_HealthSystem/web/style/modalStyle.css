@@ -22,19 +22,6 @@
     /*transition: top 0.5s ease 0s; */
 }
 
-/* The Close Button, looks like "X" */
-.modalStyle .x {
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-    margin-left: 2ex;
-    border-radius: 8px; 
-}
-
-.modalStyle .x:hover {
-    cursor: pointer;
-}
-
 .modalStyle .buttonArea {
     float: right;
 }

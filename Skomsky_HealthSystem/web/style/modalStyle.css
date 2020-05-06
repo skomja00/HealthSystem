@@ -4,22 +4,21 @@
     position:fixed;
     z-index: 4; /* make sure it's on top */
     
-    max-height: 200px;
+    max-height: 10em;
     overflow-y: auto; /* Enable vertical scroll if needed */
 
-    width: 33%;
+    width: auto; 
     top: 5%; /* this isnt margin its the position: property */
     left: 50%; /* aligns LEFT edge of element to the right of the "center" line of parent */
-    margin-left: -15%; /* negative left margin moves the title back to the center by adding margin and padding around right side*/
+    margin-left: -15%; /* negative left margin moves the back to the center by adding margin and padding around right side*/
     
-    padding: 20px;
-    padding-top: 10px;
+    padding: 1em;
+    padding-top: .5em;
     
-    border-radius: 8px; 
+    border-radius: .25em; 
     
-    /* animate the change of the top property which is used to control if we see it or not */
-    transition: 0s linear 0s; /* animate in 0 seconds pops open */
-    /*transition: top 0.5s ease 0s; */
+    transition: 0s linear 0s; /* animate in 0 seconds just pops open */
+  
 }
 
 .modalStyle .buttonArea {

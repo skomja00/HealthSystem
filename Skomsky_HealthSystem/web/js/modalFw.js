@@ -28,7 +28,7 @@ var modalFw = {};
         console.log("function modalFw.alert was called with message " + message);
 
         modalWindow.innerHTML = "";
-
+        
         // add message area
         var messageArea = document.createElement("p");
         modalWindow.appendChild(messageArea);
@@ -45,7 +45,6 @@ var modalFw = {};
         xButton.setAttribute("value", "OK");
         xButton.className = "close";
         xButton.onclick = function () {
-            debugger;
             hide(this.parentNode.parentNode.parentNode);
         };
         buttonArea.appendChild(xButton);        
@@ -59,7 +58,7 @@ var modalFw = {};
         console.log("function modalFw.confirm was called with message " + message);
 
         modalWindow.innerHTML = "";
-
+        
         // add message area
         var messageArea = document.createElement("p");
         modalWindow.appendChild(messageArea);
@@ -88,7 +87,6 @@ var modalFw = {};
         cancelButton.setAttribute("value", "Cancel");
         cancelButton.className = "close";
         cancelButton.onclick = function () {
-            debugger;
             // button is in buttonArea (parent) is in messageArea (grandparent) is in modalWindow (great grandparent)
             //this.parentNode.parentNode.parentNode.style.visibility = "hidden"; // make modal window invisible
             hide(this.parentNode.parentNode.parentNode);

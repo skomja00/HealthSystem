@@ -15,16 +15,26 @@
         patientVisit.errorMsg = "Cannot search for user - 'URLid' most be supplied";
     } else {
 
-        DbConn dbc = new DbConn();
-        patientVisit.errorMsg = dbc.getErr(); // returns "" if connection is good, else db error msg.
+        model.webUser.StringData loggedOnUser = (model.webUser.StringData) session.getAttribute("webUser");
 
-        if (patientVisit.errorMsg.length() == 0) { // if got good DB connection,
+        if (loggedOnUser != null) { // means user is logged in
 
-            System.out.println("*** Ready to call allUsersAPI");
-            patientVisit = DbMods.findById(dbc, searchId);  
+            DbConn dbc = new DbConn();
+            patientVisit.errorMsg = dbc.getErr(); // returns "" if connection is good, else db error msg.
+
+            if (patientVisit.errorMsg.length() == 0) { // if got good DB connection,
+
+                System.out.println("*** Ready to call allUsersAPI");
+                patientVisit = DbMods.findById(dbc, searchId);  
+            }
+
+            dbc.close(); // EVERY code path that opens a db connection, must also close it - no DB Conn leaks.
+        
+        } else {
+
+            patientVisit.errorMsg = "Unavailable. Please register and/or logon.";
         }
-
-        dbc.close(); // EVERY code path that opens a db connection, must also close it - no DB Conn leaks.
+            
     }
     //convert POJO to JSON. Print into response object as JSON string
     Gson gson = new Gson();

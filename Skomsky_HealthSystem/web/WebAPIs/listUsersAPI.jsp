@@ -9,16 +9,26 @@
     // default constructor creates nice empty StringDataList with all fields "" (empty string, nothing null).
     StringDataList list = new StringDataList();
     
-    DbConn dbc = new DbConn();
-    list.dbError = dbc.getErr(); // returns "" if connection is good, else db error msg.
+    StringData loggedOnUser = (StringData) session.getAttribute("webUser");
+    
+    if (loggedOnUser != null) { // means user is logged in
+    
+        DbConn dbc = new DbConn();
 
-    if (list.dbError.length() == 0) { // if got good DB connection,
+        list.dbError = dbc.getErr(); // returns "" if connection is good, else db error msg.
 
-        System.out.println("*** Ready to call allUsersAPI");
-        list = WebUserView.allUsersAPI(dbc);
+        if (list.dbError.length() == 0) { // if got good DB connection,
+
+            System.out.println("*** Ready to call allUsersAPI");
+            list = WebUserView.allUsersAPI(dbc);
+        }
+        
+        dbc.close(); // EVERY code path that opens a db connection, must also close it - no DB Conn leaks.
+        
+    } else {
+        
+        list.dbError = "Unavailable. Please register and/or logon.";
     }
-
-      dbc.close(); // EVERY code path that opens a db connection, must also close it - no DB Conn leaks.
 
     //convert POJO to JSON. Print into response object as JSON string
     Gson gson = new Gson();

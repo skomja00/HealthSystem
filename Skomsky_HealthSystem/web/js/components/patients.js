@@ -238,7 +238,7 @@ var patients = {};
             console.log(obj);
 
             if (obj.dbError.length > 0) {
-                contentDOM.innerHTML += "Database Error Encountered: " + obj.dbError;
+                contentDOM.innerHTML += obj.dbError;
                 return;
             }   
 

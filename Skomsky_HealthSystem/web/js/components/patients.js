@@ -398,21 +398,33 @@ var patients = {};
 
     // Inject the UI that allows the user to type in an id and click submit.
     patients.findUI = function (targetId) {
+        
+        ajax2({
+            url: "WebAPIs/checkStatus.jsp",
+            successFn: patientsFindUISuccess,
+            errorId: targetId
+        });
 
-        console.log("patients.findUI was called");
-
-        var contentDOM = document.getElementById(targetId);
-        var content = `
-            <div class='logon'>
-                <br/>
-                Enter MedRec# <input type="text" id="findId"/>
-                &nbsp;
-                <input type="button" value="Submit" onclick="patients.findById('findId','msgArea')"/>
-                <br/> <br/>
-                <div id="msgArea"></div> 
-            </div>
-        `;
-        contentDOM.innerHTML = content;
+        // Inject the UI that allows the user to type in an id and click submit.
+        function patientsFindUISuccess (jsonObj) {
+            
+            var contentDOM = document.getElementById(targetId);
+            if (jsonObj.errorMsg.length === 0) { // user is logged on
+                var content = `
+                    <div class='logon'>
+                        <br/>
+                        Enter MedRec# <input type="text" id="findId"/>
+                        &nbsp;
+                        <input type="button" value="Submit" onclick="patients.findById('findId','msgArea')"/>
+                        <br/> <br/>
+                        <div id="msgArea"></div> 
+                    </div>
+                `;
+                } else {
+                    var content = jsonObj.errorMsg;
+                }
+            contentDOM.innerHTML = content;
+        };
     };
 
     // This public function of global object will be called when the user clicks the button created just above.

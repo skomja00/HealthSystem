@@ -14,8 +14,8 @@ public class DbConn {
 
     public DbConn() {
         
-        String dbAndPass = "healthsystems?user=root&password=meatloverschi11i";
-        //String dbAndPass = "SP20_3308_tun49199?user=tun49199&password=uoyaejee";
+        //String dbAndPass = "healthsystems?user=root&password=meatloverschi11i";
+        String dbAndPass = "SP20_3308_tun49199?user=tun49199&password=uoyaejee";
         //String dbAndPass = "FA11_2308_sallyk?user=sallyk&password=Vaca1415";
                 
         try {
@@ -23,10 +23,10 @@ public class DbConn {
             Class.forName(DRIVER).newInstance();
             try {
                 // Assume you are running from home connecting to local mysql server 8.0...
-                String url = "jdbc:mysql://localhost:3306/"+dbAndPass+"&characterEncoding=latin1";
+                //String url = "jdbc:mysql://localhost:3306/"+dbAndPass+"&characterEncoding=latin1";
 
                 // Assume you are running from home using tunneling...
-                //String url = "jdbc:mysql://localhost:3307/"+dbAndPass;
+                String url = "jdbc:mysql://localhost:3307/"+dbAndPass;
 
                 // unless you are working from temple (e.g., lab computer or published)
                 if (this.isTemple()) {

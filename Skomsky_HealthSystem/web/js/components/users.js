@@ -370,24 +370,36 @@ var users = {};
         modalFw.confirm("Confirm delete Web User Id " + theIdToDelete + "?", users.deleteOk);
 
     };
-    
+
     // Inject the UI that allows the user to type in an id and click submit.
     users.findUI = function (targetId) {
 
-        console.log("users.findUI was called");
+        ajax2({
+            url: "WebAPIs/checkStatus.jsp",
+            successFn: usersFindUISuccess,
+            errorId: targetId
+        });
 
-        var contentDOM = document.getElementById(targetId);
-        var content = `
-            <div class='logon'>
-                <br/>
-                Enter Web User Id:  <input type="text" id="findId"/>
-                &nbsp;
-                <input type="button" value="Submit" onclick="users.findById('findId','msgArea')"/>
-                <br/> <br/>
-                <div id="msgArea"></div> 
-            </div>
-        `;
-        contentDOM.innerHTML = content;
+        // Inject the UI that allows the user to type in an id and click submit.
+        function usersFindUISuccess (jsonObj) {
+            
+            var contentDOM = document.getElementById(targetId);
+            if (jsonObj.errorMsg.length === 0) { // user is logged on
+                var content = `
+                    <div class='logon'>
+                        <br/>
+                        Enter Web User Id:  <input type="text" id="findId"/>
+                        &nbsp;
+                        <input type="button" value="Submit" onclick="users.findById('findId','msgArea')"/>
+                        <br/> <br/>
+                        <div id="msgArea"></div> 
+                    </div>
+                `;
+                } else {
+                    var content = jsonObj.errorMsg;
+                }
+            contentDOM.innerHTML = content;
+        };
     };
 
     // This public function of global object will be called when the user clicks the button created just above.

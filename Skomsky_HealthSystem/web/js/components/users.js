@@ -395,9 +395,9 @@ var users = {};
                         <div id="msgArea"></div> 
                     </div>
                 `;
-                } else {
-                    var content = jsonObj.errorMsg;
-                }
+            } else {
+                var content = jsonObj.errorMsg;
+            }
             contentDOM.innerHTML = content;
         };
     };

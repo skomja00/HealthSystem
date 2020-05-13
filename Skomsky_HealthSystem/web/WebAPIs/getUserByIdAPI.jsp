@@ -11,14 +11,14 @@
     //StringDataList list = new StringDataList();
     StringData user = new StringData();
 
-    String searchId = request.getParameter("URLid");
-    if (searchId == null) {
-        user.errorMsg = "Cannot search for user - 'URLid' most be supplied";
-    } else {
-        
-        StringData loggedOnUser = (StringData) session.getAttribute("webUser");
+    StringData loggedOnUser = (StringData) session.getAttribute("webUser");
 
-        if (loggedOnUser != null) { // means user is logged in
+    if (loggedOnUser != null) { // means user is logged in
+
+        String searchId = request.getParameter("URLid");
+        if (searchId == null) {
+            user.errorMsg = "Cannot search for user - 'URLid' most be supplied";
+        } else {
 
             DbConn dbc = new DbConn();
             user.errorMsg = dbc.getErr(); // returns "" if connection is good, else db error msg.
@@ -30,13 +30,14 @@
             }
 
             dbc.close(); // EVERY code path that opens a db connection, must also close it - no DB Conn leaks.
+
+        }
         
     } else {
         
         user.errorMsg = "Unavailable. Please register and/or logon.";
     }            
         
-    }
     //convert POJO to JSON. Print into response object as JSON string
     Gson gson = new Gson();
     out.print(gson.toJson(user).trim());

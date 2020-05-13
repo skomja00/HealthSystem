@@ -14,27 +14,40 @@
     DbConn dbc = new DbConn();
     StringData errorMsgs = new StringData();
 
-    String jsonUpdateData = request.getParameter("jsonData");
-    if (jsonUpdateData == null) {
-        errorMsgs.errorMsg = "Cannot update -- need 'jsonData' as URL parameter";
-        System.out.println(errorMsgs.errorMsg);
-    } else {
-        System.out.println("jsonUpdatePatientVisitData is " + jsonUpdateData);
-        errorMsgs.errorMsg = dbc.getErr();
-        if (errorMsgs.errorMsg.length() == 0) { // means db connection is ok
-            System.out.println("updatePatientVisitAPI.jsp - ready to update");
-            
-            // Must use gson to convert JSON (that the user provided as part of the url, the jsonUpdateData. 
-            // Convert from JSON (JS object notation) to POJO (plain old java object).
-            StringData updateData = gson.fromJson(jsonUpdateData, StringData.class);
-            
-            // this method takes the user's input data as input and outputs an error message object (with same field names).
-            //errorMsgs = DbMods.update(updateData, dbc); // this is the form level message
-            errorMsgs = DbMods.update(updateData, dbc); // this is the form level message
-        }
-    }
+    // check for the session object and make sure user is logged on
+    model.webUser.StringData loggedOnUser = new model.webUser.StringData();
+    loggedOnUser = (model.webUser.StringData) session.getAttribute("webUser");
+    
+    if (loggedOnUser != null) { 
+        
+        String jsonUpdateData = request.getParameter("jsonData");
+        if (jsonUpdateData == null) {
+            errorMsgs.errorMsg = "Cannot update -- need 'jsonData' as URL parameter";
+            System.out.println(errorMsgs.errorMsg);
+        } else {
+            System.out.println("jsonUpdatePatientVisitData is " + jsonUpdateData);
+            errorMsgs.errorMsg = dbc.getErr();
+            if (errorMsgs.errorMsg.length() == 0) { // means db connection is ok
+                System.out.println("updatePatientVisitAPI.jsp - ready to update");
 
-    out.print(gson.toJson(errorMsgs).trim());
-    dbc.close();
+                // Must use gson to convert JSON (that the user provided as part of the url, the jsonUpdateData. 
+                // Convert from JSON (JS object notation) to POJO (plain old java object).
+                StringData updateData = gson.fromJson(jsonUpdateData, StringData.class);
+
+                // this method takes the user's input data as input and outputs an error message object (with same field names).
+                //errorMsgs = DbMods.update(updateData, dbc); // this is the form level message
+                errorMsgs = DbMods.update(updateData, dbc); // this is the form level message
+            }
+        }
+
+    } else {
+        System.out.println("Session unavailable.");
+        errorMsgs.errorMsg = "Unavailable. Please register and/or logon.";
+    }
+        
+        dbc.close();
+
+   out.print(gson.toJson(errorMsgs).trim());
+ 
 %>
 

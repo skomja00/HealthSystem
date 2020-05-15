@@ -62,6 +62,7 @@ var colorTheme = {};
             "         color : " + rgbObj.white + ";" + 
             "         text-shadow : " + "0px 0px 10px " + rgbObj.black + ";}" + 
             ".navigation { border = 2px solid " + rgbObj.light + ";" + 
+            "              box-shadow : 0px 0px 9px 7px " + rgbObj.lighter + ";" + 
             "              background-color : " + rgbObj.lightest + ";}" + 
             ".mission { box-shadow : 0px 0px 10px 10px " + rgbObj.lighter + ";" + 
             "           background-color : " + rgbObj.lightest + ";}" + 

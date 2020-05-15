@@ -16,16 +16,16 @@ body {
 }
 .navigation {
     position: fixed;
-    z-index: 1;
+    z-index:1;
     left:1rem;
     right:1rem;
     top:1rem;
 
     text-align: center;
-    font-size: 1rem;
+    font-size:1rem;
 
-    padding: .1rem;
-    margin : .1rem;
+    padding:.1rem;
+    margin:.1rem;
 }
 .title {
     z-index: 1;
@@ -41,8 +41,8 @@ body {
     height: auto;
     box-sizing: border-box; /* eliminates 100% + border which would cause a scroll bar */
     position: relative;
-    padding-top: 8rem;
-    padding-bottom: 4rem;
+    padding-top: 6.5rem;
+    padding-bottom: 6rem;
 }
 .content h2 {
     margin: .75rem;

@@ -13,8 +13,8 @@
  }
 .home .list-item-image {
     opacity: 1;
-    min-width: 33%; /* this will remove the variations in size */
-    max-width: 33%;
+    min-width: 75%; /* this will remove the variations in size */
+    max-width: 75%;
     margin: .5rem;
     padding: .5rem;    
 }

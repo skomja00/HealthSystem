@@ -1,46 +1,50 @@
 .home ul {
     white-space: normal; /* collapse white-space. wrap when necessary */
     list-style: none;
+    display: inline-block;
 }
 .home li {
     display: block; /* block: items break to a separate line and stack in a column */
                     /* inline-block same as block but no line breaks good for horiz layout */
-    min-width: 3em; 
+    min-width: 3rem; 
     max-width: 440px;
     margin: 10px;
     box-shadow: 4px 4px 4px #bbbbbb;  /* "3D" effect */
  }
 .home .list-item-image {
     opacity: 1;
-    min-width: 75%; /* this will remove the variations in size */
-    max-width: 75%;
-    margin: .5em;
-    padding: .5em;    
+    min-width: 33%; /* this will remove the variations in size */
+    max-width: 33%;
+    margin: .5rem;
+    padding: .5rem;    
 }
 .home .list-item-title {
     display: block; 
     text-align: center;
-    font-size: 1.25em;
+    font-size: 1.25rem;
     padding-top: 3%;
 }
 .home .mission {
     position: relative;  
-    margin: 2em;
-    padding: .25em .33em .33em .33em;
+    margin: 2rem;
+    padding: .25em .33em .33em .33rem;
     text-align: left;
+    min-height: 5rem;
+}
+.home .mission p {
+    font-size: 1rem;
 }
 .home .mission-icon {
   float: left;
-  min-width: 2em; 
-  max-width: 4em;
-  padding: 0em .33em .33em .33em;
+  min-width: 2rem; 
+  max-width: 4rem;
+  padding: 0em .33em .33em .33rem;
 }
-
 .home .mission-flyover {
     position: absolute; /* 1st parent element (.mission) is non-static */
-    top: -.77em;
-    left: 4%;
-    font-size: 1.5em;
+    top: -1.25rem;
+    left: 5%;
+    font-size: 1.5rem;
 }
 .home .theme-icon {
     min-width: 24px;

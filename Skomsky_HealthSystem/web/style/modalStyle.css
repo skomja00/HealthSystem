@@ -1,10 +1,11 @@
 
+
 /* Modal Content */
 .modalStyle {
     position:fixed;
     z-index: 4; /* make sure it's on top */
     
-    max-height: 10em;
+    max-height: 10rem;
     overflow-y: auto; /* Enable vertical scroll if needed */
 
     width: auto; 
@@ -12,10 +13,10 @@
     left: 50%; /* aligns LEFT edge of element to the right of the "center" line of parent */
     margin-left: -15%; /* negative left margin moves the back to the center by adding margin and padding around right side*/
     
-    padding: 1em;
-    padding-top: .5em;
+    padding: 1rem;
+    padding-top: .5rem;
     
-    border-radius: .25em; 
+    border-radius: .25rem; 
     
     transition: 0s linear 0s; /* animate in 0 seconds just pops open */
   
@@ -26,5 +27,5 @@
 }
 
 .modalStyle INPUT {
-    margin-left: 1ex;
+    margin-left: 1rem;
 }

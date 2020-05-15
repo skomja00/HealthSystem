@@ -483,9 +483,9 @@ var patients = {};
             <div id="insertArea">
                 <table>
                     <thead>
-                        <tr>
-                            <td colspan=3>Add a visit</td>
-                        </tr>
+                        <th colspan=3>
+                            Add a visit
+                        </th>
                         <tr>
                             <td>Items</td>
                             <td>Input</td>

@@ -1,6 +1,6 @@
-/**
- * Home content 
- */
+
+"use strict";
+
 function home(targetId) {
     var content = 
     `<div class='home'>

@@ -37,7 +37,7 @@
 .dropHeader {
     font-size: 30px;
 }
-.dropdown img {                      /* space combinator removes bottom margin and */
+.dropdown img {                  /* space combinator removes bottom margin and */
     margin: 10px 10px 0px 10px;  /* padding from the icons in dropdown */
     padding: 10px 10px 0px 10px; /* this will move dropContent up close to the bottom its */
                                  /* corresponding icon */
@@ -47,6 +47,7 @@
 .dropdown {
     font-size: 0px; /* stop font size from enlarging content area of dropdown icons
                        and causing the borders to mis-align */
+    float:left;
 }
 
 .navigation #dropdown {
@@ -64,7 +65,7 @@
     font-size: 14px;
     z-index: 3;
 
-    line-height: 1.7em;
+    line-height: 1.7rem;
     border-style: solid;
     border-radius: 0px 4px 4px 4px;
     letter-spacing: 1px;
@@ -78,5 +79,5 @@
 }
 
 .dropContent a {
-    font-size: 1em;
+    font-size: 1rem;
 }

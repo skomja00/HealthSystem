@@ -117,6 +117,20 @@ CREATE TABLE `web_user` (
         `membership_fee`,
         `user_role_id`) 
 	VALUES
+        ('jims',
+        'p',
+        'pics/silouette_man_wearing_tie.png',
+        '1968-07-01', 
+        4.95,            
+        get_user_role_id('admin'));
+    INSERT INTO `web_user` 
+        (`user_email`,
+        `user_password`,
+        `image`,
+        `birthday`,
+        `membership_fee`,
+        `user_role_id`) 
+	VALUES
         ('services@gmail.com',
         'p',
         'http://cis-linux2.temple.edu/~sallyk/pics_user/tony.jpg',

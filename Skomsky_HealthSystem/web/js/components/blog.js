@@ -1,3 +1,6 @@
+
+"use strict";
+
 function blog(id) {
 
     // ` this is a "back tick". Use it to define multi-line strings in JavaScript.

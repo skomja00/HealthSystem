@@ -1,8 +1,8 @@
 /* Style the HTML table that aligns the user input area */
 
 #insertArea {
-    margin-top: 1em;
-    margin-left: 1em;
+    margin-top: 1rem;
+    margin-left: 1rem;
 }
 
 #insertArea table {
@@ -10,16 +10,15 @@
 }
 
 #insertArea th {
-    padding: 8px;
+    padding: .5rem;
     font-weight: bold;
-    font-size:25px;
-    min-width:200px
+    font-size:2rem;
+    min-width:11rem;
 }
 
 #insertArea td {
-    padding: 8px;
-    font-weight: bold;
-    font-size:18px;
-    min-width:200px
+    padding: .66rem;
+    font-size:1rem;
+    min-width:11rem;
 }
 

@@ -8,13 +8,8 @@ function blog(id) {
     <div class='blog'>
         <h2>HW 1 Home Page</h2>
         <p>
-            In this homework we worked with HTML, CSS and java script which I found 
-            to be the most familiar with my programming background including 
-            scripting languages. The closest to it in my scripting
-            experience is Ruby, and I find they both to provide 
-            very good implementations of both object handling and iterating. 
-            For me the most difficult thing is the long list of CSS properties,
-            and their behaviors, but W3Schools.com helped make sense of the HTML/CSS.
+            In this homework we worked with HTML, CSS and Javascript. 
+            W3Schools.com is a great resource for HTML/CSS/JS.
         </p>
         <h2>HW 2 DB &amp; JavaScript Routing</h2>
         <p>
@@ -27,7 +22,7 @@ function blog(id) {
         </p>
         <p>
             I found setting up a Single Page Application routing straight forward.
-            The hash table is centeral to the process with keys of anchor HREFs 
+            The hash table is central to the process with keys of anchor HREFs 
             and values of java script components. The anchors tell the router fn. which 
             java scripts to run. This table as well as 
             the target for the content are used to create a java object. A default
@@ -73,15 +68,46 @@ function blog(id) {
         <p>
             The course is moving from the client to the server side of web page development. 
             This creates a better understanding of some of the technologies in web
-            dev. In my early learning the terminology apache vs apache tomcat is
-            somewhat confusing possibly because both technologies are part of the same 
-            Apache Software Foundation and the 'namesake' (i.e. apache) can appear
-            in reference to completely distinct types of server applications. For
-            the record, <u>'apache'</u> software responds to HTTP requests for HTML, CSS, and JavaScript content. 
-            <u>'tomcat'</u>(sometimes referred to as Apache Tomcat) on the other hand is intended to execute Java code.
+            dev. Writing server side code requires Web APIs invoked by client side code (JavaScript in an HTML page).
+            My server side code will accomodate DateTime (i.e. date AND time) fields. In my experience it is not uncommon
+            for both Date and Time to be stored in the dbase within a single DateTime
+            field so the DateTime datatype is supported by my
+            API. The goal is to input a familiar format such as 
+            "ccyy-mm-dd hh:mm am/pm", and have the API do any validation and/or conversion. A regex like this 
+            <br><br><code>^[0-9]{4}-[0-9]{1,2}-[0-9]{1,2} [0-9]{1,2}:[0-9]{2} ([AaPp][Mm])
+            </code><br><br> 
+            ensures a value matches this pattern generally
+            but doesn't validate something like "2020-01-32 2:35 pm". Notice <u>January 32nd!</u>
+            So an additional verification is to 'try' both parsing and formatting
+            these as a Java date object. In so doing Java further scrutinizes the object and will raise
+            an exception for values outside normal boundaries (ie. January 32nd).
+            The Java exception messages are very helpful and desciptive. Once a value 
+            passes all these requirements it is safe to assume it's a valid DateTime data type.
+            Following are some example dates and the Java exception (or none):
+            <table>
+            <thead>
+            <tr>
+            <td>input</td><td>Exception Message</td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+            <td>2020-01-32 2:35 pm</td><td>Text '2020-01-32 2:35 PM' could not be parsed: Invalid value for DayOfMonth (valid values 1 - 28/31): 32</td>
+            </tr>
+            <tr>
+            <td>2020-01-31 13:35 pm</td><td>Text '2020-01-31 13:35 PM' could not be parsed: Invalid value for ClockHourOfAmPm (valid values 1 - 12): 13</td>
+            </tr>
+            <tr>
+            <td>2020-02-29 11:00 am</td><td>Does NOT raise an exception as we would expect.</td>
+            </tr>
+            <tr>
+            <td>2019-02-29 11:00 am</td><td>Generates a date and time of 2019-2-28 11:00:00 without throwing an exception.</td>
+            </tr>
+            </tbody>
+            </table>
         </p>
         <p>
-            Server side also devel include a number of new practices. Below are some tips:
+            Server side development includes a number of new practices. Below are some tips:
             <ul>
                 <li>
                     Publish JSP apps from the build&bsol;webfolder. 
@@ -130,9 +156,22 @@ function blog(id) {
                 the profile information if you are logged on.
             </li>
         </ul>
-
+        <h2>LA 7x React I</h2>
+        <p>
+            React Data Display is an intro to using React components to generate 
+            HTML content. It is also an intro to ES6 syntax and functions. In general
+            the concept of React components is fairly straighforward, but I found 
+            the ES6 concepts very unfamiliar compared to all Javascript we've been 
+            writing up to now. Also I am finding the new ES6 syntax difficult to grasp.
+        </p>
+        <p>
+            I noticed once React updates a container on the page it "takes control"
+             monitoromg it closely for the purpose of the React diffing algorithm. 
+            As as result you CAN go back and forth between react components in that container 
+            with no errors. But switching between plain old HTML via routeFW and react 
+            component raises warnings and then throws exceptions.
+        </p>
         <h2>HW 7A Insert</h2>
-
         <p>
             The insert homework is an additional use of WebAPIs. The insert process  
             will repeat collecting data from the user, validating the data and either

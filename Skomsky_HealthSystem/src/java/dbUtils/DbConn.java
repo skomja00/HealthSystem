@@ -48,9 +48,7 @@ public class DbConn {
 
     private void recordError(String errorMsg) {
         this.errMsg = errorMsg;
-        System.out.println("Error in dbConn.<br>" + 
-                        "Please contact support@gmail.com or (123)-456-7890<br>" +
-                        "Error: " + errorMsg);
+        System.out.println(errorMsg);
     }
 
     /* Returns database connection for use in SQL classes.  */

@@ -328,7 +328,7 @@ var patients = {};
                 myList[i].MedRecNo = obj.patientVisitList[i].medRecNo;
                 myList[i].Name = obj.patientVisitList[i].patientName;
                 myList[i].Image = "<img src='" + obj.patientVisitList[i].imageUrl + "'>";
-                myList[i].Description = obj.patientVisitList[i].description;
+                myList[i].Diagnosis = obj.patientVisitList[i].diagnosis;
                 myList[i].VisitDateTime = obj.patientVisitList[i].visitDateTime;
                 myList[i].VisitCharge = obj.patientVisitList[i].visitCharge;
                 myList[i].WebUserId = obj.patientVisitList[i].webUserId;

@@ -327,7 +327,7 @@ CREATE TABLE `PatientVisit` (
         'TUN99999',
         'ED Visit',
         '1945-12-07 20:31',
-        'R06.00 Respiratory distress',
+        'L55.9 Sunburn',
         2000.00,
         get_web_user_id('office@gmail.com'));
 	INSERT INTO `PatientVisit` 
@@ -399,8 +399,8 @@ CREATE TABLE `PatientVisit` (
         'TUN559116',
         'Vaccination', 
         '2019-11-06 15',  
-        'Z23 Encounter for immunization',                             
-        45.00,
+        'L23.7 Poison Ivy',                             
+        90.00,
         get_web_user_id('admin@gmail.com'));
     INSERT INTO `PatientVisit` 
         (`PatientName`,
@@ -630,6 +630,33 @@ from PatientVisit as pv;
 END$$
 DELIMITER ;
 
+
+-- SERVICES
+-- Poison Ivy|ICD-10-CM|L23.7
+-- Allergies & Colds
+-- Bronchitis
+-- Cold & Flu
+-- DOT Physicals
+-- Drug Testing
+-- Ear Ache & Infection
+-- Fever & Chills
+-- Flu Shots
+-- Health for the Whole Family
+-- Laryngitis Treatment
+-- X-Ray Services
+-- UTI Treatment
+-- SERVICES
+-- Minor Emergency Clinic
+-- Occupational Health
+-- Pediatric Urgent Care
+-- Physical Exams
+-- Pink Eye Treatment
+-- STD Testing
+-- Strep Throat
+-- Sunburn|ICD-10-CM|L55.9
+-- Tick Lyme Disease
+-- Travel Medicine
+-- Lab Work
 -- 
 -- DELIMITER $$
 -- DROP PROCEDURE IF EXISTS `list`$$

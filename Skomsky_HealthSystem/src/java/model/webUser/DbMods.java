@@ -130,9 +130,10 @@ public class DbMods {
             PrepStatement pStatement = new PrepStatement(dbc, sql);
 
             // Encode string values into the prepared statement (wrapper class).
-            pStatement.setString(1, inputData.userEmail); // string type is simple
-            pStatement.setString(2, inputData.userPassword);
-            pStatement.setString(3, inputData.image);
+            // Replace all < symbols into &lt; (the HTML code for less than sign) browser could never encounter a JS <script> tag and therefore never run injected JS code.
+            pStatement.setString(1, inputData.userEmail.replace("<","&lt;")); // string type is simple
+            pStatement.setString(2, inputData.userPassword.replace("<","&lt;"));
+            pStatement.setString(3, inputData.image.replace("<","&lt;"));
             pStatement.setBigDecimal(4, ValidationUtils.decimalConversion(inputData.membershipFee));
             pStatement.setDate(5, ValidationUtils.dateConversion(inputData.birthday));
             pStatement.setInt(6, ValidationUtils.integerConversion(inputData.userRoleId));
@@ -185,9 +186,10 @@ public class DbMods {
             PrepStatement pStatement = new PrepStatement(dbc, sql);
 
             // Encode string values into the prepared statement (wrapper class).
-            pStatement.setString(1, inputData.userEmail); // string type is simple
-            pStatement.setString(2, inputData.userPassword);
-            pStatement.setString(3, inputData.image);
+            // Replace all < symbols into &lt; (the HTML code for less than sign) browser could never encounter a JS <script> tag and therefore never run injected JS code.
+            pStatement.setString(1, inputData.userEmail.replace("<","&lt;")); // string type is simple
+            pStatement.setString(2, inputData.userPassword.replace("<","&lt;"));
+            pStatement.setString(3, inputData.image.replace("<","&lt;"));
             pStatement.setDate(4, ValidationUtils.dateConversion(inputData.birthday));
             pStatement.setBigDecimal(5, ValidationUtils.dollarConversion(inputData.membershipFee));
             pStatement.setInt(6, ValidationUtils.integerConversion(inputData.userRoleId));

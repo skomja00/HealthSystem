@@ -107,12 +107,13 @@ public class DbMods {
                 PrepStatement pStatement = new PrepStatement(dbc, sql);
 
                 // Encode string values into the prepared statement (wrapper class).
-                pStatement.setString(1, inputData.patientName); // string type is simple
-                pStatement.setString(2, inputData.imageUrl);
-                pStatement.setString(3, inputData.medRecNo);
-                pStatement.setString(4, inputData.description);
+                // Replace all < symbols into &lt; (the HTML code for less than sign) browser could never encounter a JS <script> tag and therefore never run injected JS code.
+                pStatement.setString(1, inputData.patientName.replace("<","&lt;")); // string type is simple
+                pStatement.setString(2, inputData.imageUrl.replace("<","&lt;"));
+                pStatement.setString(3, inputData.medRecNo.replace("<","&lt;"));
+                pStatement.setString(4, inputData.description.replace("<","&lt;"));
                 pStatement.setString(5, ValidationUtils.dateTimeConversion(inputData.visitDateTime));
-                pStatement.setString(6, inputData.diagnosis);
+                pStatement.setString(6, inputData.diagnosis.replace("<","&lt;"));
                 pStatement.setBigDecimal(7, ValidationUtils.dollarConversion(inputData.visitCharge));
                 pStatement.setInt(8, ValidationUtils.integerConversion(inputData.webUserId));
 
@@ -182,14 +183,15 @@ public class DbMods {
             PrepStatement pStatement = new PrepStatement(dbc, sql);
             
             // Encode string values into the prepared statement (wrapper class).
+            // Replace all < symbols into &lt; (the HTML code for less than sign) browser could never encounter a JS <script> tag and therefore never run injected JS code.
             pStatement.setInt(1, ValidationUtils.integerConversion(inputData.visitId));
-            pStatement.setString(2, inputData.patientName); 
-            pStatement.setString(3, inputData.imageUrl);
-            pStatement.setString(4, inputData.description);
-            pStatement.setString(5, inputData.diagnosis);
+            pStatement.setString(2, inputData.patientName.replace("<","&lt;")); 
+            pStatement.setString(3, inputData.imageUrl.replace("<","&lt;"));
+            pStatement.setString(4, inputData.description.replace("<","&lt;"));
+            pStatement.setString(5, inputData.diagnosis.replace("<","&lt;"));
             pStatement.setBigDecimal(6, ValidationUtils.dollarConversion(inputData.visitCharge));
             pStatement.setInt(7, ValidationUtils.integerConversion(inputData.webUserId));
-            pStatement.setString(8, inputData.medRecNo);
+            pStatement.setString(8, inputData.medRecNo.replace("<","&lt;"));
             pStatement.setString(9, ValidationUtils.dateTimeConversion(inputData.visitDateTime));
 
             // here the SQL statement is actually executed

@@ -6,12 +6,15 @@ function blog(id) {
     // ` this is a "back tick". Use it to define multi-line strings in JavaScript.
     var content = ` 
     <div class='blog'>
-        <h2>HW 1 Home Page</h2>
+        <h2>1 Home Page</h2>
         <p>
-            In this homework we worked with HTML, CSS and Javascript. 
-            W3Schools.com is a great resource for HTML/CSS/JS.
+            This webpage is built using foundation HTML, CSS, Javascript, AJAX, WebAPIs, JSP, and Java.
+            It was built from the ground up (i.e. no BootStrap, JQuery etc). 
+            <a target="_blank" href="https://www.w3schools.com/">W3schools.com </a>
+            and <a target="_blank" href="https://developer.mozilla.org/en-US/">MDN web docs</a> 
+            are a couple great resources for Web Development used to help build this sample web app.
         </p>
-        <h2>HW 2 DB &amp; JavaScript Routing</h2>
+        <h2>2 DB &amp; JavaScript Routing</h2>
         <p>
             My database experience consists of Microsoft SQL Server, SQLite, and other
             various proprietary database systems. Since MySQL complies
@@ -32,7 +35,7 @@ function blog(id) {
             window.location triggering the router fn. and putting the whole thing
             into action. 
         </p>
-        <h2>HW 3 Display Data</h2>
+        <h2>3 Display Data</h2>
         <p>
             This was a time-consuming effort on my part. Unfortunately the
             MakeFilteredTable is NOT working due to "problems" with my JSON I think. 
@@ -52,7 +55,7 @@ function blog(id) {
             also I re-arrange the positioning so the dropdowns are aligned more to my
             liking sort of left-justified with the dropdown header. 
         </p>
-        <h2>HW 4 Slide Show</h2>
+        <h2>4 Slide Show</h2>
         <p>
             In this homework I used public and private properties of DOM elements. I created 
             objects and appended them together to insert into the content element. 
@@ -64,7 +67,7 @@ function blog(id) {
             are not boolean instead js sees values such as 0, "", null, and undefined as
             "falsey" and will then check the 2nd operator for a "truthey" (default) value.
         </p>
-        <h2>HW 5 Web APIs</h2>
+        <h2>5 Web APIs</h2>
         <p>
             The course is moving from the client to the server side of web page development. 
             This creates a better understanding of some of the technologies in web
@@ -132,7 +135,7 @@ function blog(id) {
             </li>
         </ul>
 
-        <h2>HW 6 Log On</h2>
+        <h2>6 Log On</h2>
         <p>
             In this homework I learned how to read a web user from the dbase, and 
             add their data to a session object which is only available to the JSP.
@@ -171,7 +174,7 @@ function blog(id) {
             with no errors. But switching between plain old HTML via routeFW and react 
             component raises warnings and then throws exceptions.
         </p>
-        <h2>HW 7A Insert</h2>
+        <h2>7A Insert</h2>
         <p>
             The insert homework is an additional use of WebAPIs. The insert process  
             will repeat collecting data from the user, validating the data and either
@@ -220,7 +223,7 @@ function blog(id) {
                     </ul>
             </li>
         </ul>
-        <h2>HW 8 Update</h2>
+        <h2>8 Update</h2>
         <p>
             In this homework I learned to implement a WebAPI to do a database update.
             This was a lot of coding, but building on our work so far with WebAPIs 
@@ -234,7 +237,7 @@ function blog(id) {
             </li>
         </ul>
 
-        <h2>HW 9 Delete</h2>
+        <h2>9 Delete</h2>
         <p>
             In this homework I added delete functionality to my web page, and this 
             completes the four basic requirements of persisting data. Delete refers to the 

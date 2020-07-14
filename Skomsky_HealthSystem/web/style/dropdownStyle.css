@@ -33,7 +33,7 @@
     padding: 0px;
     
 }
-/* don't delete this even though there are no style rules - js needs it, references it. */
+/* don't delete this - js needs it, references it. */
 .dropHeader {
     font-size: 30px;
 }

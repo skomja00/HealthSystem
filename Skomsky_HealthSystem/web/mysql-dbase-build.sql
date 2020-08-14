@@ -119,7 +119,7 @@ CREATE TABLE `web_user` (
 	VALUES
         ('jims',
         'p',
-        'pics/silouette_man_wearing_tie.png',
+        'pics/skomsky-jim-tu-with-bckgrnd.jpg',
         '1968-07-01', 
         4.95,            
         get_user_role_id('admin'));
@@ -345,7 +345,7 @@ CREATE TABLE `PatientVisit` (
         'TUN111114',
         'Office Visit'  ,
         '2019-10-12 08:15', 
-        'Z02.9 Encounter for administrative examinations',      
+        'Z02.9 Medical examination',      
         150.00,
         get_web_user_id('admin@gmail.com'));
 -- 	INSERT INTO `PatientVisit` 
@@ -435,7 +435,7 @@ CREATE TABLE `PatientVisit` (
         'TUN922629',
         'Office Visit',   
         '2019-12-07 14:21',  
-        'Z02.9 Encounter for administrative examinations',         
+        'Z02.9 Medical examination',         
         150.00,
         get_web_user_id('documents@gmail.com'));
     INSERT INTO `PatientVisit` 

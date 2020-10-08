@@ -119,7 +119,7 @@ CREATE TABLE `web_user` (
 	VALUES
         ('jims',
         'p',
-        'pics/me.jpg',
+        'pics/me-2w-to-3h-aspect-ratio.jpg',
         '1968-07-01', 
         4.95,            
         get_user_role_id('admin'));

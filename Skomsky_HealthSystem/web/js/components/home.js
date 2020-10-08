@@ -23,7 +23,7 @@ function home(targetId) {
             <p>
                 <img class='mission-icon' src='icons/dark/icon-mission-H300.png' />
                 This web app is a sample of my Front End Web Development work. 
-                It is built from the ground up (i.e. no BootStrap etc) 
+                To gain a more in-depth learning it is built from the ground up (i.e. no BootStrap, no jQuery etc) 
                 using only foundation web technologies HTML, CSS, JavaScript, 
                 JSP, AJAX and Java.
                 It is a Single Page app using the Model-View-Controller design.  
